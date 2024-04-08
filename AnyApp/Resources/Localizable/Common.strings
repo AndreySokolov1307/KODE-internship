@@ -1,0 +1,37 @@
+"from" = "Откуда";
+"to" = "Куда";
+"all" = "Все";
+"yes" = "Да";
+"no" = "Нет";
+"ok" = "Ок";
+
+"done" = "Готово";
+"continue" = "Продолжить";
+"cancel" = "Отменить";
+"refresh" = "Обновить";
+"quit" = "Выйти";
+"repeat" = "Повторить";
+"apply" = "Применить";
+"close" = "Закрыть";
+"change" = "Изменить";
+"delete" = "Удалить";
+"skip" = "Пропустить";
+"allow" = "Разрешить";
+
+// MARK: - Errors
+
+"error.emptyField" = "Заполните поле";
+"error.invalidFieldInput" = "Неверный формат";
+"error.repeatMessage" = "Повторите попытку или вернитесь позднее";
+
+"error.noConnectionTitle" = "Нет соединения";
+"error.noConnectionMessage" = "Проверьте подключение к интернету";
+
+"error.loadingFailedMessage" = "Не удалось загрузить данные";
+"error.loadingErrorMessage" = "Ошибка загрузки данных";
+
+"error.defaultTitle" = "Ошибка";
+"error.defaultMessage" = "Что-то пошло не так";
+"error.defaultMessagePity" = "К сожалению, что-то пошло не так";
+
+"error.dataRequestFailMessage" = "Не удалось загрузить данные";

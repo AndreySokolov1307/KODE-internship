@@ -1,0 +1,32 @@
+strings:
+- inputs: Resources/Localizable/Common.strings
+  outputs:
+    templateName: structured-swift5
+    output: Resources/Generated/Common.swift
+    params:
+        enumName: Common
+        publicAccess: true
+
+- inputs: Resources/Localizable/Auth.strings
+  outputs:
+    templateName: structured-swift5
+    output: Resources/Generated/Auth.swift
+    params:
+        enumName: Entrance
+        publicAccess: true
+
+- inputs: Resources/Localizable/Profile.strings
+  outputs:
+    templateName: structured-swift5
+    output: Resources/Generated/Profile.swift
+    params:
+        enumName: Profile
+        publicAccess: true
+
+xcassets:
+  inputs: Resources/Assets.xcassets
+  outputs:
+    templateName: swift5
+    output: Resources/Generated/Assets.swift
+    params:
+        publicAccess: true

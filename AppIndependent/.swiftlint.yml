@@ -1,0 +1,114 @@
+disabled_rules:
+    - force_cast
+    - force_try
+    - function_body_length
+    - identifier_name
+    - line_length
+    - multiline_function_chains
+    - type_name
+    - nesting
+    - conditional_returns_on_newline
+    - multiline_parameters
+
+opt_in_rules:
+    - todo
+    - anyobject_protocol
+    - block_based_kvo
+    - closure_spacing
+    - collection_alignment
+    - comments_style
+    - compiler_protocol_init
+    - contains_over_first_not_nil
+    - convenience_type
+    - cyclomatic_complexity
+    - empty_count
+    - empty_parentheses_with_trailing_closure
+    - empty_string
+    - empty_xctest_method
+    - explicit_init
+    - fatal_error_message
+    - file_length
+    - first_where
+    - force_unwrapping
+    - for_where
+    - large_tuple
+    - last_where
+    - literal_expression_end_indentation
+    - modifier_order
+    - multiline_arguments
+    - multiple_closures_with_trailing_closure
+    - multiline_literal_brackets
+    - operator_usage_whitespace
+    - overridden_super_call
+    - private_action
+    - private_outlet
+    - syntactic_sugar
+    - toggle_bool
+    - type_body_length
+    - unused_capture_list
+    - unused_import
+    - unused_setter_value
+    - vertical_parameter_alignment_on_call
+    - weak_delegate
+
+excluded:
+    - Pods
+    - scripts
+    - Frameworks
+    - Tuist
+    - Setup.swift
+    - Manifests.xcworkspace
+    - Manifests.xcodeproj
+    - DomInvest/Resources/Generated
+    - Services/Resources/Generated
+    
+cyclomatic_complexity:
+    warning: 10
+    error: 20
+
+file_length:
+    warning: 500
+    error: 1000
+
+custom_rules:
+    self_reassignment:
+        name: 'Self Backquote Reassignment'
+        regex: '`self`'
+        message: "Please replace `self` to self."
+        severity: error
+
+    marks_style:
+        name: "Mark Style"
+        regex: '// MARK:(?!\s-\s\w+?)'
+        message: "Marks should follow the following structure: `// MARK: - Topic`."
+        severity: warning
+
+    cyrillic_in_comment:
+        name: "Cyrillic Comment"
+        regex: '/{2,}\s*?[а-яА-Я]+?'
+        message: "Cyrillic comments are not allowed."
+        severity: error
+
+    comments_style:
+        name: "Comment Style"
+        regex: '^(\s*?(//\w+?))'
+        message: "There should be a space after //"
+        severity: warning
+
+    final_class:
+        name: "Final Class"
+        regex: '(?<!final\s)class(?!\s(func|var))(?=[^\{\n]*[\{])'
+        message: "Mark class as final. Or disable the rule."
+        severity: error
+
+    no_empty_line_after_logic:
+        name: "Redundant Empty Line"
+        regex: '(?<=\n)[ ]*?\n\s*?(?=\})'
+        message: "Remove empty line before }."
+        severity: warning
+    
+    implicit_tuple_parameters:
+        name: 'Implicit tuple parameters'
+        regex: '(\$[0-9].)[1-9]'
+        message: "Implicit tuples' parameters are prohibited"
+        severity: error
