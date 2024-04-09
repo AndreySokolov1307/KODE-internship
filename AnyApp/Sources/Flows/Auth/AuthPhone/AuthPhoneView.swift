@@ -4,24 +4,29 @@ import AppIndependent
 
 final class AuthPhoneView: BackgroundPrimary {
 
-    var onAuth: VoidHandler?
-
+    var onAuth: StringHandler?
+    private var logo: UIView {
+        ImageView(image: Asset.logoSmall.image)
+    }
+    var textFieldView = PhoneTextFieldView()
+    var logInButton: BaseBrandButton {
+        ButtonPrimary(title: Common.enter)
+            .onTap { [weak self] in
+                guard let number = self?.textFieldView.number else { return }
+                self?.onAuth?(number)
+            }
+    }
     override func setup() {
         super.setup()
         body().embed(in: self)
+        actionButton = logInButton
+        moveActionButtonWithKeyboard = true
     }
-
     private func body() -> UIView {
         VStack {
-            FlexibleGroupedSpacer()
-
-            TextField(placeholder: "!Phone")
-            Spacer(.px16)
-            ButtonPrimary(title: "!Auth")
-                .onTap { [weak self] in
-                    self?.onAuth?()
-                }
-
+            logo
+            Spacer(.px20)
+            textFieldView
             FlexibleGroupedSpacer()
         }
         .linkGroupedSpacers()

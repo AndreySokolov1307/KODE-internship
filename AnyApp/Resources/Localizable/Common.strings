@@ -17,6 +17,11 @@
 "delete" = "Удалить";
 "skip" = "Пропустить";
 "allow" = "Разрешить";
+"loginPlaceholder" = "Телефон";
+"enter" = "Войти";
+"phonePattern" = "+# (###) ### ## ##";
+"replacementCharacter" = "#";
+"empty" = "";
 
 // MARK: - Errors
 

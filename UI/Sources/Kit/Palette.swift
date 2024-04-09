@@ -44,6 +44,16 @@ public enum Palette {
                 return UIColor(hex: 0xFC5DA8)
             }
         }
+    
+        public static var contentAccentPrimary: UIColor { contentAccentPrimary(forTheme: currentTheme) }
+        public static func contentAccentPrimary(forTheme theme: Theme) -> UIColor {
+            switch theme {
+            case .dark:
+                return UIColor(hex: 0x6C78E6)
+            case .light:
+                return UIColor(hex: 0x515FE1)
+            }
+        }
     }
 
     // MARK: - Text

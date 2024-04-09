@@ -8,7 +8,7 @@ final class AuthPhoneViewModel {
     }
 
     enum Input {
-        case phoneEntered
+        case phoneEntered(String)
     }
 
     var onOutput: ((Output) -> Void)?
@@ -23,13 +23,14 @@ final class AuthPhoneViewModel {
 
     func handle(_ input: Input) {
         switch input {
-        case .phoneEntered:
-            login()
+        case .phoneEntered(let number):
+            login(phoneNumber: number)
         }
     }
 
-    private func login() {
-        authRequestManager.authLogin(phone: "")
+    private func login(phoneNumber: String) {
+        print(phoneNumber)
+        authRequestManager.authLogin(phone: phoneNumber)
             .sink(
                 receiveCompletion: { _ in
                     // TODO: handle error

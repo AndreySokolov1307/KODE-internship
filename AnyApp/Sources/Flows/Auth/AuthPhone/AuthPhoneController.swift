@@ -24,8 +24,8 @@ final class AuthPhoneController: TemplateViewController<AuthPhoneView> {
     }
 
     private func setupBindings() {
-        rootView.onAuth = { [weak self] in
-            self?.viewModel.handle(.phoneEntered)
+        rootView.onAuth = { [weak self]  text in
+            self?.viewModel.handle(.phoneEntered(text))
         }
 
         viewModel.onOutput = { [weak self] output in

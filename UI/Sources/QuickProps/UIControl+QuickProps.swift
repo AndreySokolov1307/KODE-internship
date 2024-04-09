@@ -21,5 +21,10 @@ public extension UIControl {
         addAction(for: .touchUpInside, closure)
         return self
     }
-}
 
+    @discardableResult
+    func addTarger(target: Any?, action: Selector, for event: UIControl.Event) -> Self {
+        addTarget(target, action: action, for: event)
+        return self
+    }
+}

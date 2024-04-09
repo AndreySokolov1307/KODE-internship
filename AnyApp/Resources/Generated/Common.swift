@@ -28,18 +28,28 @@ public enum Common {
   public static let delete = Common.tr("Common", "delete", fallback: "Удалить")
   /// Готово
   public static let done = Common.tr("Common", "done", fallback: "Готово")
+  /// 
+  public static let empty = Common.tr("Common", "empty", fallback: "")
+  /// Войти
+  public static let enter = Common.tr("Common", "enter", fallback: "Войти")
   /// Откуда
   public static let from = Common.tr("Common", "from", fallback: "Откуда")
+  /// Телефон
+  public static let loginPlaceholder = Common.tr("Common", "loginPlaceholder", fallback: "Телефон")
   /// Нет
   public static let no = Common.tr("Common", "no", fallback: "Нет")
   /// Ок
   public static let ok = Common.tr("Common", "ok", fallback: "Ок")
+  /// +# (###) ### ## ##
+  public static let phonePattern = Common.tr("Common", "phonePattern", fallback: "+# (###) ### ## ##")
   /// Выйти
   public static let quit = Common.tr("Common", "quit", fallback: "Выйти")
   /// Обновить
   public static let refresh = Common.tr("Common", "refresh", fallback: "Обновить")
   /// Повторить
   public static let `repeat` = Common.tr("Common", "repeat", fallback: "Повторить")
+  /// #
+  public static let replacementCharacter = Common.tr("Common", "replacementCharacter", fallback: "#")
   /// Пропустить
   public static let skip = Common.tr("Common", "skip", fallback: "Пропустить")
   /// Куда

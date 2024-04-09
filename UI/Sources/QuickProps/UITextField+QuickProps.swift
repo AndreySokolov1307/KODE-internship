@@ -47,6 +47,12 @@ public extension UITextField {
         self.textContentType = type
         return self
     }
+
+    @discardableResult
+    func shouldBecomeFirstResponder() -> Self {
+        self.becomeFirstResponder()
+        return self
+    }
 }
 
 // MARK: - `TextStyle` Support
