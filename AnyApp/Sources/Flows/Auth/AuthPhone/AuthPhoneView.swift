@@ -10,7 +10,7 @@ final class AuthPhoneView: BackgroundPrimary {
     }
     var textFieldView = PhoneTextFieldView()
     var logInButton: BaseBrandButton {
-        ButtonPrimary(title: Common.enter)
+        ButtonPrimary(title: Entrance.enter)
             .onTap { [weak self] in
                 guard let number = self?.textFieldView.number else { return }
                 self?.onAuth?(number)

@@ -1,1 +1,5 @@
-
+"loginPlaceholder" = "Телефон";
+"enter" = "Войти";
+"phonePattern" = "+# (###) ### ## ##";
+"replacementCharacter" = "#";
+"otpLabel" = "На ваш номер отправлено SMS с кодом подтверждения";

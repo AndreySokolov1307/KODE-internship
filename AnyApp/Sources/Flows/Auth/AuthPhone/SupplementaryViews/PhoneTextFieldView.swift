@@ -18,14 +18,12 @@ final class PhoneTextFieldView: View {
 
     var number = Common.empty
     let size: Size
-    var textField: TextField {
-        TextField(placeholder: Common.loginPlaceholder)
-            .tintColor(Palette.Content.contentAccentPrimary)
-            .keyboardType(.numberPad)
-            .contentType(.oneTimeCode)
-            .shouldBecomeFirstResponder()
-            .addTarger(target: self, action: #selector(didChange(_:)), for: .editingChanged)
-    }
+    var textField = TextField(placeholder: Entrance.loginPlaceholder)
+        .tintColor(Palette.Content.contentAccentPrimary)
+        .keyboardType(.numberPad)
+        .contentType(.oneTimeCode)
+        .shouldBecomeFirstResponder()
+        .addTarger(target: self, action: #selector(didChange(_:)), for: .editingChanged)
     
     init(size: Size = .large) {
         self.size = size
@@ -52,10 +50,10 @@ final class PhoneTextFieldView: View {
     }
     
     @objc private func didChange(_ sender: TextField) {
-        let pattern = Common.phonePattern
+        let pattern = Entrance.phonePattern
         guard let text = sender.text else { return }
         sender.text = text.applyPatternOnNumbers(pattern: pattern,
-                                                 replacementCharacter: Character(Common.replacementCharacter))
+                                                 replacementCharacter: Character(Entrance.replacementCharacter))
         guard let newText = sender.text else { return }
         number = newText
     }

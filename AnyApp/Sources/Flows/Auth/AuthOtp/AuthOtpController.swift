@@ -28,6 +28,11 @@ final class AuthOtpController: TemplateViewController<AuthOtpView> {
             self?.viewModel.handle(.otpEntered)
         }
 
+        rootView.otpTextFieldView.didEnterLastDigit = { [weak self] text in
+            print(text)
+            self?.viewModel.handle(.otpEntered)
+        }
+
         viewModel.onOutput = { [weak self] output in
             switch output {
             case .userLoggedIn:

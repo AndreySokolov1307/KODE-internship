@@ -29,7 +29,6 @@ final class AuthPhoneViewModel {
     }
 
     private func login(phoneNumber: String) {
-        print(phoneNumber)
         authRequestManager.authLogin(phone: phoneNumber)
             .sink(
                 receiveCompletion: { _ in

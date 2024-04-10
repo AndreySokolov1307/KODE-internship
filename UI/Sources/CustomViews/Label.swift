@@ -47,3 +47,11 @@ open class Label: BaseLabel, Themeable {
         }
     }
 }
+
+extension Label {
+    @discardableResult
+    public func numberOfLines(_ numberOfLines: Int) -> Self {
+        self.numberOfLines = numberOfLines
+        return self
+    }
+}

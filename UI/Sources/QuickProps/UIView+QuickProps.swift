@@ -98,4 +98,10 @@ public extension UIView {
         self.clipsToBounds = clipsToBounds
         return self
     }
+
+    @discardableResult
+    func shouldBecomeFirstResponder() -> Self {
+        self.becomeFirstResponder()
+        return self
+    }
 }

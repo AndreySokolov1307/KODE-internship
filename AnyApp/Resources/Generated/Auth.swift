@@ -10,6 +10,16 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 public enum Entrance {
+  /// Войти
+  public static let enter = Entrance.tr("Auth", "enter", fallback: "Войти")
+  /// Телефон
+  public static let loginPlaceholder = Entrance.tr("Auth", "loginPlaceholder", fallback: "Телефон")
+  /// На ваш номер отправлено SMS с кодом подтверждения
+  public static let otpLabel = Entrance.tr("Auth", "otpLabel", fallback: "На ваш номер отправлено SMS с кодом подтверждения")
+  /// +# (###) ### ## ##
+  public static let phonePattern = Entrance.tr("Auth", "phonePattern", fallback: "+# (###) ### ## ##")
+  /// #
+  public static let replacementCharacter = Entrance.tr("Auth", "replacementCharacter", fallback: "#")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces
