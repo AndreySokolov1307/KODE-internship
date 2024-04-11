@@ -18,8 +18,12 @@ public enum Entrance {
   public static let otpLabel = Entrance.tr("Auth", "otpLabel", fallback: "На ваш номер отправлено SMS с кодом подтверждения")
   /// +# (###) ### ## ##
   public static let phonePattern = Entrance.tr("Auth", "phonePattern", fallback: "+# (###) ### ## ##")
+  /// Повторить через 
+  public static let repeatAfter = Entrance.tr("Auth", "repeatAfter", fallback: "Повторить через ")
   /// #
   public static let replacementCharacter = Entrance.tr("Auth", "replacementCharacter", fallback: "#")
+  /// Выслать код повторно
+  public static let sendOTPAgain = Entrance.tr("Auth", "sendOTPAgain", fallback: "Выслать код повторно")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

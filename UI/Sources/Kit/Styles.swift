@@ -14,6 +14,7 @@ public enum ForegroundStyle {
     case contentPrimary
     case textPrimary
     case contentAccentPrimary
+    case textSecondary
 
     case button
 }
@@ -62,6 +63,8 @@ public extension ForegroundStyle {
             return Palette.Content.primary
         case .textPrimary:
             return Palette.Text.primary
+        case .textSecondary:
+            return Palette.Text.secondary
         case .contentAccentPrimary:
             return Palette.Content.contentAccentPrimary
         case .button:

@@ -6,11 +6,10 @@ final class AuthOtpView: BackgroundPrimary {
 
     var onOtpFilled: VoidHandler?
     var otpTextFieldView = OTPTextFieldView()
-    var label: Label {
-        Label(text: Entrance.otpLabel)
-            .fontStyle(.button)
-            .numberOfLines(0)
-    }
+    var label = Label(text: Entrance.otpLabel)
+        .font(UIFont.systemFont(ofSize: 15, weight: .regular))
+        .numberOfLines(0)
+    var otpRepeatView = OTPRepeatView()
 
     override func setup() {
         super.setup()
@@ -22,6 +21,8 @@ final class AuthOtpView: BackgroundPrimary {
             label
             Spacer(.px24)
             otpTextFieldView
+            Spacer(.px24)
+            otpRepeatView
             FlexibleSpacer()
             ButtonPrimary(title: "Авторизоваться")
                 .onTap { [weak self] in

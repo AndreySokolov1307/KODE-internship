@@ -3,3 +3,6 @@
 "phonePattern" = "+# (###) ### ## ##";
 "replacementCharacter" = "#";
 "otpLabel" = "На ваш номер отправлено SMS с кодом подтверждения";
+"sendOTPAgain" = "Выслать код повторно";
+"repeatAfter" = "Повторить через ";
+
