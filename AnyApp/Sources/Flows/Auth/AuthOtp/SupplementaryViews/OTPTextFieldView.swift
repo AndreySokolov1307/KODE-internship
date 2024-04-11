@@ -11,22 +11,27 @@ import AppIndependent
 
 // swiftlint:disable: trailing_whitespace
 final class OTPTextFieldView: View {
+    enum Size {
+        case small
+        case regular
+        case big
+    }
     
     private var isConfigured = false
-    private let numberOfSlots: Int
+    private let size: Size
     private var digitLabels = [OTPLabel]()
     private var lineView = LineView()
     var didEnterLastDigit: StringHandler?
     var lineLabelIndex: Int {
-        numberOfSlots / 2
+        size.numberOfSlots / 2
     }
     
-    init(numberOfSlots: Int = 7) {
-        self.numberOfSlots = numberOfSlots
+    init(size: Size = Size.small) {
+        self.size = size
         super.init()
     }
     
-    var hStack = HStack(alignment: .fill, distribution: .equalSpacing)
+    var hStack: HStack!
 
     var textField = TextField()
         .tintColor(.clear)
@@ -57,19 +62,31 @@ final class OTPTextFieldView: View {
     private func configureLabels() {
         guard !isConfigured else { return }
         isConfigured.toggle()
-        for i in 1...numberOfSlots {
-            if i == lineLabelIndex + 1 {
-                hStack
-                    .add(arrangedSubview: lineView)
-            } else {
+        switch size {
+        case .small:
+            hStack = HStack(alignment: .fill, distribution: .fill, spacing: 6)
+            fillHStack(hStack)
+            hStack.insertArrangedSubview(lineView, at: lineLabelIndex)
+            hStack.add(arrangedSubview: FlexibleGroupedSpacer())
+        case .regular:
+            hStack = HStack(alignment: .fill, distribution: .fill, spacing: 6)
+            fillHStack(hStack)
+            hStack.add(arrangedSubview: FlexibleGroupedSpacer())
+        case .big:
+            hStack = HStack(alignment: .fill, distribution: .equalSpacing)
+            fillHStack(hStack)
+            hStack.insertArrangedSubview(lineView, at: lineLabelIndex)
+        }
+        digitLabels.first?.lineView.isHidden = false
+    }
+    
+    private func fillHStack(_ hStack: HStack) {
+        for _ in 1...size.numberOfSlots {
                 let label = OTPLabel()
-
                 hStack
                     .add(arrangedSubview: label)
                 digitLabels.append(label)
-            }
         }
-        digitLabels.first?.lineView.isHidden = false
     }
     
     @objc private func didChange(_ sender: UITextField) {
@@ -105,3 +122,15 @@ extension OTPTextFieldView: UITextFieldDelegate {
     }
 }
 
+extension OTPTextFieldView.Size {
+    var numberOfSlots: Int {
+        switch self {
+        case .small:
+            return 4
+        case .regular:
+            return 5
+        case .big:
+            return 6
+        }
+    }
+}
