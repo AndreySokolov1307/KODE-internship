@@ -32,4 +32,8 @@ final class AuthPhoneView: BackgroundPrimary {
         .linkGroupedSpacers()
         .layoutMargins(.make(hInsets: 16))
     }
+    
+    func handleInput(_ input: PhoneTextFieldView.Input) {
+        textFieldView.updateUIWithInput(input)
+    }
 }

@@ -37,3 +37,5 @@
 "error.defaultMessagePity" = "К сожалению, что-то пошло не так";
 
 "error.dataRequestFailMessage" = "Не удалось загрузить данные";
+
+"error.wrongNumberFormat" = "Пожалуйста убедитесь, что вы правильно ввели номер телефона";

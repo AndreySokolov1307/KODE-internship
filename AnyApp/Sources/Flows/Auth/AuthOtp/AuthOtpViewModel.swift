@@ -4,7 +4,7 @@ import Combine
 final class AuthOtpViewModel {
 
     enum Input {
-        case otpEntered
+        case otpEntered(String)
     }
 
     enum Output {

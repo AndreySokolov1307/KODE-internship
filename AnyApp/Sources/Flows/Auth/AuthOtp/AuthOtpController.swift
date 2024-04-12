@@ -17,6 +17,11 @@ final class AuthOtpController: TemplateViewController<AuthOtpView> {
         self.init()
         self.viewModel = viewModel
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        rootView.stopTimer()
+    }
 
     override func setup() {
         super.setup()
@@ -24,14 +29,14 @@ final class AuthOtpController: TemplateViewController<AuthOtpView> {
     }
 
     private func setupBindings() {
-        rootView.onOtpFilled = { [weak self] in
-            self?.viewModel.handle(.otpEntered)
+        rootView.onOtpFilled = { [weak self] otp in
+            self?.viewModel.handle(.otpEntered(otp))
         }
 
-        rootView.otpTextFieldView.didEnterLastDigit = { [weak self] text in
-            print(text)
-            self?.viewModel.handle(.otpEntered)
-        }
+//        rootView.otpTextFieldView.didEnterLastDigit = { [weak self] text in
+//            print(text)
+//            self?.viewModel.handle(.otpEntered)
+//        }
 
         viewModel.onOutput = { [weak self] output in
             switch output {

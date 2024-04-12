@@ -71,6 +71,8 @@ public enum Common {
     public static let noConnectionTitle = Common.tr("Common", "error.noConnectionTitle", fallback: "Нет соединения")
     /// Повторите попытку или вернитесь позднее
     public static let repeatMessage = Common.tr("Common", "error.repeatMessage", fallback: "Повторите попытку или вернитесь позднее")
+    /// Пожалуйста убедитесь, что вы правильно ввели номер телефона
+    public static let wrongNumberFormat = Common.tr("Common", "error.wrongNumberFormat", fallback: "Пожалуйста убедитесь, что вы правильно ввели номер телефона")
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length

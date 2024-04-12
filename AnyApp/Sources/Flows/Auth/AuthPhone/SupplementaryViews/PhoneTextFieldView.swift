@@ -14,6 +14,11 @@ final class PhoneTextFieldView: View {
         case medium
         case large
     }
+    
+    enum Input {
+        case right
+        case wrong
+    }
 
     var number = Common.empty
     let size: Size
@@ -23,6 +28,10 @@ final class PhoneTextFieldView: View {
         .contentType(.oneTimeCode)
         .shouldBecomeFirstResponder()
         .addTarger(target: self, action: #selector(didChange(_:)), for: .editingChanged)
+    private var image = Asset.phone.image
+        .withRenderingMode(.alwaysTemplate)
+    private lazy var imageView = ImageView(image: image)
+        .foregroundStyle(.contentAccentPrimary)
     
     init(size: Size = .large) {
         self.size = size
@@ -41,7 +50,7 @@ final class PhoneTextFieldView: View {
     }
     private func body() -> UIView {
         HStack(spacing: 16) {
-            ImageView(image: Asset.phone.image)
+            imageView
             textField
             FlexibleGroupedSpacer()
         }
@@ -59,6 +68,17 @@ final class PhoneTextFieldView: View {
     
     override var intrinsicContentSize: CGSize {
         return CGSize(width: UIView.layoutFittingExpandedSize.width, height: size.height)
+    }
+    
+    func updateUIWithInput(_ input: Input) {
+        switch input {
+        case .right:
+            imageView.tintColor(Palette.Content.contentAccentPrimary)
+            textField.textColor(.white)
+        case .wrong:
+            imageView.tintColor(Asset.indicatorContentError.color)
+            textField.textColor(Asset.indicatorContentError.color)
+        }
     }
 }
 

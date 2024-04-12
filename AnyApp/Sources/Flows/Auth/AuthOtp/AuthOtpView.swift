@@ -4,16 +4,19 @@ import AppIndependent
 
 final class AuthOtpView: BackgroundPrimary {
 
-    var onOtpFilled: VoidHandler?
-    var otpTextFieldView = OTPTextFieldView()
-    var label = Label(text: Entrance.otpLabel)
+    var onOtpFilled: StringHandler?
+    let otpTextFieldView = OTPTextFieldView()
+    private let label = Label(text: Entrance.otpLabel)
         .font(UIFont.systemFont(ofSize: 15, weight: .regular))
         .numberOfLines(0)
-    var otpRepeatView = OTPRepeatView()
+    private let otpRepeatView = OTPRepeatView()
 
     override func setup() {
         super.setup()
         body().embed(in: self)
+        otpTextFieldView.didEnterLastDigit = { [weak self] otp in
+            self?.onOtpFilled?(otp)
+        }
     }
 
     private func body() -> UIView {
@@ -24,11 +27,17 @@ final class AuthOtpView: BackgroundPrimary {
             Spacer(.px24)
             otpRepeatView
             FlexibleSpacer()
-            ButtonPrimary(title: "Авторизоваться")
-                .onTap { [weak self] in
-                    self?.onOtpFilled?()
-                }
+            
+            // MARK: - dont need to use this
+//            ButtonPrimary(title: "Авторизоваться")
+//                .onTap { [weak self] in
+//                    self?.onOtpFilled?("")
+//                }
         }.layoutMargins(.make(vInsets: 16, hInsets: 16))
+    }
+    
+    func stopTimer() {
+        otpRepeatView.timer?.invalidate()
     }
 }
 

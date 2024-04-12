@@ -25,7 +25,7 @@ final class OTPTextFieldView: View {
         size.numberOfSlots / 2
     }
     
-    init(size: Size = Size.small) {
+    init(size: Size = Size.big) {
         self.size = size
         super.init()
     }

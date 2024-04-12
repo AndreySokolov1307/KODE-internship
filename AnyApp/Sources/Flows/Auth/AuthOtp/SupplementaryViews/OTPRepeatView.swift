@@ -20,7 +20,7 @@ final class OTPRepeatView: View {
     private let label = Label()
         .font(UIFont.systemFont(ofSize: 13, weight: .regular))
     private let repeatButton = ImageView(image: Asset.repeat.image, foregroundStyle: .contentAccentPrimary)
-    private var timer: Timer?
+    var timer: Timer?
     private var totalTime = 179
     
     override func setup() {
@@ -69,7 +69,6 @@ final class OTPRepeatView: View {
     }
     
     @objc func updateTimer() {
-        print(self.totalTime)
         self.label.text = Entrance.repeatAfter + self.timeFormatted(self.totalTime)
         if totalTime != 0 {
             totalTime -= 1
@@ -83,7 +82,7 @@ final class OTPRepeatView: View {
         }
     }
     
-    func timeFormatted(_ totalSeconds: Int) -> String {
+    private func timeFormatted(_ totalSeconds: Int) -> String {
         let seconds: Int = totalSeconds % 60
         let minutes: Int = (totalSeconds / 60) % 60
         return String(format: "%02d:%02d", minutes, seconds)

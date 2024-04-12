@@ -1,10 +1,12 @@
 import Services
+import UI
 import Combine
 
 final class AuthPhoneViewModel {
 
     enum Output {
         case otp
+        case invalidNumber
     }
 
     enum Input {
@@ -24,7 +26,11 @@ final class AuthPhoneViewModel {
     func handle(_ input: Input) {
         switch input {
         case .phoneEntered(let number):
-            login(phoneNumber: number)
+            if isNumberValid(number) {
+                login(phoneNumber: number)
+            } else {
+                onOutput?(.invalidNumber)
+            }
         }
     }
 
@@ -38,5 +44,12 @@ final class AuthPhoneViewModel {
                     self?.onOutput?(.otp)
                 }
             ).store(in: &cancellables)
+    }
+    
+    private func isNumberValid(_ number: String) -> Bool {
+        let phonePattern = #"^[\+]\d{1}[ ]?\(?\d{3}\)?[ ]?\d{3}[ ]?\d{2}[ ]?\d{2}$"#
+        var result = number.range(of: phonePattern, options: .regularExpression)
+        let isValid = (result != nil)
+        return isValid
     }
 }

@@ -35,7 +35,6 @@ final class AuthFlowCoordinator: Coordinator {
                 self?.showOtp()
             }
         }
-
         router.setRootModule(controller)
     }
 

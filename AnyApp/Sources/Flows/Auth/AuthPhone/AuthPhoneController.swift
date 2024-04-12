@@ -24,14 +24,18 @@ final class AuthPhoneController: TemplateViewController<AuthPhoneView> {
     }
 
     private func setupBindings() {
-        rootView.onAuth = { [weak self]  text in
-            self?.viewModel.handle(.phoneEntered(text))
+        rootView.onAuth = { [weak self] number in
+            self?.viewModel.handle(.phoneEntered(number))
         }
 
         viewModel.onOutput = { [weak self] output in
             switch output {
             case .otp:
+                self?.rootView.handleInput(.right)
                 self?.onEvent?(.otp)
+            case .invalidNumber:
+                SnackCenter.shared.showSnack(withProps: .init(message: Common.Error.wrongNumberFormat))
+                self?.rootView.handleInput(.wrong)
             }
         }
     }
