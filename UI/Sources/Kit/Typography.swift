@@ -22,4 +22,11 @@ public enum Typography {
         weight: .semibold,
         lineHeight: 18
     )
+    
+    public static let caption1 = TextStyle(
+        name: "caption1",
+        size: 13,
+        weight: .regular,
+        lineHeight: 15
+    )
 }

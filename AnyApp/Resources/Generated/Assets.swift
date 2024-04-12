@@ -29,10 +29,15 @@ public enum Asset {
   public static let contentTertiary = ColorAsset(name: "contentTertiary")
   public static let indicatorContentError = ColorAsset(name: "indicatorContentError")
   public static let textPrimary = ColorAsset(name: "textPrimary")
+  public static let chevronDown = ImageAsset(name: "chevronDown")
+  public static let dollar = ImageAsset(name: "dollar")
+  public static let euro = ImageAsset(name: "euro")
+  public static let input = ImageAsset(name: "input")
   public static let logoNormal = ImageAsset(name: "logoNormal")
   public static let logoSmall = ImageAsset(name: "logoSmall")
   public static let phone = ImageAsset(name: "phone")
   public static let `repeat` = ImageAsset(name: "repeat")
+  public static let ruble = ImageAsset(name: "ruble")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 

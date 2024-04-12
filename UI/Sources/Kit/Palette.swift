@@ -44,7 +44,7 @@ public enum Palette {
                 return UIColor(hex: 0xFC5DA8)
             }
         }
-    
+
         public static var contentAccentPrimary: UIColor { contentAccentPrimary(forTheme: currentTheme) }
         public static func contentAccentPrimary(forTheme theme: Theme) -> UIColor {
             switch theme {

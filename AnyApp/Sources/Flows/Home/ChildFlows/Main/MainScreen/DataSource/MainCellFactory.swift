@@ -42,6 +42,42 @@ final class MainCellFactory {
             view.configure(with: props)
         }
     }
+    
+    func makeDepositCell(
+        for indexPath: IndexPath,
+        with props: DepostiView.Props
+    ) -> UITableViewCell {
+        tableView.dequeueTemplateCell(
+            forView: DepostiView.self,
+            for: indexPath
+        ) { view, _ in
+            view.configure(with: props)
+        }
+    }
+    
+    func makeCurrentAccountCell(
+        for indexPath: IndexPath,
+        with props: CurrentAccountView.Props
+    ) -> UITableViewCell {
+        tableView.dequeueTemplateCell(
+            forView: CurrentAccountView.self,
+            for: indexPath
+        ) { view, _ in
+            view.configure(with: props)
+        }
+    }
+    
+    func makeAdditionalAccountCell(
+        for indexPath: IndexPath,
+        with props: AdditionalAccountView.Props
+    ) -> UITableViewCell {
+        tableView.dequeueTemplateCell(
+            forView: AdditionalAccountView.self,
+            for: indexPath
+        ) { view, _ in
+            view.configure(with: props)
+        }
+    }
 
     func makeTemplateHeaderCell(
         for indexPath: IndexPath,

@@ -47,6 +47,9 @@ final class MainDataSource {
         tableView.registerTemplateCell(forView: TemplateShimmerView.self)
         tableView.registerTemplateCell(forView: TemplateView.self)
         tableView.registerTemplateCell(forView: TemplateHeaderView.self)
+        tableView.registerTemplateCell(forView: DepostiView.self)
+        tableView.registerTemplateCell(forView: CurrentAccountView.self)
+        tableView.registerTemplateCell(forView: AdditionalAccountView.self)
     }
 
     private func configure() {
@@ -57,11 +60,11 @@ final class MainDataSource {
             case .header(let props):
                 return cellFactory.makeTemplateHeaderCell(for: indexPath, with: props)
             case .account(let props):
-                return cellFactory.makeTemplateCell(for: indexPath, with: props)
+                return cellFactory.makeCurrentAccountCell(for: indexPath, with: props)
             case .card(let props):
-                return cellFactory.makeTemplateCell(for: indexPath, with: props)
+                return cellFactory.makeAdditionalAccountCell(for: indexPath, with: props)
             case .deposit(let props):
-                return cellFactory.makeTemplateCell(for: indexPath, with: props)
+                return cellFactory.makeDepositCell(for: indexPath, with: props)
             }
         }
     }
