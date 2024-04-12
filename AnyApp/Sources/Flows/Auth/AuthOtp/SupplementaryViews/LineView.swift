@@ -7,7 +7,7 @@
 
 import UI
 import UIKit
-// swiftlint:disable: trailing_whitespace
+
 final class LineView: View {
     
     private let line = View()

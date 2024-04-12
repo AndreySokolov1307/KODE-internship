@@ -9,7 +9,6 @@ import UI
 import UIKit
 import AppIndependent
 
-// swiftlint:disable: trailing_whitespace
 final class PhoneTextFieldView: View {
     enum Size {
         case medium

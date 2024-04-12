@@ -8,7 +8,7 @@
 import UI
 import UIKit
 import AppIndependent
-// swiftlint:disable: trailing_whitespace
+
 final class OTPRepeatView: View {
     enum State {
         case regular

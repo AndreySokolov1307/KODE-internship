@@ -9,6 +9,7 @@ disabled_rules:
     - nesting
     - conditional_returns_on_newline
     - multiline_parameters
+    - trailing_whitespace
 
 opt_in_rules:
     - todo
