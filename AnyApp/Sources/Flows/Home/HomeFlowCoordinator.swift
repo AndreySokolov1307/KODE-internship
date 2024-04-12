@@ -21,6 +21,11 @@ final class HomeFlowCoordinator: Coordinator {
         guard let mainController = createMainController() else {
             fatalError("Error during initialization of MainController")
         }
+        mainController.tabBarItem = .init(
+            title: "Главная",
+            image: UIImage(systemName: "star"),
+            selectedImage: UIImage(systemName: "star")
+        )
 
         guard let profileController = createProfileController() else {
             fatalError("Error during initialization of ProfileController")
@@ -40,15 +45,12 @@ final class HomeFlowCoordinator: Coordinator {
 private extension HomeFlowCoordinator {
 
     func createMainController() -> UIViewController? {
-        //            DIContainer.shared.assemble(assembly: MainAssembly())
+        DIContainer.shared.assemble(assembly: MainFlowAssembly())
 
-        //            let coordinator = resolver ~> MainCoordinator.self
-        //            addDependency(coordinator)
+        let coordinator = resolver ~> MainFlowCoordinator.self
+        addDependency(coordinator)
 
-        //            return coordinator.mainController()
-        let controller = TemplateViewController<BackgroundPrimary>()
-        controller.tabBarItem = .init(title: "Главная", image: UIImage(systemName: "star"), selectedImage: UIImage(systemName: "star"))
-        return controller
+        return coordinator.mainController()
     }
 
     func createProfileController() -> UIViewController? {
