@@ -13,7 +13,7 @@ final class TemplateHeaderView: BackgroundPrimary {
 
     // MARK: - Private Properties
 
-    private let titleLabel = Label(foregroundStyle: .textPrimary, fontStyle: .title)
+    private let titleLabel = Label(foregroundStyle: .textTertiary, fontStyle: .title2)
 
     private var props: Props?
 

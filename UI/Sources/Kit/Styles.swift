@@ -15,6 +15,7 @@ public enum ForegroundStyle {
     case textPrimary
     case contentAccentPrimary
     case textSecondary
+    case textTertiary
 
     case button
 }
@@ -27,6 +28,7 @@ public enum BorderStyle {
 // Defines font
 public enum FontStyle {
     case title
+    case title2
     case button
     case caption2
     case caption1
@@ -67,6 +69,8 @@ public extension ForegroundStyle {
             return Palette.Text.primary
         case .textSecondary:
             return Palette.Text.secondary
+        case .textTertiary:
+            return Palette.Text.tertiary
         case .contentAccentPrimary:
             return Palette.Content.contentAccentPrimary
         case .button:
@@ -97,6 +101,8 @@ public extension FontStyle {
             return Typography.caption2
         case .caption1:
             return Typography.caption1
+        case .title2:
+            return Typography.title2
         }
     }
 }

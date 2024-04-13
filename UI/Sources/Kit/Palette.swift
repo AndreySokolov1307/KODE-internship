@@ -79,6 +79,16 @@ public enum Palette {
                 return UIColor(hex: 0x969A9B)
             }
         }
+        
+        public static var tertiary: UIColor { tertiary(forTheme: currentTheme) }
+        public static func tertiary(forTheme theme: Theme) -> UIColor {
+            switch theme {
+            case .dark:
+                return UIColor(hex: 0x706D76)
+            case .light:
+                return UIColor(hex: 0xF3F3F3)
+            }
+        }
     }
 
     // MARK: - Button
