@@ -54,12 +54,12 @@ private extension HomeFlowCoordinator {
     }
 
     func createProfileController() -> UIViewController? {
-        //            DIContainer.shared.assemble(assembly: ProfileAssembly())
-        //
-        //            let coordinator = resolver ~> ProfileCoordinator.self
-        //            addDependency(coordinator)
-        //
-        //            return coordinator.profileController()
+//                    DIContainer.shared.assemble(assembly: ProfileAssembly())
+//        
+//                    let coordinator = resolver ~> ProfileCoordinator.self
+//                    addDependency(coordinator)
+//        
+//                    return coordinator.profileController()
         let viewModel = ProfileViewModel(appSession: resolver ~> AppSession.self)
         let controller = ProfileController(viewModel: viewModel)
         controller.tabBarItem = .init(title: "Профиль", image: UIImage(systemName: "star"), selectedImage: UIImage(systemName: "star"))

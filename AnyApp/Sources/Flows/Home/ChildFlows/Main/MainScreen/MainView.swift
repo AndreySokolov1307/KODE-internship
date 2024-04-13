@@ -14,7 +14,7 @@ final class MainView: BackgroundPrimary {
     var onNewProduct: VoidHandler?
 
     private let tableView = BaseTableView()
-    private let button = ButtonPrimary(title: Main.openNewAccount)
+    private let addButton = ButtonPrimary(title: Main.openNewAccount)
     private lazy var dataSource = MainDataSource(tableView: tableView)
 
     override func setup() {
@@ -28,12 +28,12 @@ final class MainView: BackgroundPrimary {
     }
 
     private func setupButton() {
-        addSubview(button)
-        button.snp.makeConstraints {
+        addSubview(addButton)
+        addButton.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(24)
         }
-        button.onTap { [weak self] in
+        addButton.onTap { [weak self] in
             self?.onNewProduct?()
         }
     }
@@ -58,4 +58,3 @@ extension MainView: ConfigurableView {
         dataSource.apply(sections: model.sections)
     }
 }
-
