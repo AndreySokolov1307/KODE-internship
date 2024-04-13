@@ -22,6 +22,8 @@ final class AdditionalAccountView: BackgroundPrimary {
         .size(width: 40, height: 28)
         .cornerRadius(2)
         .backgroundColor(Palette.Content.primary)
+    private let smallCardView = CardView()
+        .cornerRadius(2)
 
     private var props: Props?
 
@@ -46,7 +48,10 @@ final class AdditionalAccountView: BackgroundPrimary {
                     .textColor(props.textColor)
             }
             FlexibleSpacer()
-            cardImageView
+            smallCardView
+                .text(props.smallCardText)
+                .image(props.smallCardImage)
+                .textColor(props.smallCardTextColor)
         }
         .layoutMargins(.make(vInsets: 16, hInsets: 12))
         .onTap { [weak self] in
@@ -73,11 +78,17 @@ extension AdditionalAccountView: ConfigurableView {
             case extra
         }
         
+        enum PaymentSystem {
+            case visa
+            case masterCard
+        }
+        
         let id: String = UUID().uuidString
         let cardType: CardType
         let cardPurpose: CardPurpose
         let isBlocked: Bool
         let cardNumber: String
+        let paymentSystem: PaymentSystem
 
         var onTap: StringHandler?
 
@@ -128,6 +139,27 @@ extension AdditionalAccountView.Props {
             }
         }
     }
+    
+    var smallCardText: String {
+        return String(cardNumber.suffix(4))
+    }
+    
+    var smallCardImage: UIImage {
+        switch paymentSystem {
+        case .visa:
+            return Asset.visa.image
+        case .masterCard:
+            return Asset.masterCard.image
+        }
+    }
+    
+    var smallCardTextColor: UIColor {
+        switch paymentSystem {
+        case .visa:
+            return  Palette.Text.secondary
+        case .masterCard:
+            return .white
+        }
+    }
 }
-
 

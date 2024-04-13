@@ -51,10 +51,10 @@ final class MainViewModel {
                     .account(.init(money: "457 334,00", currency: .ruble) { id in
                         SnackCenter.shared.showSnack(withProps: .init(message: "Account pressed with \(id)"))
                     }),
-                    .card(.init(cardType: .physical, cardPurpose: .salary, isBlocked: false, cardNumber: "7789") { id in
+                    .card(.init(cardType: .physical, cardPurpose: .salary, isBlocked: false, cardNumber: "20027789", paymentSystem: .masterCard) { id in
                         SnackCenter.shared.showSnack(withProps: .init(message: "Card pressed with \(id)"))
                     }),
-                    .card(.init(cardType: .physical, cardPurpose: .extra, isBlocked: true, cardNumber: "8435") { id in
+                    .card(.init(cardType: .physical, cardPurpose: .extra, isBlocked: true, cardNumber: "20028435", paymentSystem: .visa) { id in
                         SnackCenter.shared.showSnack(withProps: .init(message: "Card pressed with \(id)"))
                     })
                 ]),
