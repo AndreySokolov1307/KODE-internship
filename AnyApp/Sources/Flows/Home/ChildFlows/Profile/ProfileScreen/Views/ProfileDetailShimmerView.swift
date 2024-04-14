@@ -9,7 +9,7 @@ import UI
 import UIKit
 import SkeletonView
 
-final class ProfileInfoShimmerView: BackgroundPrimary {
+final class ProfileDetailShimmerView: BackgroundPrimary {
     
     // MARK: - Private properties
     

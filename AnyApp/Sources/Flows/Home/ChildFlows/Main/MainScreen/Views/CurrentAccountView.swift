@@ -29,7 +29,6 @@ final class CurrentAccountView: BackgroundPrimary {
 
     override public func setup() {
         super.setup()
-        cornerRadius(16)
     }
 
     // MARK: - Private methods
@@ -48,7 +47,7 @@ final class CurrentAccountView: BackgroundPrimary {
             FlexibleSpacer()
             cardImageView
         }
-        .layoutMargins(.make(vInsets: 16, hInsets: 12))
+        .layoutMargins(.make(vInsets: 16, hInsets: 16))
         .onTap { [weak self] in
             self?.props?.onTap?(props.id)
         }

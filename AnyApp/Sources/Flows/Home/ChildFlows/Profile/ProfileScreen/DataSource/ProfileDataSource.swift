@@ -44,8 +44,10 @@ final class ProfileDateSource {
     
     private func setup() {
         tableView.contentInsets(.init(top: 16, left: 0, bottom: 16, right: 0))
-        tableView.registerTemplateCell(forView: ProfileInfoShimmerView.self)
+        tableView.registerTemplateCell(forView: ProfileDetailShimmerView.self)
         tableView.registerTemplateCell(forView: InfoShimmerView.self)
+        tableView.registerTemplateCell(forView: ProfileDetailView.self)
+        tableView.registerTemplateCell(forView: InfoView.self)
     }
     
     private func configure() {
@@ -55,8 +57,10 @@ final class ProfileDateSource {
                 return cellFactory.makeProfileShimmer(for: indexPath)
             case .infoShimmer:
                 return cellFactory.makeInfoShimmer(for: indexPath)
-            default :
-                return UITableViewCell()
+            case .profile(let props):
+                return cellFactory.makeProfileDetailCell(for: indexPath, with: props)
+            case .info(let props):
+                return cellFactory.makeInfoCell(for: indexPath, with: props)
             }
         }
     }

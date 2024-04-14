@@ -24,7 +24,7 @@ final class ProfileCellFactory {
 
     func makeProfileShimmer(for indexPath: IndexPath) -> UITableViewCell {
         tableView.dequeueTemplateCell(
-            forView: ProfileInfoShimmerView.self,
+            forView: ProfileDetailShimmerView.self,
             for: indexPath
         )
     }
@@ -38,27 +38,27 @@ final class ProfileCellFactory {
     
     // MARK: - Cells
     
-//    func makeProfileCell(
-//        for indexPath: IndexPath,
-//        with props: ProfileInfoView.Props
-//    ) -> UITableViewCell {
-//        tableView.dequeueTemplateCell(
-//            forView: ProfileInfoView.self,
-//            for: indexPath
-//        ) { view, _ in
-//            view.configure(with: props)
-//        }
-//    }
-//    
-//    func makeInfoCell(
-//        for indexPath: IndexPath,
-//        with props: InfoView.Props
-//    ) -> UITableViewCell {
-//        tableView.dequeueTemplateCell(
-//            forView: InfoView.self,
-//            for: indexPath
-//        ) { view, _ in
-//            view.configure(with: props)
-//        }
-//    }
+    func makeProfileDetailCell(
+        for indexPath: IndexPath,
+        with props: ProfileDetailView.Props
+    ) -> UITableViewCell {
+        tableView.dequeueTemplateCell(
+            forView: ProfileDetailView.self,
+            for: indexPath
+        ) { view, _ in
+            view.configure(with: props)
+        }
+    }
+    
+    func makeInfoCell(
+        for indexPath: IndexPath,
+        with props: InfoView.Props
+    ) -> UITableViewCell {
+        tableView.dequeueTemplateCell(
+            forView: InfoView.self,
+            for: indexPath
+        ) { view, _ in
+            view.configure(with: props)
+        }
+    }
 }

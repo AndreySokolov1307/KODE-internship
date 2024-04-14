@@ -31,7 +31,6 @@ final class AdditionalAccountView: BackgroundPrimary {
 
     override public func setup() {
         super.setup()
-        cornerRadius(16)
     }
 
     // MARK: - Private methods
@@ -53,7 +52,7 @@ final class AdditionalAccountView: BackgroundPrimary {
                 .image(props.smallCardImage)
                 .textColor(props.smallCardTextColor)
         }
-        .layoutMargins(.make(vInsets: 16, hInsets: 12))
+        .layoutMargins(.make(vInsets: 16, hInsets: 16))
         .onTap { [weak self] in
             self?.props?.onTap?(props.id)
         }

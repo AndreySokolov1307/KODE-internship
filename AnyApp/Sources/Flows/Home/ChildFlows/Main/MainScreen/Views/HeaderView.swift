@@ -9,7 +9,7 @@ import UIKit
 import UI
 import AppIndependent
 
-final class TemplateHeaderView: BackgroundPrimary {
+final class HeaderView: BackgroundPrimary {
 
     // MARK: - Private Properties
 
@@ -36,14 +36,14 @@ final class TemplateHeaderView: BackgroundPrimary {
 
 // MARK: - Configurable
 
-extension TemplateHeaderView: ConfigurableView {
+extension HeaderView: ConfigurableView {
 
     typealias Model = Props
 
     struct Props: Hashable {
         let title: String
 
-        public static func == (lhs: TemplateHeaderView.Props, rhs: TemplateHeaderView.Props) -> Bool {
+        public static func == (lhs: HeaderView.Props, rhs: HeaderView.Props) -> Bool {
             lhs.hashValue == rhs.hashValue
         }
 

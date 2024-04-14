@@ -37,9 +37,23 @@ final class ProfileViewModel {
     private func loadProfile() {
         onOutput?(.content(.init(sections: [
             .profile(.profileShimmer()),
-            .info(
+            .settings(
                 (1...4).map { _ in .infoShimmer() }
             )
         ])))
+        
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            self?.onOutput?(.content(.init(sections: [
+                .profile(.profile(.init(avatarImage: Asset.avatarStub.image,
+                                        name: "Филлип Ребийяр Олегович",
+                                        phoneNumber: "+7 951 098 98 98 "))),
+                .settings([
+                    .info(.init(infoType: .about)),
+                    .info(.init(infoType: .theme)),
+                    .info(.init(infoType: .support)),
+                    .info(.init(infoType: .logOut))
+                ])
+            ])))
+        }
     }
 }

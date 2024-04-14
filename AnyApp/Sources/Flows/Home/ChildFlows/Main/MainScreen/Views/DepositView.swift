@@ -17,7 +17,9 @@ final class DepostiView: BackgroundPrimary {
     private let moneyLabel = Label(foregroundStyle: .textPrimary)
     private let currencyImageView = ImageView(foregroundStyle: .contentPrimary)
     private let interestRateLabel = Label(foregroundStyle: .textSecondary)
+        .fontStyle(.caption2)
     private let dueDateLabel = Label(foregroundStyle: .textSecondary)
+        .fontStyle(.caption2)
 
     private var props: Props?
 
@@ -25,8 +27,6 @@ final class DepostiView: BackgroundPrimary {
 
     override public func setup() {
         super.setup()
-        cornerRadius(16)
-        //borderStyle(.template, width: 1)
     }
 
     // MARK: - Private methods
@@ -43,7 +43,6 @@ final class DepostiView: BackgroundPrimary {
                     FlexibleSpacer()
                     interestRateLabel
                         .text("Ставка " + String(props.interestRate) + "%")
-                        .fontStyle(.caption2)
                 }
                 HStack(alignment: .fill, distribution: .fill) {
                     moneyLabel
@@ -52,11 +51,10 @@ final class DepostiView: BackgroundPrimary {
                     FlexibleSpacer()
                     dueDateLabel
                         .text("до " + props.dueDate.formatted())
-                        .fontStyle(.caption2)
                 }
             }
         }
-        .layoutMargins(.make(vInsets: 16, hInsets: 12))
+        .layoutMargins(.make(vInsets: 16, hInsets: 16))
         .onTap { [weak self] in
             self?.props?.onTap?(props.id)
         }

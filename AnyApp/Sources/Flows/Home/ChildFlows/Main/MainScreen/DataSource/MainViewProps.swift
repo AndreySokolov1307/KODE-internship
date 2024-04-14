@@ -24,7 +24,7 @@ struct MainViewProps {
 
     enum Item: Hashable {
         case shimmer(_ identifier: String = UUID().uuidString)
-        case header(TemplateHeaderView.Props)
+        case header(HeaderView.Props)
         case account(CurrentAccountView.Props)
         case card(AdditionalAccountView.Props)
         case deposit(DepostiView.Props)

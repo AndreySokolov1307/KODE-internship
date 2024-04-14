@@ -29,6 +29,7 @@ public enum BorderStyle {
 public enum FontStyle {
     case title
     case title2
+    case subtitle2
     case button
     case caption2
     case caption1
@@ -103,6 +104,8 @@ public extension FontStyle {
             return Typography.caption1
         case .title2:
             return Typography.title2
+        case .subtitle2:
+            return Typography.subtitle2
         }
     }
 }

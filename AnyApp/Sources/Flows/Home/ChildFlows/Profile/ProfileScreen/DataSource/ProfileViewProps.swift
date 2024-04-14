@@ -10,13 +10,13 @@ import Foundation
 struct ProfileViewProps {
     enum Section: Hashable {
         case profile(Item)
-        case info([Item])
+        case settings([Item])
         
         var items: [Item] {
             switch self {
             case .profile(let item):
               return [item]
-            case .info(let items):
+            case .settings(let items):
                 return items
             }
         }
@@ -25,12 +25,8 @@ struct ProfileViewProps {
     enum Item: Hashable {
         case profileShimmer(_ identifier: String = UUID().uuidString)
         case infoShimmer(_ identifier: String = UUID().uuidString)
-        // TODO: - views for cells
-        case profile//(//TODO: -)
-        case about
-        case theme
-        case support
-        case logOut
+        case profile(ProfileDetailView.Props)
+        case info(InfoView.Props)
     }
     
     let sections: [Section]

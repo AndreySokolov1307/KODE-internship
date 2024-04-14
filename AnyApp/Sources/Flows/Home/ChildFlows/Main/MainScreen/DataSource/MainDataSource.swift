@@ -46,7 +46,7 @@ final class MainDataSource {
         tableView.contentInsets(.init(top: 16, left: 0, bottom: 92, right: 0))
         tableView.registerTemplateCell(forView: TemplateShimmerView.self)
         tableView.registerTemplateCell(forView: TemplateView.self)
-        tableView.registerTemplateCell(forView: TemplateHeaderView.self)
+        tableView.registerTemplateCell(forView: HeaderView.self)
         tableView.registerTemplateCell(forView: DepostiView.self)
         tableView.registerTemplateCell(forView: CurrentAccountView.self)
         tableView.registerTemplateCell(forView: AdditionalAccountView.self)

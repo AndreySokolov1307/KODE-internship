@@ -10,6 +10,14 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 public enum Profile {
+  /// О приложении
+  public static let about = Profile.tr("Profile", "about", fallback: "О приложении")
+  /// Выход
+  public static let logOut = Profile.tr("Profile", "logOut", fallback: "Выход")
+  /// Служба поддержки
+  public static let support = Profile.tr("Profile", "support", fallback: "Служба поддержки")
+  /// Тема приложения
+  public static let theme = Profile.tr("Profile", "theme", fallback: "Тема приложения")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces
