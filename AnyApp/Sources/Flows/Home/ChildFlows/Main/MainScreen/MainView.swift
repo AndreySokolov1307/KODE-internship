@@ -29,11 +29,10 @@ final class MainView: BackgroundPrimary {
 
     private func setupButton() {
         addSubview(addButton)
-        addButton.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(16)
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(24)
-        }
-        addButton.onTap { [weak self] in
+        addButton
+            .pinBottomToSafeArea(inset: 24)
+            .pinHorizontalEdges(to: self, inset: 16)
+            .onTap { [weak self] in
             self?.onNewProduct?()
         }
     }
