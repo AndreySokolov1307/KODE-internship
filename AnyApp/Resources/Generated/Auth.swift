@@ -24,6 +24,12 @@ public enum Entrance {
   public static let replacementCharacter = Entrance.tr("Auth", "replacementCharacter", fallback: "#")
   /// Выслать код повторно
   public static let sendOTPAgain = Entrance.tr("Auth", "sendOTPAgain", fallback: "Выслать код повторно")
+  public enum Error {
+    /// Данная сессия авторизации будет сброшена
+    public static let worngInputMessage = Entrance.tr("Auth", "error.worngInputMessage", fallback: "Данная сессия авторизации будет сброшена")
+    /// Вы ввели неверно код 5 раз
+    public static let wrongInputTitle = Entrance.tr("Auth", "error.wrongInputTitle", fallback: "Вы ввели неверно код 5 раз")
+  }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

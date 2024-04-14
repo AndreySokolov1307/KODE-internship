@@ -16,10 +16,17 @@ final class OTPTextFieldView: View {
         case big
     }
     
+    enum Input {
+        case regular
+        case wrong
+    }
+    
+    private var input: Input = .regular
     private var isConfigured = false
     private let size: Size
     private var digitLabels = [OTPLabel]()
     private var lineView = LineView()
+    private var hStack: HStack!
     var didEnterLastDigit: StringHandler?
     var lineLabelIndex: Int {
         size.numberOfSlots / 2
@@ -29,8 +36,6 @@ final class OTPTextFieldView: View {
         self.size = size
         super.init()
     }
-    
-    var hStack: HStack!
 
     var textField = TextField()
         .tintColor(.clear)
@@ -53,6 +58,21 @@ final class OTPTextFieldView: View {
             self?.textField.shouldBecomeFirstResponder()
         }
     }
+    
+    func updateUIWithWrongInput() {
+        input = .wrong
+        digitLabels.forEach { labelView in
+            labelView.label.textColor(Asset.indicatorContentError.color)
+        }
+        lineView.lineColor = Asset.indicatorContentError.color
+    }
+    
+    private func updateUIWIthRegularInput() {
+        digitLabels.forEach { labelView in
+            labelView.label.textColor(.label)
+        }
+        lineView.lineColor = Asset.contentTertiary.color
+   }
     
     private func body() -> UIView {
         textField.embed(subview: hStack)
@@ -90,6 +110,10 @@ final class OTPTextFieldView: View {
     
     @objc private func didChange(_ sender: UITextField) {
         guard let text = textField.text, text.count <= digitLabels.count else { return }
+        if input == .wrong {
+            input = .regular
+            updateUIWIthRegularInput()
+        }
         for i in 0 ..< digitLabels.count {
             let currentLabel = digitLabels[i]
             
@@ -100,6 +124,7 @@ final class OTPTextFieldView: View {
                     currentLabel.hideLineView()
                 }
             } else {
+                input = .regular
                 currentLabel.label.text?.removeAll()
                 currentLabel.hideLineView()
             }

@@ -41,7 +41,16 @@ final class OTPRepeatView: View {
         }
     }
     
-    func updateUIWithState() {
+    public func updateUIWithWrongInputMessage(_ message: String) {
+        timer?.invalidate()
+        repeatButton
+            .isHidden(true)
+        label
+            .text(message)
+            .textColor(Asset.indicatorContentError.color)
+    }
+    
+   private func updateUIWithState() {
         switch state {
         case .regular:
             repeatButton
@@ -57,9 +66,10 @@ final class OTPRepeatView: View {
             startOtpTimer()
         }
     }
-
+    
     //TODO: - add toggle func to size
-    func changeState() {
+    
+    private func changeState() {
         state = state == .regular ? .timer : .regular
         updateUIWithState()
     }
@@ -68,7 +78,7 @@ final class OTPRepeatView: View {
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
-    @objc func updateTimer() {
+    @objc private func updateTimer() {
         self.label.text = Entrance.repeatAfter + self.timeFormatted(self.totalTime)
         if totalTime != 0 {
             totalTime -= 1

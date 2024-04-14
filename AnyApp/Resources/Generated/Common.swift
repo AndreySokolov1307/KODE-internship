@@ -30,6 +30,8 @@ public enum Common {
   public static let done = Common.tr("Common", "done", fallback: "Готово")
   /// 
   public static let empty = Common.tr("Common", "empty", fallback: "")
+  /// Выход
+  public static let exit = Common.tr("Common", "exit", fallback: "Выход")
   /// Откуда
   public static let from = Common.tr("Common", "from", fallback: "Откуда")
   /// Нет

@@ -36,8 +36,30 @@ final class AuthOtpView: BackgroundPrimary {
         }.layoutMargins(.make(vInsets: 16, hInsets: 16))
     }
     
-    func stopTimer() {
+    public func stopTimer() {
         otpRepeatView.timer?.invalidate()
+    }
+    
+    public func updateUIWithAttemptsLeft(_ attemptsLeft: Int) {
+        var attemptString: String
+        switch attemptsLeft {
+        case 0:
+            attemptString = "попыток"
+        case 1:
+            attemptString = "попытка"
+        default:
+            attemptString = "попытки"
+        }
+        
+        var leftString: String
+        switch attemptsLeft {
+        case 1:
+            leftString = "Осталась"
+        default:
+            leftString = "Осталось"
+        }
+        otpTextFieldView.updateUIWithWrongInput()
+        otpRepeatView.updateUIWithWrongInputMessage("Неверный код. \(leftString) \(attemptsLeft) " + attemptString)
     }
 }
 

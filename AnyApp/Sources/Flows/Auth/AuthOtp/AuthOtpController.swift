@@ -33,16 +33,27 @@ final class AuthOtpController: TemplateViewController<AuthOtpView> {
             self?.viewModel.handle(.otpEntered(otp))
         }
 
-//        rootView.otpTextFieldView.didEnterLastDigit = { [weak self] text in
-//            print(text)
-//            self?.viewModel.handle(.otpEntered)
-//        }
-
         viewModel.onOutput = { [weak self] output in
             switch output {
             case .userLoggedIn:
                 self?.onEvent?(.userLoggedIn)
+            case .wrongOtp(let otpAttemptsLeft):
+                self?.rootView.updateUIWithAttemptsLeft(otpAttemptsLeft)
+                if otpAttemptsLeft <= 0 {
+                    self?.showLogoutAllert()
+                }
             }
         }
+    }
+    
+    private func showLogoutAllert() {
+        let logOutAction = UIAlertAction(title: Common.quit,
+                                         style: .default,
+                                         handler: { _ in
+            self.viewModel.handle(.logout)
+        })
+        presentAlert(title: Entrance.Error.wrongInputTitle,
+                     message: Entrance.Error.worngInputMessage,
+                     actions: [logOutAction])
     }
 }

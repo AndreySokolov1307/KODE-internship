@@ -6,3 +6,7 @@
 "sendOTPAgain" = "Выслать код повторно";
 "repeatAfter" = "Повторить через ";
 
+// MARK: - Errors
+
+"error.wrongInputTitle" = "Вы ввели неверно код 5 раз";
+"error.worngInputMessage" = "Данная сессия авторизации будет сброшена";

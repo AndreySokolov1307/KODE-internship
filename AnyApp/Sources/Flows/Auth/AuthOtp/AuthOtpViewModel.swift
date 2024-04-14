@@ -5,12 +5,18 @@ final class AuthOtpViewModel {
 
     enum Input {
         case otpEntered(String)
+        case logout
     }
 
     enum Output {
         case userLoggedIn
+        case wrongOtp(Int)
     }
 
+    // MARK: - mock OTP
+    
+    private let mockOtp: String = "555555"
+    private var otpAttemptsLeft = 5
     var onOutput: ((Output) -> Void)?
 
     private let authRequestManager: AuthRequestManagerAbstract
@@ -26,11 +32,24 @@ final class AuthOtpViewModel {
         self.appSession = appSession
     }
 
+    // TODO: - do it with real data later
+    
     func handle(_ input: Input) {
         switch input {
-        case .otpEntered:
-            confirmOtp()
+        case .otpEntered(let otp):
+            if isOtpValid(otp) {
+                confirmOtp()
+            } else {
+                otpAttemptsLeft -= 1
+                onOutput?(.wrongOtp(otpAttemptsLeft))
+            }
+        case .logout:
+            appSession.handle(.logout(.init(needFlush: true, alert: .snack(message: "Вы разлогинились"))))
         }
+    }
+    
+    private func isOtpValid(_ otp: String) -> Bool {
+        return otp == mockOtp
     }
 
     private func confirmOtp() {

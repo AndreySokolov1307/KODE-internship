@@ -10,6 +10,13 @@ import UIKit
 
 final class LineView: View {
     
+    var lineColor: UIColor? {
+        didSet {
+            line
+                .backgroundColor(lineColor)
+        }
+    }
+    
     private let line = View()
         .backgroundColor(Asset.contentTertiary.color)
         .size(CGSize(width: 10, height: 2))
