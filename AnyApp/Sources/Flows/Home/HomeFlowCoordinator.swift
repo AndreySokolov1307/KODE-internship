@@ -23,8 +23,8 @@ final class HomeFlowCoordinator: Coordinator {
         }
         mainController.tabBarItem = .init(
             title: "Главная",
-            image: UIImage(systemName: "star"),
-            selectedImage: UIImage(systemName: "star")
+            image: Asset.mainProduct.image,
+            selectedImage: Asset.mainProduct.image
         )
 
         guard let profileController = createProfileController() else {
@@ -62,7 +62,9 @@ private extension HomeFlowCoordinator {
 //                    return coordinator.profileController()
         let viewModel = ProfileViewModel(appSession: resolver ~> AppSession.self)
         let controller = ProfileController(viewModel: viewModel)
-        controller.tabBarItem = .init(title: "Профиль", image: UIImage(systemName: "star"), selectedImage: UIImage(systemName: "star"))
+        controller.tabBarItem = .init(title: "Профиль",
+                                      image: Asset.profile.image,
+                                      selectedImage: Asset.profile.image)
         return controller
     }
 }
