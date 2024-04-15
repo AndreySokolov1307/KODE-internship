@@ -22,9 +22,16 @@ final class MainCellFactory {
 
     // MARK: - Common
 
-    func makeShimmer(for indexPath: IndexPath) -> UITableViewCell {
+    func makeAccountShimmer(for indexPath: IndexPath) -> UITableViewCell {
         tableView.dequeueTemplateCell(
-            forView: TemplateShimmerView.self,
+            forView: AccountShimmerView.self,
+            for: indexPath
+        )
+    }
+    
+    func makeHeaderShimmer(for indexPath: IndexPath) -> UITableViewCell {
+        tableView.dequeueTemplateCell(
+            forView: HeaderShimmerView.self,
             for: indexPath
         )
     }
@@ -91,4 +98,3 @@ final class MainCellFactory {
         }
     }
 }
-

@@ -28,6 +28,7 @@ final class MainController: TemplateViewController<MainView> {
 
     private func configureNavigationItem() {
         navigationItem.title = Main.main
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     private func setupBindings() {

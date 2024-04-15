@@ -33,12 +33,12 @@ final class MainViewModel {
     private func loadData() {
         onOutput?(.content(.init(sections: [
             .accounts(
-                [.header(.init(title: Main.accounts))] +
-                (1...3).map { _ in .shimmer() }
+                [.headerShimmer()] +
+                (1...3).map { _ in .accountShimmer() }
             ),
             .deposits(
-                [.header(.init(title: Main.deposits))] +
-                (1...3).map { _ in .shimmer() }
+                [.headerShimmer()] +
+                (1...3).map { _ in .accountShimmer() }
             )
         ])))
 
@@ -68,4 +68,3 @@ final class MainViewModel {
         }
     }
 }
-
