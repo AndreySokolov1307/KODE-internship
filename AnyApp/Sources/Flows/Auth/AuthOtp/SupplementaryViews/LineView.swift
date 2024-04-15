@@ -18,7 +18,7 @@ final class LineView: View {
     }
     
     private let line = View()
-        .backgroundColor(Asset.contentTertiary.color)
+        .backgroundColor(Palette.Content.tertiary)
         .size(CGSize(width: 10, height: 2))
     
     override func setup() {

@@ -13,11 +13,9 @@ final class InfoView: BackgroundPrimary {
 
     // MARK: - Private Properties
 
-    private let infoLabel = Label(foregroundStyle: .textPrimary)
+    private let infoLabel = Label(foregroundStyle: .textPrimary, fontStyle: .body2)
     private let infoImageView = ImageView()
-    private let accessoryImageView = ImageView()
-        .image(Asset.chevronRight.image)
-
+    private let accessoryImageView = ImageView(image: Asset.Images.chevronRight.image)
     private var props: Props?
 
     // MARK: - Public methods
@@ -88,13 +86,13 @@ extension InfoView.Props.InfoType {
     var image: UIImage {
         switch self {
         case .about:
-            return Asset.settings.image
+            return Asset.Images.settings.image
         case .theme:
-            return Asset.moon.image
+            return Asset.Images.moon.image
         case .support:
-            return Asset.phoneCall.image
+            return Asset.Images.phoneCall.image
         case .logOut:
-            return Asset.quit.image
+            return Asset.Images.quit.image
         }
     }
     

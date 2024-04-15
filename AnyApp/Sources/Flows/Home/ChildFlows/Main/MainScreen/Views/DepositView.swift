@@ -111,9 +111,9 @@ extension DepostiView: ConfigurableView {
 extension DepostiView.Props {
     var textColor: UIColor {
         if money.first != "-" {
-            return Palette.Content.contentAccentPrimary
+            return Palette.Content.accentPrimary
         } else {
-            return Asset.indicatorContentError.color
+            return Palette.Indicator.contentError
         }
     }
 }
@@ -142,11 +142,11 @@ extension DepostiView.Props.DepositType.Currency {
     var image: UIImage {
         switch self {
         case .ruble:
-            return Asset.ruble.image
+            return Asset.Images.ruble.image
         case .euro:
-            return Asset.dollar.image
+            return Asset.Images.dollar.image
         case .dollar:
-            return Asset.euro.image
+            return Asset.Images.euro.image
         }
     }
     

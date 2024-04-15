@@ -17,11 +17,25 @@ final class OTPRepeatView: View {
     
     var state = State.timer
     var onRepeatButtonTap: VoidHandler?
-    private let label = Label()
-        .font(UIFont.systemFont(ofSize: 13, weight: .regular))
-    private let repeatButton = ImageView(image: Asset.repeat.image, foregroundStyle: .contentAccentPrimary)
     var timer: Timer?
-    private var totalTime = 179
+    
+    private let label = Label(fontStyle: .caption1)
+    private let repeatButton = ImageView(image: Asset.Images.repeat.image, foregroundStyle: .contentAccentPrimary)
+    private let defaultTime: Int
+    private lazy var timeleft = defaultTime
+    
+    init(defaultTime: Int = 179) {
+        if defaultTime <= 0 {
+            self.defaultTime = 59
+        } else {
+            self.defaultTime = defaultTime
+        }
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func setup() {
         super.setup()
@@ -47,7 +61,7 @@ final class OTPRepeatView: View {
             .isHidden(true)
         label
             .text(message)
-            .textColor(Asset.indicatorContentError.color)
+            .textColor(Palette.Indicator.contentError)
     }
     
    private func updateUIWithState() {
@@ -62,15 +76,13 @@ final class OTPRepeatView: View {
             repeatButton.isHidden = true
             label
                 .foregroundStyle(.textSecondary)
-                .text(Entrance.repeatAfter + timeFormatted(totalTime + 1))
+                .text(Entrance.repeatAfter + timeFormatted(timeleft + 1))
             startOtpTimer()
         }
     }
     
-    //TODO: - add toggle func to size
-    
     private func changeState() {
-        state = state == .regular ? .timer : .regular
+        state.toggle()
         updateUIWithState()
     }
     
@@ -79,15 +91,15 @@ final class OTPRepeatView: View {
     }
     
     @objc private func updateTimer() {
-        self.label.text = Entrance.repeatAfter + self.timeFormatted(self.totalTime)
-        if totalTime != 0 {
-            totalTime -= 1
+        self.label.text = Entrance.repeatAfter + self.timeFormatted(self.timeleft)
+        if timeleft != 0 {
+            timeleft -= 1
         } else {
             if let timer = self.timer {
                 timer.invalidate()
                 self.timer = nil
                 changeState()
-                self.totalTime = 179
+                self.timeleft = defaultTime
             }
         }
     }
@@ -96,5 +108,11 @@ final class OTPRepeatView: View {
         let seconds: Int = totalSeconds % 60
         let minutes: Int = (totalSeconds / 60) % 60
         return String(format: "%02d:%02d", minutes, seconds)
+    }
+}
+
+extension OTPRepeatView.State {
+    mutating func toggle() {
+        self = self == .regular ? .timer : .regular
     }
 }

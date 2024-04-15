@@ -6,9 +6,8 @@ final class AuthOtpView: BackgroundPrimary {
 
     var onOtpFilled: StringHandler?
     let otpTextFieldView = OTPTextFieldView()
-    private let label = Label(text: Entrance.otpLabel)
-        .font(UIFont.systemFont(ofSize: 15, weight: .regular))
-        .numberOfLines(0)
+    private let label = Label(text: Entrance.otpLabel, fontStyle: .body2)
+        .multiline()
     private let otpRepeatView = OTPRepeatView()
 
     override func setup() {

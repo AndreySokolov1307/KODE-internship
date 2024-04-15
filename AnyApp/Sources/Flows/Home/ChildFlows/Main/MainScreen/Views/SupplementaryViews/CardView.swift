@@ -12,7 +12,7 @@ final class CardView: View {
     private let cardLabel = Label()
         .font(UIFont.systemFont(ofSize: 10, weight: .regular))
     private let paymentSystemImageView = ImageView()
-    private let imageView = ImageView(image: Asset.bankCard.image)
+    private let imageView = ImageView(image: Asset.Images.bankCard.image)
     
     override func setup() {
         super.setup()
@@ -24,7 +24,7 @@ final class CardView: View {
     }
     
     private func foregroundBody() -> UIView {
-        VStack(alignment: .trailing, distribution: .fill,spacing: 1) {
+        VStack(alignment: .trailing, distribution: .fill, spacing: 1) {
             cardLabel
             paymentSystemImageView
         }

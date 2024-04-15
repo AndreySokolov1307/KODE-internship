@@ -18,7 +18,7 @@ final class CurrentAccountView: BackgroundPrimary {
     private let moneyLabel = Label(foregroundStyle: .textPrimary)
         .multiline()
     private let currencyImageView = ImageView(foregroundStyle: .contentPrimary)
-    private let cardImageView = ImageView(image: Asset.chevronDown.image)
+    private let cardImageView = ImageView(image: Asset.Images.chevronDown.image)
         .size(width: 40, height: 28)
         .cornerRadius(2)
         .backgroundColor(Palette.Content.primary)
@@ -94,9 +94,9 @@ extension CurrentAccountView: ConfigurableView {
 extension CurrentAccountView.Props {
     var textColor: UIColor {
         if money.first != "-" {
-            return Palette.Content.contentAccentPrimary
+            return Palette.Content.accentPrimary
         } else {
-            return Asset.indicatorContentError.color
+            return Palette.Indicator.contentError
         }
     }
 }
@@ -105,11 +105,11 @@ extension CurrentAccountView.Props.Currency {
     var image: UIImage {
         switch self {
         case .ruble:
-            return Asset.ruble.image
+            return Asset.Images.ruble.image
         case .euro:
-            return Asset.dollar.image
+            return Asset.Images.dollar.image
         case .dollar:
-            return Asset.euro.image
+            return Asset.Images.euro.image
         }
     }
     

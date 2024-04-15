@@ -16,9 +16,9 @@ final class AdditionalAccountView: BackgroundPrimary {
     private let purposeLabel = Label(foregroundStyle: .textPrimary)
     private let cardTypeLabel = Label(foregroundStyle: .textPrimary)
         .fontStyle(.caption1)
-    private let inputImageView = ImageView(image: Asset.input.image)
+    private let inputImageView = ImageView(image: Asset.Images.input.image)
         .width(40)
-    private let cardImageView = ImageView(image: Asset.chevronDown.image)
+    private let cardImageView = ImageView(image: Asset.Images.chevronDown.image)
         .size(width: 40, height: 28)
         .cornerRadius(2)
         .backgroundColor(Palette.Content.primary)
@@ -111,7 +111,7 @@ extension AdditionalAccountView: ConfigurableView {
 extension AdditionalAccountView.Props {
     var textColor: UIColor {
         if isBlocked {
-            return Asset.indicatorContentError.color
+            return Palette.Indicator.contentError
         } else {
             return Palette.Text.secondary
         }
@@ -146,9 +146,9 @@ extension AdditionalAccountView.Props {
     var smallCardImage: UIImage {
         switch paymentSystem {
         case .visa:
-            return Asset.visa.image
+            return Asset.Images.visa.image
         case .masterCard:
-            return Asset.masterCard.image
+            return Asset.Images.masterCard.image
         }
     }
     

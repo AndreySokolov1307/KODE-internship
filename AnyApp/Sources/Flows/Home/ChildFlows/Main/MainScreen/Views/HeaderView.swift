@@ -13,7 +13,7 @@ final class HeaderView: BackgroundPrimary {
 
     // MARK: - Private Properties
 
-    private let titleLabel = Label(foregroundStyle: .textTertiary, fontStyle: .title2)
+    private let titleLabel = Label(foregroundStyle: .textTertiary, fontStyle: .body3)
 
     private var props: Props?
 

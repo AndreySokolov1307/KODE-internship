@@ -23,15 +23,12 @@ final class PhoneTextFieldView: View {
     var number = Common.empty
     let size: Size
     var textField = TextField(placeholder: Entrance.loginPlaceholder)
-        .tintColor(Palette.Content.contentAccentPrimary)
+        .tintColor(Palette.Content.accentPrimary)
         .keyboardType(.numberPad)
         .contentType(.oneTimeCode)
         .shouldBecomeFirstResponder()
         .addTarger(target: self, action: #selector(didChange(_:)), for: .editingChanged)
-    private var image = Asset.phone.image
-        .withRenderingMode(.alwaysTemplate)
-    private lazy var imageView = ImageView(image: image)
-        .foregroundStyle(.contentAccentPrimary)
+    private lazy var imageView = ImageView(image: Asset.Images.phone.image, foregroundStyle: .contentAccentPrimary)
     
     init(size: Size = .large) {
         self.size = size
@@ -73,11 +70,11 @@ final class PhoneTextFieldView: View {
     func updateUIWithInput(_ input: Input) {
         switch input {
         case .right:
-            imageView.tintColor(Palette.Content.contentAccentPrimary)
-            textField.textColor(.white)
+            imageView.foregroundStyle(.contentAccentPrimary)
+            textField.textColor(Palette.Text.primary)
         case .wrong:
-            imageView.tintColor(Asset.indicatorContentError.color)
-            textField.textColor(Asset.indicatorContentError.color)
+            imageView.foregroundStyle(.indicatorContentError)
+            textField.textColor(Palette.Indicator.contentError)
         }
     }
 }

@@ -17,10 +17,8 @@ final class ProfileDetailView: BackgroundPrimary {
         .size(width: 88, height: 88)
         .cornerRadius(44)
         .masksToBounds(true)
-    private let nameLabel = Label(foregroundStyle: .textPrimary)
-        .fontStyle(.subtitle2)
-    private let phoneNumberLabel = Label(foregroundStyle: .textSecondary)
-        .fontStyle(.caption2)
+    private let nameLabel = Label(foregroundStyle: .textPrimary, fontStyle: .subtitle2)
+    private let phoneNumberLabel = Label(foregroundStyle: .textSecondary, fontStyle: .caption2)
 
     private var props: Props?
 
@@ -76,4 +74,3 @@ extension ProfileDetailView: ConfigurableView {
         body(with: model).embed(in: self)
     }
 }
-

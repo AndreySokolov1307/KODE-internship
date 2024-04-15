@@ -44,7 +44,7 @@ final class ProfileViewModel {
         
     DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             self?.onOutput?(.content(.init(sections: [
-                .profile(.profile(.init(avatarImage: Asset.avatarStub.image,
+                .profile(.profile(.init(avatarImage: Asset.Images.avatarStub.image,
                                         name: "Филлип Ребийяр Олегович",
                                         phoneNumber: "+7 951 098 98 98 "))),
                 .settings([

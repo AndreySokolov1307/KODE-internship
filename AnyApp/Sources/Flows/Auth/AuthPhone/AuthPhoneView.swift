@@ -5,17 +5,14 @@ import AppIndependent
 final class AuthPhoneView: BackgroundPrimary {
 
     var onAuth: StringHandler?
-    private var logo: UIView {
-        ImageView(image: Asset.logoSmall.image)
-    }
+    private let logo = ImageView(image: Asset.Images.logoSmall.image)
     var textFieldView = PhoneTextFieldView()
-    var logInButton: BaseBrandButton {
-        ButtonPrimary(title: Entrance.enter)
-            .onTap { [weak self] in
-                guard let number = self?.textFieldView.number else { return }
-                self?.onAuth?(number)
-            }
-    }
+    lazy var logInButton = ButtonPrimary(title: Entrance.enter)
+        .onTap { [weak self] in
+            guard let number = self?.textFieldView.number else { return }
+            self?.onAuth?(number)
+        }
+       
     override func setup() {
         super.setup()
         body().embed(in: self)

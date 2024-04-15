@@ -5,6 +5,7 @@ public enum BackgroundStyle {
     case none
 
     case backgroundPrimary
+    case backgroundSecondary
 }
 
 // Defines textColor and tintColor
@@ -12,10 +13,19 @@ public enum ForegroundStyle {
     case none
 
     case contentPrimary
-    case textPrimary
+    case contentSecondary
+    case contentTertiary
     case contentAccentPrimary
+    case contentAccentSecondary
+    case contentAccentTertiary
+
+    case textPrimary
     case textSecondary
     case textTertiary
+
+    case indicatorContentError
+    case indicatorContentDone
+    case indicatorContentSuccess
 
     case button
 }
@@ -28,8 +38,13 @@ public enum BorderStyle {
 // Defines font
 public enum FontStyle {
     case title
-    case title2
+    case largeTitle
+    case subtitle
     case subtitle2
+    case body
+    case body1
+    case body2
+    case body3
     case button
     case caption2
     case caption1
@@ -54,6 +69,8 @@ public extension BackgroundStyle {
             return UIColor.clear
         case .backgroundPrimary:
             return Palette.Surface.backgroundPrimary
+        case .backgroundSecondary:
+            return Palette.Surface.backgroundSecondary
         }
     }
 }
@@ -66,14 +83,28 @@ public extension ForegroundStyle {
             return UIColor.clear
         case .contentPrimary:
             return Palette.Content.primary
+        case .contentSecondary:
+            return Palette.Content.secondary
+        case .contentTertiary:
+            return Palette.Content.tertiary
+        case .contentAccentPrimary:
+            return Palette.Content.accentPrimary
+        case .contentAccentSecondary:
+            return Palette.Content.accentSecondary
+        case .contentAccentTertiary:
+            return Palette.Content.accentTertirary
         case .textPrimary:
             return Palette.Text.primary
         case .textSecondary:
             return Palette.Text.secondary
         case .textTertiary:
             return Palette.Text.tertiary
-        case .contentAccentPrimary:
-            return Palette.Content.contentAccentPrimary
+        case .indicatorContentError:
+            return Palette.Indicator.contentError
+        case .indicatorContentDone:
+            return Palette.Indicator.contentDone
+        case .indicatorContentSuccess:
+            return Palette.Indicator.contentSuccess
         case .button:
             return Palette.Button.buttonText
         }
@@ -96,16 +127,26 @@ public extension FontStyle {
         switch self {
         case .title:
             return Typography.title
-        case .button:
-            return Typography.button
-        case .caption2:
-            return Typography.caption2
-        case .caption1:
-            return Typography.caption1
-        case .title2:
-            return Typography.title2
+        case .largeTitle:
+            return Typography.largetitle
+        case .subtitle:
+            return Typography.subtitle
         case .subtitle2:
             return Typography.subtitle2
+        case .body:
+            return Typography.body
+        case .body1:
+            return Typography.body1
+        case .body2:
+            return Typography.body2
+        case .body3:
+            return Typography.body3
+        case .caption1:
+            return Typography.caption1
+        case .caption2:
+            return Typography.caption2
+        case .button:
+            return Typography.button
         }
     }
 }

@@ -19,6 +19,16 @@ public enum Palette {
                 return UIColor(hex: 0xFFFFFF)
             }
         }
+        
+        public static var backgroundSecondary: UIColor { backgroundSecondary(forTheme: currentTheme) }
+        public static func backgroundSecondary(forTheme theme: Theme) -> UIColor {
+            switch theme {
+            case .dark:
+                return UIColor(hex: 0x353F3D)
+            case .light:
+                return UIColor(hex: 0xFFFFFF)
+            }
+        }
     }
 
     // MARK: - Content
@@ -34,6 +44,36 @@ public enum Palette {
                 return UIColor(hex: 0xF3F3F3)
             }
         }
+        
+        public static var secondary: UIColor { secondary(forTheme: currentTheme) }
+        public static func secondary(forTheme theme: Theme) -> UIColor {
+            switch theme {
+            case .dark:
+                return UIColor(hex: 0x403A47)
+            case .light:
+                return UIColor(hex: 0xF3F3F3)
+            }
+        }
+        
+        public static var tertiary: UIColor { tertiary(forTheme: currentTheme) }
+        public static func tertiary(forTheme theme: Theme) -> UIColor {
+            switch theme {
+            case .dark:
+                return UIColor(hex: 0x706D76)
+            case .light:
+                return UIColor(hex: 0xF3F3F3)
+            }
+        }
+        
+        public static var accentPrimary: UIColor { accentPrimary(forTheme: currentTheme) }
+        public static func accentPrimary(forTheme theme: Theme) -> UIColor {
+            switch theme {
+            case .dark:
+                return UIColor(hex: 0x6C78E6)
+            case .light:
+                return UIColor(hex: 0x515FE1)
+            }
+        }
 
         public static var accentSecondary: UIColor { accentSecondary(forTheme: currentTheme) }
         public static func accentSecondary(forTheme theme: Theme) -> UIColor {
@@ -44,14 +84,14 @@ public enum Palette {
                 return UIColor(hex: 0xFC5DA8)
             }
         }
-
-        public static var contentAccentPrimary: UIColor { contentAccentPrimary(forTheme: currentTheme) }
-        public static func contentAccentPrimary(forTheme theme: Theme) -> UIColor {
+        
+        public static var accentTertirary: UIColor { accentTertiary(forTheme: currentTheme) }
+        public static func accentTertiary(forTheme theme: Theme) -> UIColor {
             switch theme {
             case .dark:
-                return UIColor(hex: 0x6C78E6)
+                return UIColor(hex: 0xFFFFFF)
             case .light:
-                return UIColor(hex: 0x515FE1)
+                return UIColor(hex: 0x474747)
             }
         }
     }
@@ -87,6 +127,41 @@ public enum Palette {
                 return UIColor(hex: 0x706D76)
             case .light:
                 return UIColor(hex: 0xF3F3F3)
+            }
+        }
+    }
+    
+    // MARK: - Indicator
+    
+    public enum Indicator {
+        
+        public static var contentError: UIColor { contentError(forTheme: currentTheme) }
+        public static func contentError(forTheme theme: Theme) -> UIColor {
+            switch theme {
+            case .dark:
+                return UIColor(hex: 0xFB6176)
+            case .light:
+                return UIColor(hex: 0xFE626A)
+            }
+        }
+        
+        public static var contentDone: UIColor { contentDone(forTheme: currentTheme) }
+        public static func contentDone(forTheme theme: Theme) -> UIColor {
+            switch theme {
+            case .dark:
+                return UIColor(hex: 0x4CD563)
+            case .light:
+                return UIColor(hex: 0x39D052)
+            }
+        }
+        
+        public static var contentSuccess: UIColor { contentSuccess(forTheme: currentTheme) }
+        public static func contentSuccess(forTheme theme: Theme) -> UIColor {
+            switch theme {
+            case .dark:
+                return UIColor(hex: 0x6C78E6)
+            case .light:
+                return UIColor(hex: 0x515FE1)
             }
         }
     }

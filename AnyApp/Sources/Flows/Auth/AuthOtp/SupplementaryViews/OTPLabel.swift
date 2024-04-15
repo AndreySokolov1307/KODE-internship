@@ -21,7 +21,7 @@ final class OTPLabel: View {
     var lineView = View()
         .height(2)
         .cornerRadius(1)
-        .backgroundColor(ForegroundStyle.contentAccentPrimary.color)
+        .backgroundColor(Palette.Content.accentPrimary)
         .isHidden(true)
     
     override func setup() {

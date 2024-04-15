@@ -62,16 +62,16 @@ final class OTPTextFieldView: View {
     func updateUIWithWrongInput() {
         input = .wrong
         digitLabels.forEach { labelView in
-            labelView.label.textColor(Asset.indicatorContentError.color)
+            labelView.label.textColor(Palette.Indicator.contentError)
         }
-        lineView.lineColor = Asset.indicatorContentError.color
+        lineView.lineColor = Palette.Indicator.contentError
     }
     
     private func updateUIWIthRegularInput() {
         digitLabels.forEach { labelView in
             labelView.label.textColor(.label)
         }
-        lineView.lineColor = Asset.contentTertiary.color
+        lineView.lineColor = Palette.Content.tertiary
    }
     
     private func body() -> UIView {
