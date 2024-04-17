@@ -6,6 +6,9 @@ public enum BackgroundStyle {
 
     case backgroundPrimary
     case backgroundSecondary
+    
+    case backgroundError
+    case backgroundSuccess
 }
 
 // Defines textColor and tintColor
@@ -71,6 +74,10 @@ public extension BackgroundStyle {
             return Palette.Surface.backgroundPrimary
         case .backgroundSecondary:
             return Palette.Surface.backgroundSecondary
+        case .backgroundError:
+            return Palette.Indicator.contentError
+        case .backgroundSuccess:
+            return Palette.Indicator.contentSuccess
         }
     }
 }

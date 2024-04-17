@@ -30,6 +30,7 @@ public enum Asset {
     public static let bankCard = ImageAsset(name: "Images/bankCard")
     public static let chevronDown = ImageAsset(name: "Images/chevronDown")
     public static let chevronRight = ImageAsset(name: "Images/chevronRight")
+    public static let close = ImageAsset(name: "Images/close")
     public static let dollar = ImageAsset(name: "Images/dollar")
     public static let euro = ImageAsset(name: "Images/euro")
     public static let input = ImageAsset(name: "Images/input")

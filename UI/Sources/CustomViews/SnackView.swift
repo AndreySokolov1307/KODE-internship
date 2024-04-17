@@ -22,11 +22,13 @@ public final class SnackView: View {
         }
 
         public let message: String
+        public let image: UIImage?
         public let style: SnackStyle
 
-        public init(message: String, style: SnackStyle = .basic) {
+        public init(message: String, style: SnackStyle = .basic, image: UIImage? = nil) {
             self.message = message
             self.style = style
+            self.image = image
         }
 
         public static func == (lhs: Props, rhs: Props) -> Bool {
@@ -57,9 +59,11 @@ public final class SnackView: View {
 
     // TODO: fix typography, styles and layout
     private let titleLabel = Label()
-//        .fontStyle(.body2)
-//        .foregroundStyle(.contrast)
+          .fontStyle(.body2)
+          .foregroundStyle(.textPrimary)
         .multiline()
+    private let imageView = ImageView()
+        .size(CGSize(width: 16, height: 16))
 
     private lazy var contentView = body()
 
@@ -89,11 +93,12 @@ public final class SnackView: View {
         }
 
         titleLabel.text(props.message)
-//        backgroundStyle(
-//            props.style == .basic
-//                ? .layerContrast
-//                : .layerNegative
-//        )
+        imageView.image(props.image)
+        backgroundStyle(
+            props.style == .error
+            ? .backgroundError
+            : .backgroundSuccess
+        )
 
         cornerRadius(12)
 //        shadowStyle(ShadowStyle.calendar)
@@ -115,7 +120,13 @@ public final class SnackView: View {
 
     private func body() -> UIView {
         BackgroundView(vPadding: 14, hPadding: 16) {
-            titleLabel
+            HStack(alignment: .center, spacing: 16) {
+                titleLabel
+                imageView
+                    .onTap { [weak self] in
+                        self?.dismiss()
+                    }
+            }
         }
     }
 

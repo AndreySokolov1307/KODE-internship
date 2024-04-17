@@ -34,7 +34,8 @@ final class AuthPhoneController: TemplateViewController<AuthPhoneView> {
                 self?.rootView.handleInput(.right)
                 self?.onEvent?(.otp)
             case .invalidNumber:
-                SnackCenter.shared.showSnack(withProps: .init(message: Common.Error.wrongNumberFormat))
+                SnackCenter.shared.showSnack(withProps: .init(message: Common.Error.wrongNumberFormat, style: .error, image: Asset.Images.close.image))
+                
                 self?.rootView.handleInput(.wrong)
             }
         }
