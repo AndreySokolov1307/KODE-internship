@@ -41,10 +41,10 @@ extension CircleView {
         imageView.image(image)
         return self
     }
-    
+  
     @discardableResult
-    func imageColor(_ uiColor: UIColor?) -> Self {
-        imageView.tintColor(uiColor)
+    func foregroundStyle(_ style: ForegroundStyle) -> Self {
+        imageView.foregroundStyle(style)
         return self
     }
 }

@@ -16,12 +16,8 @@ final class AdditionalAccountView: BackgroundPrimary {
     private let purposeLabel = Label(foregroundStyle: .textPrimary)
     private let cardTypeLabel = Label(foregroundStyle: .textPrimary)
         .fontStyle(.caption1)
-    private let inputImageView = ImageView(image: Asset.Images.input.image)
+    private let inputImageView = ImageView(image: Asset.Images.input.image, foregroundStyle: .textTertiary)
         .width(40)
-    private let cardImageView = ImageView(image: Asset.Images.chevronDown.image)
-        .size(width: 40, height: 28)
-        .cornerRadius(2)
-        .backgroundColor(Palette.Content.primary)
     private let smallCardView = CardView()
         .cornerRadius(2)
 

@@ -15,6 +15,7 @@ final class TransactionView: BackgroundPrimary {
 
     private let circleView = CircleView(sideLenght: 40)
         .backgroundColor(Palette.Content.secondary)
+        .foregroundStyle(.contentAccentPrimary)
     private let dateLabel = Label(foregroundStyle: .textTertiary, fontStyle: .caption1)
     private let moneyLabel = Label(fontStyle: .body2)
     private let infoLabel = Label(foregroundStyle: .textPrimary, fontStyle: .body2)

@@ -65,10 +65,10 @@ final class InfoTabView: BackgroundPrimary {
     private func selectTab(_ tab: CircleView) {
         tabs.forEach { tab in
             tab.backgroundColor(Palette.Content.secondary)
-               .imageColor(Palette.Content.tertiary)
+               .foregroundStyle(.contentTertiary)
         }
         tab.backgroundColor(Palette.Content.accentTertirary)
-           .imageColor(Palette.Content.accentPrimary)
+           .foregroundStyle(.contentAccentPrimary)
     }
 }
 

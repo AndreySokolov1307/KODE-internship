@@ -5,7 +5,7 @@ import AppIndependent
 final class AuthPhoneView: BackgroundPrimary {
 
     var onAuth: StringHandler?
-    private let logo = ImageView(image: Asset.Images.logoSmall.image)
+    private let logo = ImageView(image: Asset.Images.logoSmall.image, foregroundStyle: .contentAccentTertiary)
     var textFieldView = PhoneTextFieldView()
     lazy var logInButton = ButtonPrimary(title: Entrance.enter)
         .onTap { [weak self] in

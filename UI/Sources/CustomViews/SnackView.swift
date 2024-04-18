@@ -62,7 +62,7 @@ public final class SnackView: View {
           .fontStyle(.body2)
           .foregroundStyle(.textPrimary)
         .multiline()
-    private let imageView = ImageView()
+    private let imageView = ImageView(foregroundStyle: .contentAccentTertiary)
         .size(CGSize(width: 16, height: 16))
 
     private lazy var contentView = body()
