@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>attemptsLeft</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@Variable@</string>
+		<key>Variable</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>other</key>
+			<string>попытки</string>
+			<key>zero</key>
+			<string>попыток</string>
+			<key>one</key>
+			<string>попытка</string>
+			<key>two</key>
+			<string>попытки</string>
+			<key>three</key>
+			<string>попытки</string>
+			<key>five</key>
+			<string>попыток</string>
+		</dict>
+	</dict>
+	<key>leftFem</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@leftFem@</string>
+		<key>leftFem</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>Осталось</string>
+			<key>one</key>
+			<string>Осталась</string>
+			<key>two</key>
+			<string>Осталось</string>
+			<key>few</key>
+			<string>Осталось</string>
+			<key>many</key>
+			<string>Осталось</string>
+			<key>other</key>
+			<string>Осталось</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

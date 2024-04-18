@@ -30,6 +30,13 @@ strings:
     params:
         enumName: Main
         publicAccess: true
+- inputs: Resources/Localizable/Plurals.stringsdict
+  outputs:
+    templateName: structured-swift5
+    output: Resources/Generated/Plurals.swift
+    params:
+        enumName: Plurals
+        publicAccess: true
 
 xcassets:
   inputs: Resources/Assets.xcassets
