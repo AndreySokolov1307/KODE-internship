@@ -11,6 +11,12 @@ import UIKit
 final class MainController: TemplateViewController<MainView> {
 
     typealias ViewModel = MainViewModel
+    
+    enum Event {
+        case accountDetail
+    }
+
+    var onEvent: ((Event) -> Void)?
 
     private var viewModel: ViewModel!
 
@@ -36,13 +42,13 @@ final class MainController: TemplateViewController<MainView> {
             switch output {
             case .content(let props):
                 self?.rootView.configured(with: props)
+            case .accountDetail:
+                self?.onEvent?(.accountDetail)
             }
         }
 
         rootView.onNewProduct = { [weak self] in
             SnackCenter.shared.showSnack(withProps: .init(message: "!New Product"))
-            //TODO: -delete after network implementation
-            self?.navigationController?.pushViewController(AccountDetailViewController(viewModel: AccountDetailViewController.ViewModel()), animated: true)
         }
     }
 }

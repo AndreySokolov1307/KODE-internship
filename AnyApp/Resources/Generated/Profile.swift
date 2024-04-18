@@ -14,6 +14,8 @@ public enum Profile {
   public static let about = Profile.tr("Profile", "about", fallback: "О приложении")
   /// Выход
   public static let logOut = Profile.tr("Profile", "logOut", fallback: "Выход")
+  /// Профиль
+  public static let profile = Profile.tr("Profile", "profile", fallback: "Профиль")
   /// Служба поддержки
   public static let support = Profile.tr("Profile", "support", fallback: "Служба поддержки")
   /// Тема приложения

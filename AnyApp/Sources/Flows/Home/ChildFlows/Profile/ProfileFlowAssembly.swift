@@ -1,8 +1,8 @@
 //
-//  MainFlowAssemply.swift
+//  ProfileAssembly.swift
 //  AnyApp
 //
-//  Created by Андрей Соколов on 12.04.2024.
+//  Created by Андрей Соколов on 18.04.2024.
 //
 
 import UI
@@ -12,7 +12,7 @@ import Services
 import AppIndependent
 import SwinjectAutoregistration
 
-final class MainFlowAssembly: Assembly, Identifiable {
+final class ProfileFlowAssembly: Assembly, Identifiable {
 
     var id: String { String(describing: type(of: self)) }
 
@@ -28,19 +28,14 @@ final class MainFlowAssembly: Assembly, Identifiable {
         }
         .inObjectScope(.weak)
 
-        container.register(MainFlowCoordinator.self) { resolver in
+        container.register(ProfileFlowCoordinator.self) { resolver in
             let router = resolver ~> (Router.self, name: RouterName.main)
-            return MainFlowCoordinator(rootRouter: router)
+            return ProfileFlowCoordinator(rootRouter: router)
         }
 
-        container.register(MainController.self) { resolver in
-            let viewModel = MainViewModel()
-            return MainController(viewModel: viewModel)
-        }
-        
-        container.register(AccountDetailController.self) { resolver in
-            let viewModel = AccountDetailViewModel()
-            return AccountDetailController(viewModel: viewModel)
+        container.register(ProfileController.self) { resolver in
+            let viewModel = ProfileViewModel(appSession: resolver ~> AppSession.self)
+            return ProfileController(viewModel: viewModel)
         }
     }
 

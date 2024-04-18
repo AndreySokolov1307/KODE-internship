@@ -25,8 +25,21 @@ final class MainFlowCoordinator: Coordinator {
 
     func mainController() -> UIViewController? {
         let controller = resolver ~> MainController.self
+        
+        controller.onEvent = { [weak self] event in
+            switch event {
+            case .accountDetail:
+                self?.showAccountDetailController()
+            }
+        }
+        
         router.setRootModule(controller)
         return router.rootController
+    }
+    
+    func showAccountDetailController() {
+        let controller = resolver ~> AccountDetailController.self
+        router.push(controller)
     }
 }
 

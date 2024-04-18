@@ -8,7 +8,7 @@
 import UI
 import UIKit
 
-final class AccountDetailViewController: TemplateViewController<AccountDetailView> {
+final class AccountDetailController: TemplateViewController<AccountDetailView> {
 
     typealias ViewModel = AccountDetailViewModel
 
@@ -38,9 +38,7 @@ final class AccountDetailViewController: TemplateViewController<AccountDetailVie
                 self?.rootView.configured(with: props)
             }
         }
-
-//        rootView.onNewProduct = { [weak self] in
-//            SnackCenter.shared.showSnack(withProps: .init(message: "!New Product"))
-//        }
+        
+        
     }
 }
