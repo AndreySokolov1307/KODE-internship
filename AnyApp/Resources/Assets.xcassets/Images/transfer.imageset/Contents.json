@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "main product.svg",
+      "filename" : "2_cardPay.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -19,6 +19,6 @@
     "version" : 1
   },
   "properties" : {
-    "template-rendering-intent" : "template"
+    "preserves-vector-representation" : true
   }
 }

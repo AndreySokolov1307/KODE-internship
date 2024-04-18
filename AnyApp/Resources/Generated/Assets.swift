@@ -33,12 +33,15 @@ public enum Asset {
     public static let close = ImageAsset(name: "Images/close")
     public static let dollar = ImageAsset(name: "Images/dollar")
     public static let euro = ImageAsset(name: "Images/euro")
+    public static let history = ImageAsset(name: "Images/history")
     public static let input = ImageAsset(name: "Images/input")
+    public static let list = ImageAsset(name: "Images/list")
     public static let logoNormal = ImageAsset(name: "Images/logoNormal")
     public static let logoSmall = ImageAsset(name: "Images/logoSmall")
     public static let mainProduct = ImageAsset(name: "Images/mainProduct")
     public static let masterCard = ImageAsset(name: "Images/masterCard")
     public static let moon = ImageAsset(name: "Images/moon")
+    public static let payment = ImageAsset(name: "Images/payment")
     public static let phone = ImageAsset(name: "Images/phone")
     public static let phoneCall = ImageAsset(name: "Images/phoneCall")
     public static let profile = ImageAsset(name: "Images/profile")
@@ -46,6 +49,7 @@ public enum Asset {
     public static let `repeat` = ImageAsset(name: "Images/repeat")
     public static let ruble = ImageAsset(name: "Images/ruble")
     public static let settings = ImageAsset(name: "Images/settings")
+    public static let transfer = ImageAsset(name: "Images/transfer")
     public static let visa = ImageAsset(name: "Images/visa ")
   }
 }

@@ -1,14 +1,14 @@
 //
-//  MainCellFactory.swift
+//  AccountDetailCellFactory.swift
 //  AnyApp
 //
-//  Created by Андрей Соколов on 12.04.2024.
+//  Created by Андрей Соколов on 17.04.2024.
 //
 
 import UIKit
 import UI
 
-final class MainCellFactory {
+final class AccountDetailCellFactory {
 
     // MARK: - Private Properties
 
@@ -20,60 +20,44 @@ final class MainCellFactory {
         self.tableView = tableView
     }
 
-    // MARK: - Common
-
-    func makeAccountShimmer(for indexPath: IndexPath) -> UITableViewCell {
-        tableView.dequeueTemplateCell(
-            forView: AccountShimmerView.self,
-            for: indexPath
-        )
-    }
-    
-    func makeHeaderShimmer(for indexPath: IndexPath) -> UITableViewCell {
-        tableView.dequeueTemplateCell(
-            forView: HeaderShimmerView.self,
-            for: indexPath
-        )
-    }
-
     // MARK: - Cells
-    
-    func makeDepositCell(
-        for indexPath: IndexPath,
-        with props: DepostiView.Props
-    ) -> UITableViewCell {
-        tableView.dequeueTemplateCell(
-            forView: DepostiView.self,
-            for: indexPath
-        ) { view, _ in
-            view.configure(with: props)
-        }
-    }
-    
-    func makeCurrentAccountCell(
-        for indexPath: IndexPath,
-        with props: CurrentAccountView.Props
-    ) -> UITableViewCell {
-        tableView.dequeueTemplateCell(
-            forView: CurrentAccountView.self,
-            for: indexPath
-        ) { view, _ in
-            view.configure(with: props)
-        }
-    }
-    
-    func makeAdditionalAccountCell(
-        for indexPath: IndexPath,
-        with props: AdditionalAccountView.Props
-    ) -> UITableViewCell {
-        tableView.dequeueTemplateCell(
-            forView: AdditionalAccountView.self,
-            for: indexPath
-        ) { view, _ in
-            view.configure(with: props)
-        }
-    }
 
+    func makeAccountInfoCell(
+        for indexPath: IndexPath,
+        with props: AccountInfoView.Props
+    ) -> UITableViewCell {
+        tableView.dequeueTemplateCell(
+            forView: AccountInfoView.self,
+            for: indexPath
+        ) { view, _ in
+            view.configure(with: props)
+        }
+    }
+    
+    func makeInfoTabCell(
+        for indexPath: IndexPath,
+        with props: InfoTabView.Props
+    ) -> UITableViewCell {
+        tableView.dequeueTemplateCell(
+            forView: InfoTabView.self,
+            for: indexPath
+        ) { view, _ in
+            view.configure(with: props)
+        }
+    }
+    
+    func makeTransactionCell(
+        for indexPath: IndexPath,
+        with props: TransactionView.Props
+    ) -> UITableViewCell {
+        tableView.dequeueTemplateCell(
+            forView: TransactionView.self,
+            for: indexPath
+        ) { view, _ in
+            view.configure(with: props)
+        }
+    }
+    
     func makeHeaderCell(
         for indexPath: IndexPath,
         with props: HeaderView.Props
@@ -86,3 +70,4 @@ final class MainCellFactory {
         }
     }
 }
+

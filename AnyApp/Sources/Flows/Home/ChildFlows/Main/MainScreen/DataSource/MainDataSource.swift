@@ -60,7 +60,7 @@ final class MainDataSource {
             case .accountShimmer:
                 return cellFactory.makeAccountShimmer(for: indexPath)
             case .header(let props):
-                return cellFactory.makeTemplateHeaderCell(for: indexPath, with: props)
+                return cellFactory.makeHeaderCell(for: indexPath, with: props)
             case .account(let props):
                 return cellFactory.makeCurrentAccountCell(for: indexPath, with: props)
             case .card(let props):

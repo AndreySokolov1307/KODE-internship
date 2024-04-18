@@ -41,6 +41,8 @@ final class MainController: TemplateViewController<MainView> {
 
         rootView.onNewProduct = { [weak self] in
             SnackCenter.shared.showSnack(withProps: .init(message: "!New Product"))
+            //TODO: -delete after network implementation
+            self?.navigationController?.pushViewController(AccountDetailViewController(viewModel: AccountDetailViewController.ViewModel()), animated: true)
         }
     }
 }

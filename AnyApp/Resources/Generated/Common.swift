@@ -46,6 +46,8 @@ public enum Common {
   public static let `repeat` = Common.tr("Common", "repeat", fallback: "Повторить")
   /// Пропустить
   public static let skip = Common.tr("Common", "skip", fallback: "Пропустить")
+  ///  
+  public static let space = Common.tr("Common", "space", fallback: " ")
   /// Куда
   public static let to = Common.tr("Common", "to", fallback: "Куда")
   /// Да
