@@ -4,6 +4,12 @@ import UIKit
 final class ProfileController: TemplateViewController<ProfileView> {
 
     typealias ViewModel = ProfileViewModel
+    
+    enum Event {
+        case appTheme
+    }
+
+    var onEvent: ((Event) -> Void)?
 
     private var viewModel: ViewModel!
 
@@ -16,6 +22,7 @@ final class ProfileController: TemplateViewController<ProfileView> {
         super.setup()
         setupBindings()
         viewModel.handle(.loadProfile)
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
 
     private func setupBindings() {
@@ -23,6 +30,8 @@ final class ProfileController: TemplateViewController<ProfileView> {
             switch output {
             case .content(let props):
                 self?.rootView.configure(with: props)
+            case .theme:
+                self?.onEvent?(.appTheme)
             }
         }
         

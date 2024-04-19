@@ -21,7 +21,7 @@ final class CurrentAccountView: BackgroundPrimary {
     private let cardImageView = ImageView(image: Asset.Images.chevronDown.image, foregroundStyle: .textTertiary)
         .size(width: 40, height: 28)
         .cornerRadius(2)
-        .backgroundColor(Palette.Content.primary)
+        .backgroundColor(Palette.Content.secondary)
 
     private var props: Props?
 

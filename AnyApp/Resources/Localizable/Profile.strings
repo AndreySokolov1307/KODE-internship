@@ -4,3 +4,10 @@
 "logOut" = "Выход";
 "profile" = "Профиль";
 
+//MARK: - AppTheme
+
+"theme.title" = "Тема приложения";
+"theme.auto" = "Как в системе";
+"theme.light" = "Светлая";
+"theme.dark" = "Темная";
+

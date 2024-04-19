@@ -20,6 +20,16 @@ public enum Profile {
   public static let support = Profile.tr("Profile", "support", fallback: "Служба поддержки")
   /// Тема приложения
   public static let theme = Profile.tr("Profile", "theme", fallback: "Тема приложения")
+  public enum Theme {
+    /// Как в системе
+    public static let auto = Profile.tr("Profile", "theme.auto", fallback: "Как в системе")
+    /// Темная
+    public static let dark = Profile.tr("Profile", "theme.dark", fallback: "Темная")
+    /// Светлая
+    public static let light = Profile.tr("Profile", "theme.light", fallback: "Светлая")
+    /// Тема приложения
+    public static let title = Profile.tr("Profile", "theme.title", fallback: "Тема приложения")
+  }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

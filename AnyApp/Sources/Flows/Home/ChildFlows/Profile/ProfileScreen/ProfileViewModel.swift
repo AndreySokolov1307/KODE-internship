@@ -6,6 +6,7 @@ final class ProfileViewModel {
     
     enum Output {
         case content(Props)
+        case theme
     }
 
     enum Input {
@@ -49,7 +50,9 @@ final class ProfileViewModel {
                                         phoneNumber: "+7 951 098 98 98 "))),
                 .settings([
                     .info(.init(infoType: .about)),
-                    .info(.init(infoType: .theme)),
+                    .info(.init(infoType: .theme) { [weak self] in
+                        self?.onOutput?(.theme)
+                    }),
                     .info(.init(infoType: .support)),
                     .info(.init(infoType: .logOut))
                 ])

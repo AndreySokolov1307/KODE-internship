@@ -126,7 +126,7 @@ public enum Palette {
             case .dark:
                 return UIColor(hex: 0x706D76)
             case .light:
-                return UIColor(hex: 0xF3F3F3)
+                return UIColor(hex: 0xC8CBD0)
             }
         }
     }

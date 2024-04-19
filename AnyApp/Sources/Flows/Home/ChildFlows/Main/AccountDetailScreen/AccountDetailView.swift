@@ -11,8 +11,6 @@ import AppIndependent
 
 final class AccountDetailView: BackgroundPrimary {
 
-  //  var onNewProduct: VoidHandler?
-
     private let tableView = BaseTableView()
     private lazy var dataSource = AccountDetailDataSource(tableView: tableView)
 

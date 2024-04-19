@@ -17,25 +17,30 @@ final class ProfileFlowAssembly: Assembly, Identifiable {
     var id: String { String(describing: type(of: self)) }
 
     func assemble(container: Container) {
-        container.register(BaseNavigationController.self, name: RouterName.main) { _ in
+        container.register(BaseNavigationController.self, name: RouterName.profile) { _ in
             BaseNavigationController(navigationBarClass: NavigationBar.self, toolbarClass: nil)
         }
         .inObjectScope(.weak)
 
-        container.register(Router.self, name: RouterName.main) { resolver in
-            let navigationController = resolver ~> (BaseNavigationController.self, name: RouterName.main)
+        container.register(Router.self, name: RouterName.profile) { resolver in
+            let navigationController = resolver ~> (BaseNavigationController.self, name: RouterName.profile)
             return Router(rootController: navigationController)
         }
         .inObjectScope(.weak)
 
         container.register(ProfileFlowCoordinator.self) { resolver in
-            let router = resolver ~> (Router.self, name: RouterName.main)
+            let router = resolver ~> (Router.self, name: RouterName.profile)
             return ProfileFlowCoordinator(rootRouter: router)
         }
 
         container.register(ProfileController.self) { resolver in
             let viewModel = ProfileViewModel(appSession: resolver ~> AppSession.self)
             return ProfileController(viewModel: viewModel)
+        }
+        
+        container.register(AppThemeController.self) { _ in
+            let viewModel = AppThemeViewModel()
+            return AppThemeController(viewModel: viewModel)
         }
     }
 

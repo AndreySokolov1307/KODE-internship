@@ -14,9 +14,8 @@ final class OTPLabel: View {
     }
     
     private let size = Size.regular
-    var label = Label()
+    var label = Label(foregroundStyle: .textPrimary, fontStyle: .subtitle)
         .textAlignment(.center)
-        .font(UIFont.systemFont(ofSize: 20, weight: .semibold))
     
     var lineView = View()
         .height(2)

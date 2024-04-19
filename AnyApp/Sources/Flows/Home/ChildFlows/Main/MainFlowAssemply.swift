@@ -33,12 +33,12 @@ final class MainFlowAssembly: Assembly, Identifiable {
             return MainFlowCoordinator(rootRouter: router)
         }
 
-        container.register(MainController.self) { resolver in
+        container.register(MainController.self) { _ in
             let viewModel = MainViewModel()
             return MainController(viewModel: viewModel)
         }
         
-        container.register(AccountDetailController.self) { resolver in
+        container.register(AccountDetailController.self) { _ in
             let viewModel = AccountDetailViewModel()
             return AccountDetailController(viewModel: viewModel)
         }

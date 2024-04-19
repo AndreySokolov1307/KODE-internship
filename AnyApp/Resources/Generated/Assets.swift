@@ -46,6 +46,8 @@ public enum Asset {
     public static let phoneCall = ImageAsset(name: "Images/phoneCall")
     public static let profile = ImageAsset(name: "Images/profile")
     public static let quit = ImageAsset(name: "Images/quit")
+    public static let radioOff = ImageAsset(name: "Images/radioOff")
+    public static let radioOk = ImageAsset(name: "Images/radioOk")
     public static let `repeat` = ImageAsset(name: "Images/repeat")
     public static let ruble = ImageAsset(name: "Images/ruble")
     public static let settings = ImageAsset(name: "Images/settings")

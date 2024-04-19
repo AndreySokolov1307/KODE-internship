@@ -14,7 +14,7 @@ final class InfoView: BackgroundPrimary {
     // MARK: - Private Properties
 
     private let infoLabel = Label(foregroundStyle: .textPrimary, fontStyle: .body2)
-    private let infoImageView = ImageView(foregroundStyle: .contentTertiary)
+    private let infoImageView = ImageView(foregroundStyle: .textTertiary)
     private let accessoryImageView = ImageView(image: Asset.Images.chevronRight.image, foregroundStyle: .textTertiary)
     private var props: Props?
 

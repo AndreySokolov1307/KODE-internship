@@ -19,7 +19,7 @@ final class OTPRepeatView: View {
     var onRepeatButtonTap: VoidHandler?
     var timer: Timer?
     
-    private let label = Label(fontStyle: .caption1)
+    private let label = Label(foregroundStyle: .textSecondary ,fontStyle: .caption1)
     private let repeatButton = ImageView(image: Asset.Images.repeat.image, foregroundStyle: .contentAccentPrimary)
     private let defaultTime: Int
     private lazy var timeleft = defaultTime

@@ -23,6 +23,7 @@ final class PhoneTextFieldView: View {
     var number = Common.empty
     let size: Size
     var textField = TextField(placeholder: Entrance.loginPlaceholder)
+        .textColor(Palette.Text.primary)
         .tintColor(Palette.Content.accentPrimary)
         .keyboardType(.numberPad)
         .contentType(.oneTimeCode)

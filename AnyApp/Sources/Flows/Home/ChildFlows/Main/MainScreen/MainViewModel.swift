@@ -49,7 +49,7 @@ final class MainViewModel {
             self?.onOutput?(.content(.init(sections: [
                 .accounts([
                     .header(.init(title: Main.accounts)),
-                    .account(.init(money: "457 334,00", currency: .ruble) { id in
+                    .account(.init(money: "457 334,00", currency: .ruble) { [weak self] _ in
                         self?.onOutput?(.accountDetail)
                     }),
                     .card(.init(cardType: .physical, cardPurpose: .salary, isBlocked: false, cardNumber: "20027789", paymentSystem: .masterCard) { id in
