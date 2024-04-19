@@ -22,7 +22,7 @@ final class ProfileView: BackgroundPrimary {
                 .onTap { [weak self] in
                     self?.onLogout?()
                 }
-        }.layoutMargins(.make(vInsets: 16, hInsets: 16))
+        }.layoutMargins(.make(hInsets: 16))
     }
 }
 

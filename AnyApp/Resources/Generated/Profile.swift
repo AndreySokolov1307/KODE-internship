@@ -20,6 +20,10 @@ public enum Profile {
   public static let support = Profile.tr("Profile", "support", fallback: "Служба поддержки")
   /// Тема приложения
   public static let theme = Profile.tr("Profile", "theme", fallback: "Тема приложения")
+  public enum Quit {
+    /// Вы точно хотите выйти?
+    public static let message = Profile.tr("Profile", "quit.message", fallback: "Вы точно хотите выйти?")
+  }
   public enum Theme {
     /// Как в системе
     public static let auto = Profile.tr("Profile", "theme.auto", fallback: "Как в системе")

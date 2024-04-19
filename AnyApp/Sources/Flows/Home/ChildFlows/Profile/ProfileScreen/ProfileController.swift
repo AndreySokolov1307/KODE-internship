@@ -7,6 +7,8 @@ final class ProfileController: TemplateViewController<ProfileView> {
     
     enum Event {
         case appTheme
+        case callSupport
+        case about
     }
 
     var onEvent: ((Event) -> Void)?
@@ -30,13 +32,33 @@ final class ProfileController: TemplateViewController<ProfileView> {
             switch output {
             case .content(let props):
                 self?.rootView.configure(with: props)
+            case .about:
+                self?.onEvent?(.about)
             case .theme:
                 self?.onEvent?(.appTheme)
+            case .support:
+                self?.onEvent?(.callSupport)
+            case .logOut:
+                self?.showLogoutAllert()
             }
         }
         
         rootView.onLogout = { [weak self] in
             self?.viewModel.handle(.logout)
         }
+    }
+    
+    private func showLogoutAllert() {
+        let cancelAction = UIAlertAction(title: Common.cancel,
+                                         style: .cancel)
+        
+        let logOutAction = UIAlertAction(title: Common.quit,
+                                         style: .default,
+                                         handler: { _ in
+            self.viewModel.handle(.logout)
+        })
+        presentAlert(title: Profile.Quit.message,
+                     message: nil,
+                     actions: [cancelAction, logOutAction])
     }
 }

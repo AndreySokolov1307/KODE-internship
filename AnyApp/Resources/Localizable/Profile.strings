@@ -11,3 +11,6 @@
 "theme.light" = "Светлая";
 "theme.dark" = "Темная";
 
+//MARK: - Quit
+
+"quit.message" = "Вы точно хотите выйти?";

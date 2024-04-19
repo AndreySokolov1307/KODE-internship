@@ -42,6 +42,10 @@ final class ProfileFlowAssembly: Assembly, Identifiable {
             let viewModel = AppThemeViewModel()
             return AppThemeController(viewModel: viewModel)
         }
+        
+        container.register(AboutAppController.self) { _ in
+            return AboutAppController()
+        }
     }
 
     func loaded(resolver: Resolver) {

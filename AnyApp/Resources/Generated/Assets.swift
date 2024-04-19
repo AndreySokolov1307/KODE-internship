@@ -36,6 +36,7 @@ public enum Asset {
     public static let history = ImageAsset(name: "Images/history")
     public static let input = ImageAsset(name: "Images/input")
     public static let list = ImageAsset(name: "Images/list")
+    public static let logoBig = ImageAsset(name: "Images/logoBig")
     public static let logoNormal = ImageAsset(name: "Images/logoNormal")
     public static let logoSmall = ImageAsset(name: "Images/logoSmall")
     public static let mainProduct = ImageAsset(name: "Images/mainProduct")

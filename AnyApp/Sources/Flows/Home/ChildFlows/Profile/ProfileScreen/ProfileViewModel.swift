@@ -6,7 +6,10 @@ final class ProfileViewModel {
     
     enum Output {
         case content(Props)
+        case about
         case theme
+        case support
+        case logOut
     }
 
     enum Input {
@@ -49,12 +52,18 @@ final class ProfileViewModel {
                                         name: "Филлип Ребийяр Олегович",
                                         phoneNumber: "+7 951 098 98 98 "))),
                 .settings([
-                    .info(.init(infoType: .about)),
+                    .info(.init(infoType: .about) { [weak self] in
+                        self?.onOutput?(.about)
+                    }),
                     .info(.init(infoType: .theme) { [weak self] in
                         self?.onOutput?(.theme)
                     }),
-                    .info(.init(infoType: .support)),
-                    .info(.init(infoType: .logOut))
+                    .info(.init(infoType: .support) { [weak self] in
+                        self?.onOutput?(.support)
+                    }),
+                    .info(.init(infoType: .logOut) { [weak self] in
+                        self?.onOutput?(.logOut)
+                    })
                 ])
             ])))
         }

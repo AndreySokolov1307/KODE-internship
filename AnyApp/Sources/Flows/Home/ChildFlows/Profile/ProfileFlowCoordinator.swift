@@ -17,7 +17,7 @@ final class ProfileFlowCoordinator: Coordinator {
     // MARK: - Private Properties
     private let appSession: AppSession = resolver ~> AppSession.self
 
-    // MARK: - MainFlowCoordinator
+    // MARK: - ProfileFlowCoordinator
 
     public convenience init(rootRouter: RouterAbstract) {
         self.init(router: rootRouter)
@@ -30,6 +30,10 @@ final class ProfileFlowCoordinator: Coordinator {
             switch event {
             case .appTheme:
                 self?.showAppThemeController()
+            case .callSupport:
+                self?.callSupport()
+            case .about:
+                self?.showAboutAppController()
             }
         }
         
@@ -40,5 +44,16 @@ final class ProfileFlowCoordinator: Coordinator {
     private func showAppThemeController() {
         let controller = resolver ~> AppThemeController.self
         router.push(controller)
+    }
+    
+    private func showAboutAppController() {
+        let controller = resolver ~> AboutAppController.self
+        router.push(controller)
+    }
+    
+    private func callSupport() {
+        guard let url = URL(string: "tel://88000000000"),
+              UIApplication.shared.canOpenURL(url) else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 }
