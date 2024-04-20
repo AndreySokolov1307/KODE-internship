@@ -41,14 +41,26 @@ final class ProfileViewModel {
     func createSettings() -> [Props.Item] {
         let aboutItem: Props.Item = .info(.init(title: Profile.about,
                                                 image: Asset.Images.settings.image,
-                                                hasAccessory: true))
+                                                hasAccessory: true,
+                                                onTap: { [weak self] in
+            self?.onOutput?(.about)
+        }))
         let themeItem: Props.Item = .info(.init(title: Profile.theme,
                                                 image: Asset.Images.moon.image,
-                                                hasAccessory: true ))
+                                                hasAccessory: true ,
+                                                onTap: { [weak self] in
+            self?.onOutput?(.theme)
+        }))
         let supportItem: Props.Item = .info(.init(title: Profile.support,
-                                                  image: Asset.Images.phoneCall.image))
+                                                  image: Asset.Images.phoneCall.image,
+                                                  onTap: { [weak self] in
+            self?.onOutput?(.support)
+        }))
         let logOutItem: Props.Item = .info(.init(title: Profile.logOut,
-                                                 image: Asset.Images.quit.image))
+                                                 image: Asset.Images.quit.image,
+                                                 onTap: { [weak self] in
+            self?.onOutput?(.logOut)
+        }))
         let settings: [Props.Item] = [aboutItem, themeItem, supportItem, logOutItem]
         
         return settings
