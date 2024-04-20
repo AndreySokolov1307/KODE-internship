@@ -15,7 +15,7 @@ final class InfoView: BackgroundPrimary {
 
     private let infoLabel = Label(foregroundStyle: .textPrimary, fontStyle: .body2)
     private let infoImageView = ImageView(foregroundStyle: .textTertiary)
-    private let accessoryImageView = ImageView(image: Asset.Images.chevronRight.image, foregroundStyle: .textTertiary)
+    private let accessoryImageView = ImageView(foregroundStyle: .textTertiary)
     private var props: Props?
 
     // MARK: - Public methods
@@ -29,13 +29,14 @@ final class InfoView: BackgroundPrimary {
     private func body(with props: Props) -> UIView {
         HStack(alignment: .center, distribution: .fill) {
             infoImageView
-                .image(props.infoType.image)
+                .image(props.image)
             Spacer(.px16)
             infoLabel
-                .text(props.infoType.title)
+                .text(props.title)
             FlexibleSpacer()
             accessoryImageView
-                .isHidden(!props.infoType.hasAccessory)
+                .image(props.accessoryType.image)
+                .isHidden(!props.hasAccessory)
         }
         .height(56)
         .layoutMargins(.make(vInsets: 16))
@@ -53,16 +54,16 @@ extension InfoView: ConfigurableView {
 
     struct Props: Hashable {
         
-        enum InfoType {
-            case about
-            case theme
-            case support
-            case logOut
+        enum AccessoryType {
+            case down
+            case right
         }
         
         let id: String = UUID().uuidString
-        let infoType: InfoType
-
+        let title: String
+        let image: UIImage
+        var hasAccessory = false
+        var accessoryType: AccessoryType = .right
         var onTap: VoidHandler?
 
         public static func == (lhs: InfoView.Props, rhs: InfoView.Props) -> Bool {
@@ -71,7 +72,7 @@ extension InfoView: ConfigurableView {
 
         public func hash(into hasher: inout Hasher) {
             hasher.combine(id)
-            hasher.combine(infoType)
+            hasher.combine(title)
         }
     }
 
@@ -82,39 +83,13 @@ extension InfoView: ConfigurableView {
     }
 }
 
-extension InfoView.Props.InfoType {
+extension InfoView.Props.AccessoryType {
     var image: UIImage {
         switch self {
-        case .about:
-            return Asset.Images.settings.image
-        case .theme:
-            return Asset.Images.moon.image
-        case .support:
-            return Asset.Images.phoneCall.image
-        case .logOut:
-            return Asset.Images.quit.image
-        }
-    }
-    
-    var title: String {
-        switch self {
-        case .about:
-            return Profile.about
-        case .theme:
-            return Profile.theme
-        case .support:
-            return Profile.support
-        case .logOut:
-            return Profile.logOut
-        }
-    }
-    
-    var hasAccessory: Bool {
-        switch self {
-        case .about, .theme:
-            return true
-        case .support, .logOut:
-            return false
+        case .down:
+            return Asset.Images.chevronDown.image
+        case .right:
+            return Asset.Images.chevronRight.image
         }
     }
 }
