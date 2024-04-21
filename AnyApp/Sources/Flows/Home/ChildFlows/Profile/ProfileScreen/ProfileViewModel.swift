@@ -38,7 +38,7 @@ final class ProfileViewModel {
         }
     }
     
-    func createSettings() -> [Props.Item] {
+    private func createSettings() -> [Props.Item] {
         let aboutItem: Props.Item = .info(.init(title: Profile.about,
                                                 image: Asset.Images.settings.image,
                                                 hasAccessory: true,

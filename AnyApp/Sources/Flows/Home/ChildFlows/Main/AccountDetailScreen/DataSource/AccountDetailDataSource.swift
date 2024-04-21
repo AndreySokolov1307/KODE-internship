@@ -19,6 +19,7 @@ final class AccountDetailDataSource {
     public var dataSource: DiffableDataSource?
     private let tableView: BaseTableView
     private let cellFactory: AccountDetailCellFactory
+    private var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
 
     // MARK: - Init
 
@@ -39,7 +40,16 @@ final class AccountDetailDataSource {
         }
         dataSource?.apply(snap, animatingDifferences: false)
     }
-
+    
+    public func updateLastSection(with section: Section) {
+        guard let dataSource = dataSource,
+              let last = snapshot.sectionIdentifiers.last else {fatalError("no data source") }
+        var snapshot = dataSource.snapshot()
+        snapshot.deleteItems(snapshot.itemIdentifiers(inSection: last))
+        snapshot.appendItems(section.items)
+        dataSource.apply(snapshot, animatingDifferences: false)
+    }
+    
     // MARK: - Private methods
 
     private func setup() {
@@ -48,6 +58,8 @@ final class AccountDetailDataSource {
         tableView.registerTemplateCell(forView: AccountInfoView.self)
         tableView.registerTemplateCell(forView: InfoTabView.self)
         tableView.registerTemplateCell(forView: TransactionView.self)
+        tableView.registerTemplateCell(forView: InfoView.self)
+        tableView.registerTemplateCell(forView: PaymentView.self)
     }
 
     private func configure() {
@@ -61,6 +73,10 @@ final class AccountDetailDataSource {
                 return cellFactory.makeInfoTabCell(for: indexPath, with: props)
             case .transaction(let props):
                 return cellFactory.makeTransactionCell(for: indexPath, with: props)
+            case .action(let props):
+                return cellFactory.makeActionCell(for: indexPath, with: props)
+            case .payment(let props):
+                return cellFactory.makePaymentCell(for: indexPath, with: props)
             }
         }
     }

@@ -58,6 +58,30 @@ final class AccountDetailCellFactory {
         }
     }
     
+    func makeActionCell(
+        for indexPath: IndexPath,
+        with props: InfoView.Props
+    ) -> UITableViewCell {
+        tableView.dequeueTemplateCell(
+            forView: InfoView.self,
+            for: indexPath
+        ) { view, _ in
+            view.configure(with: props)
+        }
+    }
+    
+    func makePaymentCell(
+        for indexPath: IndexPath,
+        with props: PaymentView.Props
+    ) -> UITableViewCell {
+        tableView.dequeueTemplateCell(
+            forView: PaymentView.self,
+            for: indexPath
+        ) { view, _ in
+            view.configure(with: props)
+        }
+    }
+    
     func makeHeaderCell(
         for indexPath: IndexPath,
         with props: HeaderView.Props

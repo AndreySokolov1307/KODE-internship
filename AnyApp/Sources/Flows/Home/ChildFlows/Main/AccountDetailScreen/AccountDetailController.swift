@@ -33,12 +33,13 @@ final class AccountDetailController: TemplateViewController<AccountDetailView> {
 
     private func setupBindings() {
         viewModel.onOutput = { [weak self] output in
+            guard let self else { return }
             switch output {
             case .content(let props):
-                self?.rootView.configured(with: props)
+                self.rootView.configured(with: props)
+            case .section(let section):
+                self.rootView.update(with: section)
             }
         }
-        
-        
     }
 }

@@ -12,13 +12,13 @@ struct AccountDetailViewProps {
     enum Section: Hashable {
         case mainInfo(Item)
         case infoTab(Item)
-        case transactions([Item])
+        case list([Item])
 
         var items: [Item] {
             switch self {
             case .mainInfo(let item), .infoTab(let item):
                 return [item]
-            case .transactions(let items):
+            case .list(let items):
                 return items
             }
         }
@@ -29,6 +29,8 @@ struct AccountDetailViewProps {
         case accountInfo(AccountInfoView.Props)
         case tab(InfoTabView.Props)
         case transaction(TransactionView.Props)
+        case action(InfoView.Props)
+        case payment(PaymentView.Props)
     }
 
     let sections: [Section]

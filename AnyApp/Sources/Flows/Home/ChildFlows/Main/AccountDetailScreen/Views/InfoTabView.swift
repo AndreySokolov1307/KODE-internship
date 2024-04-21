@@ -52,7 +52,7 @@ final class InfoTabView: BackgroundPrimary {
                     self.selectTab(self.paymentView)
                     props.onPayment()
                 }
-        }.layoutMargins(.make(vInsets: 16, hInsets: 36))
+        }.layoutMargins(.make(vInsets: 16, hInsets: 20))
     }
     
     private func setupTabs() {

@@ -20,7 +20,9 @@ final class AccountDetailView: BackgroundPrimary {
     }
 
     private func body() -> UIView {
-        tableView
+        VStack {
+            tableView
+        }.layoutMargins(.make(hInsets: 16))
     }
 }
 
@@ -29,5 +31,9 @@ extension AccountDetailView: ConfigurableView {
 
     func configure(with model: AccountDetailViewProps) {
         dataSource.apply(sections: model.sections)
+    }
+    
+    func update(with section: AccountDetailViewProps.Section) {
+        dataSource.updateLastSection(with: section)
     }
 }
