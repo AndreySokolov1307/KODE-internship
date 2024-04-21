@@ -43,11 +43,13 @@ extension CardView {
         return self
     }
     
+    @discardableResult
     func image(_ image: UIImage) -> Self {
         paymentSystemImageView.image(image)
         return self
     }
     
+    @discardableResult
     func textColor(_ color: UIColor) -> Self {
         cardLabel.textColor(color)
         return self

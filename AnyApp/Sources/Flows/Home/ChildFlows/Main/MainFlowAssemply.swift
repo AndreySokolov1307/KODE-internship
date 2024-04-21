@@ -42,6 +42,11 @@ final class MainFlowAssembly: Assembly, Identifiable {
             let viewModel = AccountDetailViewModel()
             return AccountDetailController(viewModel: viewModel)
         }
+        
+        container.register(CardDetailController.self) { _ in
+            let viewModel = CardDetailViewModel()
+            return CardDetailController(viewModel: viewModel)
+        }
     }
 
     func loaded(resolver: Resolver) {

@@ -16,13 +16,11 @@ final class AccountDetailView: BackgroundPrimary {
 
     override func setup() {
         super.setup()
-        body().embed(in: self)
+        body().embed(in: self, hInset: 16)
     }
 
     private func body() -> UIView {
-        VStack {
             tableView
-        }.layoutMargins(.make(hInsets: 16))
     }
 }
 

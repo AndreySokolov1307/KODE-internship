@@ -16,6 +16,7 @@ final class MainViewModel {
     enum Output {
         case content(Props)
         case accountDetail
+        case cardDetail
     }
 
     enum Input {
@@ -52,8 +53,8 @@ final class MainViewModel {
                     .account(.init(money: "457 334,00", currency: .ruble) { [weak self] _ in
                         self?.onOutput?(.accountDetail)
                     }),
-                    .card(.init(cardType: .physical, cardPurpose: .salary, isBlocked: false, cardNumber: "20027789", paymentSystem: .masterCard) { id in
-                        SnackCenter.shared.showSnack(withProps: .init(message: "Card pressed with \(id)"))
+                    .card(.init(cardType: .physical, cardPurpose: .salary, isBlocked: false, cardNumber: "20027789", paymentSystem: .masterCard) { [weak self] _ in
+                        self?.onOutput?(.cardDetail)
                     }),
                     .card(.init(cardType: .physical, cardPurpose: .extra, isBlocked: true, cardNumber: "20028435", paymentSystem: .visa) { id in
                         SnackCenter.shared.showSnack(withProps: .init(message: "Card pressed with \(id)"))

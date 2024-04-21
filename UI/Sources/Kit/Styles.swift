@@ -56,6 +56,7 @@ public enum FontStyle {
 // Defines shadow properties
 public enum ShadowStyle {
     case dropShadow1
+    case card
 }
 
 // Defines gradient properties
@@ -164,6 +165,8 @@ public extension ShadowStyle {
         switch self {
         case .dropShadow1:
             return ShadowProps(radius: 16, color: Palette.Shadow.dropShadow1, offsetX: 0, offsetY: 8)
+        case .card:
+            return ShadowProps(radius: 22, color:  Palette.Shadow.card, offsetX: 0, offsetY: 7)
         }
     }
 }

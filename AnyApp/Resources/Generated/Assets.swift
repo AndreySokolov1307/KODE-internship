@@ -25,10 +25,15 @@ public typealias AssetImageTypeAlias = ImageAsset.Image
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 public enum Asset {
   public static let accentColor = ColorAsset(name: "AccentColor")
+  public enum Colors {
+    public static let alwaysWhite = ColorAsset(name: "Colors/alwaysWhite")
+  }
   public enum Images {
     public static let avatarStub = ImageAsset(name: "Images/avatarStub")
     public static let bankCard = ImageAsset(name: "Images/bankCard")
     public static let card = ImageAsset(name: "Images/card")
+    public static let cardGrayBGBig = ImageAsset(name: "Images/cardGrayBGBig")
+    public static let cardOut = ImageAsset(name: "Images/cardOut")
     public static let chevronDown = ImageAsset(name: "Images/chevronDown")
     public static let chevronRight = ImageAsset(name: "Images/chevronRight")
     public static let chevronUp = ImageAsset(name: "Images/chevronUp")
@@ -41,12 +46,14 @@ public enum Asset {
     public static let internet = ImageAsset(name: "Images/internet")
     public static let jkh = ImageAsset(name: "Images/jkh")
     public static let list = ImageAsset(name: "Images/list")
+    public static let lock = ImageAsset(name: "Images/lock")
     public static let logoBig = ImageAsset(name: "Images/logoBig")
     public static let logoNormal = ImageAsset(name: "Images/logoNormal")
     public static let logoSmall = ImageAsset(name: "Images/logoSmall")
     public static let mainProduct = ImageAsset(name: "Images/mainProduct")
     public static let masterCard = ImageAsset(name: "Images/masterCard")
     public static let moon = ImageAsset(name: "Images/moon")
+    public static let payPass = ImageAsset(name: "Images/payPass")
     public static let payment = ImageAsset(name: "Images/payment")
     public static let phone = ImageAsset(name: "Images/phone")
     public static let phoneCall = ImageAsset(name: "Images/phoneCall")

@@ -209,6 +209,17 @@ public enum Palette {
                 return UIColor(hex: 0x000033).withAlphaComponent(0.2)
             }
         }
+        
+        public static var card: UIColor { card(forTheme: currentTheme) }
+        public static func card(forTheme theme: Theme) -> UIColor {
+            switch theme {
+            case .light:
+                return UIColor(hex: 0x002657).withAlphaComponent(0.11)
+            case .dark:
+                return UIColor(hex: 0x000033).withAlphaComponent(0.4)
+            }
+        }
+        
     }
 
     // MARK: - Gradient

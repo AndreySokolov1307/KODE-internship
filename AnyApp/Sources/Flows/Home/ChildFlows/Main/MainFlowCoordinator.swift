@@ -30,6 +30,8 @@ final class MainFlowCoordinator: Coordinator {
             switch event {
             case .accountDetail:
                 self?.showAccountDetailController()
+            case .cardDetail:
+                self?.showCardDetailController()
             }
         }
         
@@ -39,6 +41,11 @@ final class MainFlowCoordinator: Coordinator {
     
     func showAccountDetailController() {
         let controller = resolver ~> AccountDetailController.self
+        router.push(controller)
+    }
+    
+    func showCardDetailController() {
+        let controller = resolver ~> CardDetailController.self
         router.push(controller)
     }
 }
