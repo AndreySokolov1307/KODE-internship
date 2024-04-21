@@ -15,7 +15,6 @@ final class AccountDetailViewModel {
     
     enum Output {
         case content(Props)
-        case section(Props.Section)
     }
     
     // TODO: - прокинуть данные с Мейн контроллера или загрузить из сети хз
@@ -77,26 +76,30 @@ final class AccountDetailViewModel {
     
     private func getSections(with input: Input) {
         let bottomSection: Props.Section
+        let selectedTap: InfoTabView.Props.TabsType
         switch input {
         case .accountData:
             bottomSection = createTransactionSection()
+            selectedTap = .transactions
         case .actions:
             bottomSection = createActionSection()
+            selectedTap = .actions
         case .payments:
             bottomSection = createPaymentSection()
+            selectedTap = .payments
         }
         
         onOutput?(.content(.init(sections: [
             .mainInfo(.accountInfo(.init(currency: .ruble, money: "457 334,00", accountNumber: "1234567812345666"))),
-            .infoTab(.tab(.init(onRefresh: { [weak self] in
+            .infoTab(.tab(.init(selectedTab: selectedTap, onRefresh: { [weak self] in
                 guard let self else { return }
-                self.onOutput?(.section(self.createTransactionSection()))
+                self.handle(.accountData)
             }, onAction: { [weak self] in
                 guard let self else { return }
-                self.onOutput?(.section(self.createActionSection()))
+                self.handle(.actions)
             }, onPayment: { [weak self] in
                 guard let self else { return }
-                self.onOutput?(.section(self.createPaymentSection()))
+                self.handle(.payments)
             }))),
                 bottomSection
         ])))

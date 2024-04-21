@@ -30,7 +30,16 @@ final class InfoTabView: BackgroundPrimary {
     // MARK: - Private methods
 
     private func body(with props: Props) -> UIView {
-        HStack(distribution: .equalSpacing) {
+        switch props.selectedTab {
+        case .transactions:
+            selectTab(refreshView)
+        case .actions:
+            selectTab(actionListView)
+        case .payments:
+            selectTab(paymentView)
+        }
+        
+        return HStack(distribution: .equalSpacing) {
             refreshView
                 .image(Asset.Images.history.image)
                 .onTap { [weak self] in
@@ -59,7 +68,6 @@ final class InfoTabView: BackgroundPrimary {
         tabs.forEach {
             $0.backgroundColor(Palette.Content.tertiary)
         }
-        selectTab(refreshView)
     }
     
     private func selectTab(_ tab: CircleView) {
@@ -80,7 +88,14 @@ extension InfoTabView: ConfigurableView {
 
     struct Props: Hashable {
         
+        enum TabsType {
+            case transactions
+            case actions
+            case payments
+        }
+        
         let id: String = UUID().uuidString
+        let selectedTab: TabsType
         let onRefresh: VoidHandler
         let onAction: VoidHandler
         let onPayment: VoidHandler
@@ -100,4 +115,3 @@ extension InfoTabView: ConfigurableView {
         body(with: model).embed(in: self)
     }
 }
-

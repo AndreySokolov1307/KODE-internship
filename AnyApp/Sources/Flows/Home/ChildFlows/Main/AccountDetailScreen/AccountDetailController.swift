@@ -9,36 +9,34 @@ import UI
 import UIKit
 
 final class AccountDetailController: TemplateViewController<AccountDetailView> {
-
+    
     typealias ViewModel = AccountDetailViewModel
-
+    
     private var viewModel: ViewModel!
-
+    
     convenience init(viewModel: ViewModel) {
         self.init()
         self.viewModel = viewModel
     }
-
+    
     override func setup() {
         super.setup()
         setupBindings()
         configureNavigationItem()
         viewModel.handle(.accountData)
     }
-
+    
     private func configureNavigationItem() {
         navigationItem.title = "VAMOOOOS"
         navigationController?.navigationBar.prefersLargeTitles = false
     }
-
+    
     private func setupBindings() {
         viewModel.onOutput = { [weak self] output in
             guard let self else { return }
             switch output {
             case .content(let props):
                 self.rootView.configured(with: props)
-            case .section(let section):
-                self.rootView.update(with: section)
             }
         }
     }
