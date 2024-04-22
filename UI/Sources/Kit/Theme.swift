@@ -8,3 +8,5 @@ public enum Theme: String, CaseIterable, Equatable {
 public enum ThemeRaw: String, CaseIterable {
     case light, dark, auto
 }
+
+

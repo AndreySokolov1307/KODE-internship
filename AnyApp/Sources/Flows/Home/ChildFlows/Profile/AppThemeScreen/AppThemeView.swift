@@ -25,12 +25,14 @@ final class AppThemeView: BackgroundPrimary {
  }
 
     private func body() -> UIView {
-        VStack {
-            autoThemeView
-            darkThemeView
-            lightThemeView
-            FlexibleSpacer()
-        }.layoutMargins(.make(vInsets: 16, hInsets: 16))
+        ScrollView {
+            VStack {
+                autoThemeView
+                darkThemeView
+                lightThemeView
+                FlexibleSpacer()
+            }.layoutMargins(.make(vInsets: 16, hInsets: 16))
+        }
     }
     
     public func configureOptions(with appTheme: ThemeRaw) {

@@ -14,7 +14,7 @@ final class AdditionalAccountView: BackgroundPrimary {
     // MARK: - Private Properties
 
     private let purposeLabel = Label(foregroundStyle: .textPrimary)
-    private let cardTypeLabel = Label(foregroundStyle: .textPrimary)
+    private let cardTypeLabel = Label()
         .fontStyle(.caption1)
     private let inputImageView = ImageView(image: Asset.Images.input.image, foregroundStyle: .textTertiary)
         .width(40)

@@ -6,29 +6,21 @@
 //
 
 import Services
+import Combine
 import UI
 
 final class AppThemeViewModel {
     
     enum Input {
         case themeChoosen(ThemeRaw)
-        case currentTheme
     }
     
-    enum Output {
-        case theme(ThemeRaw)
-        case currentTheme(ThemeRaw)
-    }
-    
-    var currentTheme = AppearanceManager.shared.themeRaw
-    var onOutput: ((Output) -> Void)?
+    var currentTheme = CurrentValueSubject<ThemeRaw, Never>(AppearanceManager.shared.themeRaw)
     
     func handle(_ input: Input) {
         switch input {
         case .themeChoosen(let theme):
-            self.onOutput?(.theme(theme))
-        case .currentTheme:
-            self.onOutput?(.currentTheme(currentTheme))
+            self.currentTheme.send(theme)
         }
     }
 }

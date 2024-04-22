@@ -6,12 +6,15 @@
 //
 import UI
 import UIKit
+import Combine
 
 final class AppThemeController: TemplateViewController<AppThemeView> {
 
     typealias ViewModel = AppThemeViewModel
 
     private var viewModel: ViewModel!
+    
+    private var cancellable = Set<AnyCancellable>()
 
     convenience init(viewModel: ViewModel) {
         self.init()
@@ -22,7 +25,6 @@ final class AppThemeController: TemplateViewController<AppThemeView> {
         super.setup()
         setupBindings()
         configureNavigationItem()
-        viewModel.handle(.currentTheme)
     }
     
     private func configureNavigationItem() {
@@ -34,15 +36,13 @@ final class AppThemeController: TemplateViewController<AppThemeView> {
         rootView.onThemeChanged = { [weak self] theme in
             self?.viewModel.handle(.themeChoosen(theme))
         }
-
-        viewModel.onOutput = { [weak self] output in
-            switch output {
-            case .theme(let theme):
+        
+        viewModel.currentTheme
+            .sink { [weak self] theme in
                 AppearanceManager.shared.setTheme(theme)
-            case .currentTheme(let theme):
                 self?.rootView.configureOptions(with: theme)
             }
-        }
+            .store(in: &cancellable)
     }
 }
 

@@ -14,7 +14,7 @@ final class DepostiView: BackgroundPrimary {
     // MARK: - Private Properties
 
     private let depositNameLabel = Label(foregroundStyle: .textPrimary)
-    private let moneyLabel = Label(foregroundStyle: .textPrimary)
+    private let moneyLabel = Label()
     private let currencyImageView = ImageView(foregroundStyle: .contentPrimary)
     private let interestRateLabel = Label(foregroundStyle: .textSecondary)
         .fontStyle(.caption2)

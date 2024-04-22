@@ -15,7 +15,7 @@ final class CurrentAccountView: BackgroundPrimary {
 
     private let titleLabel = Label(foregroundStyle: .textPrimary)
         .text(Main.currentAccount)
-    private let moneyLabel = Label(foregroundStyle: .textPrimary)
+    private let moneyLabel = Label()
         .multiline()
     private let currencyImageView = ImageView(foregroundStyle: .contentPrimary)
     private let cardImageView = ImageView(image: Asset.Images.chevronUp.image, foregroundStyle: .textTertiary)
