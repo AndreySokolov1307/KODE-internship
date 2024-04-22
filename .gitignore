@@ -52,7 +52,7 @@ DerivedData/
 !default.perspectivev3
 
 ### Xcode Patch ###
-*.xcodeproj/*
+#*.xcodeproj/*
 /*.gcno
 
 # CocoaPods
@@ -71,5 +71,5 @@ Podfile.lock
 # Generated files
 UI/Resources/Generated
 Gemfile.lock
-AnyApp.xcodeproj/
-AnyApp.xcworkspace/
+#AnyApp.xcodeproj/
+#AnyApp.xcworkspace/
