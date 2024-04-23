@@ -7,8 +7,12 @@ public enum BackgroundStyle {
     case backgroundPrimary
     case backgroundSecondary
     
+    case contentSecondary
+    
     case backgroundError
     case backgroundSuccess
+    
+    case buttonSecondary
 }
 
 // Defines textColor and tintColor
@@ -31,6 +35,7 @@ public enum ForegroundStyle {
     case indicatorContentSuccess
 
     case button
+    case buttonTab
 }
 
 // Defines borderColor
@@ -75,10 +80,14 @@ public extension BackgroundStyle {
             return Palette.Surface.backgroundPrimary
         case .backgroundSecondary:
             return Palette.Surface.backgroundSecondary
+        case .contentSecondary:
+            return Palette.Content.secondary
         case .backgroundError:
             return Palette.Indicator.contentError
         case .backgroundSuccess:
             return Palette.Indicator.contentSuccess
+        case .buttonSecondary:
+            return Palette.Button.buttonSecondary
         }
     }
 }
@@ -115,6 +124,8 @@ public extension ForegroundStyle {
             return Palette.Indicator.contentSuccess
         case .button:
             return Palette.Button.buttonText
+        case .buttonTab:
+            return Palette.Button.buttonTab
         }
     }
 }

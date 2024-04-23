@@ -16,7 +16,7 @@ final class PaymentView: BackgroundPrimary {
     // MARK: - Private Properties
     
     private let circleImageView = CircleView(sideLenght: 40)
-        .backgroundColor(Palette.Content.secondary)
+        .backgroundStyle(.contentSecondary)
         .foregroundStyle(.contentAccentPrimary)
     private let titleLabel = Label(foregroundStyle: .textPrimary, fontStyle: .body2)
     private var props: Props?

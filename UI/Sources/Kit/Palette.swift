@@ -189,6 +189,16 @@ public enum Palette {
                 return UIColor(hex: 0x515FE1)
             }
         }
+        
+        public static var buttonTab: UIColor { buttonTab(forTheme: currentTheme) }
+        public static func buttonTab(forTheme theme: Theme) -> UIColor {
+            switch theme {
+            case .dark:
+                return UIColor(hex: 0x6C78E6)
+            case .light:
+                return UIColor(hex: 0xFFFFFF)
+            }
+        }
 
         public static var buttonText: UIColor { buttonText(forTheme: currentTheme) }
         public static func buttonText(forTheme theme: Theme) -> UIColor {

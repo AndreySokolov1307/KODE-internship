@@ -35,10 +35,8 @@ final class CardInfoView: View {
     
     private func body(with props: Props) -> UIView {
         HStack {
-            VStack {
-                backgroundImageView.embed(subview: foregroundBody(with: props))
-            }
-            .shadow(ShadowStyle.card.shadowProps)
+            View().embed(subview: backgroundImageView.embed(subview: foregroundBody(with: props)))
+            .shadowStyle(.card)
         }.layoutMargins(.init(top: 0, left: 8, bottom: 24, right: 8))
     }
     

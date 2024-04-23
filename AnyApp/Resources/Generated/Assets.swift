@@ -27,6 +27,7 @@ public enum Asset {
   public static let accentColor = ColorAsset(name: "AccentColor")
   public enum Colors {
     public static let alwaysWhite = ColorAsset(name: "Colors/alwaysWhite")
+    public static let check = ColorAsset(name: "Colors/check")
   }
   public enum Images {
     public static let avatarStub = ImageAsset(name: "Images/avatarStub")

@@ -18,6 +18,7 @@ final class CircleView: View {
         setupImageView()
         size(sideLength: sideLenght)
         cornerRadius(sideLenght / 2)
+        backgroundColor(Palette.Content.accentTertirary)
     }
     
     init(sideLenght: CGFloat) {
