@@ -16,16 +16,25 @@ final class ProfileFlowCoordinator: Coordinator {
 
     // MARK: - Private Properties
     private let appSession: AppSession = resolver ~> AppSession.self
+    
+    private let innerRouter: RouterAbstract
 
     // MARK: - ProfileFlowCoordinator
-
-    public convenience init(rootRouter: RouterAbstract) {
-        self.init(router: rootRouter)
+    
+    public init(rootRouter: RouterAbstract,
+                innerRouter: RouterAbstract) {
+        self.innerRouter = innerRouter
+        super.init(router: rootRouter)
     }
-
+    
+    required init(router: RouterAbstract) {
+        fatalError("init(router:) has not been implemented")
+    }
+    
     func profileController() -> UIViewController? {
         let controller = resolver ~> ProfileController.self
-        
+        innerRouter.setRootModule(controller)
+    
         controller.onEvent = { [weak self] event in
             switch event {
             case .appTheme:
@@ -37,20 +46,22 @@ final class ProfileFlowCoordinator: Coordinator {
             }
         }
         
-        router.setRootModule(controller)
-        return router.rootController
+        return innerRouter.rootController
     }
     
     private func showAppThemeController() {
         let controller = resolver ~> AppThemeController.self
-        router.push(controller)
+        controller.hidesBottomBarWhenPushed = true
+        innerRouter.push(controller)
     }
     
     private func showAboutAppController() {
         let controller = resolver ~> AboutAppController.self
-        router.push(controller)
+        controller.hidesBottomBarWhenPushed = true
+        innerRouter.push(controller)
     }
     
+    // TODO: - move to view model
     private func callSupport() {
         guard let url = URL(string: "tel://88000000000"),
               UIApplication.shared.canOpenURL(url) else { return }

@@ -28,9 +28,9 @@ final class MainFlowAssembly: Assembly, Identifiable {
         }
         .inObjectScope(.weak)
 
-        container.register(MainFlowCoordinator.self) { resolver in
-            let router = resolver ~> (Router.self, name: RouterName.main)
-            return MainFlowCoordinator(rootRouter: router)
+        container.register(MainFlowCoordinator.self) { resolver, router in
+            let innerRouter = resolver ~> (Router.self, name: RouterName.main)
+            return MainFlowCoordinator(rootRouter: router, innerRouter: innerRouter)
         }
 
         container.register(MainController.self) { _ in

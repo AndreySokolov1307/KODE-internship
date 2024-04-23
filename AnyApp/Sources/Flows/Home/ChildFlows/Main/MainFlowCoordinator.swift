@@ -17,14 +17,24 @@ final class MainFlowCoordinator: Coordinator {
 
     private let appSession: AppSession = resolver ~> AppSession.self
 
+    private let innerRouter: RouterAbstract
+    
     // MARK: - MainFlowCoordinator
 
-    public convenience init(rootRouter: RouterAbstract) {
-        self.init(router: rootRouter)
+    public init(
+        rootRouter: RouterAbstract,
+        innerRouter: RouterAbstract) {
+            self.innerRouter = innerRouter
+            super.init(router: rootRouter)
+        }
+    
+    required init(router: RouterAbstract) {
+        fatalError("init(router:) has not been implemented")
     }
-
+    
     func mainController() -> UIViewController? {
         let controller = resolver ~> MainController.self
+        innerRouter.setRootModule(controller)
         
         controller.onEvent = { [weak self] event in
             switch event {
@@ -35,18 +45,19 @@ final class MainFlowCoordinator: Coordinator {
             }
         }
         
-        router.setRootModule(controller)
-        return router.rootController
+        return innerRouter.rootController
     }
     
     func showAccountDetailController() {
         let controller = resolver ~> AccountDetailController.self
-        router.push(controller)
+        controller.hidesBottomBarWhenPushed = true
+        innerRouter.push(controller)
     }
     
     func showCardDetailController() {
         let controller = resolver ~> CardDetailController.self
-        router.push(controller)
+        controller.hidesBottomBarWhenPushed = true
+        innerRouter.push(controller)
     }
 }
 
