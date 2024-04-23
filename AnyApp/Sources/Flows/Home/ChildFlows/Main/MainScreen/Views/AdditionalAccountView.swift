@@ -20,6 +20,7 @@ final class AdditionalAccountView: BackgroundPrimary {
         .width(40)
     private let smallCardView = CardView()
         .cornerRadius(2)
+        .masksToBounds(true)
 
     private var props: Props?
 

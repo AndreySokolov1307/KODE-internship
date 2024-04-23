@@ -20,7 +20,6 @@ final class CurrentAccountView: BackgroundPrimary {
     private let currencyImageView = ImageView(foregroundStyle: .contentPrimary)
     private let cardImageView = ImageView(image: Asset.Images.chevronUp.image, foregroundStyle: .textTertiary)
         .size(width: 40, height: 28)
-        .cornerRadius(2)
         .backgroundColor(Palette.Content.secondary)
 
     private var props: Props?
@@ -35,8 +34,8 @@ final class CurrentAccountView: BackgroundPrimary {
 
     private func body(with props: Props) -> UIView {
         HStack(alignment: .center, distribution: .fill) {
-            currencyImageView
-                .image(props.currency.image)
+                currencyImageView
+                    .image(props.currency.image)
             Spacer(.px16)
             VStack(alignment: .leading, distribution: .fill, spacing: 4) {
                 titleLabel
@@ -45,7 +44,12 @@ final class CurrentAccountView: BackgroundPrimary {
                     .textColor(props.textColor)
             }
             FlexibleSpacer()
-            cardImageView
+            BackgroundView {
+                cardImageView
+            }
+            .backgroundStyle(.contentSecondary)
+            .cornerRadius(2)
+            .masksToBounds(true)
         }
         .layoutMargins(.make(vInsets: 16, hInsets: 16))
         .onTap { [weak self] in
