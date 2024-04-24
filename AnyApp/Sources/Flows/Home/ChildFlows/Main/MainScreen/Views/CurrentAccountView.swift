@@ -14,11 +14,13 @@ final class CurrentAccountView: BackgroundPrimary {
 
     // MARK: - Private Properties
 
-    private let titleLabel = Label(foregroundStyle: .textPrimary)
+    private let titleLabel = Label(foregroundStyle: .textPrimary, fontStyle: .body2)
         .text(Main.currentAccount)
-    private let moneyLabel = Label()
+    private let balanceLabel = Label(fontStyle: .body2)
         .multiline()
-    private let currencyImageView = ImageView(foregroundStyle: .contentPrimary)
+    private let currencyCircleView = CircleView(sideLenght: 40)
+        .backgroundStyle(.contentSecondary)
+        .foregroundStyle(.contentAccentTertiary)
     private let cardImageView = ImageView(image: Asset.Images.chevronUp.image, foregroundStyle: .textTertiary)
         .size(width: 40, height: 28)
 
@@ -34,13 +36,13 @@ final class CurrentAccountView: BackgroundPrimary {
 
     private func body(with props: Props) -> UIView {
         HStack(alignment: .center, distribution: .fill) {
-                currencyImageView
+                currencyCircleView
                     .image(props.image)
             Spacer(.px16)
             VStack(alignment: .leading, distribution: .fill, spacing: 4) {
                 titleLabel
-                moneyLabel
-                    .text(props.balance + Common.space + props.sign)
+                balanceLabel
+                    .text(props.balanceString)
                     .textColor(props.textColor)
             }
             FlexibleSpacer()
@@ -67,7 +69,7 @@ extension CurrentAccountView: ConfigurableView {
     struct Props: Hashable {
         
         let id: Int
-        let balance: String
+        let balance: Int
         let currency: Account.Currency
 
         var onTap: IntHandler?
@@ -91,7 +93,7 @@ extension CurrentAccountView: ConfigurableView {
 }
 extension CurrentAccountView.Props {
     var textColor: UIColor {
-        if balance.first != "-" {
+        if String(balance).first != "-" {
             return Palette.Content.accentPrimary
         } else {
             return Palette.Indicator.contentError
@@ -101,22 +103,15 @@ extension CurrentAccountView.Props {
     var image: UIImage {
         switch currency {
         case .rub:
-            return Asset.Images.ruble.image
+            return Asset.Images.rub.image
         case .eur:
-            return Asset.Images.dollar.image
+            return Asset.Images.usd.image
         case .usd:
-            return Asset.Images.euro.image
+            return Asset.Images.eur.image
         }
     }
     
-    var sign: String {
-        switch currency {
-        case .rub:
-            return "₽"
-        case .eur:
-            return "€"
-        case .usd:
-            return "$"
-        }
+    var balanceString: String {
+        balance.formatted(.currency(code: currency.rawValue))
     }
 }

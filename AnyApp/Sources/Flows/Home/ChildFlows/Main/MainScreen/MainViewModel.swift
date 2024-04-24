@@ -58,7 +58,7 @@ final class MainViewModel {
         accounts.forEach { account in
             let item = MainViewProps.Item.account(
                 .init(id: account.accountId,
-                      balance: String(account.balance),
+                      balance: account.balance,
                       currency: account.currency,
                       onTap: { id in // add id in output
                           self.onOutput?(.accountDetail)

@@ -92,11 +92,11 @@ extension AccountInfoView.Props.Currency {
     var image: UIImage {
         switch self {
         case .ruble:
-            return Asset.Images.ruble.image
+            return Asset.Images.rub.image
         case .euro:
-            return Asset.Images.dollar.image
+            return Asset.Images.usd.image
         case .dollar:
-            return Asset.Images.euro.image
+            return Asset.Images.eur.image
         }
     }
     

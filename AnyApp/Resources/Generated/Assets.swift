@@ -39,9 +39,8 @@ public enum Asset {
     public static let chevronRight = ImageAsset(name: "Images/chevronRight")
     public static let chevronUp = ImageAsset(name: "Images/chevronUp")
     public static let close = ImageAsset(name: "Images/close")
-    public static let dollar = ImageAsset(name: "Images/dollar")
     public static let edit = ImageAsset(name: "Images/edit")
-    public static let euro = ImageAsset(name: "Images/euro")
+    public static let eur = ImageAsset(name: "Images/eur")
     public static let history = ImageAsset(name: "Images/history")
     public static let input = ImageAsset(name: "Images/input")
     public static let internet = ImageAsset(name: "Images/internet")
@@ -65,9 +64,10 @@ public enum Asset {
     public static let radioOk = ImageAsset(name: "Images/radioOk")
     public static let `repeat` = ImageAsset(name: "Images/repeat")
     public static let requisites = ImageAsset(name: "Images/requisites")
-    public static let ruble = ImageAsset(name: "Images/ruble")
+    public static let rub = ImageAsset(name: "Images/rub")
     public static let settings = ImageAsset(name: "Images/settings")
     public static let transfer = ImageAsset(name: "Images/transfer")
+    public static let usd = ImageAsset(name: "Images/usd")
     public static let visa = ImageAsset(name: "Images/visa ")
   }
 }

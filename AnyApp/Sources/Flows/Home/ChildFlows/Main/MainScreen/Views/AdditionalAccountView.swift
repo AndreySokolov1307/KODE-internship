@@ -14,7 +14,7 @@ final class AdditionalAccountView: BackgroundPrimary {
 
     // MARK: - Private Properties
 
-    private let nameLabel = Label(foregroundStyle: .textPrimary)
+    private let nameLabel = Label(foregroundStyle: .textPrimary, fontStyle: .body2)
     private let cardTypeLabel = Label()
         .fontStyle(.caption1)
     private let inputImageView = ImageView(image: Asset.Images.input.image, foregroundStyle: .textTertiary)
@@ -42,7 +42,7 @@ final class AdditionalAccountView: BackgroundPrimary {
                     .text(props.name)
                 cardTypeLabel
                     .text(props.typeText)
-                    .textColor(props.textColor)
+                    .foregroundStyle(props.foregroundStyle)
             }
             FlexibleSpacer()
             smallCardView
@@ -92,12 +92,12 @@ extension AdditionalAccountView: ConfigurableView {
     }
 }
 extension AdditionalAccountView.Props {
-    var textColor: UIColor {
+    var foregroundStyle: ForegroundStyle {
         switch status {
         case .deactivated:
-            return Palette.Indicator.contentError
+            return .indicatorContentError
         case .active:
-            return Palette.Text.secondary
+            return .textSecondary
         }
     }
     

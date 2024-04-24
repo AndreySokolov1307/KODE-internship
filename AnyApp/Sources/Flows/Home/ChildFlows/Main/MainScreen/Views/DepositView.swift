@@ -14,12 +14,14 @@ final class DepostiView: BackgroundPrimary {
     
     // MARK: - Private Properties
 
-    private let depositNameLabel = Label(foregroundStyle: .textPrimary)
-    private let moneyLabel = Label()
-    private let currencyImageView = ImageView(foregroundStyle: .contentPrimary)
-    private let interestRateLabel = Label(foregroundStyle: .textSecondary)
+    private let depositNameLabel = Label(foregroundStyle: .textPrimary, fontStyle: .body2)
+    private let moneyLabel = Label(fontStyle: .body2 )
+    private let currencyCircleView = CircleView(sideLenght: 40)
+        .backgroundStyle(.contentSecondary)
+        .foregroundStyle(.contentAccentTertiary)
+    private let interestRateLabel = Label(foregroundStyle: .textTertiary)
         .fontStyle(.caption2)
-    private let dueDateLabel = Label(foregroundStyle: .textSecondary)
+    private let dueDateLabel = Label(foregroundStyle: .textTertiary)
         .fontStyle(.caption2)
 
     private var props: Props?
@@ -34,7 +36,7 @@ final class DepostiView: BackgroundPrimary {
 
     private func body(with props: Props) -> UIView {
         HStack(alignment: .fill, distribution: .fill) {
-            currencyImageView
+            currencyCircleView
                 .image(props.image)
             Spacer(.px16)
             VStack(alignment: .fill, distribution: .fill, spacing: 4) {
@@ -43,15 +45,15 @@ final class DepostiView: BackgroundPrimary {
                         .text(props.name)
                     FlexibleSpacer()
                     interestRateLabel
-                        .text("Ставка " + String(props.interestRate) + "%")
+                        .text("Ставка" + Common.space + String(props.interestRate) + "%")
                 }
                 HStack(alignment: .fill, distribution: .fill) {
                     moneyLabel
-                        .text("\(props.balance)" + Common.space + props.sign)
-                        .textColor(props.textColor)
+                        .text(props.balanceString)
+                        .foregroundStyle(props.foregroundStyle)
                     FlexibleSpacer()
                     dueDateLabel
-                        .text("до " + props.closingDate.formatted())
+                        .text("до" + Common.space + props.dateString)
                 }
             }
         }
@@ -100,33 +102,32 @@ extension DepostiView: ConfigurableView {
 }
 
 extension DepostiView.Props {
-    var textColor: UIColor {
+    var foregroundStyle: ForegroundStyle {
         if String(balance).first != "-" {
-            return Palette.Content.accentPrimary
+            return .contentAccentPrimary
         } else {
-            return Palette.Indicator.contentError
+            return .indicatorContentError
         }
     }
 
     var image: UIImage {
         switch currency {
         case .rub:
-            return Asset.Images.ruble.image
-        case .eur:
-            return Asset.Images.dollar.image
+            return Asset.Images.rub.image
         case .usd:
-            return Asset.Images.euro.image
+            return Asset.Images.usd.image
+        case .eur:
+            return Asset.Images.eur.image
         }
     }
     
-    var sign: String {
-        switch currency {
-        case .rub:
-            return "₽"
-        case .eur:
-            return "€"
-        case .usd:
-            return "$"
-        }
+    var balanceString: String {
+        balance.formatted(.currency(code: currency.rawValue))
+    }
+    
+    var dateString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.format = .dayMonthYear
+        return dateFormatter.string(from: closingDate)
     }
 }

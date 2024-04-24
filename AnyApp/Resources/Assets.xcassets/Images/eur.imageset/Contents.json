@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Property 1=Large, Property 2=ic_rub.svg",
+      "filename" : "eur 24.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -17,5 +17,9 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true,
+    "template-rendering-intent" : "template"
   }
 }
