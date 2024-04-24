@@ -8,6 +8,7 @@
 import UIKit
 import UI
 import AppIndependent
+import Services
 
 final class DepostiView: BackgroundPrimary {
     
@@ -34,29 +35,29 @@ final class DepostiView: BackgroundPrimary {
     private func body(with props: Props) -> UIView {
         HStack(alignment: .fill, distribution: .fill) {
             currencyImageView
-                .image(props.currency.image)
+                .image(props.image)
             Spacer(.px16)
             VStack(alignment: .fill, distribution: .fill, spacing: 4) {
                 HStack(alignment: .fill, distribution: .fill) {
                     depositNameLabel
-                        .text(props.type.title)
+                        .text(props.name)
                     FlexibleSpacer()
                     interestRateLabel
                         .text("Ставка " + String(props.interestRate) + "%")
                 }
                 HStack(alignment: .fill, distribution: .fill) {
                     moneyLabel
-                        .text(props.money + " " + props.currency.sign)
+                        .text("\(props.balance)" + Common.space + props.sign)
                         .textColor(props.textColor)
                     FlexibleSpacer()
                     dueDateLabel
-                        .text("до " + props.dueDate.formatted())
+                        .text("до " + props.closingDate.formatted())
                 }
             }
         }
         .layoutMargins(.make(vInsets: 16, hInsets: 16))
         .onTap { [weak self] in
-            self?.props?.onTap?(props.id)
+            self?.props?.onTap?()
         }
     }
 }
@@ -69,26 +70,15 @@ extension DepostiView: ConfigurableView {
 
     struct Props: Hashable {
         
-        enum DepositType {
-            case main
-            case saving
-            case currency(Currency)
-           
-            enum Currency {
-                case ruble
-                case euro
-                case dollar
-            }
-        }
-        
-        let id: String = UUID().uuidString
-        let type: DepositType
-        let currency: DepositType.Currency
-        let money: String
+        let id: Int
+        let name: String
+        let status: Deposit.Status
+        let currency: Deposit.Currency
+        let balance: Int
         let interestRate: Double
-        let dueDate: Date
+        let closingDate: Date
 
-        var onTap: StringHandler?
+        var onTap: VoidHandler?
 
         public static func == (lhs: DepostiView.Props, rhs: DepostiView.Props) -> Bool {
             lhs.hashValue == rhs.hashValue
@@ -96,8 +86,9 @@ extension DepostiView: ConfigurableView {
 
         public func hash(into hasher: inout Hasher) {
             hasher.combine(id)
-            hasher.combine(money)
-            hasher.combine(dueDate)
+            hasher.combine(balance)
+            hasher.combine(closingDate)
+            hasher.combine(name)
         }
     }
 
@@ -110,53 +101,31 @@ extension DepostiView: ConfigurableView {
 
 extension DepostiView.Props {
     var textColor: UIColor {
-        if money.first != "-" {
+        if String(balance).first != "-" {
             return Palette.Content.accentPrimary
         } else {
             return Palette.Indicator.contentError
         }
     }
-}
 
-extension DepostiView.Props.DepositType {
-    var title: String {
-        switch self {
-        case .main:
-            return "Мой вклад"
-        case .saving:
-            return "Накопительный"
-        case .currency(let currency):
-            switch currency {
-            case .ruble:
-                return "RUB вклад"
-            case .dollar:
-                return "USD вклад"
-            case .euro:
-                return "EUR вклад"
-            }
-        }
-    }
-}
-
-extension DepostiView.Props.DepositType.Currency {
     var image: UIImage {
-        switch self {
-        case .ruble:
+        switch currency {
+        case .rub:
             return Asset.Images.ruble.image
-        case .euro:
+        case .eur:
             return Asset.Images.dollar.image
-        case .dollar:
+        case .usd:
             return Asset.Images.euro.image
         }
     }
     
     var sign: String {
-        switch self {
-        case .ruble:
+        switch currency {
+        case .rub:
             return "₽"
-        case .euro:
+        case .eur:
             return "€"
-        case .dollar:
+        case .usd:
             return "$"
         }
     }

@@ -1,10 +1,4 @@
-//
-//  MainViewModel.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 12.04.2024.
-//
-
+// swiftlint:disable all
 import Services
 import Combine
 import UI
@@ -25,6 +19,8 @@ final class MainViewModel {
 
     private let coreRequestManager: CoreRequestManagerAbstract
     
+    private var cancellables = Set<AnyCancellable>()
+    
     init(coreRequestManager: CoreRequestManagerAbstract) {
         self.coreRequestManager = coreRequestManager
     }
@@ -37,8 +33,77 @@ final class MainViewModel {
             loadData()
         }
     }
-
+    
     private func loadData() {
+        sendShimmerSections()
+
+        coreRequestManager.coreAccountList()
+            .combineLatest(coreRequestManager.coreDepositList())
+            .sink { completion in
+                
+            } receiveValue: { [weak self] (accountListResponce, depositListResponce) in
+                guard let self else { return }
+            
+                let accountSection = self.createAccountSection(accountListResponce.accounts)
+                let depositSection = self.createDepositSection(depositListResponce.deposits)
+                    
+                self.onOutput?(.content(.init(sections: [accountSection, depositSection])))
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func createAccountSection(_ accounts: [Account]) -> MainViewProps.Section {
+        var accountItems: [MainViewProps.Item] = [.header(.init(title: Main.accounts))]
+        
+        accounts.forEach { account in
+            let item = MainViewProps.Item.account(
+                .init(id: account.accountId,
+                      balance: String(account.balance),
+                      currency: account.currency,
+                      onTap: { id in // add id in output
+                          self.onOutput?(.accountDetail)
+                      }))
+            accountItems.append(item)
+            
+            account.cards.forEach { card in
+                let item = MainViewProps.Item.card(
+                    .init(id: card.cardId,
+                          name: card.name,
+                          cardType: card.cardType,
+                          status: card.status,
+                          cardNumber: card.number,
+                          paymentSystem: card.paymentSystem,
+                          onTap: { id in // add id in output
+                              self.onOutput?(.cardDetail)
+                          }))
+                accountItems.append(item)
+            }
+            accountItems += MainViewModel.mockCards
+        }
+        
+        return MainViewProps.Section.accounts(accountItems)
+    }
+
+    private func createDepositSection(_ deposits: [Deposit]) -> MainViewProps.Section {
+        var depositItems: [MainViewProps.Item] = [.header(.init(title: Main.deposits))]
+        
+        deposits.forEach { deposit in
+            let item = MainViewProps.Item.deposit(
+                .init(id: deposit.depositId,
+                      name: deposit.name,
+                      status: deposit.status,
+                      currency: deposit.currency,
+                      balance: deposit.balance,
+                      interestRate: 7.45,
+                      closingDate: Date()))
+            depositItems.append(item)
+        }
+        depositItems += MainViewModel.mockDeposits
+        
+        return MainViewProps.Section.deposits(depositItems)
+    }
+    
+    private func sendShimmerSections() {
         onOutput?(.content(.init(sections: [
             .accounts(
                 [.headerShimmer()] +
@@ -49,30 +114,33 @@ final class MainViewModel {
                 (1...3).map { _ in .accountShimmer() }
             )
         ])))
-
-        // request:
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-            self?.onOutput?(.content(.init(sections: [
-                .accounts([
-                    .header(.init(title: Main.accounts)),
-                    .account(.init(money: "457 334,00", currency: .ruble) { [weak self] _ in
-                        self?.onOutput?(.accountDetail)
-                    }),
-                    .card(.init(cardType: .physical, cardPurpose: .salary, isBlocked: false, cardNumber: "20027789", paymentSystem: .masterCard) { [weak self] _ in
-                        self?.onOutput?(.cardDetail)
-                    }),
-                    .card(.init(cardType: .physical, cardPurpose: .extra, isBlocked: true, cardNumber: "20028435", paymentSystem: .visa) { id in
-                        SnackCenter.shared.showSnack(withProps: .init(message: "Card pressed with \(id)"))
-                    })
-                ]),
-                .deposits([
-                    .header(.init(title: Main.deposits)),
-                    .deposit(.init(type: .main, currency: .ruble, money: "1 515 000,78", interestRate: 7.65, dueDate: Date())),
-                    .deposit(.init(type: .saving, currency: .dollar, money: "3 719,19", interestRate: 11.05, dueDate: Date())),
-                    .deposit(.init(type: .currency(.euro), currency: .euro, money: "1 513,62", interestRate: 8.65, dueDate: Date()))
-                ])
-            ])))
-        }
     }
+}
+
+extension MainViewModel {
+    static var mockCards: [MainViewProps.Item] = [
+        .card(.init(id: "1234",
+                    name: "Дополнительная карта",
+                    cardType: .digital,
+                    status: .deactivated,
+                    cardNumber: "88005553535",
+                    paymentSystem: .masterCard))
+    ]
+    
+    static var mockDeposits: [MainViewProps.Item] = [
+    .deposit(.init(id: 555,
+                   name: "Накопительный",
+                   status: .active,
+                   currency: .usd,
+                   balance: 3719,
+                   interestRate: 8.75,
+                   closingDate: Date())),
+    .deposit(.init(id: 777,
+                   name: "EUR вклад",
+                   status: .active,
+                   currency: .eur,
+                   balance: 1567,
+                   interestRate: 5.76,
+                   closingDate: Date()))
+   ]
 }

@@ -13,6 +13,8 @@ public struct Deposit: Decodable {
 
     public enum Currency: String, Decodable {
         case rub = "RUB"
+        case eur = "EUR"
+        case usd = "USD"
     }
 
     public let name: String

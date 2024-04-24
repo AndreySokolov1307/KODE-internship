@@ -8,12 +8,13 @@
 import UIKit
 import UI
 import AppIndependent
+import Services
 
 final class AdditionalAccountView: BackgroundPrimary {
 
     // MARK: - Private Properties
 
-    private let purposeLabel = Label(foregroundStyle: .textPrimary)
+    private let nameLabel = Label(foregroundStyle: .textPrimary)
     private let cardTypeLabel = Label()
         .fontStyle(.caption1)
     private let inputImageView = ImageView(image: Asset.Images.input.image, foregroundStyle: .textTertiary)
@@ -37,8 +38,8 @@ final class AdditionalAccountView: BackgroundPrimary {
             inputImageView
             Spacer(.px16)
             VStack(alignment: .leading, distribution: .fill, spacing: 4) {
-                purposeLabel
-                    .text(props.purposeText)
+                nameLabel
+                    .text(props.name)
                 cardTypeLabel
                     .text(props.typeText)
                     .textColor(props.textColor)
@@ -64,27 +65,12 @@ extension AdditionalAccountView: ConfigurableView {
 
     struct Props: Hashable {
         
-        enum CardType {
-            case physical
-            case digital
-        }
-        
-        enum CardPurpose {
-            case salary
-            case extra
-        }
-        
-        enum PaymentSystem {
-            case visa
-            case masterCard
-        }
-        
-        let id: String = UUID().uuidString
-        let cardType: CardType
-        let cardPurpose: CardPurpose
-        let isBlocked: Bool
+        let id: String
+        let name: String
+        let cardType: Card.CardType
+        let status: Card.Status
         let cardNumber: String
-        let paymentSystem: PaymentSystem
+        let paymentSystem: Card.PaymentSystem
 
         var onTap: StringHandler?
 
@@ -107,24 +93,16 @@ extension AdditionalAccountView: ConfigurableView {
 }
 extension AdditionalAccountView.Props {
     var textColor: UIColor {
-        if isBlocked {
+        switch status {
+        case .deactivated:
             return Palette.Indicator.contentError
-        } else {
+        case .active:
             return Palette.Text.secondary
         }
     }
     
-    var purposeText: String {
-        switch cardPurpose {
-        case .salary:
-            return "Карта зарплатная"
-        case .extra:
-            return "Дополнительная карта"
-        }
-    }
-    
     var typeText: String {
-        if isBlocked {
+        if status == .deactivated {
             return "Заблокирована"
         } else {
             switch cardType {

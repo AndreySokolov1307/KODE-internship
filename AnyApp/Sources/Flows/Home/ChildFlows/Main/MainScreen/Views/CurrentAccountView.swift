@@ -8,6 +8,7 @@
 import UIKit
 import UI
 import AppIndependent
+import Services
 
 final class CurrentAccountView: BackgroundPrimary {
 
@@ -34,12 +35,12 @@ final class CurrentAccountView: BackgroundPrimary {
     private func body(with props: Props) -> UIView {
         HStack(alignment: .center, distribution: .fill) {
                 currencyImageView
-                    .image(props.currency.image)
+                    .image(props.image)
             Spacer(.px16)
             VStack(alignment: .leading, distribution: .fill, spacing: 4) {
                 titleLabel
                 moneyLabel
-                    .text(props.money + " " + props.currency.sign)
+                    .text(props.balance + Common.space + props.sign)
                     .textColor(props.textColor)
             }
             FlexibleSpacer()
@@ -65,17 +66,11 @@ extension CurrentAccountView: ConfigurableView {
 
     struct Props: Hashable {
         
-        enum Currency {
-            case ruble
-            case euro
-            case dollar
-        }
-        
-        let id: String = UUID().uuidString
-        let money: String
-        let currency: Currency
+        let id: Int
+        let balance: String
+        let currency: Account.Currency
 
-        var onTap: StringHandler?
+        var onTap: IntHandler?
 
         public static func == (lhs: CurrentAccountView.Props, rhs: CurrentAccountView.Props) -> Bool {
             lhs.hashValue == rhs.hashValue
@@ -83,7 +78,7 @@ extension CurrentAccountView: ConfigurableView {
 
         public func hash(into hasher: inout Hasher) {
             hasher.combine(id)
-            hasher.combine(money)
+            hasher.combine(balance)
             hasher.combine(currency)
         }
     }
@@ -96,33 +91,31 @@ extension CurrentAccountView: ConfigurableView {
 }
 extension CurrentAccountView.Props {
     var textColor: UIColor {
-        if money.first != "-" {
+        if balance.first != "-" {
             return Palette.Content.accentPrimary
         } else {
             return Palette.Indicator.contentError
         }
     }
-}
 
-extension CurrentAccountView.Props.Currency {
     var image: UIImage {
-        switch self {
-        case .ruble:
+        switch currency {
+        case .rub:
             return Asset.Images.ruble.image
-        case .euro:
+        case .eur:
             return Asset.Images.dollar.image
-        case .dollar:
+        case .usd:
             return Asset.Images.euro.image
         }
     }
     
     var sign: String {
-        switch self {
-        case .ruble:
+        switch currency {
+        case .rub:
             return "₽"
-        case .euro:
+        case .eur:
             return "€"
-        case .dollar:
+        case .usd:
             return "$"
         }
     }

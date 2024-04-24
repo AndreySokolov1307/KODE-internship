@@ -1,10 +1,3 @@
-//
-//  CoreAccountResponce.swift
-//  Services
-//
-//  Created by Андрей Соколов on 23.04.2024.
-//
-
 import Foundation
 
 public struct CoreAccountResponse: Decodable {

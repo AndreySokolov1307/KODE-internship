@@ -27,7 +27,7 @@ final class CardDetailController: TemplateViewController<CardDetailView> {
     }
     
     private func configureNavigationItem() {
-        navigationItem.title = "Card"
+        navigationItem.title = "Карты"
         navigationController?.navigationBar.prefersLargeTitles = false
     }
     

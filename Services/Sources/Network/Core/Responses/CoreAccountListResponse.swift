@@ -12,6 +12,8 @@ public struct Account: Decodable {
 
     public enum Currency: String, Decodable {
         case rub = "RUB"
+        case usd = "USD"
+        case eur = "EUR"
     }
 
     public let cards: [Card]
@@ -37,7 +39,6 @@ public struct Card: Decodable {
     public enum PaymentSystem: String, Decodable {
         case visa = "Visa"
         case masterCard = "MasterCard"
-        case mir = "МИР"
     }
 
     public let name: String
