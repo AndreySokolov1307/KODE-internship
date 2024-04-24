@@ -23,6 +23,12 @@ final class MainViewModel {
         case loadData
     }
 
+    private let coreRequestManager: CoreRequestManagerAbstract
+    
+    init(coreRequestManager: CoreRequestManagerAbstract) {
+        self.coreRequestManager = coreRequestManager
+    }
+    
     var onOutput: ((Output) -> Void)?
 
     func handle(_ input: Input) {

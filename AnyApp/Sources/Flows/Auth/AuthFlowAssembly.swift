@@ -17,8 +17,9 @@ final class AuthFlowAssembly: Assembly, Identifiable {
             return AuthPhoneController(viewModel: viewModel)
         }
 
-        container.register(AuthOtpController.self) { resolver in
+        container.register(AuthOtpController.self) { resolver, configModel in
             let viewModel = AuthOtpViewModel(
+                configModel: configModel,
                 authRequestManager: (resolver ~> NetworkFactory.self).makeAuthRequestManager(),
                 appSession: resolver ~> AppSession.self
             )

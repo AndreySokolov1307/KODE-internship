@@ -28,7 +28,7 @@ final class RequestInterceptor: Alamofire.RequestInterceptor {
 
         // FIXME: headers
         if let accessToken = self.session?.storage.accessToken {
-            urlRequest.setValue(accessToken, forHTTPHeaderField: HeaderKey.authorization)
+            urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: HeaderKey.authorization)
         } else {
 #if DEV || INT || EXT
             if urlRequest.url?.host == Server.stoplight.host {

@@ -5,7 +5,7 @@ import Combine
 final class AuthPhoneViewModel {
 
     enum Output {
-        case otp
+        case otp(AuthOtpConfigModel)
         case invalidNumber
     }
 
@@ -27,28 +27,34 @@ final class AuthPhoneViewModel {
         switch input {
         case .phoneEntered(let number):
             if isNumberValid(number) {
-                login(phoneNumber: number)
+                login(phone: number)
             } else {
                 onOutput?(.invalidNumber)
             }
         }
     }
 
-    private func login(phoneNumber: String) {
-        authRequestManager.authLogin(phone: phoneNumber)
+    private func login(phone: String) {
+        authRequestManager.authLogin(phone: phone)
             .sink(
                 receiveCompletion: { _ in
                     // TODO: handle error
                 },
                 receiveValue: { [weak self] response in
-                    self?.onOutput?(.otp)
+                    let configModel = AuthOtpConfigModel(
+                        otpId: response.otpId,
+                        phone: phone,
+                        otpCode: response.otpCode,
+                        otpLength: response.otpLen
+                    )
+                    self?.onOutput?(.otp(configModel))
                 }
             ).store(in: &cancellables)
     }
     
     private func isNumberValid(_ number: String) -> Bool {
         let phonePattern = #"^[\+]\d{1}[ ]?\(?\d{3}\)?[ ]?\d{3}[ ]?\d{2}[ ]?\d{2}$"#
-        var result = number.range(of: phonePattern, options: .regularExpression)
+        let result = number.range(of: phonePattern, options: .regularExpression)
         let isValid = (result != nil)
         return isValid
     }

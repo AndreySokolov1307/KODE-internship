@@ -6,7 +6,7 @@ final class AuthPhoneController: TemplateViewController<AuthPhoneView> {
     typealias ViewModel = AuthPhoneViewModel
 
     enum Event {
-        case otp
+        case otp(AuthOtpConfigModel)
     }
 
     var onEvent: ((Event) -> Void)?
@@ -30,9 +30,9 @@ final class AuthPhoneController: TemplateViewController<AuthPhoneView> {
 
         viewModel.onOutput = { [weak self] output in
             switch output {
-            case .otp:
+            case .otp(let configModel):
                 self?.rootView.handleInput(.right)
-                self?.onEvent?(.otp)
+                self?.onEvent?(.otp(configModel))
             case .invalidNumber:
                 SnackCenter.shared.showSnack(withProps: .init(message: Common.Error.wrongNumberFormat, style: .error, image: Asset.Images.close.image))
                 

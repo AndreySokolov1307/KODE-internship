@@ -33,8 +33,8 @@ final class MainFlowAssembly: Assembly, Identifiable {
             return MainFlowCoordinator(rootRouter: router, innerRouter: innerRouter)
         }
 
-        container.register(MainController.self) { _ in
-            let viewModel = MainViewModel()
+        container.register(MainController.self) { resolver in
+            let viewModel = MainViewModel(coreRequestManager: (resolver ~> NetworkFactory.self).makeCoreRequestManager())
             return MainController(viewModel: viewModel)
         }
         

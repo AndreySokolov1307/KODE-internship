@@ -20,7 +20,6 @@ final class CurrentAccountView: BackgroundPrimary {
     private let currencyImageView = ImageView(foregroundStyle: .contentPrimary)
     private let cardImageView = ImageView(image: Asset.Images.chevronUp.image, foregroundStyle: .textTertiary)
         .size(width: 40, height: 28)
-        .backgroundColor(Palette.Content.secondary)
 
     private var props: Props?
 

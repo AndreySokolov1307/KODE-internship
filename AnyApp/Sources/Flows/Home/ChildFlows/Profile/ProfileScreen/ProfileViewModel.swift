@@ -1,6 +1,6 @@
 import Services
 import Combine
-
+// swiftlint:disable: all
 final class ProfileViewModel {
     typealias Props = ProfileViewProps
     
@@ -20,13 +20,17 @@ final class ProfileViewModel {
     var onOutput: ((Output) -> Void)?
 
     private let appSession: AppSession
+    
+    private let coreRequestManager: CoreRequestManagerAbstract
 
     private var cancellables = Set<AnyCancellable>()
 
     init(
-        appSession: AppSession
+        appSession: AppSession,
+        coreRequestManager: CoreRequestManagerAbstract
     ) {
         self.appSession = appSession
+        self.coreRequestManager = coreRequestManager
     }
 
     func handle(_ input: Input) {
@@ -67,6 +71,7 @@ final class ProfileViewModel {
     }
 
     private func loadProfile() {
+        
         onOutput?(.content(.init(sections: [
             .profile(.profileShimmer()),
             .settings(
@@ -83,5 +88,45 @@ final class ProfileViewModel {
                 .settings(self.createSettings())
             ])))
         }
+        
+        let profile = coreRequestManager.coreAccountList()
+            .sink { completion in
+                print("Profile COMPLETION",completion)
+            } receiveValue: { responce in
+                print("PROFILE RESPONCE",responce)
+            }
+            .store(in: &cancellables)
+        
+        let accountList = coreRequestManager.coreAccountList()
+            .sink { completion in
+                print("ACCOUNTLIST COMPLETION",completion)
+            } receiveValue: { responce in
+                print("ACCOUNT LIST RESPONCE",responce)
+            }
+            .store(in: &cancellables)
+        
+        let deposutList = coreRequestManager.coreDepositList()
+            .sink { completion in
+                print("DeposutLIST COMPLETION",completion)
+            } receiveValue: { responce in
+                print("DeposiT LIST RESPONCE",responce)
+            }
+            .store(in: &cancellables)
+        
+        let cardID = coreRequestManager.coreCard(id: 2)
+            .sink { completion in
+                print("CARD ID COMPLETION",completion)
+            } receiveValue: { responce in
+                print("CARD ID RESPONCE",responce)
+            }
+            .store(in: &cancellables)
+        
+        let account = coreRequestManager.coreAccount(id: 2)
+            .sink { completion in
+                print("ACCOUNT ID COMPLETION",completion)
+            } receiveValue: { responce in
+                print("ACCOUNT ID RESPONCE",responce)
+            }
+            .store(in: &cancellables)
     }
 }

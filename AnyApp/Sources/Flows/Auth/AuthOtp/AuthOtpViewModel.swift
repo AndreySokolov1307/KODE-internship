@@ -2,6 +2,8 @@ import Services
 import Combine
 
 final class AuthOtpViewModel {
+    
+    typealias ConfigModel = AuthOtpConfigModel
 
     enum Input {
         case otpEntered(String)
@@ -19,20 +21,21 @@ final class AuthOtpViewModel {
     private var otpAttemptsLeft = 5
     var onOutput: ((Output) -> Void)?
 
+    private let configModel: ConfigModel
     private let authRequestManager: AuthRequestManagerAbstract
     private let appSession: AppSession
 
     private var cancellables = Set<AnyCancellable>()
 
     init(
+        configModel: AuthOtpConfigModel,
         authRequestManager: AuthRequestManagerAbstract,
         appSession: AppSession
     ) {
+        self.configModel = configModel
         self.authRequestManager = authRequestManager
         self.appSession = appSession
     }
-
-    // TODO: - do it with real data later
     
     func handle(_ input: Input) {
         switch input {
@@ -53,7 +56,7 @@ final class AuthOtpViewModel {
     }
 
     private func confirmOtp() {
-        authRequestManager.authConfirm(otpId: "", phone: "", otpCode: "")
+        authRequestManager.authConfirm(otpId: configModel.otpId, phone: configModel.phone, otpCode: configModel.otpCode)
             .sink(
                 receiveCompletion: { _ in
                     // handle error

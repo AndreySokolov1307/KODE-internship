@@ -31,15 +31,15 @@ final class AuthFlowCoordinator: Coordinator {
 
         controller.onEvent = { [weak self] event in
             switch event {
-            case .otp:
-                self?.showOtp()
+            case .otp(let configModel):
+                self?.showOtp(with: configModel)
             }
         }
         router.setRootModule(controller)
     }
 
-    private func showOtp() {
-        let controller = resolver ~> AuthOtpController.self
+    private func showOtp(with configModel: AuthOtpConfigModel) {
+        let controller = resolver ~> (AuthOtpController.self, configModel)
 
         controller.onEvent = { [weak self] event in
             switch event {

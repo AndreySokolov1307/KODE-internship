@@ -52,3 +52,23 @@ extension AuthPath {
 
     var tag: String { "Auth" }
 }
+//
+extension CorePath {
+
+    var name: String {
+        switch self {
+        case .profile:
+            return "Get Profile"
+        case .accountList:
+            return "Get AccountList"
+        case .depositList:
+            return "Get DepositList"
+        case .account:
+            return "Get Account"
+        case .card:
+            return "Get Card"
+        }
+    }
+
+    var tag: String { "Core" }
+}

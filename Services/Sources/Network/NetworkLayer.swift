@@ -94,7 +94,18 @@ extension NetworkLayer {
             )
         }
 
-        let allSpecs = authSpecs
+        let coreSpecs = CorePath.allCases.map {
+            UrlSpec(
+                id: $0.id,
+                pathTemplate: $0.endpoint,
+                httpMethod: $0.method.pathfinderHttpMethod,
+                tag: $0.tag,
+                name: $0.name,
+                currentStoplightQueryParams: [:]
+            )
+        }
+
+        let allSpecs = authSpecs + coreSpecs
 
         let initialEnvironmentIndex = loadEnvironment()?.rawValue ?? defaultEnvironment().rawValue
         let config = PFConfig(

@@ -15,4 +15,14 @@ public final class NetworkFactory {
             session: network.session
         )
     }
+
+    public func makeCoreRequestManager() -> CoreRequestManagerAbstract {
+        CoreRequestManager(
+            errorParser: network.errorParser,
+            sessionManager: network.sessionManager,
+            environment: network.environment,
+            queue: network.defaultQueue,
+            session: network.session
+        )
+    }
 }
