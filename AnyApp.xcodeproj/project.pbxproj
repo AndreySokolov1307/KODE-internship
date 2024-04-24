@@ -82,6 +82,7 @@
 		322955462BD03914002C4E65 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322955452BD03914002C4E65 /* TransactionView.swift */; };
 		322955492BD090FA002C4E65 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322955482BD090FA002C4E65 /* CircleView.swift */; };
 		322D0A162BD90E6500C4E258 /* AuthOtpConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322D0A152BD90E6500C4E258 /* AuthOtpConfigModel.swift */; };
+		322D0A1D2BD9D06000C4E258 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322D0A1C2BD9D06000C4E258 /* NavigationController.swift */; };
 		3234DAFC2BCD46C500F347B8 /* HeaderShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234DAFB2BCD46C500F347B8 /* HeaderShimmerView.swift */; };
 		3234DAFE2BCD472000F347B8 /* AccountShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234DAFD2BCD472000F347B8 /* AccountShimmerView.swift */; };
 		32420A532BCADFCD00BCA8FC /* ProfileViewProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32420A522BCADFCD00BCA8FC /* ProfileViewProps.swift */; };
@@ -496,6 +497,7 @@
 		322955452BD03914002C4E65 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 		322955482BD090FA002C4E65 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		322D0A152BD90E6500C4E258 /* AuthOtpConfigModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthOtpConfigModel.swift; sourceTree = "<group>"; };
+		322D0A1C2BD9D06000C4E258 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		3234DAFB2BCD46C500F347B8 /* HeaderShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderShimmerView.swift; sourceTree = "<group>"; };
 		3234DAFD2BCD472000F347B8 /* AccountShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountShimmerView.swift; sourceTree = "<group>"; };
 		32420A522BCADFCD00BCA8FC /* ProfileViewProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewProps.swift; sourceTree = "<group>"; };
@@ -1523,6 +1525,7 @@
 				EE2550F7B16647541A7A93F0 /* RouterName.swift */,
 				965B89C0BEA78BDF8934D8E7 /* StartUpAssembly.swift */,
 				10E588292BC364AA00D05347 /* SceneDelegate.swift */,
+				322D0A1C2BD9D06000C4E258 /* NavigationController.swift */,
 			);
 			path = Launch;
 			sourceTree = "<group>";
@@ -2584,6 +2587,7 @@
 				32FA06552BD28A9D00819AF8 /* AppThemeController.swift in Sources */,
 				10E588202BC0575900D05347 /* AuthOtpController.swift in Sources */,
 				32420A592BCAEC1D00BCA8FC /* ProfileDetailShimmerView.swift in Sources */,
+				322D0A1D2BD9D06000C4E258 /* NavigationController.swift in Sources */,
 				32FA06572BD28AA800819AF8 /* AppThemeView.swift in Sources */,
 				3277D4C12BC9873D00BD23A9 /* HeaderView.swift in Sources */,
 				3277D4D32BC9C1F900BD23A9 /* CurrentAccountView.swift in Sources */,

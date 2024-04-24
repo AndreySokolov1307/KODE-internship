@@ -17,13 +17,13 @@ final class MainFlowAssembly: Assembly, Identifiable {
     var id: String { String(describing: type(of: self)) }
 
     func assemble(container: Container) {
-        container.register(BaseNavigationController.self, name: RouterName.main) { _ in
-            BaseNavigationController(navigationBarClass: NavigationBar.self, toolbarClass: nil)
+        container.register(NavigationController.self, name: RouterName.main) { _ in
+            NavigationController(navigationBarClass: NavigationBar.self, toolbarClass: nil)
         }
         .inObjectScope(.weak)
 
         container.register(Router.self, name: RouterName.main) { resolver in
-            let navigationController = resolver ~> (BaseNavigationController.self, name: RouterName.main)
+            let navigationController = resolver ~> (NavigationController.self, name: RouterName.main)
             return Router(rootController: navigationController)
         }
         .inObjectScope(.weak)

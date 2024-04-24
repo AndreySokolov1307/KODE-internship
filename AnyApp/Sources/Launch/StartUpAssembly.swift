@@ -12,12 +12,12 @@ final class StartUpAssembly: Assembly, Identifiable {
 
     func assemble(container: Container) {
 
-        container.register(BaseNavigationController.self) { _ in
-            BaseNavigationController(navigationBarClass: BaseNavigationBar.self, toolbarClass: nil)
+        container.register(NavigationController.self) { _ in
+            NavigationController(navigationBarClass: NavigationBar.self, toolbarClass: nil)
         }
 
         container.register(Router.self, name: RouterName.root) { resolver in
-            let navigationController = resolver ~> BaseNavigationController.self
+            let navigationController = resolver ~> NavigationController.self
             return Router(rootController: navigationController)
         }
 

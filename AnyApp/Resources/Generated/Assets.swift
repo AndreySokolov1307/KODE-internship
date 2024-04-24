@@ -31,6 +31,7 @@ public enum Asset {
   }
   public enum Images {
     public static let avatarStub = ImageAsset(name: "Images/avatarStub")
+    public static let backArrow = ImageAsset(name: "Images/backArrow")
     public static let bankCard = ImageAsset(name: "Images/bankCard")
     public static let card = ImageAsset(name: "Images/card")
     public static let cardGrayBGBig = ImageAsset(name: "Images/cardGrayBGBig")
