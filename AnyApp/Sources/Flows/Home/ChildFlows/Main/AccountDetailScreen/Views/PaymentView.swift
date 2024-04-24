@@ -35,6 +35,7 @@ final class PaymentView: BackgroundPrimary {
             titleLabel.text(props.title)
         }
         .height(68)
+        .layoutMargins(.make(hInsets: 16))
         .onTap { [weak self] in
             self?.props?.onTap?()
         }
@@ -68,5 +69,6 @@ extension PaymentView: ConfigurableView {
         self.props = model
         subviews.forEach { $0.removeFromSuperview() }
         body(with: model).embed(in: self)
+           // .layoutMargins(.make(hInsets: 16))
     }
 }

@@ -16,7 +16,7 @@ final class AccountDetailView: BackgroundPrimary {
 
     override func setup() {
         super.setup()
-        body().embed(in: self, hInset: 16)
+        body().embed(in: self)
     }
 
     private func body() -> UIView {

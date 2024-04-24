@@ -39,7 +39,7 @@ final class InfoView: BackgroundPrimary {
                 .isHidden(!props.hasAccessory)
         }
         .height(56)
-        .layoutMargins(.make(vInsets: 16))
+        .layoutMargins(.make(vInsets: 16, hInsets: 16))
         .onTap { [weak self] in
             self?.props?.onTap?()
         }

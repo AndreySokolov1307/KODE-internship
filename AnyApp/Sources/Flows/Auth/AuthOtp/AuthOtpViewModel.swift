@@ -14,10 +14,7 @@ final class AuthOtpViewModel {
         case userLoggedIn
         case wrongOtp(Int)
     }
-
-    // MARK: - mock OTP
     
-    private let mockOtp: String = "555555"
     private var otpAttemptsLeft = 5
     var onOutput: ((Output) -> Void)?
 
@@ -52,11 +49,13 @@ final class AuthOtpViewModel {
     }
     
     private func isOtpValid(_ otp: String) -> Bool {
-        return otp == mockOtp
+        return otp == configModel.otpCode
     }
 
     private func confirmOtp() {
-        authRequestManager.authConfirm(otpId: configModel.otpId, phone: configModel.phone, otpCode: configModel.otpCode)
+        authRequestManager.authConfirm(otpId: configModel.otpId,
+                                       phone: configModel.phone,
+                                       otpCode: configModel.otpCode)
             .sink(
                 receiveCompletion: { _ in
                     // handle error

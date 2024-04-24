@@ -48,7 +48,7 @@ final class TransactionView: BackgroundPrimary {
                     .text(props.info)
             }
         }
-        .layoutMargins(.make(vInsets: 16))
+        .layoutMargins(.make(vInsets: 16, hInsets: 16))
         .onTap { [weak self] in
             self?.props?.onTap?(props.id)
         }

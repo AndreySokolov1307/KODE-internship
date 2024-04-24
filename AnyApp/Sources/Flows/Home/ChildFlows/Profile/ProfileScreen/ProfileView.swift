@@ -15,14 +15,7 @@ final class ProfileView: BackgroundPrimary {
     }
 
     private func body() -> UIView {
-        VStack {
             tableView
-            Spacer(.px32)
-            ButtonPrimary(title: "Разлогиниться")
-                .onTap { [weak self] in
-                    self?.onLogout?()
-                }
-        }.layoutMargins(.make(hInsets: 16))
     }
 }
 

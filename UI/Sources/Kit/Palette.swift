@@ -24,7 +24,7 @@ public enum Palette {
         public static func backgroundSecondary(forTheme theme: Theme) -> UIColor {
             switch theme {
             case .dark:
-                return UIColor(hex: 0x353F3D)
+                return UIColor(hex: 0x352F3D)
             case .light:
                 return UIColor(hex: 0xFFFFFF)
             }

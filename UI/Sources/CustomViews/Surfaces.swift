@@ -6,6 +6,13 @@ open class BackgroundPrimary: View {
     }
 }
 
+open class BackgroundSecondary: View {
+    override open func setup() {
+        backgroundStyle(.backgroundSecondary)
+        super.setup()
+    }
+}
+
 //open class SurfaceLayer1: View {
 //    override open func setup() {
 //        backgroundStyle(.layer1)
