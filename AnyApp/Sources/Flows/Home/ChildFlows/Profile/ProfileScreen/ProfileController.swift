@@ -23,7 +23,11 @@ final class ProfileController: TemplateViewController<ProfileView> {
     override func setup() {
         super.setup()
         setupBindings()
+        setupNavBar()
         viewModel.handle(.loadProfile)
+    }
+    
+    private func setupNavBar() {
         navigationController?.navigationBar.prefersLargeTitles = false
     }
 

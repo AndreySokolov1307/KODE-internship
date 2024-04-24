@@ -3,6 +3,7 @@
 "support" = "Служба поддержки";
 "logOut" = "Выход";
 "profile" = "Профиль";
+"phonePattern" = "+X (XXX) *** - ** - XX";
 
 //MARK: - AppTheme
 

@@ -79,54 +79,62 @@ final class ProfileViewModel {
             )
         ])))
         
-    DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-        guard let self else { return }
-            self.onOutput?(.content(.init(sections: [
-                .profile(.profile(.init(avatarImage: Asset.Images.avatarStub.image,
-                                        name: "Филлип Ребийяр Олегович",
-                                        phoneNumber: "+7 951 098 98 98 "))),
-                .settings(self.createSettings())
-            ])))
-        }
         
-        let profile = coreRequestManager.coreAccountList()
+        
+//    DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+//        guard let self else { return }
+//            self.onOutput?(.content(.init(sections: [
+//                .profile(.profile(.init(avatarImage: Asset.Images.avatarStub.image,
+//                                        name: "Филлип Ребийяр Олегович",
+//                                        phoneNumber: "+7 951 098 98 98 "))),
+//                .settings(self.createSettings())
+//            ])))
+//        }
+        
+        coreRequestManager.coreProfile()
             .sink { completion in
-                print("Profile COMPLETION",completion)
-            } receiveValue: { responce in
-                print("PROFILE RESPONCE",responce)
+                
+            } receiveValue: { [weak self] responce in
+                guard let self else { return }
+                self.onOutput?(.content(.init(sections: [
+                    .profile(.profile(.init(avatarImage: Asset.Images.avatarStub.image,
+                                            name: responce.fullName,
+                                            phoneNumber: responce.phone))),
+                    .settings(self.createSettings())
+                ])))
             }
             .store(in: &cancellables)
         
-        let accountList = coreRequestManager.coreAccountList()
-            .sink { completion in
-                print("ACCOUNTLIST COMPLETION",completion)
-            } receiveValue: { responce in
-                print("ACCOUNT LIST RESPONCE",responce)
-            }
-            .store(in: &cancellables)
-        
-        let deposutList = coreRequestManager.coreDepositList()
-            .sink { completion in
-                print("DeposutLIST COMPLETION",completion)
-            } receiveValue: { responce in
-                print("DeposiT LIST RESPONCE",responce)
-            }
-            .store(in: &cancellables)
-        
-        let cardID = coreRequestManager.coreCard(id: 2)
-            .sink { completion in
-                print("CARD ID COMPLETION",completion)
-            } receiveValue: { responce in
-                print("CARD ID RESPONCE",responce)
-            }
-            .store(in: &cancellables)
-        
-        let account = coreRequestManager.coreAccount(id: 2)
-            .sink { completion in
-                print("ACCOUNT ID COMPLETION",completion)
-            } receiveValue: { responce in
-                print("ACCOUNT ID RESPONCE",responce)
-            }
-            .store(in: &cancellables)
+//        let accountList = coreRequestManager.coreAccountList()
+//            .sink { completion in
+//                print("ACCOUNTLIST COMPLETION",completion)
+//            } receiveValue: { responce in
+//                print("ACCOUNT LIST RESPONCE",responce)
+//            }
+//            .store(in: &cancellables)
+//
+//        let deposutList = coreRequestManager.coreDepositList()
+//            .sink { completion in
+//                print("DeposutLIST COMPLETION",completion)
+//            } receiveValue: { responce in
+//                print("DeposiT LIST RESPONCE",responce)
+//            }
+//            .store(in: &cancellables)
+//
+//        let cardID = coreRequestManager.coreCard(id: 2)
+//            .sink { completion in
+//                print("CARD ID COMPLETION",completion)
+//            } receiveValue: { responce in
+//                print("CARD ID RESPONCE",responce)
+//            }
+//            .store(in: &cancellables)
+//
+//        let account = coreRequestManager.coreAccount(id: 2)
+//            .sink { completion in
+//                print("ACCOUNT ID COMPLETION",completion)
+//            } receiveValue: { responce in
+//                print("ACCOUNT ID RESPONCE",responce)
+//            }
+//            .store(in: &cancellables)
     }
 }

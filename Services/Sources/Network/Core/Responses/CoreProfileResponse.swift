@@ -8,3 +8,9 @@ public struct CoreProfileResponse: Decodable {
     public let country: String
     public let phone: String
 }
+
+public extension CoreProfileResponse {
+    var fullName: String {
+        firstName + " " + lastName
+    }
+}

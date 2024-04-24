@@ -31,6 +31,7 @@ final class ProfileDetailView: BackgroundPrimary {
     // MARK: - Private methods
 
     private func body(with props: Props) -> UIView {
+        
         VStack(alignment: .center, distribution: .fill) {
             avatarImageView
                 .image(props.avatarImage)
@@ -39,7 +40,7 @@ final class ProfileDetailView: BackgroundPrimary {
                 .text(props.name)
             Spacer(.px4)
             phoneNumberLabel
-                .text(props.phoneNumber)
+                .text(props.formattedPhone)
             Spacer(length: 50)
         }
     }
@@ -56,6 +57,29 @@ extension ProfileDetailView: ConfigurableView {
         let avatarImage: UIImage
         let name: String
         let phoneNumber: String
+        
+        var formattedPhone: String {
+            formatPhone(phoneNumber, with: "+X (XXX) *** - ** - XX", replacingChar: "X", passingChar: "*")
+        }
+        
+        private func formatPhone(_ phone: String, with mask: String, replacingChar: Character,
+                                 passingChar: Character) -> String {
+            let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+            var result = ""
+            var index = numbers.startIndex
+            for ch in mask where index < numbers.endIndex {
+                if ch == replacingChar {
+                    result.append(numbers[index])
+                    index = numbers.index(after: index)
+                } else if ch == passingChar {
+                    result.append(ch)
+                    index = numbers.index(after: index)
+                } else {
+                    result.append(ch)
+                }
+            }
+            return result
+        }
 
         public static func == (lhs: ProfileDetailView.Props, rhs: ProfileDetailView.Props) -> Bool {
             lhs.hashValue == rhs.hashValue
@@ -74,3 +98,4 @@ extension ProfileDetailView: ConfigurableView {
         body(with: model).embed(in: self)
     }
 }
+
