@@ -10,7 +10,7 @@ import UI
 import AppIndependent
 import Services
 
-final class CurrentAccountView: BackgroundPrimary {
+final class AccountView: BackgroundPrimary {
 
     // MARK: - Private Properties
 
@@ -62,7 +62,7 @@ final class CurrentAccountView: BackgroundPrimary {
 
 // MARK: - Configurable
 
-extension CurrentAccountView: ConfigurableView {
+extension AccountView: ConfigurableView {
 
     typealias Model = Props
 
@@ -74,7 +74,7 @@ extension CurrentAccountView: ConfigurableView {
 
         var onTap: IntHandler?
 
-        public static func == (lhs: CurrentAccountView.Props, rhs: CurrentAccountView.Props) -> Bool {
+        public static func == (lhs: AccountView.Props, rhs: AccountView.Props) -> Bool {
             lhs.hashValue == rhs.hashValue
         }
 
@@ -91,7 +91,7 @@ extension CurrentAccountView: ConfigurableView {
         body(with: model).embed(in: self)
     }
 }
-extension CurrentAccountView.Props {
+extension AccountView.Props {
     var textColor: UIColor {
         if String(balance).first != "-" {
             return Palette.Content.accentPrimary

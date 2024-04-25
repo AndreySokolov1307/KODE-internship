@@ -9,18 +9,18 @@ import UI
 import UIKit
 import AppIndependent
 
-final class OTPRepeatView: View {
+final class OtpRepeatView: View {
     enum State {
         case regular
         case timer
     }
     
     var state = State.timer
-    var onRepeatButtonTap: VoidHandler?
+    var onRepeatViewTap: VoidHandler?
     var timer: Timer?
     
     private let label = Label(foregroundStyle: .textSecondary ,fontStyle: .caption1)
-    private let repeatButton = ImageView(image: Asset.Images.repeat.image, foregroundStyle: .contentAccentPrimary)
+    private let repeatView = ImageView(image: Asset.Images.repeat.image, foregroundStyle: .contentAccentPrimary)
     private let defaultTime: Int
     private lazy var timeleft = defaultTime
     
@@ -45,10 +45,10 @@ final class OTPRepeatView: View {
     
     private func body() -> UIView {
         HStack(alignment: .fill, distribution: .fill, spacing: 16) {
-            repeatButton
+            repeatView
                 .onTap { [weak self] in
                     self?.changeState()
-                    self?.onRepeatButtonTap?()
+                    self?.onRepeatViewTap?()
                 }
             label
             FlexibleGroupedSpacer()
@@ -57,7 +57,7 @@ final class OTPRepeatView: View {
     
     public func updateUIWithWrongInputMessage(_ message: String) {
         timer?.invalidate()
-        repeatButton
+        repeatView
             .isHidden(true)
         label
             .text(message)
@@ -67,13 +67,13 @@ final class OTPRepeatView: View {
    private func updateUIWithState() {
         switch state {
         case .regular:
-            repeatButton
+            repeatView
                 .isHidden(false)
             label
                 .text(Entrance.sendOTPAgain)
                 .foregroundStyle(.textPrimary)
         case .timer:
-            repeatButton.isHidden = true
+            repeatView.isHidden = true
             label
                 .foregroundStyle(.textSecondary)
                 .text(Entrance.repeatAfter + timeFormatted(timeleft + 1))
@@ -111,7 +111,7 @@ final class OTPRepeatView: View {
     }
 }
 
-extension OTPRepeatView.State {
+extension OtpRepeatView.State {
     mutating func toggle() {
         self = self == .regular ? .timer : .regular
     }

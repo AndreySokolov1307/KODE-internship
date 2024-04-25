@@ -10,13 +10,12 @@ import UI
 import AppIndependent
 import Services
 
-final class AdditionalAccountView: BackgroundPrimary {
+final class AccountCardView: BackgroundPrimary {
 
     // MARK: - Private Properties
 
     private let nameLabel = Label(foregroundStyle: .textPrimary, fontStyle: .body2)
-    private let cardTypeLabel = Label()
-        .fontStyle(.caption1)
+    private let cardTypeLabel = Label(fontStyle: .caption1)
     private let inputImageView = ImageView(image: Asset.Images.input.image, foregroundStyle: .textTertiary)
         .width(40)
     private let smallCardView = CardView()
@@ -59,7 +58,7 @@ final class AdditionalAccountView: BackgroundPrimary {
 
 // MARK: - Configurable
 
-extension AdditionalAccountView: ConfigurableView {
+extension AccountCardView: ConfigurableView {
 
     typealias Model = Props
 
@@ -74,7 +73,7 @@ extension AdditionalAccountView: ConfigurableView {
 
         var onTap: StringHandler?
 
-        public static func == (lhs: AdditionalAccountView.Props, rhs: AdditionalAccountView.Props) -> Bool {
+        public static func == (lhs: AccountCardView.Props, rhs: AccountCardView.Props) -> Bool {
             lhs.hashValue == rhs.hashValue
         }
 
@@ -91,7 +90,7 @@ extension AdditionalAccountView: ConfigurableView {
         body(with: model).embed(in: self)
     }
 }
-extension AdditionalAccountView.Props {
+extension AccountCardView.Props {
     var foregroundStyle: ForegroundStyle {
         switch status {
         case .deactivated:

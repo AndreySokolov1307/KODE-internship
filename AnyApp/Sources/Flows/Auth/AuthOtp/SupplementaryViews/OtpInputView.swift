@@ -9,7 +9,7 @@ import UI
 import UIKit
 import AppIndependent
 
-final class OTPTextFieldView: View {
+final class OtpInputView: View {
     enum Size {
         case small
         case regular
@@ -24,8 +24,8 @@ final class OTPTextFieldView: View {
     private var input: Input = .regular
     private var isConfigured = false
     private let size: Size
-    private var digitLabels = [OTPLabel]()
-    private var lineView = LineView()
+    private var digitItems = [OtpItem]()
+    private var lineView = OtpLineView()
     private var hStack: HStack!
     var didEnterLastDigit: StringHandler?
     var lineLabelIndex: Int {
@@ -61,14 +61,14 @@ final class OTPTextFieldView: View {
     
     func updateUIWithWrongInput() {
         input = .wrong
-        digitLabels.forEach { labelView in
+        digitItems.forEach { labelView in
             labelView.label.textColor(Palette.Indicator.contentError)
         }
         lineView.lineColor = Palette.Indicator.contentError
     }
     
     private func updateUIWIthRegularInput() {
-        digitLabels.forEach { labelView in
+        digitItems.forEach { labelView in
             labelView.label.textColor(.label)
         }
         lineView.lineColor = Palette.Content.tertiary
@@ -96,26 +96,26 @@ final class OTPTextFieldView: View {
             fillHStack(hStack)
             hStack.insertArrangedSubview(lineView, at: lineLabelIndex)
         }
-        digitLabels.first?.lineView.isHidden = false
+        digitItems.first?.lineView.isHidden = false
     }
     
     private func fillHStack(_ hStack: HStack) {
         for _ in 1...size.numberOfSlots {
-                let label = OTPLabel()
+                let label = OtpItem()
                 hStack
                     .add(arrangedSubview: label)
-                digitLabels.append(label)
+                digitItems.append(label)
         }
     }
     
     @objc private func didChange(_ sender: UITextField) {
-        guard let text = textField.text, text.count <= digitLabels.count else { return }
+        guard let text = textField.text, text.count <= digitItems.count else { return }
         if input == .wrong {
             input = .regular
             updateUIWIthRegularInput()
         }
-        for i in 0 ..< digitLabels.count {
-            let currentLabel = digitLabels[i]
+        for i in 0 ..< digitItems.count {
+            let currentLabel = digitItems[i]
             
             if i < text.count {
                 let index = text.index(text.startIndex, offsetBy: i)
@@ -129,24 +129,24 @@ final class OTPTextFieldView: View {
                 currentLabel.hideLineView()
             }
         }
-        if let firstEmpty = digitLabels.first(where: { $0.label.text == nil || $0.label.text == Common.empty }) {
+        if let firstEmpty = digitItems.first(where: { $0.label.text == nil || $0.label.text == Common.empty }) {
             firstEmpty.showLineView()
         }
                 
-        if text.count == digitLabels.count {
+        if text.count == digitItems.count {
             didEnterLastDigit?(text)
         }
     }
 }
 
-extension OTPTextFieldView: UITextFieldDelegate {
+extension OtpInputView: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let characterCount = textField.text?.count else { return false }
-        return characterCount < digitLabels.count || string == Common.empty
+        return characterCount < digitItems.count || string == Common.empty
     }
 }
 
-extension OTPTextFieldView.Size {
+extension OtpInputView.Size {
     var numberOfSlots: Int {
         switch self {
         case .small:

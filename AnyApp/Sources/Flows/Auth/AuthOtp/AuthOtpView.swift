@@ -5,10 +5,10 @@ import AppIndependent
 final class AuthOtpView: BackgroundPrimary {
 
     var onOtpFilled: StringHandler?
-    let otpTextFieldView = OTPTextFieldView()
+    let otpTextFieldView = OtpInputView()
     private let label = Label(text: Entrance.otpLabel, foregroundStyle: .textPrimary ,fontStyle: .body2)
         .multiline()
-    private let otpRepeatView = OTPRepeatView()
+    private let otpRepeatView = OtpRepeatView()
 
     override func setup() {
         super.setup()

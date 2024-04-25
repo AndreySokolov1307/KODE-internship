@@ -50,24 +50,24 @@ final class MainCellFactory {
         }
     }
     
-    func makeCurrentAccountCell(
+    func makeAccountCell(
         for indexPath: IndexPath,
-        with props: CurrentAccountView.Props
+        with props: AccountView.Props
     ) -> UITableViewCell {
         tableView.dequeueTemplateCell(
-            forView: CurrentAccountView.self,
+            forView: AccountView.self,
             for: indexPath
         ) { view, _ in
             view.configure(with: props)
         }
     }
     
-    func makeAdditionalAccountCell(
+    func makeAccountCardCell(
         for indexPath: IndexPath,
-        with props: AdditionalAccountView.Props
+        with props: AccountCardView.Props
     ) -> UITableViewCell {
         tableView.dequeueTemplateCell(
-            forView: AdditionalAccountView.self,
+            forView: AccountCardView.self,
             for: indexPath
         ) { view, _ in
             view.configure(with: props)

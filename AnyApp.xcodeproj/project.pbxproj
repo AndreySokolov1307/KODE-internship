@@ -92,10 +92,10 @@
 		32420A5B2BCAEC3200BCA8FC /* InfoShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32420A5A2BCAEC3200BCA8FC /* InfoShimmerView.swift */; };
 		3243DE212BD2E20B004DDBBB /* AboutAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3243DE202BD2E20B004DDBBB /* AboutAppView.swift */; };
 		3243DE232BD2E219004DDBBB /* AboutAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3243DE222BD2E218004DDBBB /* AboutAppController.swift */; };
-		324A054A2BC6B1E900AEC9BE /* OTPTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324A05492BC6B1E900AEC9BE /* OTPTextFieldView.swift */; };
-		324A054C2BC6DB2700AEC9BE /* OTPLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324A054B2BC6DB2700AEC9BE /* OTPLabel.swift */; };
-		324A054E2BC6F91300AEC9BE /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324A054D2BC6F91300AEC9BE /* LineView.swift */; };
-		324A05502BC7F8C700AEC9BE /* OTPRepeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324A054F2BC7F8C700AEC9BE /* OTPRepeatView.swift */; };
+		324A054A2BC6B1E900AEC9BE /* OtpInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324A05492BC6B1E900AEC9BE /* OtpInputView.swift */; };
+		324A054C2BC6DB2700AEC9BE /* OtpItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324A054B2BC6DB2700AEC9BE /* OtpItem.swift */; };
+		324A054E2BC6F91300AEC9BE /* OtpLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324A054D2BC6F91300AEC9BE /* OtpLineView.swift */; };
+		324A05502BC7F8C700AEC9BE /* OtpRepeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324A054F2BC7F8C700AEC9BE /* OtpRepeatView.swift */; };
 		3256AC5C2BD59FC900B32EDD /* CardDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3256AC5B2BD59FC900B32EDD /* CardDetailController.swift */; };
 		3256AC5E2BD59FD900B32EDD /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3256AC5D2BD59FD900B32EDD /* CardDetailView.swift */; };
 		3256AC602BD5A05D00B32EDD /* CardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3256AC5F2BD5A05D00B32EDD /* CardDetailViewModel.swift */; };
@@ -106,11 +106,10 @@
 		327018E92BCC0DFE0021E3E0 /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327018E82BCC0DFE0021E3E0 /* ProfileDetailView.swift */; };
 		327018EB2BCC12A00021E3E0 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327018EA2BCC12A00021E3E0 /* InfoView.swift */; };
 		327018ED2BCC694C0021E3E0 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327018EC2BCC694C0021E3E0 /* UIViewController+Alert.swift */; };
-		3277BD642BC5568D0048A3F3 /* PhoneTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277BD632BC5568D0048A3F3 /* PhoneTextFieldView.swift */; };
+		3277BD642BC5568D0048A3F3 /* PhoneInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277BD632BC5568D0048A3F3 /* PhoneInputView.swift */; };
 		3277D4B92BC9867700BD23A9 /* MainViewProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277D4B82BC9867700BD23A9 /* MainViewProps.swift */; };
 		3277D4BB2BC986AF00BD23A9 /* MainDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277D4BA2BC986AF00BD23A9 /* MainDataSource.swift */; };
 		3277D4BD2BC986D500BD23A9 /* MainCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277D4BC2BC986D500BD23A9 /* MainCellFactory.swift */; };
-		3277D4BF2BC986FF00BD23A9 /* TemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277D4BE2BC986FF00BD23A9 /* TemplateView.swift */; };
 		3277D4C12BC9873D00BD23A9 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277D4C02BC9873D00BD23A9 /* HeaderView.swift */; };
 		3277D4C52BC987A400BD23A9 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277D4C42BC987A400BD23A9 /* MainController.swift */; };
 		3277D4C72BC987D200BD23A9 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277D4C62BC987D200BD23A9 /* MainView.swift */; };
@@ -118,11 +117,11 @@
 		3277D4CB2BC9881E00BD23A9 /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277D4CA2BC9881E00BD23A9 /* MainFlowCoordinator.swift */; };
 		3277D4CD2BC9884800BD23A9 /* MainFlowAssemply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277D4CC2BC9884800BD23A9 /* MainFlowAssemply.swift */; };
 		3277D4CF2BC9A2A400BD23A9 /* DepositView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277D4CE2BC9A2A400BD23A9 /* DepositView.swift */; };
-		3277D4D32BC9C1F900BD23A9 /* CurrentAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277D4D22BC9C1F900BD23A9 /* CurrentAccountView.swift */; };
+		3277D4D32BC9C1F900BD23A9 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277D4D22BC9C1F900BD23A9 /* AccountView.swift */; };
 		3277D4D52BC9C2EC00BD23A9 /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3277D4D42BC9C2EC00BD23A9 /* Main.strings */; };
 		3277D4D92BC9C48600BD23A9 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277D4D82BC9C48600BD23A9 /* Main.swift */; };
 		3277D4DB2BC9CFD100BD23A9 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277D4DA2BC9CFD100BD23A9 /* CardView.swift */; };
-		3277D4DE2BC9D78800BD23A9 /* AdditionalAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277D4DD2BC9D78800BD23A9 /* AdditionalAccountView.swift */; };
+		3277D4DE2BC9D78800BD23A9 /* AccountCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277D4DD2BC9D78800BD23A9 /* AccountCardView.swift */; };
 		327C78732BD80B4C000BEC35 /* CorePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327C78722BD80B4C000BEC35 /* CorePath.swift */; };
 		327C78752BD80B6A000BEC35 /* CoreRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327C78742BD80B6A000BEC35 /* CoreRequestManager.swift */; };
 		327C78772BD80C6F000BEC35 /* CoreProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327C78762BD80C6F000BEC35 /* CoreProfileResponse.swift */; };
@@ -507,10 +506,10 @@
 		32420A5A2BCAEC3200BCA8FC /* InfoShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoShimmerView.swift; sourceTree = "<group>"; };
 		3243DE202BD2E20B004DDBBB /* AboutAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppView.swift; sourceTree = "<group>"; };
 		3243DE222BD2E218004DDBBB /* AboutAppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppController.swift; sourceTree = "<group>"; };
-		324A05492BC6B1E900AEC9BE /* OTPTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextFieldView.swift; sourceTree = "<group>"; };
-		324A054B2BC6DB2700AEC9BE /* OTPLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPLabel.swift; sourceTree = "<group>"; };
-		324A054D2BC6F91300AEC9BE /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
-		324A054F2BC7F8C700AEC9BE /* OTPRepeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPRepeatView.swift; sourceTree = "<group>"; };
+		324A05492BC6B1E900AEC9BE /* OtpInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpInputView.swift; sourceTree = "<group>"; };
+		324A054B2BC6DB2700AEC9BE /* OtpItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpItem.swift; sourceTree = "<group>"; };
+		324A054D2BC6F91300AEC9BE /* OtpLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpLineView.swift; sourceTree = "<group>"; };
+		324A054F2BC7F8C700AEC9BE /* OtpRepeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpRepeatView.swift; sourceTree = "<group>"; };
 		3256AC5B2BD59FC900B32EDD /* CardDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailController.swift; sourceTree = "<group>"; };
 		3256AC5D2BD59FD900B32EDD /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		3256AC5F2BD5A05D00B32EDD /* CardDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModel.swift; sourceTree = "<group>"; };
@@ -521,11 +520,10 @@
 		327018E82BCC0DFE0021E3E0 /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
 		327018EA2BCC12A00021E3E0 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		327018EC2BCC694C0021E3E0 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
-		3277BD632BC5568D0048A3F3 /* PhoneTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTextFieldView.swift; sourceTree = "<group>"; };
+		3277BD632BC5568D0048A3F3 /* PhoneInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneInputView.swift; sourceTree = "<group>"; };
 		3277D4B82BC9867700BD23A9 /* MainViewProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewProps.swift; sourceTree = "<group>"; };
 		3277D4BA2BC986AF00BD23A9 /* MainDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDataSource.swift; sourceTree = "<group>"; };
 		3277D4BC2BC986D500BD23A9 /* MainCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCellFactory.swift; sourceTree = "<group>"; };
-		3277D4BE2BC986FF00BD23A9 /* TemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateView.swift; sourceTree = "<group>"; };
 		3277D4C02BC9873D00BD23A9 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		3277D4C42BC987A400BD23A9 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		3277D4C62BC987D200BD23A9 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -533,11 +531,11 @@
 		3277D4CA2BC9881E00BD23A9 /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
 		3277D4CC2BC9884800BD23A9 /* MainFlowAssemply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowAssemply.swift; sourceTree = "<group>"; };
 		3277D4CE2BC9A2A400BD23A9 /* DepositView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositView.swift; sourceTree = "<group>"; };
-		3277D4D22BC9C1F900BD23A9 /* CurrentAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentAccountView.swift; sourceTree = "<group>"; };
+		3277D4D22BC9C1F900BD23A9 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		3277D4D42BC9C2EC00BD23A9 /* Main.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Main.strings; sourceTree = "<group>"; };
 		3277D4D82BC9C48600BD23A9 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		3277D4DA2BC9CFD100BD23A9 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		3277D4DD2BC9D78800BD23A9 /* AdditionalAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalAccountView.swift; sourceTree = "<group>"; };
+		3277D4DD2BC9D78800BD23A9 /* AccountCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCardView.swift; sourceTree = "<group>"; };
 		327C78722BD80B4C000BEC35 /* CorePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorePath.swift; sourceTree = "<group>"; };
 		327C78742BD80B6A000BEC35 /* CoreRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreRequestManager.swift; sourceTree = "<group>"; };
 		327C78762BD80C6F000BEC35 /* CoreProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreProfileResponse.swift; sourceTree = "<group>"; };
@@ -1233,10 +1231,10 @@
 		324A05482BC6B18800AEC9BE /* SupplementaryViews */ = {
 			isa = PBXGroup;
 			children = (
-				324A05492BC6B1E900AEC9BE /* OTPTextFieldView.swift */,
-				324A054B2BC6DB2700AEC9BE /* OTPLabel.swift */,
-				324A054D2BC6F91300AEC9BE /* LineView.swift */,
-				324A054F2BC7F8C700AEC9BE /* OTPRepeatView.swift */,
+				324A05492BC6B1E900AEC9BE /* OtpInputView.swift */,
+				324A054B2BC6DB2700AEC9BE /* OtpItem.swift */,
+				324A054D2BC6F91300AEC9BE /* OtpLineView.swift */,
+				324A054F2BC7F8C700AEC9BE /* OtpRepeatView.swift */,
 			);
 			path = SupplementaryViews;
 			sourceTree = "<group>";
@@ -1274,7 +1272,7 @@
 		3277BD622BC556650048A3F3 /* SupplementaryViews */ = {
 			isa = PBXGroup;
 			children = (
-				3277BD632BC5568D0048A3F3 /* PhoneTextFieldView.swift */,
+				3277BD632BC5568D0048A3F3 /* PhoneInputView.swift */,
 			);
 			path = SupplementaryViews;
 			sourceTree = "<group>";
@@ -1306,11 +1304,10 @@
 			children = (
 				3277D4DC2BC9D2EE00BD23A9 /* SupplementaryViews */,
 				3234DAFB2BCD46C500F347B8 /* HeaderShimmerView.swift */,
-				3277D4BE2BC986FF00BD23A9 /* TemplateView.swift */,
 				3277D4C02BC9873D00BD23A9 /* HeaderView.swift */,
 				3277D4CE2BC9A2A400BD23A9 /* DepositView.swift */,
-				3277D4D22BC9C1F900BD23A9 /* CurrentAccountView.swift */,
-				3277D4DD2BC9D78800BD23A9 /* AdditionalAccountView.swift */,
+				3277D4D22BC9C1F900BD23A9 /* AccountView.swift */,
+				3277D4DD2BC9D78800BD23A9 /* AccountCardView.swift */,
 				3234DAFD2BCD472000F347B8 /* AccountShimmerView.swift */,
 			);
 			path = Views;
@@ -2556,16 +2553,15 @@
 				AB77ED43D50E241EEC4A4BCC /* AppCoordinator.swift in Sources */,
 				3277D4B92BC9867700BD23A9 /* MainViewProps.swift in Sources */,
 				3256AC602BD5A05D00B32EDD /* CardDetailViewModel.swift in Sources */,
-				3277D4BF2BC986FF00BD23A9 /* TemplateView.swift in Sources */,
 				3277D4DB2BC9CFD100BD23A9 /* CardView.swift in Sources */,
-				3277D4DE2BC9D78800BD23A9 /* AdditionalAccountView.swift in Sources */,
+				3277D4DE2BC9D78800BD23A9 /* AccountCardView.swift in Sources */,
 				96D4E3BDD923E897058D1118 /* AppDelegate.swift in Sources */,
 				10E588222BC0577A00D05347 /* AuthOtpView.swift in Sources */,
 				3256AC682BD5A46C00B32EDD /* CardInfoView.swift in Sources */,
 				322D0A162BD90E6500C4E258 /* AuthOtpConfigModel.swift in Sources */,
 				10E588092BC049D300D05347 /* HomeFlowAssembly.swift in Sources */,
 				322955402BD022C3002C4E65 /* AccountDetailCellFactory.swift in Sources */,
-				324A054E2BC6F91300AEC9BE /* LineView.swift in Sources */,
+				324A054E2BC6F91300AEC9BE /* OtpLineView.swift in Sources */,
 				3243DE212BD2E20B004DDBBB /* AboutAppView.swift in Sources */,
 				10E588122BC04F4D00D05347 /* AuthPhoneController.swift in Sources */,
 				3FBF1D8B7572FCB2720E545B /* Assets.swift in Sources */,
@@ -2590,8 +2586,8 @@
 				322D0A1D2BD9D06000C4E258 /* NavigationController.swift in Sources */,
 				32FA06572BD28AA800819AF8 /* AppThemeView.swift in Sources */,
 				3277D4C12BC9873D00BD23A9 /* HeaderView.swift in Sources */,
-				3277D4D32BC9C1F900BD23A9 /* CurrentAccountView.swift in Sources */,
-				3277BD642BC5568D0048A3F3 /* PhoneTextFieldView.swift in Sources */,
+				3277D4D32BC9C1F900BD23A9 /* AccountView.swift in Sources */,
+				3277BD642BC5568D0048A3F3 /* PhoneInputView.swift in Sources */,
 				32E0D78C2BD4618A0013C556 /* PaymentView.swift in Sources */,
 				510DA1D20162F8C3A434FAA6 /* AuthFlowCoordinator.swift in Sources */,
 				81EE6CA3925BD588AB50E959 /* Common.swift in Sources */,
@@ -2604,12 +2600,12 @@
 				322955362BCFDD7D002C4E65 /* AccountDetailController.swift in Sources */,
 				322955382BCFDD8E002C4E65 /* AccountDetailView.swift in Sources */,
 				3229553C2BD0229B002C4E65 /* AccountDetailDataSource.swift in Sources */,
-				324A05502BC7F8C700AEC9BE /* OTPRepeatView.swift in Sources */,
+				324A05502BC7F8C700AEC9BE /* OtpRepeatView.swift in Sources */,
 				10E588322BC3F53D00D05347 /* ProfileViewModel.swift in Sources */,
 				10E588072BC049C900D05347 /* AuthFlowAssembly.swift in Sources */,
 				322955492BD090FA002C4E65 /* CircleView.swift in Sources */,
 				3234DAFC2BCD46C500F347B8 /* HeaderShimmerView.swift in Sources */,
-				324A054C2BC6DB2700AEC9BE /* OTPLabel.swift in Sources */,
+				324A054C2BC6DB2700AEC9BE /* OtpItem.swift in Sources */,
 				10E588162BC0512600D05347 /* AuthPhoneViewModel.swift in Sources */,
 				ED73A7BF79BDBE243B837434 /* LibraryManager.swift in Sources */,
 				4CBA1DF480311E3BEBDF46D9 /* Profile.swift in Sources */,
@@ -2622,7 +2618,7 @@
 				3234DAFE2BCD472000F347B8 /* AccountShimmerView.swift in Sources */,
 				321B0B4E2BD15C98001C3C00 /* Plurals.swift in Sources */,
 				122824B82AA65A48560D5030 /* StartUpAssembly.swift in Sources */,
-				324A054A2BC6B1E900AEC9BE /* OTPTextFieldView.swift in Sources */,
+				324A054A2BC6B1E900AEC9BE /* OtpInputView.swift in Sources */,
 				32420A552BCADFE200BCA8FC /* ProfileDataSource.swift in Sources */,
 				3277D4CD2BC9884800BD23A9 /* MainFlowAssemply.swift in Sources */,
 				3277D4CB2BC9881E00BD23A9 /* MainFlowCoordinator.swift in Sources */,

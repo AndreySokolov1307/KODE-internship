@@ -6,7 +6,7 @@ final class AuthPhoneView: BackgroundPrimary {
 
     var onAuth: StringHandler?
     private let logo = ImageView(image: Asset.Images.logoSmall.image, foregroundStyle: .contentAccentTertiary)
-    var textFieldView = PhoneTextFieldView()
+    var textFieldView = PhoneInputView()
     lazy var logInButton = ButtonPrimary(title: Entrance.enter)
         .onTap { [weak self] in
             guard let number = self?.textFieldView.number else { return }
@@ -30,7 +30,7 @@ final class AuthPhoneView: BackgroundPrimary {
         .layoutMargins(.make(hInsets: 16))
     }
     
-    func handleInput(_ input: PhoneTextFieldView.Input) {
+    func handleInput(_ input: PhoneInputView.Input) {
         textFieldView.updateUIWithInput(input)
     }
 }

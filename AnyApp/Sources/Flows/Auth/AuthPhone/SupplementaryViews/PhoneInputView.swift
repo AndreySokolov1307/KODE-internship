@@ -9,7 +9,7 @@ import UI
 import UIKit
 import AppIndependent
 
-final class PhoneTextFieldView: View {
+final class PhoneInputView: View {
     enum Size {
         case medium
         case large
@@ -80,7 +80,7 @@ final class PhoneTextFieldView: View {
     }
 }
 
-extension PhoneTextFieldView.Size {    
+extension PhoneInputView.Size {    
     var height: CGFloat {
         switch self {
         case .medium:

@@ -8,7 +8,7 @@
 import UI
 import UIKit
 
-final class LineView: View {
+final class OtpLineView: View {
     
     var lineColor: UIColor? {
         didSet {

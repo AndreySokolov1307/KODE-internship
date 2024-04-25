@@ -39,6 +39,7 @@ final class AuthOtpController: TemplateViewController<AuthOtpView> {
                 self?.onEvent?(.userLoggedIn)
             case .wrongOtp(let otpAttemptsLeft):
                 self?.rootView.updateUIWithAttemptsLeft(otpAttemptsLeft)
+                //TODO: move to view model
                 if otpAttemptsLeft <= 0 {
                     self?.showLogoutAllert()
                 }
@@ -47,11 +48,12 @@ final class AuthOtpController: TemplateViewController<AuthOtpView> {
     }
     
     private func showLogoutAllert() {
-        let logOutAction = UIAlertAction(title: Common.quit,
-                                         style: .default,
-                                         handler: { _ in
-            self.viewModel.handle(.logout)
-        })
+        let logOutAction = UIAlertAction(
+            title: Common.quit,
+            style: .default,
+            handler: { _ in
+                self.viewModel.handle(.logout)
+            })
         presentAlert(title: Entrance.Error.wrongInputTitle,
                      message: Entrance.Error.worngInputMessage,
                      actions: [logOutAction])

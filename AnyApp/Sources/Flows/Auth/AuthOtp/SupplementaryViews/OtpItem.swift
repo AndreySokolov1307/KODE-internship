@@ -8,7 +8,7 @@
 import UI
 import UIKit
 
-final class OTPLabel: View {
+final class OtpItem: View {
     enum Size {
         case regular
     }
@@ -58,7 +58,7 @@ final class OTPLabel: View {
     }
 }
 
-extension OTPLabel.Size {
+extension OtpItem.Size {
     var height: CGFloat {
         switch self {
         case .regular:

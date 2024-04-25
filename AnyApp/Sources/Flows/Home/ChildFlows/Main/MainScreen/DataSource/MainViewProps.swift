@@ -26,8 +26,8 @@ struct MainViewProps {
         case accountShimmer(_ identifier: String = UUID().uuidString)
         case headerShimmer(_ identifier: String = UUID().uuidString)
         case header(HeaderView.Props)
-        case account(CurrentAccountView.Props)
-        case card(AdditionalAccountView.Props)
+        case account(AccountView.Props)
+        case card(AccountCardView.Props)
         case deposit(DepostiView.Props)
     }
 
