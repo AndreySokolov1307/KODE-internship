@@ -35,6 +35,7 @@ final class InfoShimmerView: BackgroundPrimary {
             Spacer(.px16)
             infoView
         }
+        .layoutMargins(.make(hInsets: 16))
         .height(56)
     }
 }

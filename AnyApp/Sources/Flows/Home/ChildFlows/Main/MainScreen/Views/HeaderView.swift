@@ -54,6 +54,7 @@ extension HeaderView: ConfigurableView {
 
     public func configure(with model: Props) {
         titleLabel.text(model.title)
+        self.layoutIfNeeded()
     }
 }
 

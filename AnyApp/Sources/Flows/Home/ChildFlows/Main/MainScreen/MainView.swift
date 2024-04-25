@@ -20,6 +20,7 @@ final class MainView: BackgroundPrimary {
     override func setup() {
         super.setup()
         body().embed(in: self)
+        tableView
         setupButton()
     }
 

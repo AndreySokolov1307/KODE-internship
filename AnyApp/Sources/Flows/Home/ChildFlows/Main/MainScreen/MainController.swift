@@ -25,7 +25,7 @@ final class MainController: TemplateViewController<MainView> {
         self.init()
         self.viewModel = viewModel
     }
-
+    
     override func setup() {
         super.setup()
         setupBindings()
