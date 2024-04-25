@@ -53,10 +53,12 @@ final class OtpInputView: View {
         super.setup()
         configureLabels()
         textField.delegate = self
+        self.embed(subview: textField)
         body().embed(in: self)
         self.onTap { [weak self] in
             self?.textField.shouldBecomeFirstResponder()
         }
+        textField.isHidden(true)
     }
     
     func updateUIWithWrongInput() {
@@ -75,7 +77,7 @@ final class OtpInputView: View {
    }
     
     private func body() -> UIView {
-        textField.embed(subview: hStack)
+         hStack
     }
     
     private func configureLabels() {
