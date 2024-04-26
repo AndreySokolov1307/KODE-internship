@@ -1,10 +1,3 @@
-//
-//  CardDetailController.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 21.04.2024.
-//
-
 import UI
 import UIKit
 
@@ -23,19 +16,24 @@ final class CardDetailController: TemplateViewController<CardDetailView> {
         super.setup()
         setupBindings()
         configureNavigationItem()
-        viewModel.handle(.transactions)
+        viewModel.handle(.loadData)
     }
     
     private func configureNavigationItem() {
-        navigationItem.title = "Карты"
+        navigationItem.title = Main.CardDetail.title
         navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     private func setupBindings() {
+        rootView.onRefresh = { [weak self] in
+            self?.viewModel.handle(.refreshData)
+        }
+        
         viewModel.onOutput = { [weak self] output in
             guard let self else { return }
             switch output {
             case .content(let props):
+                self.rootView.endRefreshing()
                 self.rootView.configured(with: props)
             }
         }

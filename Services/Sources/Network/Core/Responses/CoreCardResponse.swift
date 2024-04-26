@@ -4,12 +4,12 @@ public struct CoreCardResponse: Decodable {
 
     public enum Status: String, Decodable {
         case active = "Активна"
+        case deactivated = "Деактивирована"
     }
 
     public enum PaymentSystem: String, Decodable {
         case visa = "VISA"
         case masterCard = "MasterCard"
-        case mir = "МИР"
     }
 
     public let id: Int

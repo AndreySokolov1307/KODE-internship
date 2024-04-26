@@ -55,7 +55,7 @@ final class AccountView: BackgroundPrimary {
         }
         .layoutMargins(.make(vInsets: 16, hInsets: 16))
         .onTap { [weak self] in
-            self?.props?.onTap?(props.id)
+            self?.props?.onTap?()
         }
     }
 }
@@ -72,7 +72,7 @@ extension AccountView: ConfigurableView {
         let balance: Int
         let currency: Currency
 
-        var onTap: IntHandler?
+        var onTap: VoidHandler?
 
         public static func == (lhs: AccountView.Props, rhs: AccountView.Props) -> Bool {
             lhs.hashValue == rhs.hashValue

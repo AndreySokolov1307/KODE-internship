@@ -1,10 +1,3 @@
-//
-//  InfoShimmerView.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 13.04.2024.
-//
-
 import UIKit
 import UI
 import AppIndependent

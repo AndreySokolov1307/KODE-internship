@@ -45,8 +45,10 @@ final class MainFlowAssembly: Assembly, Identifiable {
             return AccountDetailController(viewModel: viewModel)
         }
         
-        container.register(CardDetailController.self) { _ in
-            let viewModel = CardDetailViewModel()
+        container.register(CardDetailController.self) { resolver, configModel in
+            let viewModel = CardDetailViewModel(
+                configModel: configModel,
+                coreRequestManager: (resolver ~> NetworkFactory.self).makeCoreRequestManager())
             return CardDetailController(viewModel: viewModel)
         }
     }

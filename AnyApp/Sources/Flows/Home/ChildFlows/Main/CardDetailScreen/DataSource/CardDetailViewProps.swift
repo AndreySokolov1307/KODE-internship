@@ -25,6 +25,10 @@ struct CardDetailViewProps {
     }
 
     enum Item: Hashable {
+        case headerShimmer(_ identifier: String = UUID().uuidString)
+        case cardShimmer(_ identifier: String = UUID().uuidString)
+        case infoTabShimmer(_ identifier: String = UUID().uuidString)
+        case transactionShimmer(_ identifier: String = UUID().uuidString)
         case header(HeaderView.Props)
         case card(CardInfoView.Props)
         case tab(InfoTabView.Props)

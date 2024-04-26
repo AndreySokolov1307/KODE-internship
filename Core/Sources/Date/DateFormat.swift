@@ -7,6 +7,7 @@ public enum DateFormat: CaseIterable {
     case timeWithSeconds
     case defaultServer
     case dayTime
+    case monthYearShort
 
     public var dateFormat: String {
         switch self {
@@ -17,7 +18,7 @@ public enum DateFormat: CaseIterable {
         case .dayMonthShortYear:
             return "dd.MM.yy"
         case .iso:
-            return "dd.MM.yyyy HH:mm:ss"
+            return "yyyy-MM-dd'T'HH:mm:ssZ"
         case .time:
             return "HH:mm"
         case .timeWithSeconds:
@@ -26,6 +27,8 @@ public enum DateFormat: CaseIterable {
             return "dd.MM.yyyy"
         case .dayTime:
             return "dd MMMM, HH:mm"
+        case .monthYearShort:
+            return "MM/yy"
         }
     }
 

@@ -12,7 +12,7 @@ public protocol CoreRequestManagerAbstract: AnyObject {
 
     func coreAccount(id: Int) -> AppPublisher<CoreAccountResponse>
 
-    func coreCard(id: Int) -> AppPublisher<CoreCardResponse>
+    func coreCard(id: String) -> AppPublisher<CoreCardResponse>
 }
 
 final class CoreRequestManager: NetworkRequestManager, CoreRequestManagerAbstract {
@@ -46,7 +46,7 @@ final class CoreRequestManager: NetworkRequestManager, CoreRequestManagerAbstrac
         )
     }
 
-    func coreCard(id: Int) -> Core.AppPublisher<CoreCardResponse> {
+    func coreCard(id: String) -> Core.AppPublisher<CoreCardResponse> {
         request(
             path: CorePath.card,
             pathParams: ["cardId": id,

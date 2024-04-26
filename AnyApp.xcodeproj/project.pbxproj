@@ -136,6 +136,8 @@
 		32A2609D2BDB22B4004C7DCB /* String+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A2609C2BDB22B4004C7DCB /* String+Formatter.swift */; };
 		32A2609F2BDB2A98004C7DCB /* AccountInfoShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A2609E2BDB2A98004C7DCB /* AccountInfoShimmerView.swift */; };
 		32A260A12BDB2C72004C7DCB /* InfoTabShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A260A02BDB2C72004C7DCB /* InfoTabShimmerView.swift */; };
+		32CDAD142BDBCDE80001B091 /* CardDetailConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CDAD132BDBCDE80001B091 /* CardDetailConfigModel.swift */; };
+		32CDAD162BDBF9D10001B091 /* CardInfoShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CDAD152BDBF9D10001B091 /* CardInfoShimmerView.swift */; };
 		32E0D78C2BD4618A0013C556 /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E0D78B2BD4618A0013C556 /* PaymentView.swift */; };
 		32FA06552BD28A9D00819AF8 /* AppThemeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA06542BD28A9D00819AF8 /* AppThemeController.swift */; };
 		32FA06572BD28AA800819AF8 /* AppThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA06562BD28AA800819AF8 /* AppThemeView.swift */; };
@@ -555,6 +557,8 @@
 		32A2609C2BDB22B4004C7DCB /* String+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Formatter.swift"; sourceTree = "<group>"; };
 		32A2609E2BDB2A98004C7DCB /* AccountInfoShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoShimmerView.swift; sourceTree = "<group>"; };
 		32A260A02BDB2C72004C7DCB /* InfoTabShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTabShimmerView.swift; sourceTree = "<group>"; };
+		32CDAD132BDBCDE80001B091 /* CardDetailConfigModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailConfigModel.swift; sourceTree = "<group>"; };
+		32CDAD152BDBF9D10001B091 /* CardInfoShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoShimmerView.swift; sourceTree = "<group>"; };
 		32E0D78B2BD4618A0013C556 /* PaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
 		32FA06542BD28A9D00819AF8 /* AppThemeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppThemeController.swift; sourceTree = "<group>"; };
 		32FA06562BD28AA800819AF8 /* AppThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppThemeView.swift; sourceTree = "<group>"; };
@@ -1260,6 +1264,7 @@
 				3256AC5B2BD59FC900B32EDD /* CardDetailController.swift */,
 				3256AC5D2BD59FD900B32EDD /* CardDetailView.swift */,
 				3256AC5F2BD5A05D00B32EDD /* CardDetailViewModel.swift */,
+				32CDAD132BDBCDE80001B091 /* CardDetailConfigModel.swift */,
 			);
 			path = CardDetailScreen;
 			sourceTree = "<group>";
@@ -1278,6 +1283,7 @@
 			isa = PBXGroup;
 			children = (
 				3256AC672BD5A46C00B32EDD /* CardInfoView.swift */,
+				32CDAD152BDBF9D10001B091 /* CardInfoShimmerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2602,6 +2608,7 @@
 				322D0A1D2BD9D06000C4E258 /* NavigationController.swift in Sources */,
 				32FA06572BD28AA800819AF8 /* AppThemeView.swift in Sources */,
 				3277D4C12BC9873D00BD23A9 /* HeaderView.swift in Sources */,
+				32CDAD162BDBF9D10001B091 /* CardInfoShimmerView.swift in Sources */,
 				3277D4D32BC9C1F900BD23A9 /* AccountView.swift in Sources */,
 				3277BD642BC5568D0048A3F3 /* PhoneInputView.swift in Sources */,
 				32E0D78C2BD4618A0013C556 /* PaymentView.swift in Sources */,
@@ -2617,6 +2624,7 @@
 				322955362BCFDD7D002C4E65 /* AccountDetailController.swift in Sources */,
 				322955382BCFDD8E002C4E65 /* AccountDetailView.swift in Sources */,
 				3229553C2BD0229B002C4E65 /* AccountDetailDataSource.swift in Sources */,
+				32CDAD142BDBCDE80001B091 /* CardDetailConfigModel.swift in Sources */,
 				324A05502BC7F8C700AEC9BE /* OtpRepeatView.swift in Sources */,
 				10E588322BC3F53D00D05347 /* ProfileViewModel.swift in Sources */,
 				10E588072BC049C900D05347 /* AuthFlowAssembly.swift in Sources */,

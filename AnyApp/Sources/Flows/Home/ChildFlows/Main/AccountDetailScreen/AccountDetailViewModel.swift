@@ -12,7 +12,7 @@ final class AccountDetailViewModel {
     }
     
     enum Input {
-        case refresh
+        case refreshData
         case loadData
     }
     
@@ -61,6 +61,8 @@ final class AccountDetailViewModel {
     
     var onOutput: ((Output) -> Void)?
     
+    // MARK: - Init
+    
     init(configModel: ConfigModel,
          coreRequestManager: CoreRequestManagerAbstract) {
         self.configModel = configModel
@@ -74,7 +76,7 @@ final class AccountDetailViewModel {
         case .loadData:
             sendShimmerSections()
             loadData()
-        case .refresh:
+        case .refreshData:
             loadData()
         }
     }
@@ -159,18 +161,18 @@ extension AccountDetailViewModel {
             title: "Июнь 2021")),
         .transaction(.init(
             type: .payment,
-            balance: Main.AccountDetail.mockBalance1,
-            info: Main.AccountDetail.mockInfo1,
+            transaction: -1500,
+            info: Main.Mock.transaction1,
             date: Date() )),
         .transaction(.init(
             type: .payment,
-            balance: Main.AccountDetail.mockBalance2,
-            info: Main.AccountDetail.mockInfo2,
+            transaction: +15000,
+            info: Main.Mock.transaction2,
             date: Date())),
         .transaction(.init(
             type: .transfer,
-            balance: Main.AccountDetail.mockBalance3,
-            info: Main.AccountDetail.mockInfo3,
+            transaction: -6000.8,
+            info: Main.Mock.transaction3,
             date: Date()))
     ])
 }

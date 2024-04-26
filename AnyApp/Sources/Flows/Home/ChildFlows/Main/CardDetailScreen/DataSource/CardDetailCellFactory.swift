@@ -20,6 +20,36 @@ final class CardDetailCellFactory {
     init(tableView: BaseTableView) {
         self.tableView = tableView
     }
+    
+    // MARK: - Common
+    
+    func makeCardInfoShimmer(for indexPath: IndexPath) -> UITableViewCell {
+        tableView.dequeueTemplateCell(
+            forView: CardInfoShimmerView.self,
+            for: indexPath
+        )
+    }
+    
+    func makeTransactionShimmer(for indexPath: IndexPath) -> UITableViewCell {
+        tableView.dequeueTemplateCell(
+            forView: AccountShimmerView.self,
+            for: indexPath
+        )
+    }
+    
+    func makeInfoTabShimmer(for indexPath: IndexPath) -> UITableViewCell {
+        tableView.dequeueTemplateCell(
+            forView: InfoTabShimmerView.self,
+            for: indexPath
+        )
+    }
+    
+    func makeHeaderShimmer(for indexPath: IndexPath) -> UITableViewCell {
+        tableView.dequeueTemplateCell(
+            forView: HeaderShimmerView.self,
+            for: indexPath
+        )
+    }
 
     // MARK: - Cells
 

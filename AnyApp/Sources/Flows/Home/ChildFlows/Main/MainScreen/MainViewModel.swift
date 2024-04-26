@@ -10,7 +10,7 @@ final class MainViewModel {
     enum Output {
         case content(Props)
         case accountDetail(AccountDetailConfigModel)
-        case cardDetail(String)
+        case cardDetail(CardDetailConfigModel)
     }
 
     enum Input {
@@ -60,9 +60,9 @@ final class MainViewModel {
                 .init(id: account.accountId,
                       balance: account.balance,
                       currency: account.currency,
-                      onTap: { id in
+                      onTap: { [weak self] in
                           let configModel = AccountDetailConfigModel(id: account.accountId)
-                          self.onOutput?(.accountDetail(configModel))
+                          self?.onOutput?(.accountDetail(configModel))
                       }))
             accountItems.append(item)
             
@@ -74,8 +74,9 @@ final class MainViewModel {
                           status: card.status,
                           cardNumber: card.number,
                           paymentSystem: card.paymentSystem,
-                          onTap: { id in
-                              self.onOutput?(.cardDetail(card.cardId))
+                          onTap: { [weak self] in
+                              let configModel = CardDetailConfigModel(cardId: card.cardId)
+                              self?.onOutput?(.cardDetail(configModel))
                           }))
                 accountItems.append(item)
             }

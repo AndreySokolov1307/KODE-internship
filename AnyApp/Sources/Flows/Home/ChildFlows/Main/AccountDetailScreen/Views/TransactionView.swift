@@ -1,13 +1,7 @@
-//
-//  TransactionView.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 17.04.2024.
-//
-
 import UIKit
 import UI
 import AppIndependent
+import Services
 
 final class TransactionView: BackgroundPrimary {
     
@@ -41,7 +35,7 @@ final class TransactionView: BackgroundPrimary {
                         .text(props.dateString)
                     FlexibleSpacer()
                     balanceLabel
-                        .text(props.balance)
+                        .text(props.balanceString)
                         .foregroundStyle(props.balanceForgroundStyle)
                 }
                 infoLabel
@@ -70,7 +64,8 @@ extension TransactionView: ConfigurableView {
         
         let id: String = UUID().uuidString
         let type: TransactionType
-        let balance: String
+        let currency: Currency = .rub
+        let transaction: Double
         let info: String
         let date: Date
 
@@ -82,7 +77,7 @@ extension TransactionView: ConfigurableView {
 
         public func hash(into hasher: inout Hasher) {
             hasher.combine(id)
-            hasher.combine(balance)
+            hasher.combine(transaction)
             hasher.combine(type)
             hasher.combine(info)
             hasher.combine(date)
@@ -99,7 +94,7 @@ extension TransactionView: ConfigurableView {
 
 extension TransactionView.Props {
     var balanceForgroundStyle: ForegroundStyle {
-        if balance.first != "-" {
+        if String(transaction).first != "-" {
             return .indicatorContentDone
         } else {
             return .indicatorContentError
@@ -110,6 +105,15 @@ extension TransactionView.Props {
         let dateFormatter = DateFormatter()
         dateFormatter.format = .dayTime
         return dateFormatter.string(from: date)
+    }
+    
+    var balanceString: String {
+        let string = transaction.formatted(.currency(code: currency.rawValue))
+        if String(transaction).first != "-" {
+            return "+\(string)"
+        } else {
+            return string
+        }
     }
 }
 

@@ -31,22 +31,38 @@ public enum Main {
     public static let jkh = Main.tr("Main", "accountDetail.jkh", fallback: "ЖКХ")
     /// Привязанные карты
     public static let linkedCards = Main.tr("Main", "accountDetail.linkedCards", fallback: "Привязанные карты")
-    /// -1 500,00
-    public static let mockBalance1 = Main.tr("Main", "accountDetail.mockBalance1", fallback: "-1 500,00")
-    /// +15 000,00
-    public static let mockBalance2 = Main.tr("Main", "accountDetail.mockBalance2", fallback: "+15 000,00")
-    /// -6 000,00
-    public static let mockBalance3 = Main.tr("Main", "accountDetail.mockBalance3", fallback: "-6 000,00")
-    /// Оплата ООО ЯнтарьЭнерго
-    public static let mockInfo1 = Main.tr("Main", "accountDetail.mockInfo1", fallback: "Оплата ООО ЯнтарьЭнерго")
-    /// Зачисление зарплаты
-    public static let mockInfo2 = Main.tr("Main", "accountDetail.mockInfo2", fallback: "Зачисление зарплаты")
-    /// Перевод Александру Олеговичу С
-    public static let mockInfo3 = Main.tr("Main", "accountDetail.mockInfo3", fallback: "Перевод Александру Олеговичу С")
     /// Переименовать счет
     public static let renameAccount = Main.tr("Main", "accountDetail.renameAccount", fallback: "Переименовать счет")
     /// Реквезиты счета
     public static let requisites = Main.tr("Main", "accountDetail.requisites", fallback: "Реквезиты счета")
+  }
+  public enum CardDetail {
+    /// Заблокировать карту
+    public static let block = Main.tr("Main", "cardDetail.block", fallback: "Заблокировать карту")
+    /// Мобильная связь
+    public static let cellular = Main.tr("Main", "cardDetail.cellular", fallback: "Мобильная связь")
+    /// Информация о карте
+    public static let info = Main.tr("Main", "cardDetail.info", fallback: "Информация о карте")
+    /// Интернет
+    public static let internet = Main.tr("Main", "cardDetail.internet", fallback: "Интернет")
+    /// Выпустить карту
+    public static let issue = Main.tr("Main", "cardDetail.issue", fallback: "Выпустить карту")
+    /// ЖКХ
+    public static let jkh = Main.tr("Main", "cardDetail.jkh", fallback: "ЖКХ")
+    /// Переименовать карту
+    public static let rename = Main.tr("Main", "cardDetail.rename", fallback: "Переименовать карту")
+    /// Реквезиты счета
+    public static let requisites = Main.tr("Main", "cardDetail.requisites", fallback: "Реквезиты счета")
+    /// Карты
+    public static let title = Main.tr("Main", "cardDetail.title", fallback: "Карты")
+  }
+  public enum Mock {
+    /// Оплата ООО ЯнтарьЭнерго
+    public static let transaction1 = Main.tr("Main", "mock.transaction1", fallback: "Оплата ООО ЯнтарьЭнерго")
+    /// Зачисление зарплаты
+    public static let transaction2 = Main.tr("Main", "mock.transaction2", fallback: "Зачисление зарплаты")
+    /// Перевод Александру Олеговичу С test test test test
+    public static let transaction3 = Main.tr("Main", "mock.transaction3", fallback: "Перевод Александру Олеговичу С test test test test")
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length

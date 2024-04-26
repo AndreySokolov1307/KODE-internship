@@ -5,6 +5,7 @@
 "openNewAccount" = "Открыть новый счет или продукт";
 
 // MARK: - Account Detail
+
 "accountDetail.jkh" = "ЖКХ";
 "accountDetail.cellular" = "Мобильная связь";
 "accountDetail.internet" = "Интернет";
@@ -13,10 +14,20 @@
 "accountDetail.requisites" = "Реквезиты счета";
 "accountDetail.closeAccount" = "Закрыть счет";
 
-"accountDetail.mockBalance1" = "-1 500,00";
-"accountDetail.mockBalance2" = "+15 000,00";
-"accountDetail.mockBalance3" = "-6 000,00";
-"accountDetail.mockInfo1" = "Оплата ООО ЯнтарьЭнерго";
-"accountDetail.mockInfo2" = "Зачисление зарплаты";
-"accountDetail.mockInfo3" = "Перевод Александру Олеговичу С";
+// MARk: - Card Detail
 
+"cardDetail.title" = "Карты";
+"cardDetail.jkh" = "ЖКХ";
+"cardDetail.cellular" = "Мобильная связь";
+"cardDetail.internet" = "Интернет";
+"cardDetail.rename" = "Переименовать карту";
+"cardDetail.requisites" = "Реквезиты счета";
+"cardDetail.info" = "Информация о карте";
+"cardDetail.issue" = "Выпустить карту";
+"cardDetail.block" = "Заблокировать карту";
+
+//MARK: - Mock
+
+"mock.transaction1" = "Оплата ООО ЯнтарьЭнерго";
+"mock.transaction2" = "Зачисление зарплаты";
+"mock.transaction3" = "Перевод Александру Олеговичу С test test test test";

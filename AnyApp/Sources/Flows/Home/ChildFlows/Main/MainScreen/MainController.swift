@@ -14,7 +14,7 @@ final class MainController: TemplateViewController<MainView> {
     
     enum Event {
         case accountDetail(AccountDetailConfigModel)
-        case cardDetail
+        case cardDetail(CardDetailConfigModel)
     }
 
     var onEvent: ((Event) -> Void)?
@@ -45,12 +45,12 @@ final class MainController: TemplateViewController<MainView> {
                 self?.rootView.configured(with: props)
             case .accountDetail(let configModel):
                 self?.onEvent?(.accountDetail(configModel))
-            case .cardDetail:
-                self?.onEvent?(.cardDetail)
+            case .cardDetail(let configModel):
+                self?.onEvent?(.cardDetail(configModel))
             }
         }
 
-        rootView.onNewProduct = { [weak self] in
+        rootView.onNewProduct = { 
             SnackCenter.shared.showSnack(withProps: .init(message: "!New Product"))
         }
     }

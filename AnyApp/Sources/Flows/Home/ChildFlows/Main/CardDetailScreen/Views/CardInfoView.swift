@@ -1,19 +1,13 @@
-//
-//  CardInfoView.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 21.04.2024.
-//
-
 import UIKit
 import UI
 import AppIndependent
+import Services
 
 final class CardInfoView: View {
     
     private let cardNameLabel = Label(fontStyle: .body2)
         .textColor(Asset.Colors.alwaysWhite.color)
-    private let cardTypeLabel = Label(foregroundStyle: .textSecondary, fontStyle: .caption2)
+    private let cardTypeLabel = Label(fontStyle: .caption2)
     private let cardBalanceLabel = Label(fontStyle: .subtitle2)
         .textColor(Asset.Colors.alwaysWhite.color)
     private let cardNumberLabel = Label(foregroundStyle: .textSecondary, fontStyle: .caption1)
@@ -47,20 +41,21 @@ final class CardInfoView: View {
                     .image(props.paymentSystemImage)
                 VStack(alignment: .leading, distribution: .fill, spacing: 4) {
                     cardNameLabel
-                        .text(props.cardNumberText)
+                        .text(props.name)
                     cardTypeLabel
                         .text(props.typeText)
+                        .foregroundStyle(props.typeForgroundStyle)
                 }
                 payPassImageView
             }
             cardBalanceLabel
-                .text(props.balance)
+                .text(props.balanceString)
             HStack {
                 cardNumberLabel
                     .text(props.cardNumberText)
                 FlexibleSpacer()
                 cardClosingDateLabel
-                    .text(props.closingDate.formatted())
+                    .text(props.expiredAtString)
             }
         }
         .layoutMargins(.init(top: 20, left: 16, bottom: 24, right: 16))
@@ -73,28 +68,15 @@ extension CardInfoView: ConfigurableView {
 
     struct Props: Hashable {
         
-        enum CardType {
-            case physical
-            case digital
-        }
-        
-        enum CardPurpose {
-            case salary
-            case extra
-        }
-        
-        enum PaymentSystem {
-            case visa
-            case masterCard
-        }
-        
-        let id: String = UUID().uuidString
-        let cardType: CardType
-        let balance: String
-        let isBlocked: Bool
-        let cardNumber: String
-        let paymentSystem: PaymentSystem
-        let closingDate: Date
+        let id: Int
+        let name: String
+        let cardType: Card.CardType = .digital
+        let status: CoreCardResponse.Status
+        let balance: Int = 56800
+        let currency: Currency = .rub
+        let number: String
+        let paymentSystem: CoreCardResponse.PaymentSystem
+        let expiredAt: String
 
         var onTap: StringHandler?
 
@@ -104,8 +86,8 @@ extension CardInfoView: ConfigurableView {
 
         public func hash(into hasher: inout Hasher) {
             hasher.combine(id)
-            hasher.combine(cardType)
-            hasher.combine(cardNumber)
+            hasher.combine(number)
+            hasher.combine(expiredAt)
         }
     }
 
@@ -113,32 +95,40 @@ extension CardInfoView: ConfigurableView {
         self.props = model
         subviews.forEach { $0.removeFromSuperview() }
         body(with: model).embed(in: self)
+        self.layoutIfNeeded()
     }
 }
 extension CardInfoView.Props {
-    var textColor: UIColor {
-        if isBlocked {
-            return Palette.Indicator.contentError
-        } else {
-            return Palette.Text.secondary
+    var typeForgroundStyle: ForegroundStyle {
+        switch status {
+        case .active:
+            return .textSecondary
+        case .deactivated:
+            return .indicatorContentError
         }
     }
     
     var typeText: String {
-        if isBlocked {
-            return "Заблокирована"
+        if status != .active {
+            return "заблокирована"
         } else {
             switch cardType {
             case .digital:
-                return "Цифровая"
+                return "виртуальная"
             case .physical:
-                return "Физическая"
+                return "физическая"
             }
         }
     }
     
     var cardNumberText: String {
-        return String(cardNumber.suffix(8))
+        let number = String(self.number.suffix(8))
+        
+        return String.format(
+            number,
+            with: "**** XXXX",
+            replacingChar: "X",
+            passingChar: "*")
     }
     
     var paymentSystemImage: UIImage {
@@ -149,4 +139,17 @@ extension CardInfoView.Props {
             return Asset.Images.masterCard.image
         }
     }
+    
+    var expiredAtString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.format = .iso
+        guard let date = dateFormatter.date(from: expiredAt) else { return  " " }
+        dateFormatter.format = .monthYearShort
+        return dateFormatter.string(from: date)
+    }
+    
+    var balanceString: String {
+        balance.formatted(.currency(code: currency.rawValue))
+    }
 }
+

@@ -1,10 +1,3 @@
-//
-//  CardDetailDataSource.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 21.04.2024.
-//
-
 import UIKit
 import UI
 
@@ -50,11 +43,23 @@ final class CardDetailDataSource {
         tableView.registerTemplateCell(forView: TransactionView.self)
         tableView.registerTemplateCell(forView: InfoView.self)
         tableView.registerTemplateCell(forView: PaymentView.self)
+        tableView.registerTemplateCell(forView: CardInfoShimmerView.self)
+        tableView.registerTemplateCell(forView: InfoTabShimmerView.self)
+        tableView.registerTemplateCell(forView: AccountShimmerView.self)
+        tableView.registerTemplateCell(forView: HeaderShimmerView.self)
     }
 
     private func configure() {
         dataSource = DiffableDataSource(tableView: tableView) { [unowned self] _, indexPath, item in
             switch item {
+            case .headerShimmer:
+                return cellFactory.makeHeaderShimmer(for: indexPath)
+            case .infoTabShimmer:
+                return cellFactory.makeInfoTabShimmer(for: indexPath)
+            case .transactionShimmer:
+                return cellFactory.makeTransactionShimmer(for: indexPath)
+            case .cardShimmer:
+                return cellFactory.makeCardInfoShimmer(for: indexPath)
             case .header(let props):
                 return cellFactory.makeHeaderCell(for: indexPath, with: props)
             case .card(let props):
