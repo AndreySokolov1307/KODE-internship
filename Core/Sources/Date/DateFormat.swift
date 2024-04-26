@@ -6,6 +6,7 @@ public enum DateFormat: CaseIterable {
     case time
     case timeWithSeconds
     case defaultServer
+    case dayTime
 
     public var dateFormat: String {
         switch self {
@@ -23,6 +24,8 @@ public enum DateFormat: CaseIterable {
             return "HH:mm:ss"
         case .defaultServer:
             return "dd.MM.yyyy"
+        case .dayTime:
+            return "dd MMMM, HH:mm"
         }
     }
 

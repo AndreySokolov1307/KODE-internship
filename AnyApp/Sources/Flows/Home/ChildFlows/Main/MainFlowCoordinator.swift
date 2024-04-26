@@ -38,8 +38,8 @@ final class MainFlowCoordinator: Coordinator {
         
         controller.onEvent = { [weak self] event in
             switch event {
-            case .accountDetail:
-                self?.showAccountDetailController()
+            case .accountDetail(let configModel):
+                self?.showAccountDetailController(with: configModel)
             case .cardDetail:
                 self?.showCardDetailController()
             }
@@ -48,8 +48,8 @@ final class MainFlowCoordinator: Coordinator {
         return innerRouter.rootController
     }
     
-    func showAccountDetailController() {
-        let controller = resolver ~> AccountDetailController.self
+    func showAccountDetailController(with configModel: AccountDetailConfigModel) {
+        let controller = resolver ~> (AccountDetailController.self, configModel)
         controller.hidesBottomBarWhenPushed = true
         innerRouter.push(controller)
     }

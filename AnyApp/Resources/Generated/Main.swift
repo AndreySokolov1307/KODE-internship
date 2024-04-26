@@ -20,6 +20,34 @@ public enum Main {
   public static let main = Main.tr("Main", "main", fallback: "Главная")
   /// Открыть новый счет или продукт
   public static let openNewAccount = Main.tr("Main", "openNewAccount", fallback: "Открыть новый счет или продукт")
+  public enum AccountDetail {
+    /// Мобильная связь
+    public static let cellular = Main.tr("Main", "accountDetail.cellular", fallback: "Мобильная связь")
+    /// Закрыть счет
+    public static let closeAccount = Main.tr("Main", "accountDetail.closeAccount", fallback: "Закрыть счет")
+    /// Интернет
+    public static let internet = Main.tr("Main", "accountDetail.internet", fallback: "Интернет")
+    /// ЖКХ
+    public static let jkh = Main.tr("Main", "accountDetail.jkh", fallback: "ЖКХ")
+    /// Привязанные карты
+    public static let linkedCards = Main.tr("Main", "accountDetail.linkedCards", fallback: "Привязанные карты")
+    /// -1 500,00
+    public static let mockBalance1 = Main.tr("Main", "accountDetail.mockBalance1", fallback: "-1 500,00")
+    /// +15 000,00
+    public static let mockBalance2 = Main.tr("Main", "accountDetail.mockBalance2", fallback: "+15 000,00")
+    /// -6 000,00
+    public static let mockBalance3 = Main.tr("Main", "accountDetail.mockBalance3", fallback: "-6 000,00")
+    /// Оплата ООО ЯнтарьЭнерго
+    public static let mockInfo1 = Main.tr("Main", "accountDetail.mockInfo1", fallback: "Оплата ООО ЯнтарьЭнерго")
+    /// Зачисление зарплаты
+    public static let mockInfo2 = Main.tr("Main", "accountDetail.mockInfo2", fallback: "Зачисление зарплаты")
+    /// Перевод Александру Олеговичу С
+    public static let mockInfo3 = Main.tr("Main", "accountDetail.mockInfo3", fallback: "Перевод Александру Олеговичу С")
+    /// Переименовать счет
+    public static let renameAccount = Main.tr("Main", "accountDetail.renameAccount", fallback: "Переименовать счет")
+    /// Реквезиты счета
+    public static let requisites = Main.tr("Main", "accountDetail.requisites", fallback: "Реквезиты счета")
+  }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

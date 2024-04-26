@@ -19,7 +19,37 @@ final class AccountDetailCellFactory {
     init(tableView: BaseTableView) {
         self.tableView = tableView
     }
-
+    
+    // MARK: - Common
+    
+    func makeTransactionShimmer(for indexPath: IndexPath) -> UITableViewCell {
+        tableView.dequeueTemplateCell(
+            forView: AccountShimmerView.self,
+            for: indexPath
+        )
+    }
+    
+    func makeAccountInfoShimmer(for indexPath: IndexPath) -> UITableViewCell {
+        tableView.dequeueTemplateCell(
+            forView: AccountInfoShimmerView.self,
+            for: indexPath
+        )
+    }
+    
+    func makeInfoTabShimmer(for indexPath: IndexPath) -> UITableViewCell {
+        tableView.dequeueTemplateCell(
+            forView: InfoTabShimmerView.self,
+            for: indexPath
+        )
+    }
+    
+    func makeHeaderShimmer(for indexPath: IndexPath) -> UITableViewCell {
+        tableView.dequeueTemplateCell(
+            forView: HeaderShimmerView.self,
+            for: indexPath
+        )
+    }
+    
     // MARK: - Cells
 
     func makeAccountInfoCell(

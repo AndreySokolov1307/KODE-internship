@@ -63,9 +63,9 @@ final class CardDetailViewModel {
     private func createTransactionSection() -> Props.Section {
         let transactionList: Props.Section = .list([
             .header(.init(title: "Июнь 2021")),
-            .transaction(.init(type: .payment, money: "-1 500,00", info: "Оплата ООО ЯнтарьЭнерго", date: Date() )),
-            .transaction(.init(type: .payment, money: "+15 000,00", info: "Зачисление зарплаты", date: Date())),
-            .transaction(.init(type: .transfer, money: "-6 000,00", info: "Перевод Александру Олеговичу С vamo vamo vamo vamo vamo", date: Date()))
+            .transaction(.init(type: .payment, balance: "-1 500,00", info: "Оплата ООО ЯнтарьЭнерго", date: Date() )),
+            .transaction(.init(type: .payment, balance: "+15 000,00", info: "Зачисление зарплаты", date: Date())),
+            .transaction(.init(type: .transfer, balance: "-6 000,00", info: "Перевод Александру Олеговичу С vamo vamo vamo vamo vamo", date: Date()))
         ])
         
         return transactionList
@@ -95,7 +95,7 @@ final class CardDetailViewModel {
                               cardNumber: "9879879879",
                               paymentSystem: .visa,
                               closingDate: Date()))),
-            .infoTab(.tab(.init(selectedTab: selectedTap, onRefresh: { [weak self] in
+            .infoTab(.tab(.init(selectedTab: selectedTap, onTransaction: { [weak self] in
                 guard let self else { return }
                 self.handle(.transactions)
             }, onAction: { [weak self] in

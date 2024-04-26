@@ -60,6 +60,10 @@ final class AccountDetailDataSource {
         tableView.registerTemplateCell(forView: TransactionView.self)
         tableView.registerTemplateCell(forView: InfoView.self)
         tableView.registerTemplateCell(forView: PaymentView.self)
+        tableView.registerTemplateCell(forView: AccountShimmerView.self)
+        tableView.registerTemplateCell(forView: AccountInfoShimmerView.self)
+        tableView.registerTemplateCell(forView: InfoTabShimmerView.self)
+        tableView.registerTemplateCell(forView: HeaderShimmerView.self)
     }
 
     private func configure() {
@@ -77,6 +81,14 @@ final class AccountDetailDataSource {
                 return cellFactory.makeActionCell(for: indexPath, with: props)
             case .payment(let props):
                 return cellFactory.makePaymentCell(for: indexPath, with: props)
+            case .transactionShimmer:
+                return cellFactory.makeTransactionShimmer(for: indexPath)
+            case .accountInfoShimmer:
+                return cellFactory.makeAccountInfoShimmer(for: indexPath)
+            case .infoTabShimmer:
+                return cellFactory.makeInfoTabShimmer(for: indexPath)
+            case .headerShimmer:
+                return cellFactory.makeHeaderShimmer(for: indexPath)
             }
         }
     }

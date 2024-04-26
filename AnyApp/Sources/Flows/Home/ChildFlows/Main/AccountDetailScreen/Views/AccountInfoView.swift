@@ -8,18 +8,18 @@
 import UIKit
 import UI
 import AppIndependent
+import Services
 
 final class AccountInfoView: BackgroundPrimary {
 
     // MARK: - Private Properties
     
-    private let currencyImageView = ImageView()
-        .size(width: 52, height: 52)
-        .cornerRadius(26)
-        .masksToBounds(true)
+    private let currencyCircleView = CircleView(sideLenght: 52)
+        .backgroundStyle(.contentSecondary)
+        .foregroundStyle(.contentAccentTertiary)
     private let accountNameLabel = Label(foregroundStyle: .textPrimary, fontStyle: .body3)
     private let accountNumberLabel = Label(foregroundStyle: .textSecondary, fontStyle: .caption1)
-    private let moneyLabel = Label(foregroundStyle: .textPrimary, fontStyle: .title)
+    private let balanceLabel = Label(foregroundStyle: .textPrimary, fontStyle: .title)
 
     private var props: Props?
 
@@ -33,17 +33,17 @@ final class AccountInfoView: BackgroundPrimary {
 
     private func body(with props: Props) -> UIView {
         VStack(alignment: .center, distribution: .fill) {
-            currencyImageView
-                .image(props.currency.image)
+            currencyCircleView
+                .image(props.image)
             Spacer(.px16)
             accountNameLabel
                 .text(props.accountName)
             Spacer(.px4)
             accountNumberLabel
-                .text(props.accountNumber)
+                .text(props.formattedPhone)
             Spacer(.px8)
-            moneyLabel
-                .text(props.money + Common.space + props.currency.sign)
+            balanceLabel
+                .text(props.balanceString)
             Spacer(.px16)
         }
     }
@@ -57,17 +57,19 @@ extension AccountInfoView: ConfigurableView {
 
     struct Props: Hashable {
         
-        enum Currency {
-            case ruble
-            case euro
-            case dollar
-        }
-        
         let id: String = UUID().uuidString
         let currency: Currency
-        let money: String
+        let balance: Int
         let accountNumber: String
         let accountName = "Счет расчетный"
+        
+        var formattedPhone: String {
+            String.format(
+                accountNumber,
+                with: "**** **** **** XXXX",
+                replacingChar: "X",
+                passingChar: "*")
+        }
 
         public static func == (lhs: AccountInfoView.Props, rhs: AccountInfoView.Props) -> Bool {
             lhs.hashValue == rhs.hashValue
@@ -77,7 +79,7 @@ extension AccountInfoView: ConfigurableView {
             hasher.combine(id)
             hasher.combine(currency)
             hasher.combine(accountNumber)
-            hasher.combine(money)
+            hasher.combine(balance)
         }
     }
 
@@ -85,29 +87,23 @@ extension AccountInfoView: ConfigurableView {
         self.props = model
         subviews.forEach { $0.removeFromSuperview() }
         body(with: model).embed(in: self)
+        self.layoutIfNeeded()
     }
 }
 
-extension AccountInfoView.Props.Currency {
+extension AccountInfoView.Props {
     var image: UIImage {
-        switch self {
-        case .ruble:
+        switch currency {
+        case .rub:
             return Asset.Images.rub.image
-        case .euro:
+        case .usd:
             return Asset.Images.usd.image
-        case .dollar:
+        case .eur:
             return Asset.Images.eur.image
         }
     }
-    
-    var sign: String {
-        switch self {
-        case .ruble:
-            return "₽"
-        case .euro:
-            return "€"
-        case .dollar:
-            return "$"
-        }
+
+    var balanceString: String {
+        balance.formatted(.currency(code: currency.rawValue))
     }
 }

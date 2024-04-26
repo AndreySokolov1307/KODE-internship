@@ -6,10 +6,6 @@ public struct CoreAccountResponse: Decodable {
         case active = "Активен"
     }
 
-    public enum Currency: String, Decodable {
-        case rub = "RUB"
-    }
-
     public let number: String
     public let status: Status
     public let balance: Int

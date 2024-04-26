@@ -70,7 +70,7 @@ extension AccountView: ConfigurableView {
         
         let id: Int
         let balance: Int
-        let currency: Account.Currency
+        let currency: Currency
 
         var onTap: IntHandler?
 

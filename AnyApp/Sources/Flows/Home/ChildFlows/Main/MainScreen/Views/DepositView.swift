@@ -75,7 +75,7 @@ extension DepostiView: ConfigurableView {
         let id: Int
         let name: String
         let status: Deposit.Status
-        let currency: Deposit.Currency
+        let currency: Currency
         let balance: Int
         let interestRate: Double
         let closingDate: Date

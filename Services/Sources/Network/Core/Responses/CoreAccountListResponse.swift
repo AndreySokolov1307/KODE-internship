@@ -10,12 +10,6 @@ public struct Account: Decodable {
         case active = "Активен"
     }
 
-    public enum Currency: String, Decodable {
-        case rub = "RUB"
-        case usd = "USD"
-        case eur = "EUR"
-    }
-
     public let cards: [Card]
     public let number: String
     public let status: Status

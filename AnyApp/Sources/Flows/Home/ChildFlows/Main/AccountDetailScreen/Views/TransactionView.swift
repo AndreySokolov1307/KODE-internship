@@ -17,7 +17,7 @@ final class TransactionView: BackgroundPrimary {
         .backgroundStyle(.contentSecondary)
         .foregroundStyle(.contentAccentPrimary)
     private let dateLabel = Label(foregroundStyle: .textTertiary, fontStyle: .caption1)
-    private let moneyLabel = Label(fontStyle: .body2)
+    private let balanceLabel = Label(fontStyle: .body2)
     private let infoLabel = Label(foregroundStyle: .textPrimary, fontStyle: .body2)
         .multiline()
     
@@ -38,11 +38,11 @@ final class TransactionView: BackgroundPrimary {
             VStack(spacing: 4) {
                 HStack(alignment: .firstBaseline, distribution: .fill) {
                     dateLabel
-                        .text(props.date.formatted())
+                        .text(props.dateString)
                     FlexibleSpacer()
-                    moneyLabel
-                        .text(props.money)
-                        .textColor(props.textColor)
+                    balanceLabel
+                        .text(props.balance)
+                        .foregroundStyle(props.balanceForgroundStyle)
                 }
                 infoLabel
                     .text(props.info)
@@ -70,7 +70,7 @@ extension TransactionView: ConfigurableView {
         
         let id: String = UUID().uuidString
         let type: TransactionType
-        let money: String
+        let balance: String
         let info: String
         let date: Date
 
@@ -82,7 +82,7 @@ extension TransactionView: ConfigurableView {
 
         public func hash(into hasher: inout Hasher) {
             hasher.combine(id)
-            hasher.combine(money)
+            hasher.combine(balance)
             hasher.combine(type)
             hasher.combine(info)
             hasher.combine(date)
@@ -93,16 +93,23 @@ extension TransactionView: ConfigurableView {
         self.props = model
         subviews.forEach { $0.removeFromSuperview() }
         body(with: model).embed(in: self)
+        self.layoutIfNeeded()
     }
 }
 
 extension TransactionView.Props {
-    var textColor: UIColor {
-        if money.first != "-" {
-            return Palette.Content.accentPrimary
+    var balanceForgroundStyle: ForegroundStyle {
+        if balance.first != "-" {
+            return .indicatorContentDone
         } else {
-            return Palette.Indicator.contentError
+            return .indicatorContentError
         }
+    }
+    
+    var dateString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.format = .dayTime
+        return dateFormatter.string(from: date)
     }
 }
 

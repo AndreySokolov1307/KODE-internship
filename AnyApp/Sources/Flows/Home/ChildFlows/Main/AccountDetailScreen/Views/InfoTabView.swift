@@ -24,28 +24,19 @@ final class InfoTabView: BackgroundPrimary {
 
     override public func setup() {
         super.setup()
-        setupTabs()
     }
 
     // MARK: - Private methods
 
     private func body(with props: Props) -> UIView {
-        switch props.selectedTab {
-        case .transactions:
-            selectTab(refreshView)
-        case .actions:
-            selectTab(actionListView)
-        case .payments:
-            selectTab(paymentView)
-        }
-        
+    
         return HStack(distribution: .equalSpacing) {
             refreshView
                 .image(Asset.Images.history.image)
                 .onTap { [weak self] in
                     guard let self else { return }
                     self.selectTab(self.refreshView)
-                    props.onRefresh()
+                    props.onTransaction()
                 }
             actionListView
                 .image(Asset.Images.list.image)
@@ -64,9 +55,17 @@ final class InfoTabView: BackgroundPrimary {
         }.layoutMargins(.make(vInsets: 16, hInsets: 36))
     }
     
-    private func setupTabs() {
+    private func setupTabs(with props: Props) {
         tabs.forEach {
             $0.backgroundStyle(.contentSecondary)
+        }
+        switch props.selectedTab {
+        case .transactions:
+            selectTab(refreshView)
+        case .actions:
+            selectTab(actionListView)
+        case .payments:
+            selectTab(paymentView)
         }
     }
     
@@ -96,7 +95,7 @@ extension InfoTabView: ConfigurableView {
         
         let id: String = UUID().uuidString
         let selectedTab: TabsType
-        let onRefresh: VoidHandler
+        let onTransaction: VoidHandler
         let onAction: VoidHandler
         let onPayment: VoidHandler
 
@@ -113,5 +112,7 @@ extension InfoTabView: ConfigurableView {
         self.props = model
         subviews.forEach { $0.removeFromSuperview() }
         body(with: model).embed(in: self)
+        setupTabs(with: model)
+        self.layoutIfNeeded()
     }
 }

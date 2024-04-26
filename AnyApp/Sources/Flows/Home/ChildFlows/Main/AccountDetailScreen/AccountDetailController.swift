@@ -23,19 +23,24 @@ final class AccountDetailController: TemplateViewController<AccountDetailView> {
         super.setup()
         setupBindings()
         configureNavigationItem()
-        viewModel.handle(.accountData)
+        viewModel.handle(.loadData)
     }
     
     private func configureNavigationItem() {
-        navigationItem.title = "VAMOOOOS"
+        navigationItem.title = Main.accounts
         navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     private func setupBindings() {
+        rootView.onRefresh = { [weak self] in
+            self?.viewModel.handle(.refresh)
+        }
+        
         viewModel.onOutput = { [weak self] output in
             guard let self else { return }
             switch output {
             case .content(let props):
+                self.rootView.endRefreshing()
                 self.rootView.configured(with: props)
             }
         }

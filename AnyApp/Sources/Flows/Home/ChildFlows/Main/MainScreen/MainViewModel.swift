@@ -9,8 +9,8 @@ final class MainViewModel {
 
     enum Output {
         case content(Props)
-        case accountDetail
-        case cardDetail
+        case accountDetail(AccountDetailConfigModel)
+        case cardDetail(String)
     }
 
     enum Input {
@@ -52,7 +52,7 @@ final class MainViewModel {
             .store(in: &cancellables)
     }
     
-    private func createAccountSection(_ accounts: [Account]) -> MainViewProps.Section {
+    private func createAccountSection(_ accounts: [Account]) -> Props.Section {
         var accountItems: [MainViewProps.Item] = [.header(.init(title: Main.accounts))]
         
         accounts.forEach { account in
@@ -60,8 +60,9 @@ final class MainViewModel {
                 .init(id: account.accountId,
                       balance: account.balance,
                       currency: account.currency,
-                      onTap: { id in // add id in output
-                          self.onOutput?(.accountDetail)
+                      onTap: { id in
+                          let configModel = AccountDetailConfigModel(id: account.accountId)
+                          self.onOutput?(.accountDetail(configModel))
                       }))
             accountItems.append(item)
             
@@ -73,8 +74,8 @@ final class MainViewModel {
                           status: card.status,
                           cardNumber: card.number,
                           paymentSystem: card.paymentSystem,
-                          onTap: { id in // add id in output
-                              self.onOutput?(.cardDetail)
+                          onTap: { id in
+                              self.onOutput?(.cardDetail(card.cardId))
                           }))
                 accountItems.append(item)
             }
@@ -84,7 +85,7 @@ final class MainViewModel {
         return MainViewProps.Section.accounts(accountItems)
     }
 
-    private func createDepositSection(_ deposits: [Deposit]) -> MainViewProps.Section {
+    private func createDepositSection(_ deposits: [Deposit]) -> Props.Section {
         var depositItems: [MainViewProps.Item] = [.header(.init(title: Main.deposits))]
         
         deposits.forEach { deposit in

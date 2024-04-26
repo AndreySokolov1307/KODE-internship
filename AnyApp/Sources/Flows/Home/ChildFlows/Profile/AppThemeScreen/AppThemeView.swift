@@ -22,6 +22,7 @@ final class AppThemeView: BackgroundPrimary {
     override func setup() {
         super.setup()
         body().embed(in: self)
+        configureOptions()
  }
 
     private func body() -> UIView {
@@ -35,22 +36,26 @@ final class AppThemeView: BackgroundPrimary {
         }
     }
     
-    public func configureOptions(with appTheme: ThemeRaw) {
+    private func configureOptions() {
         for (theme, option) in zip(ThemeRaw.allCases.reversed(), options) {
             option.configure(with: theme.title)
             option.onTap { [weak self] in
-                self?.selectOption(option)
+                self?.selectOption(with: theme)
                 self?.onThemeChanged?(theme)
-            }
-            if appTheme == theme {
-                option.toSelectedState()
             }
         }
     }
     
-    private func selectOption(_ option: OptionView) {
+    public func selectOption(with theme: ThemeRaw) {
         options.forEach { $0.toNormalState() }
-        option.toSelectedState()
+        switch theme {
+        case .light:
+            lightThemeView.toSelectedState()
+        case .dark:
+            darkThemeView.toSelectedState()
+        case .auto:
+            autoThemeView.toSelectedState()
+        }
     }
 }
 

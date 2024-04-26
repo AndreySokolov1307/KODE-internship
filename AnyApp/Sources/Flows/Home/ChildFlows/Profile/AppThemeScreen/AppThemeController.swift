@@ -38,9 +38,16 @@ final class AppThemeController: TemplateViewController<AppThemeView> {
         }
         
         viewModel.currentTheme
-            .sink { [weak self] theme in
+            .removeDuplicates()
+            .sink { theme in
                 AppearanceManager.shared.setTheme(theme)
-                self?.rootView.configureOptions(with: theme)
+            }
+            .store(in: &cancellable)
+        
+        AppearanceManager.shared.$themeRaw
+            .removeDuplicates()
+            .sink { [weak self] theme in
+                self?.rootView.selectOption(with: theme)
             }
             .store(in: &cancellable)
     }

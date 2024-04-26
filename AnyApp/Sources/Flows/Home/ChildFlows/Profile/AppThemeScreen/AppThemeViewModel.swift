@@ -15,7 +15,7 @@ final class AppThemeViewModel {
         case themeChoosen(ThemeRaw)
     }
     
-    var currentTheme = CurrentValueSubject<ThemeRaw, Never>(AppearanceManager.shared.themeRaw)
+    var currentTheme = PassthroughSubject<ThemeRaw, Never>()
     
     func handle(_ input: Input) {
         switch input {

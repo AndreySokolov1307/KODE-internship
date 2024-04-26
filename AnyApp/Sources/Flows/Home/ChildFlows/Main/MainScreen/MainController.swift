@@ -13,7 +13,7 @@ final class MainController: TemplateViewController<MainView> {
     typealias ViewModel = MainViewModel
     
     enum Event {
-        case accountDetail
+        case accountDetail(AccountDetailConfigModel)
         case cardDetail
     }
 
@@ -43,8 +43,8 @@ final class MainController: TemplateViewController<MainView> {
             switch output {
             case .content(let props):
                 self?.rootView.configured(with: props)
-            case .accountDetail:
-                self?.onEvent?(.accountDetail)
+            case .accountDetail(let configModel):
+                self?.onEvent?(.accountDetail(configModel))
             case .cardDetail:
                 self?.onEvent?(.cardDetail)
             }
