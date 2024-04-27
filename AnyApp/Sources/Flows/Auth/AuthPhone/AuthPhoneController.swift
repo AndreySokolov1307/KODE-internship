@@ -1,7 +1,8 @@
 import UI
 import UIKit
+import AppIndependent
 
-final class AuthPhoneController: TemplateViewController<AuthPhoneView> {
+final class AuthPhoneController: TemplateViewController<AuthPhoneView>, NavigationBarAlwaysVisible {
 
     typealias ViewModel = AuthPhoneViewModel
 

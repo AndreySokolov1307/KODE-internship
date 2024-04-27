@@ -15,6 +15,7 @@ final class MainViewModel {
 
     enum Input {
         case loadData
+        case refreshData
     }
 
     private let coreRequestManager: CoreRequestManagerAbstract
@@ -30,13 +31,14 @@ final class MainViewModel {
     func handle(_ input: Input) {
         switch input {
         case .loadData:
+            sendShimmerSections()
+            loadData()
+        case .refreshData:
             loadData()
         }
     }
     
     private func loadData() {
-        sendShimmerSections()
-
         coreRequestManager.coreAccountList()
             .combineLatest(coreRequestManager.coreDepositList())
             .sink { completion in

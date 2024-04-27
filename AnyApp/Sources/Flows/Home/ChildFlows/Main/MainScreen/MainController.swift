@@ -1,10 +1,3 @@
-//
-//  MainController.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 12.04.2024.
-//
-
 import UI
 import UIKit
 
@@ -35,13 +28,18 @@ final class MainController: TemplateViewController<MainView> {
 
     private func configureNavigationItem() {
         navigationItem.title = Main.main
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
 
     private func setupBindings() {
+        rootView.onRefresh = { [weak self] in
+            self?.viewModel.handle(.refreshData)
+        }
+        
         viewModel.onOutput = { [weak self] output in
             switch output {
             case .content(let props):
+                self?.rootView.endRefreshing()
                 self?.rootView.configured(with: props)
             case .accountDetail(let configModel):
                 self?.onEvent?(.accountDetail(configModel))

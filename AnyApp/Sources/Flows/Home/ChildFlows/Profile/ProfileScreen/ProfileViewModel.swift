@@ -14,7 +14,8 @@ final class ProfileViewModel {
 
     enum Input {
         case logout
-        case loadProfile
+        case loadData
+        case refreshData
     }
     
     var onOutput: ((Output) -> Void)?
@@ -37,8 +38,11 @@ final class ProfileViewModel {
         switch input {
         case .logout:
             appSession.handle(.logout(.init(needFlush: true, alert: .snack(message: "Вы разлогинились"))))
-        case .loadProfile:
-            loadProfile()
+        case .loadData:
+            sendShimmer()
+            loadData()
+        case .refreshData:
+            loadData()
         }
     }
     
@@ -76,28 +80,17 @@ final class ProfileViewModel {
         
         return settings
     }
-
-    private func loadProfile() {
-        
+    
+    private func sendShimmer() {
         onOutput?(.content(.init(sections: [
             .profile(.profileShimmer()),
             .settings(
                 (1...4).map { _ in .infoShimmer() }
             )
         ])))
-        
-        
-        
-//    DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-//        guard let self else { return }
-//            self.onOutput?(.content(.init(sections: [
-//                .profile(.profile(.init(avatarImage: Asset.Images.avatarStub.image,
-//                                        name: "Филлип Ребийяр Олегович",
-//                                        phoneNumber: "+7 951 098 98 98 "))),
-//                .settings(self.createSettings())
-//            ])))
-//        }
-        
+    }
+
+    private func loadData() {
         coreRequestManager.coreProfile()
             .sink { completion in
                 
@@ -111,37 +104,5 @@ final class ProfileViewModel {
                 ])))
             }
             .store(in: &cancellables)
-        
-//        let accountList = coreRequestManager.coreAccountList()
-//            .sink { completion in
-//                print("ACCOUNTLIST COMPLETION",completion)
-//            } receiveValue: { responce in
-//                print("ACCOUNT LIST RESPONCE",responce)
-//            }
-//            .store(in: &cancellables)
-//
-//        let deposutList = coreRequestManager.coreDepositList()
-//            .sink { completion in
-//                print("DeposutLIST COMPLETION",completion)
-//            } receiveValue: { responce in
-//                print("DeposiT LIST RESPONCE",responce)
-//            }
-//            .store(in: &cancellables)
-//
-//        let cardID = coreRequestManager.coreCard(id: 2)
-//            .sink { completion in
-//                print("CARD ID COMPLETION",completion)
-//            } receiveValue: { responce in
-//                print("CARD ID RESPONCE",responce)
-//            }
-//            .store(in: &cancellables)
-//
-//        let account = coreRequestManager.coreAccount(id: 2)
-//            .sink { completion in
-//                print("ACCOUNT ID COMPLETION",completion)
-//            } receiveValue: { responce in
-//                print("ACCOUNT ID RESPONCE",responce)
-//            }
-//            .store(in: &cancellables)
     }
 }

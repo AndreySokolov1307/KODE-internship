@@ -24,7 +24,7 @@ final class ProfileController: TemplateViewController<ProfileView> {
         super.setup()
         setupBindings()
         setupNavBar()
-        viewModel.handle(.loadProfile)
+        viewModel.handle(.loadData)
     }
     
     private func setupNavBar() {
@@ -32,9 +32,14 @@ final class ProfileController: TemplateViewController<ProfileView> {
     }
 
     private func setupBindings() {
+        rootView.onRefresh = { [weak self] in
+            self?.viewModel.handle(.refreshData)
+        }
+        
         viewModel.onOutput = { [weak self] output in
             switch output {
             case .content(let props):
+                self?.rootView.endRefreshing()
                 self?.rootView.configure(with: props)
             case .about:
                 self?.onEvent?(.about)
