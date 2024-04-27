@@ -53,6 +53,11 @@ private extension HomeFlowCoordinator {
         DIContainer.shared.assemble(assembly: MainFlowAssembly())
 
         let coordinator = resolver ~> (MainFlowCoordinator.self, router)
+        
+        coordinator.finishFlow = { [weak self, weak coordinator] in
+            self?.removeDependency(coordinator)
+        }
+
         addDependency(coordinator)
 
         return coordinator.mainController()
@@ -62,6 +67,11 @@ private extension HomeFlowCoordinator {
         DIContainer.shared.assemble(assembly: ProfileFlowAssembly())
         
         let coordinator = resolver ~> (ProfileFlowCoordinator.self, router)
+        
+        coordinator.finishFlow = { [weak self, weak coordinator] in
+            self?.removeDependency(coordinator)
+        }
+
         addDependency(coordinator)
         
         return coordinator.profileController()

@@ -1,4 +1,5 @@
 import UIKit
+import AppIndependent
 
 public final class SnackView: View {
 
@@ -24,11 +25,18 @@ public final class SnackView: View {
         public let message: String
         public let image: UIImage?
         public let style: SnackStyle
+        public let onDismiss: VoidHandler?
 
-        public init(message: String, style: SnackStyle = .basic, image: UIImage? = nil) {
+        public init(
+            message: String,
+            style: SnackStyle = .basic,
+            image: UIImage? = nil,
+            onDismiss: VoidHandler? = nil)
+        {
             self.message = message
             self.style = style
             self.image = image
+            self.onDismiss = onDismiss
         }
 
         public static func == (lhs: Props, rhs: Props) -> Bool {
@@ -125,6 +133,7 @@ public final class SnackView: View {
                 imageView
                     .onTap { [weak self] in
                         self?.dismiss()
+                        self?.props.onDismiss?()
                     }
             }
         }
@@ -162,6 +171,7 @@ public final class SnackView: View {
     @objc private func dismiss() {
         fadeOut { [weak self] in
             self?.onDismiss?()
+            self?.props.onDismiss?()
             self?.removeFromSuperview()
         }
     }

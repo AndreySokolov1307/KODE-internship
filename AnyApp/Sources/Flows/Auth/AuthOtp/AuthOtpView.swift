@@ -6,7 +6,7 @@ final class AuthOtpView: BackgroundPrimary {
 
     var onOtpFilled: StringHandler?
     let otpTextFieldView = OtpInputView()
-    private let label = Label(text: Entrance.otpLabel, foregroundStyle: .textPrimary ,fontStyle: .body2)
+    private let label = Label(text: Entrance.otpLabel, foregroundStyle: .textPrimary, fontStyle: .body2)
         .multiline()
     private let otpRepeatView = OtpRepeatView()
 

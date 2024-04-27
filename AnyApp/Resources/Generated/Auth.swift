@@ -16,8 +16,8 @@ public enum Entrance {
   public static let loginPlaceholder = Entrance.tr("Auth", "loginPlaceholder", fallback: "Телефон")
   /// На ваш номер отправлено SMS с кодом подтверждения
   public static let otpLabel = Entrance.tr("Auth", "otpLabel", fallback: "На ваш номер отправлено SMS с кодом подтверждения")
-  /// +# (###) ### ## ##
-  public static let phonePattern = Entrance.tr("Auth", "phonePattern", fallback: "+# (###) ### ## ##")
+  /// +$ (###) ### ## ##
+  public static let phonePattern = Entrance.tr("Auth", "phonePattern", fallback: "+$ (###) ### ## ##")
   /// Повторить через 
   public static let repeatAfter = Entrance.tr("Auth", "repeatAfter", fallback: "Повторить через ")
   /// #

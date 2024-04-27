@@ -15,19 +15,18 @@ final class PhoneInputView: View {
         case large
     }
     
-    enum Input {
-        case right
-        case wrong
+    enum State {
+        case input
+        case error
     }
 
     var number = Common.empty
-    let size: Size
+    var size: Size
     var textField = TextField(placeholder: Entrance.loginPlaceholder)
         .textColor(Palette.Text.primary)
         .tintColor(Palette.Content.accentPrimary)
         .keyboardType(.numberPad)
         .contentType(.oneTimeCode)
-        .shouldBecomeFirstResponder()
         .addTarger(target: self, action: #selector(didChange(_:)), for: .editingChanged)
     private lazy var imageView = ImageView(image: Asset.Images.phone.image, foregroundStyle: .contentAccentPrimary)
     
@@ -56,24 +55,28 @@ final class PhoneInputView: View {
     }
     
     @objc private func didChange(_ sender: TextField) {
-        let pattern = Entrance.phonePattern
         guard let text = sender.text else { return }
-        sender.text = text.applyPatternOnNumbers(pattern: pattern,
+        sender.text = text.applyPatternOnNumbers(pattern: Entrance.phonePattern,
                                                  replacementCharacter: Character(Entrance.replacementCharacter))
         guard let newText = sender.text else { return }
-        number = newText
+        if newText.isEmpty {
+            number = ""
+        } else {
+            number = "+" + newText.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        }
     }
     
     override var intrinsicContentSize: CGSize {
         return CGSize(width: UIView.layoutFittingExpandedSize.width, height: size.height)
     }
     
-    func updateUIWithInput(_ input: Input) {
-        switch input {
-        case .right:
+    func updateUIWithState(_ state: State) {
+        switch state {
+        case .input:
             imageView.foregroundStyle(.contentAccentPrimary)
             textField.textColor(Palette.Text.primary)
-        case .wrong:
+                .shouldBecomeFirstResponder()
+        case .error:
             imageView.foregroundStyle(.indicatorContentError)
             textField.textColor(Palette.Indicator.contentError)
         }
@@ -103,12 +106,16 @@ extension PhoneInputView.Size {
 extension String {
     func applyPatternOnNumbers(pattern: String, replacementCharacter: Character) -> String {
         let string = String(self.prefix(pattern.count))
-        var pureNumber = string.replacingOccurrences( of: "[^0-9]", with: "", options: .regularExpression)
+        let cutFirstTwo = string.replacingOccurrences(of: "+7", with: "")
+        var pureNumber = cutFirstTwo.replacingOccurrences( of: "[^0-9]", with: "", options: .regularExpression)
         for index in 0 ..< pattern.count {
             guard index < pureNumber.count else { return pureNumber }
             let stringIndex = String.Index(utf16Offset: index, in: pattern)
-            let patternCharacter = pattern[stringIndex]
+            var patternCharacter = pattern[stringIndex]
             guard patternCharacter != replacementCharacter else { continue }
+            if patternCharacter == "$" {
+                patternCharacter = "7"
+            }
             pureNumber.insert(patternCharacter, at: stringIndex)
         }
         return pureNumber

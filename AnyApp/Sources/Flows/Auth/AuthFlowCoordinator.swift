@@ -5,7 +5,7 @@ import AppIndependent
 import SwinjectAutoregistration
 
 final class AuthFlowCoordinator: Coordinator {
-
+    
     enum Event {
         case userLoggedIn
     }

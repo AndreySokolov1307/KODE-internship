@@ -67,6 +67,8 @@ open class BaseLoadingButton: BaseAccessoryButton {
         DispatchQueue.main.async { [weak loaderView] in
             (loaderView as? StartStoppable)?.stop()
         }
+        
+        loaderView?.removeFromSuperview()
     }
 
     // MARK: - Methods to implement

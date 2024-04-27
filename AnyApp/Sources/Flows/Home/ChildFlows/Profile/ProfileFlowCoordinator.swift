@@ -1,10 +1,3 @@
-//
-//  ProfileFlowCoordinator.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 18.04.2024.
-//
-
 import Core
 import Services
 import Swinject
@@ -14,7 +7,10 @@ import UI
 
 final class ProfileFlowCoordinator: Coordinator {
 
+    var finishFlow: DefaultFinishHandler?
+    
     // MARK: - Private Properties
+    
     private let appSession: AppSession = resolver ~> AppSession.self
     
     private let innerRouter: RouterAbstract

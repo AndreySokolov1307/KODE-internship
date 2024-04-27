@@ -1,36 +1,75 @@
 import UI
 import UIKit
+import Combine
 import AppIndependent
 
 final class AuthPhoneView: BackgroundPrimary {
+    
+    enum State {
+        case input
+        case error
+        case loading
+    }
 
-    var onAuth: StringHandler?
-    private let logo = ImageView(image: Asset.Images.logoSmall.image, foregroundStyle: .contentAccentTertiary)
-    var textFieldView = PhoneInputView()
-    lazy var logInButton = ButtonPrimary(title: Entrance.enter)
+    @Published var state: State = .input
+    private let  phoneInputView = PhoneInputView()
+    private let logoImageView = ImageView(image: Asset.Images.logoSmall.image, foregroundStyle: .contentAccentTertiary)
+    private lazy var logInButton = ButtonPrimary(title: Entrance.enter)
         .onTap { [weak self] in
-            guard let number = self?.textFieldView.number else { return }
+            guard let number = self?.phoneInputView.number else { return }
             self?.onAuth?(number)
         }
+    
+    var onAuth: StringHandler?
+    
+    private var cansellables = Set<AnyCancellable>()
        
     override func setup() {
         super.setup()
         body().embed(in: self)
+        setupActionButton()
+        setupBinding()
+    }
+    
+    private func setupActionButton() {
         actionButton = logInButton
         moveActionButtonWithKeyboard = true
     }
+    
     private func body() -> UIView {
         VStack {
-            logo
+            logoImageView
             Spacer(.px20)
-            textFieldView
+            phoneInputView
             FlexibleGroupedSpacer()
         }
         .linkGroupedSpacers()
         .layoutMargins(.make(hInsets: 16))
     }
     
-    func handleInput(_ input: PhoneInputView.Input) {
-        textFieldView.updateUIWithInput(input)
+    private func setupBinding() {
+        $state
+            .sink { [weak self] state in
+                self?.updateUIwithState(state)
+            }
+            .store(in: &cansellables)
     }
+    
+    private func updateUIwithState(_ state: State) {
+        switch state {
+        case .input:
+            logInButton
+            logInButton.stopLoading()
+            phoneInputView.updateUIWithState(.input)
+        case .error:
+            logInButton.stopLoading()
+            phoneInputView.updateUIWithState(.error)
+        case .loading:
+            logInButton.startLoading()
+        }
+    }
+    
+//    func handleInput(_ input: PhoneInputView.Input) {
+//        phoneInputView.updateUIWithInput(input)
+//    }
 }

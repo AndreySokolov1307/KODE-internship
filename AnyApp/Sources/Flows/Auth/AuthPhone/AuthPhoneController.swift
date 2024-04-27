@@ -22,22 +22,38 @@ final class AuthPhoneController: TemplateViewController<AuthPhoneView> {
         super.setup()
         setupBindings()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        rootView.state = .input
+    }
 
     private func setupBindings() {
         rootView.onAuth = { [weak self] number in
-            self?.viewModel.handle(.phoneEntered(number))
+                self?.viewModel.handle(.phoneEntered(number))
         }
 
         viewModel.onOutput = { [weak self] output in
             switch output {
             case .otp(let configModel):
-                self?.rootView.handleInput(.right)
+                self?.rootView.state = .input
                 self?.onEvent?(.otp(configModel))
             case .invalidNumber:
-                SnackCenter.shared.showSnack(withProps: .init(message: Common.Error.wrongNumberFormat, style: .error, image: Asset.Images.close.image))
-                
-                self?.rootView.handleInput(.wrong)
+                SnackCenter.shared.showSnack(withProps: .init(
+                    message: Common.Error.wrongNumberFormat,
+                    style: .error,
+                    image: Asset.Images.close.image,
+                    onDismiss: {
+                        self?.rootView.state = .input
+                    }))
+                self?.rootView.state = .error
+            case .sendRequest:
+                self?.rootView.state = .loading
             }
         }
+    }
+    
+    deinit {
+        print("DEINITEINITDEINITDEINIT")
     }
 }

@@ -12,6 +12,8 @@ import AppIndependent
 import SwinjectAutoregistration
 
 final class MainFlowCoordinator: Coordinator {
+    
+    var finishFlow: DefaultFinishHandler?
 
     // MARK: - Private Properties
 
