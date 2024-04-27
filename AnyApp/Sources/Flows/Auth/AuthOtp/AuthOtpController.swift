@@ -1,7 +1,8 @@
 import UI
 import UIKit
+import AppIndependent
 
-final class AuthOtpController: TemplateViewController<AuthOtpView> {
+final class AuthOtpController: TemplateViewController<AuthOtpView>, NavigationBarAlwaysVisible {
 
     typealias ViewModel = AuthOtpViewModel
 

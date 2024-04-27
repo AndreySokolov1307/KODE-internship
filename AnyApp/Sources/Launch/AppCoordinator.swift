@@ -97,6 +97,7 @@ final class AppCoordinator: BaseCoordinator {
                 default:
                     break
                 }
+                self?.removeAllDependencies()
                 self?.start()
             default:
                 break
