@@ -1,50 +1,48 @@
-//
-//  OTPTextField.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 10.04.2024.
-//
-
 import UI
 import UIKit
 import AppIndependent
+import Combine
 
 final class OtpInputView: View {
+    
     enum Size {
         case small
         case regular
         case big
     }
     
-    enum Input {
-        case regular
-        case wrong
+    enum State {
+        case input
+        case error
     }
     
-    private var input: Input = .regular
+    @Published public var state: State = .input
+    public var didEnterLastDigit: StringHandler?
+    public var onClearAll: VoidHandler?
+    
     private var isConfigured = false
     private let size: Size
     private var digitItems = [OtpItem]()
     private var lineView = OtpLineView()
+    private var textField = TextField()
+        .tintColor(.clear)
+        .textColor(.clear)
+        .keyboardType(.numberPad)
+        .contentType(.oneTimeCode)
+        .addTarger(target: self, action: #selector(didChange(_:)), for: .editingChanged)
+        .isHidden(true)
     private var hStack: HStack!
-    var didEnterLastDigit: StringHandler?
-    var lineLabelIndex: Int {
+    private var lineLabelIndex: Int {
         size.numberOfSlots / 2
     }
+    
+    private var cancellables = Set<AnyCancellable>()
     
     init(size: Size = Size.big) {
         self.size = size
         super.init()
     }
 
-    var textField = TextField()
-        .tintColor(.clear)
-        .textColor(.clear)
-        .keyboardType(.numberPad)
-        .contentType(.oneTimeCode)
-        .shouldBecomeFirstResponder()
-        .addTarger(target: self, action: #selector(didChange(_:)), for: .editingChanged)
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -58,23 +56,36 @@ final class OtpInputView: View {
         self.onTap { [weak self] in
             self?.textField.shouldBecomeFirstResponder()
         }
-        textField.isHidden(true)
+        bind()
     }
     
-    func updateUIWithWrongInput() {
-        input = .wrong
-        digitItems.forEach { labelView in
-            labelView.label.textColor(Palette.Indicator.contentError)
-        }
-        lineView.lineColor = Palette.Indicator.contentError
+    private func bind() {
+        $state
+            .removeDuplicates()
+            .sink { [weak self] state in
+                self?.updateUIwithState(state)
+            }
+            .store(in: &cancellables)
     }
     
-    private func updateUIWIthRegularInput() {
-        digitItems.forEach { labelView in
-            labelView.label.textColor(.label)
+    public func updateUIwithState(_ state: State) {
+        switch state {
+        case .input:
+            digitItems.forEach { item in
+                item.label.textColor(.label)
+                item.label.text("")
+            }
+            lineView.lineColor = Palette.Content.tertiary
+            textField.shouldBecomeFirstResponder()
+            textField.text = ""
+            digitItems.first?.lineView.isHidden = false
+        case .error:
+            digitItems.forEach { labelView in
+                labelView.label.textColor(Palette.Indicator.contentError)
+            }
+            lineView.lineColor = Palette.Indicator.contentError
         }
-        lineView.lineColor = Palette.Content.tertiary
-   }
+    }
     
     private func body() -> UIView {
          hStack
@@ -112,31 +123,37 @@ final class OtpInputView: View {
     
     @objc private func didChange(_ sender: UITextField) {
         guard let text = textField.text, text.count <= digitItems.count else { return }
-        if input == .wrong {
-            input = .regular
-            updateUIWIthRegularInput()
-        }
-        for i in 0 ..< digitItems.count {
-            let currentLabel = digitItems[i]
-            
-            if i < text.count {
-                let index = text.index(text.startIndex, offsetBy: i)
-                currentLabel.label.text = String(text[index])
-                if currentLabel.label.text != nil {
+        if text.count == (digitItems.count - 1) && state == .error {
+            digitItems.forEach { item in
+                item.label.text?.removeAll()
+            }
+            sender.text = ""
+            onClearAll?()
+            state = .input
+        } else {
+            state = .input
+            for i in 0 ..< digitItems.count {
+                let currentLabel = digitItems[i]
+                
+                if i < text.count {
+                    let index = text.index(text.startIndex, offsetBy: i)
+                    currentLabel.label.text = String(text[index])
+                    if currentLabel.label.text != nil {
+                        currentLabel.hideLineView()
+                    }
+                } else {
+                    state = .input
+                    currentLabel.label.text?.removeAll()
                     currentLabel.hideLineView()
                 }
-            } else {
-                input = .regular
-                currentLabel.label.text?.removeAll()
-                currentLabel.hideLineView()
+            }
+            
+            if text.count == digitItems.count {
+                didEnterLastDigit?(text)
             }
         }
         if let firstEmpty = digitItems.first(where: { $0.label.text == nil || $0.label.text == Common.empty }) {
             firstEmpty.showLineView()
-        }
-                
-        if text.count == digitItems.count {
-            didEnterLastDigit?(text)
         }
     }
 }

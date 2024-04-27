@@ -8,19 +8,27 @@ final class AuthOtpViewModel {
     enum Input {
         case otpEntered(String)
         case logout
+        case otpRepeat
     }
 
     enum Output {
         case userLoggedIn
-        case wrongOtp(Int)
+        case wrongOtp(String)
+        case zeroAttemptsLeft
     }
     
     private var otpAttemptsLeft = 5
     var onOutput: ((Output) -> Void)?
 
-    private let configModel: ConfigModel
+    private var configModel: ConfigModel
     private let authRequestManager: AuthRequestManagerAbstract
     private let appSession: AppSession
+    
+    private var otpAttemptsLeftMessage: String {
+        let attemptString = Plurals.attemptsLeft(otpAttemptsLeft)
+        let leftString = Plurals.leftFem(otpAttemptsLeft)
+        return ("Неверный код. \(leftString) \(otpAttemptsLeft) " + attemptString)
+    }
 
     private var cancellables = Set<AnyCancellable>()
 
@@ -41,8 +49,13 @@ final class AuthOtpViewModel {
                 confirmOtp()
             } else {
                 otpAttemptsLeft -= 1
-                onOutput?(.wrongOtp(otpAttemptsLeft))
+                onOutput?(.wrongOtp(otpAttemptsLeftMessage))
+                if otpAttemptsLeft <= 0 {
+                    onOutput?(.zeroAttemptsLeft)
+                }
             }
+        case .otpRepeat:
+            otpRepeat()
         case .logout:
             appSession.handle(.logout(.init(needFlush: true, alert: .snack(message: "Вы разлогинились"))))
         }
@@ -50,6 +63,22 @@ final class AuthOtpViewModel {
     
     private func isOtpValid(_ otp: String) -> Bool {
         return otp == configModel.otpCode
+    }
+    
+    private func otpRepeat() {
+        authRequestManager.authLogin(phone: configModel.phone)
+            .sink { _ in
+                // handle error
+            } receiveValue: { [weak self] response in
+                guard let self else { return }
+                print(response.otpCode)
+                self.configModel = AuthOtpConfigModel(
+                    otpId: response.otpId,
+                    phone: self.configModel.phone,
+                    otpCode: response.otpCode,
+                    otpLength: response.otpLen)
+            }
+            .store(in: &cancellables)
     }
 
     private func confirmOtp() {

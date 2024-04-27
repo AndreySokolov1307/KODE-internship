@@ -22,7 +22,7 @@ final class AuthPhoneView: BackgroundPrimary {
     
     var onAuth: StringHandler?
     
-    private var cansellables = Set<AnyCancellable>()
+    private var cancellables = Set<AnyCancellable>()
        
     override func setup() {
         super.setup()
@@ -52,13 +52,12 @@ final class AuthPhoneView: BackgroundPrimary {
             .sink { [weak self] state in
                 self?.updateUIwithState(state)
             }
-            .store(in: &cansellables)
+            .store(in: &cancellables)
     }
     
     private func updateUIwithState(_ state: State) {
         switch state {
         case .input:
-            logInButton
             logInButton.stopLoading()
             phoneInputView.updateUIWithState(.input)
         case .error:

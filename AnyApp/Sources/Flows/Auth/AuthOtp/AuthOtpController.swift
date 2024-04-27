@@ -32,17 +32,22 @@ final class AuthOtpController: TemplateViewController<AuthOtpView> {
         rootView.onOtpFilled = { [weak self] otp in
             self?.viewModel.handle(.otpEntered(otp))
         }
+        
+        rootView.onOtpRepeat = { [weak self] in
+            self?.viewModel.handle(.otpRepeat)
+        }
 
         viewModel.onOutput = { [weak self] output in
             switch output {
             case .userLoggedIn:
                 self?.onEvent?(.userLoggedIn)
             case .wrongOtp(let otpAttemptsLeft):
-                self?.rootView.updateUIWithAttemptsLeft(otpAttemptsLeft)
-                //TODO: move to view model
-                if otpAttemptsLeft <= 0 {
-                    self?.showLogoutAllert()
+                self?.rootView.state = .error(otpAttemptsLeft)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    self?.rootView.state = .input
                 }
+            case .zeroAttemptsLeft:
+                self?.showLogoutAllert()
             }
         }
     }
