@@ -41,6 +41,7 @@ final class AuthOtpController: TemplateViewController<AuthOtpView>, NavigationBa
         viewModel.onOutput = { [weak self] output in
             switch output {
             case .userLoggedIn:
+                self?.removeAdditionalState()
                 self?.onEvent?(.userLoggedIn)
             case .wrongOtp(let otpAttemptsLeft):
                 self?.rootView.state = .error(otpAttemptsLeft)
@@ -50,7 +51,10 @@ final class AuthOtpController: TemplateViewController<AuthOtpView>, NavigationBa
             case .zeroAttemptsLeft:
                 self?.showLogoutAllert()
             case .error(let message):
+                self?.removeAdditionalState()
                 self?.showErrorSnack(with: message)
+            case .loading:
+                self?.setAdditionState(.loading)
             }
         }
     }

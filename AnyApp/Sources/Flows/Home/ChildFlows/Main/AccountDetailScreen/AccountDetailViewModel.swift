@@ -9,6 +9,8 @@ final class AccountDetailViewModel {
     
     enum Output {
         case content(Props)
+        case error(ErrorView.Props)
+        case errorMessage(String)
     }
     
     enum Input {
@@ -19,6 +21,8 @@ final class AccountDetailViewModel {
     // MARK: - Private Properties
     
     private let coreRequestManager: CoreRequestManagerAbstract
+    
+    private var obtainedData = false
 
     private var cancellables = Set<AnyCancellable>()
     
@@ -85,16 +89,41 @@ final class AccountDetailViewModel {
 
     private func loadData() {
         coreRequestManager.coreAccount(id: configModel.id)
-            .sink { completion in
-                //TODO: - handle error
+            .sink { [weak self] completion in
+                guard let self else { return }
+                
+                switch completion {
+                case .failure(let error):
+                    if self.obtainedData {
+                        let message = ErrorHandler.getMessage(for: error.appError)
+                        self.onOutput?(.errorMessage(message))
+                    } else {
+                        let props = ErrorHandler.getProps(for: error.appError) {
+                            self.sendShimmerSections()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                self.loadData()
+                            }
+                        }
+                        self.sendError(with: props)
+                    }
+                case .finished:
+                    break
+                }
             } receiveValue: { [weak self] accountResponse in
                 guard let self else { return }
     
                 self.mainInfoSection = self.createMainInfoSection(with: accountResponse)
                 self.infoTabSection = self.createInfoTabSection()
+                
+                self.obtainedData = true
+                
                 self.sendSections()
             }
             .store(in: &cancellables)
+    }
+    
+    private func sendError(with props: ErrorView.Props) {
+        onOutput?(.error(props))
     }
     
     private func sendSections() {

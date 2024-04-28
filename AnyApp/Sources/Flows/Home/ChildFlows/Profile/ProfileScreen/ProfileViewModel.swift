@@ -108,7 +108,9 @@ final class ProfileViewModel {
                     } else {
                         let props = ErrorHandler.getProps(for: error.appError) {
                             self.sendShimmerSections()
-                            self.loadData()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                self.loadData()
+                            }
                         }
                         self.sendError(with: props)
                     }

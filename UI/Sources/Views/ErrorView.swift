@@ -1,5 +1,4 @@
 import UIKit
-import UI
 import AppIndependent
 
 public final class ErrorView: BackgroundPrimary {
@@ -33,11 +32,20 @@ public final class ErrorView: BackgroundPrimary {
             retryButton
                 .title(props.buttonTitle)
                 .onTap { [weak self] in
+                    self?.startLoading()
                     self?.props?.onTap?()
                 }
         }
         .linkGroupedSpacers()
         .layoutMargins(.make(vInsets: 32, hInsets: 16))
+    }
+    
+    public func startLoading() {
+        retryButton.startLoading()
+    }
+    
+    public func stopLoading() {
+        retryButton.stopLoading()
     }
 }
 

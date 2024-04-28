@@ -7,12 +7,14 @@ open class ViewController: BaseController, Themeable {
     
     public enum AdditionalState {
         case none
+        case loading
         case error(ErrorView.Props)
     }
 
     private(set) var backgroundStyle: BackgroundStyle?
     
     private let errorView = ErrorView()
+    private let loadingView = LoadingView()
 
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -45,11 +47,16 @@ open class ViewController: BaseController, Themeable {
     }
     
     public func setAdditionState(_ state: AdditionalState) {
+        loadingView.removeFromSuperview()
         errorView.removeFromSuperview()
+        loadingView.stopLoading()
 
         switch state {
         case .none:
             break
+        case .loading:
+            view.embed(subview: loadingView, useSafeAreaGuide: false)
+            loadingView.starLoading()
         case .error(let props):
             view.embed(subview: errorView)
             errorView.configure(with: props)

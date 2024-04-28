@@ -9,6 +9,8 @@ final class CardDetailViewModel {
     
     enum Output {
         case content(Props)
+        case error(ErrorView.Props)
+        case errorMessage(String)
     }
     
     enum Input {
@@ -19,6 +21,8 @@ final class CardDetailViewModel {
     // MARK: - Private Properties
     
     private let configModel: ConfigModel
+    
+    private var obtainedData = false
     
     private let coreRequestManager: CoreRequestManagerAbstract
 
@@ -78,13 +82,34 @@ final class CardDetailViewModel {
     
     private func loadData() {
         coreRequestManager.coreCard(id: configModel.cardId)
-            .sink { completion in
-                //TODO: - handle error
+            .sink { [weak self] completion in
+                guard let self else { return }
+                
+                switch completion {
+                case .failure(let error):
+                    if self.obtainedData {
+                        let message = ErrorHandler.getMessage(for: error.appError)
+                        self.onOutput?(.errorMessage(message))
+                    } else {
+                        let props = ErrorHandler.getProps(for: error.appError) {
+                            self.sendShimmerSections()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                self.loadData()
+                            }
+                        }
+                        self.sendError(with: props)
+                    }
+                case .finished:
+                    break
+                }
             } receiveValue: { [weak self] cardResponse in
                 guard let self else { return }
     
                 self.cardInfoSection = self.createCardInfoSection(with: cardResponse)
                 self.infoTabSection = self.createInfoTabSection()
+                
+                self.obtainedData = true
+                
                 self.sendSections()
             }
             .store(in: &cancellables)
@@ -99,6 +124,10 @@ final class CardDetailViewModel {
                     bottomSection
                 ])))
         }
+    }
+    
+    private func sendError(with props: ErrorView.Props) {
+        onOutput?(.error(props))
     }
     
     private func sendShimmerSections() {

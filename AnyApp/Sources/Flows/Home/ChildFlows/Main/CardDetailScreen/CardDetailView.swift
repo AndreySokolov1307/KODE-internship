@@ -39,5 +39,6 @@ extension CardDetailView: ConfigurableView {
 
     func configure(with model: CardDetailViewProps) {
         dataSource.apply(sections: model.sections)
+        endRefreshing()
     }
 }

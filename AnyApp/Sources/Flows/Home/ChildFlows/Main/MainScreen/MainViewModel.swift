@@ -42,11 +42,7 @@ final class MainViewModel {
             loadData()
         }
     }
-    
-    private func sendError(with props: ErrorView.Props) {
-        onOutput?(.error(props))
-    }
-    
+        
     private func loadData() {
         coreRequestManager.coreAccountList()
             .combineLatest(coreRequestManager.coreDepositList())
@@ -61,7 +57,9 @@ final class MainViewModel {
                     } else {
                         let props = ErrorHandler.getProps(for: error.appError) {
                             self.sendShimmerSections()
-                            self.loadData()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                self.loadData()
+                            }
                         }
                         self.sendError(with: props)
                     }
@@ -79,6 +77,10 @@ final class MainViewModel {
                 self.onOutput?(.content(.init(sections: [accountSection, depositSection])))
             }
             .store(in: &cancellables)
+    }
+    
+    private func sendError(with props: ErrorView.Props) {
+        onOutput?(.error(props))
     }
     
     private func createAccountSection(_ accounts: [Account]) -> Props.Section {

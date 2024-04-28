@@ -85,6 +85,7 @@
 		322D0A1D2BD9D06000C4E258 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322D0A1C2BD9D06000C4E258 /* NavigationController.swift */; };
 		3233D6662BDE8D06005E4A31 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3233D6652BDE8D06005E4A31 /* ErrorView.swift */; };
 		3233D6692BDE96B4005E4A31 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3233D6682BDE96B4005E4A31 /* ErrorHandler.swift */; };
+		3233D66B2BDEFDD7005E4A31 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3233D66A2BDEFDD7005E4A31 /* LoadingView.swift */; };
 		3234DAFC2BCD46C500F347B8 /* HeaderShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234DAFB2BCD46C500F347B8 /* HeaderShimmerView.swift */; };
 		3234DAFE2BCD472000F347B8 /* AccountShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234DAFD2BCD472000F347B8 /* AccountShimmerView.swift */; };
 		32420A532BCADFCD00BCA8FC /* ProfileViewProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32420A522BCADFCD00BCA8FC /* ProfileViewProps.swift */; };
@@ -508,6 +509,7 @@
 		322D0A1C2BD9D06000C4E258 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		3233D6652BDE8D06005E4A31 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		3233D6682BDE96B4005E4A31 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		3233D66A2BDEFDD7005E4A31 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		3234DAFB2BCD46C500F347B8 /* HeaderShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderShimmerView.swift; sourceTree = "<group>"; };
 		3234DAFD2BCD472000F347B8 /* AccountShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountShimmerView.swift; sourceTree = "<group>"; };
 		32420A522BCADFCD00BCA8FC /* ProfileViewProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewProps.swift; sourceTree = "<group>"; };
@@ -1211,6 +1213,7 @@
 			isa = PBXGroup;
 			children = (
 				3233D6652BDE8D06005E4A31 /* ErrorView.swift */,
+				3233D66A2BDEFDD7005E4A31 /* LoadingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2845,6 +2848,7 @@
 				2F65A1523E45A51E8A23CF23 /* TemplateViewController.swift in Sources */,
 				08ECFDDBB14D0BA6364D3704 /* TextField.swift in Sources */,
 				56988D86A01E2FA81049C58A /* TextStyle.swift in Sources */,
+				3233D66B2BDEFDD7005E4A31 /* LoadingView.swift in Sources */,
 				C7FE09804E39A8F482A3CD40 /* TextView.swift in Sources */,
 				5168B6FF3225011F1992709E /* Theme.swift in Sources */,
 				CB58560E606C700A609FE6FF /* Themeable.swift in Sources */,

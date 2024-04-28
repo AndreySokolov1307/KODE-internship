@@ -39,5 +39,6 @@ extension AccountDetailView: ConfigurableView {
 
     func configure(with model: AccountDetailViewProps) {
         dataSource.apply(sections: model.sections)
+        endRefreshing()
     }
 }

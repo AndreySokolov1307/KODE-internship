@@ -31,11 +31,18 @@ final class CardDetailController: TemplateViewController<CardDetailView> {
         
         viewModel.onOutput = { [weak self] output in
             guard let self else { return }
+            
             switch output {
             case .content(let props):
-                self.rootView.endRefreshing()
+                self.removeAdditionalState()
                 self.rootView.configured(with: props)
+            case .error(let props):
+                self.setAdditionState(.error(props))
+            case .errorMessage(let message):
+                self.rootView.endRefreshing()
+                self.showErrorSnack(with: message)
             }
         }
     }
 }
+
