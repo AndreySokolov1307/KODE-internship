@@ -39,7 +39,7 @@ final class ProfileController: TemplateViewController<ProfileView> {
         viewModel.onOutput = { [weak self] output in
             switch output {
             case .content(let props):
-                self?.rootView.endRefreshing()
+                self?.removeAdditionalState()
                 self?.rootView.configure(with: props)
             case .about:
                 self?.onEvent?(.about)
@@ -49,6 +49,11 @@ final class ProfileController: TemplateViewController<ProfileView> {
                 self?.onEvent?(.callSupport)
             case .logOut:
                 self?.showLogoutAllert()
+            case .error(let props):
+                self?.setAdditionState(.error(props))
+            case .errorMessage(let message):
+                self?.rootView.endRefreshing()
+                self?.showErrorSnack(with: message)
             }
         }
         

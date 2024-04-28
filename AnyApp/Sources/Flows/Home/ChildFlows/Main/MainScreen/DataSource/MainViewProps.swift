@@ -1,14 +1,7 @@
-//
-//  MainViewProps.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 12.04.2024.
-//
-
 import Foundation
 
 struct MainViewProps {
-
+    
     enum Section: Hashable {
         case accounts([Item])
         case deposits([Item])

@@ -1,11 +1,12 @@
 import UI
 import UIKit
 import AppIndependent
+import Combine
 
 final class MainView: BackgroundPrimary {
 
     var onNewProduct: VoidHandler?
-
+    
     private let tableView = BaseTableView()
     private let refreshControl = UIRefreshControl()
     private let addButton = ButtonPrimary(title: Main.openNewAccount)
@@ -17,7 +18,6 @@ final class MainView: BackgroundPrimary {
         super.setup()
         body().embed(in: self)
         setupButton()
-        tableView.refreshControl = refreshControl
         setupRefreshControll()
     }
     
@@ -30,6 +30,7 @@ final class MainView: BackgroundPrimary {
     }
     
     private func setupRefreshControll() {
+        tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(didPullRefreshControll(_:)), for: .valueChanged)
     }
     
@@ -53,5 +54,6 @@ extension MainView: ConfigurableView {
 
     func configure(with model: MainViewProps) {
         dataSource.apply(sections: model.sections)
+        endRefreshing()
     }
 }

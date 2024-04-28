@@ -25,7 +25,7 @@ public enum Server: CaseIterable {
         switch self {
 #if DEV || INT || EXT
         case .stoplight:
-            return  "\(transferProtocol)://stoplight.io/mocks/kode-api/kode-bank/{number}/api/"
+            return  "\(transferProtocol)://stoplight.io/mocks/kode-api/kode-bank/{version}/api/"
         case .dev:
             return ""
         case .stage:

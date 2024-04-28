@@ -18,7 +18,7 @@ final class AuthRequestManager: NetworkRequestManager, AuthRequestManagerAbstrac
     func authLogin(phone: String) -> AppPublisher<AuthLoginResponse> {
         request(
             path: AuthPath.login,
-            pathParams: ["number": "151956"],
+            pathParams: ["version": "151956"],
             params: ["phone": phone]
         )
     }
@@ -30,7 +30,7 @@ final class AuthRequestManager: NetworkRequestManager, AuthRequestManagerAbstrac
     ) -> AppPublisher<AuthOtpConfirmResponse> {
         request(
             path: AuthPath.confirm,
-            pathParams: ["number": "151956"],
+            pathParams: ["version": "151956"],
             params: [
                 "otpId": otpId,
                 "phone": phone,

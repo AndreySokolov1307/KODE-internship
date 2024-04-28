@@ -53,6 +53,8 @@ public enum Common {
   /// Да
   public static let yes = Common.tr("Common", "yes", fallback: "Да")
   public enum Error {
+    /// Внимание
+    public static let attentionTitle = Common.tr("Common", "error.attentionTitle", fallback: "Внимание")
     /// Не удалось загрузить данные
     public static let dataRequestFailMessage = Common.tr("Common", "error.dataRequestFailMessage", fallback: "Не удалось загрузить данные")
     /// Что-то пошло не так
@@ -71,6 +73,8 @@ public enum Common {
     public static let loadingFailedMessage = Common.tr("Common", "error.loadingFailedMessage", fallback: "Не удалось загрузить данные")
     /// Проверьте подключение к интернету
     public static let noConnectionMessage = Common.tr("Common", "error.noConnectionMessage", fallback: "Проверьте подключение к интернету")
+    /// Вероятно, соединение с Интернетом прервано
+    public static let noConnectionMessage2 = Common.tr("Common", "error.noConnectionMessage2", fallback: "Вероятно, соединение с Интернетом прервано")
     /// Нет соединения
     public static let noConnectionTitle = Common.tr("Common", "error.noConnectionTitle", fallback: "Нет соединения")
     /// Повторите попытку или вернитесь позднее

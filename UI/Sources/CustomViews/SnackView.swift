@@ -68,7 +68,7 @@ public final class SnackView: View {
     // TODO: fix typography, styles and layout
     private let titleLabel = Label()
           .fontStyle(.body2)
-          .foregroundStyle(.textPrimary)
+          .foregroundStyle(.button)
         .multiline()
     private let imageView = ImageView(foregroundStyle: .contentAccentTertiary)
         .size(CGSize(width: 16, height: 16))

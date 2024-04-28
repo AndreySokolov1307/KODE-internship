@@ -40,13 +40,7 @@ final class AuthPhoneController: TemplateViewController<AuthPhoneView>, Navigati
                 self?.rootView.state = .input
                 self?.onEvent?(.otp(configModel))
             case .invalidNumber:
-                SnackCenter.shared.showSnack(withProps: .init(
-                    message: Common.Error.wrongNumberFormat,
-                    style: .error,
-                    image: Asset.Images.close.image,
-                    onDismiss: {
-                        self?.rootView.state = .input
-                    }))
+                self?.showInvalidNumberSnack()
                 self?.rootView.state = .error
             case .sendRequest:
                 self?.rootView.state = .loading
@@ -54,7 +48,13 @@ final class AuthPhoneController: TemplateViewController<AuthPhoneView>, Navigati
         }
     }
     
-    deinit {
-        print("DEINITEINITDEINITDEINIT")
+    private func showInvalidNumberSnack() {
+        SnackCenter.shared.showSnack(withProps: .init(
+            message: Common.Error.wrongNumberFormat,
+            style: .error,
+            image: Asset.Images.close.image,
+            onDismiss: { [weak self] in
+                self?.rootView.state = .input
+            }))
     }
 }

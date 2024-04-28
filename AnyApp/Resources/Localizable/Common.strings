@@ -30,11 +30,13 @@
 
 "error.noConnectionTitle" = "Нет соединения";
 "error.noConnectionMessage" = "Проверьте подключение к интернету";
+"error.noConnectionMessage2" = "Вероятно, соединение с Интернетом прервано";
 
 "error.loadingFailedMessage" = "Не удалось загрузить данные";
 "error.loadingErrorMessage" = "Ошибка загрузки данных";
 
 "error.defaultTitle" = "Ошибка";
+"error.attentionTitle" = "Внимание";
 "error.defaultMessage" = "Что-то пошло не так";
 "error.defaultMessagePity" = "К сожалению, что-то пошло не так";
 

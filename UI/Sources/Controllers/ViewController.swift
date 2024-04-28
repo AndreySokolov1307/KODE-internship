@@ -4,8 +4,15 @@ import AppIndependent
 
 // swiftlint:disable:next final_class
 open class ViewController: BaseController, Themeable {
+    
+    public enum AdditionalState {
+        case none
+        case error(ErrorView.Props)
+    }
 
     private(set) var backgroundStyle: BackgroundStyle?
+    
+    private let errorView = ErrorView()
 
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,5 +42,25 @@ open class ViewController: BaseController, Themeable {
 
     open func navigationBarStyle(_ style: NavigationBar.Style) {
         (navigationController?.navigationBar as? NavigationBar)?.style(style)
+    }
+    
+    public func setAdditionState(_ state: AdditionalState) {
+        errorView.removeFromSuperview()
+
+        switch state {
+        case .none:
+            break
+        case .error(let props):
+            view.embed(subview: errorView)
+            errorView.configure(with: props)
+        }
+    }
+
+    public func removeAdditionalState() {
+        setAdditionState(.none)
+    }
+    
+    public func showErrorSnack(with message: String) {
+        SnackCenter.shared.showSnack(withProps: .init(message: message, style: .error))
     }
 }

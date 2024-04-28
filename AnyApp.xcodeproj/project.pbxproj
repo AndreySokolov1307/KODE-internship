@@ -83,6 +83,8 @@
 		322955492BD090FA002C4E65 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322955482BD090FA002C4E65 /* CircleView.swift */; };
 		322D0A162BD90E6500C4E258 /* AuthOtpConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322D0A152BD90E6500C4E258 /* AuthOtpConfigModel.swift */; };
 		322D0A1D2BD9D06000C4E258 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322D0A1C2BD9D06000C4E258 /* NavigationController.swift */; };
+		3233D6662BDE8D06005E4A31 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3233D6652BDE8D06005E4A31 /* ErrorView.swift */; };
+		3233D6692BDE96B4005E4A31 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3233D6682BDE96B4005E4A31 /* ErrorHandler.swift */; };
 		3234DAFC2BCD46C500F347B8 /* HeaderShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234DAFB2BCD46C500F347B8 /* HeaderShimmerView.swift */; };
 		3234DAFE2BCD472000F347B8 /* AccountShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234DAFD2BCD472000F347B8 /* AccountShimmerView.swift */; };
 		32420A532BCADFCD00BCA8FC /* ProfileViewProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32420A522BCADFCD00BCA8FC /* ProfileViewProps.swift */; };
@@ -504,6 +506,8 @@
 		322955482BD090FA002C4E65 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		322D0A152BD90E6500C4E258 /* AuthOtpConfigModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthOtpConfigModel.swift; sourceTree = "<group>"; };
 		322D0A1C2BD9D06000C4E258 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		3233D6652BDE8D06005E4A31 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		3233D6682BDE96B4005E4A31 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		3234DAFB2BCD46C500F347B8 /* HeaderShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderShimmerView.swift; sourceTree = "<group>"; };
 		3234DAFD2BCD472000F347B8 /* AccountShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountShimmerView.swift; sourceTree = "<group>"; };
 		32420A522BCADFCD00BCA8FC /* ProfileViewProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewProps.swift; sourceTree = "<group>"; };
@@ -1203,6 +1207,22 @@
 			path = SupplementaryViews;
 			sourceTree = "<group>";
 		};
+		3233D6642BDE8CF6005E4A31 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3233D6652BDE8D06005E4A31 /* ErrorView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3233D6672BDE9698005E4A31 /* ErrorHandler */ = {
+			isa = PBXGroup;
+			children = (
+				3233D6682BDE96B4005E4A31 /* ErrorHandler.swift */,
+			);
+			path = ErrorHandler;
+			sourceTree = "<group>";
+		};
 		32420A4E2BCADF5C00BCA8FC /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -1550,6 +1570,7 @@
 		54A63885EA00B1584DC0B510 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				3233D6672BDE9698005E4A31 /* ErrorHandler */,
 				AC6BF9C33D8F2C07D4AC0404 /* Flows */,
 				51F0345FCB82403ED27B04AE /* Launch */,
 			);
@@ -1788,6 +1809,7 @@
 		A3F1472BA626CF322D61167C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				3233D6642BDE8CF6005E4A31 /* Views */,
 				36E7DEED57C6FE9ECB795CBF /* Animations */,
 				2BF0CCE88843E3CDA57AB672 /* Controllers */,
 				D274423DB74366BB767C8834 /* CustomViews */,
@@ -2616,6 +2638,7 @@
 				81EE6CA3925BD588AB50E959 /* Common.swift in Sources */,
 				3229553E2BD022AF002C4E65 /* AccountDetailViewProps.swift in Sources */,
 				3277D4C92BC987F100BD23A9 /* MainViewModel.swift in Sources */,
+				3233D6692BDE96B4005E4A31 /* ErrorHandler.swift in Sources */,
 				322955422BD026F9002C4E65 /* AccountInfoView.swift in Sources */,
 				32A260942BDAEBB1004C7DCB /* AccountDetailConfigModel.swift in Sources */,
 				10E588142BC04FED00D05347 /* AuthPhoneView.swift in Sources */,
@@ -2827,6 +2850,7 @@
 				CB58560E606C700A609FE6FF /* Themeable.swift in Sources */,
 				07E6CCEA5B75C3E744E9FD22 /* Typography.swift in Sources */,
 				4EDF02290A73A147C090C685 /* UIActivityIndicatorView+QuickProps.swift in Sources */,
+				3233D6662BDE8D06005E4A31 /* ErrorView.swift in Sources */,
 				551FE07233B8F482BE9A4D1F /* UIApplication+UserInterfaceStyle.swift in Sources */,
 				8F1124EB7884DA4A3E48C627 /* UIButton+Heightable.swift in Sources */,
 				306187ADB70940CCC2A0CD28 /* UIButton+QuickProps.swift in Sources */,

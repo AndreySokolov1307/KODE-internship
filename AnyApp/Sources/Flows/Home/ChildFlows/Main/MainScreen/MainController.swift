@@ -39,12 +39,17 @@ final class MainController: TemplateViewController<MainView> {
         viewModel.onOutput = { [weak self] output in
             switch output {
             case .content(let props):
-                self?.rootView.endRefreshing()
+                self?.removeAdditionalState()
                 self?.rootView.configured(with: props)
             case .accountDetail(let configModel):
                 self?.onEvent?(.accountDetail(configModel))
             case .cardDetail(let configModel):
                 self?.onEvent?(.cardDetail(configModel))
+            case .error(let props):
+                self?.setAdditionState(.error(props))
+            case .errorMessage(let message):
+                self?.rootView.endRefreshing()
+                self?.showErrorSnack(with: message)
             }
         }
 

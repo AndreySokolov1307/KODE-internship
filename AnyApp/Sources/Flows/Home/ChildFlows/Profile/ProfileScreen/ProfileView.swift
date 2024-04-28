@@ -40,5 +40,6 @@ extension ProfileView: ConfigurableView {
     
     func configure(with model: ProfileViewProps) {
         dataSource.apply(sections: model.sections)
+        endRefreshing()
     }
 }

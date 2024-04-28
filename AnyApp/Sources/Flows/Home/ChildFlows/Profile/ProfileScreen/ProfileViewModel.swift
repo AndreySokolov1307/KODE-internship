@@ -1,5 +1,6 @@
 import Services
 import Combine
+import UI
 // swiftlint:disable: all
 final class ProfileViewModel {
     typealias Props = ProfileViewProps
@@ -10,6 +11,8 @@ final class ProfileViewModel {
         case theme
         case support
         case logOut
+        case error(ErrorView.Props)
+        case errorMessage(String)
     }
 
     enum Input {
@@ -21,6 +24,8 @@ final class ProfileViewModel {
     var onOutput: ((Output) -> Void)?
 
     private let appSession: AppSession
+    
+    private var obtainedData = false
     
     private let coreRequestManager: CoreRequestManagerAbstract
 
@@ -39,14 +44,14 @@ final class ProfileViewModel {
         case .logout:
             appSession.handle(.logout(.init(needFlush: true, alert: .snack(message: "Вы разлогинились"))))
         case .loadData:
-            sendShimmer()
+            sendShimmerSections()
             loadData()
         case .refreshData:
             loadData()
         }
     }
     
-    private func createSettings() -> [Props.Item] {
+    private func createSettingsSection() -> Props.Section {
         let aboutItem: Props.Item = .info(
             .init(title: Profile.about,
                   image: Asset.Images.settings.image,
@@ -76,12 +81,12 @@ final class ProfileViewModel {
                 onTap: { [weak self] in
                     self?.onOutput?(.logOut)
                 }))
-        let settings: [Props.Item] = [aboutItem, themeItem, supportItem, logOutItem]
+        let settings: Props.Section = .settings([aboutItem, themeItem, supportItem, logOutItem])
         
         return settings
     }
     
-    private func sendShimmer() {
+    private func sendShimmerSections() {
         onOutput?(.content(.init(sections: [
             .profile(.profileShimmer()),
             .settings(
@@ -92,17 +97,46 @@ final class ProfileViewModel {
 
     private func loadData() {
         coreRequestManager.coreProfile()
-            .sink { completion in
+            .sink { [weak self] completion in
+                guard let self else { return }
                 
+                switch completion {
+                case .failure(let error):
+                    if self.obtainedData {
+                        let message = ErrorHandler.getMessage(for: error.appError)
+                        self.onOutput?(.errorMessage(message))
+                    } else {
+                        let props = ErrorHandler.getProps(for: error.appError) {
+                            self.sendShimmerSections()
+                            self.loadData()
+                        }
+                        self.sendError(with: props)
+                    }
+                case .finished:
+                    break
+                }
             } receiveValue: { [weak self] responce in
                 guard let self else { return }
-                self.onOutput?(.content(.init(sections: [
-                    .profile(.profile(.init(avatarImage: Asset.Images.avatarStub.image,
-                                            name: responce.fullName,
-                                            phoneNumber: responce.phone))),
-                    .settings(self.createSettings())
-                ])))
+                
+                self.obtainedData = true
+                
+                let profileSection = self.createProfileSection(with: responce)
+                let settingsSection = self.createSettingsSection()
+                
+                self.onOutput?(.content(.init(sections: [ profileSection, settingsSection])))
             }
             .store(in: &cancellables)
     }
+    
+    private func createProfileSection(with responce: CoreProfileResponse) -> Props.Section {
+        return .profile(.profile(.init(
+            avatarImage: Asset.Images.avatarStub.image,
+            name: responce.fullName,
+            phoneNumber: responce.phone)))
+    }
+    
+    private func sendError(with props: ErrorView.Props) {
+        onOutput?(.error(props))
+    }
+    
 }

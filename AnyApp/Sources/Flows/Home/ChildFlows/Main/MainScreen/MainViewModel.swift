@@ -2,6 +2,7 @@
 import Services
 import Combine
 import UI
+import Core
 
 final class MainViewModel {
 
@@ -11,14 +12,18 @@ final class MainViewModel {
         case content(Props)
         case accountDetail(AccountDetailConfigModel)
         case cardDetail(CardDetailConfigModel)
+        case error(ErrorView.Props)
+        case errorMessage(String)
     }
 
     enum Input {
         case loadData
         case refreshData
     }
-
+    
     private let coreRequestManager: CoreRequestManagerAbstract
+    
+    private var obtainedData = false
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -38,17 +43,39 @@ final class MainViewModel {
         }
     }
     
+    private func sendError(with props: ErrorView.Props) {
+        onOutput?(.error(props))
+    }
+    
     private func loadData() {
         coreRequestManager.coreAccountList()
             .combineLatest(coreRequestManager.coreDepositList())
-            .sink { completion in
+            .sink { [weak self] completion in
+                guard let self else { return }
                 
+                switch completion {
+                case .failure(let error):
+                    if self.obtainedData {
+                        let message = ErrorHandler.getMessage(for: error.appError)
+                        self.onOutput?(.errorMessage(message))
+                    } else {
+                        let props = ErrorHandler.getProps(for: error.appError) {
+                            self.sendShimmerSections()
+                            self.loadData()
+                        }
+                        self.sendError(with: props)
+                    }
+                case .finished:
+                    break
+                }
             } receiveValue: { [weak self] (accountListResponce, depositListResponce) in
                 guard let self else { return }
             
                 let accountSection = self.createAccountSection(accountListResponce.accounts)
                 let depositSection = self.createDepositSection(depositListResponce.deposits)
                     
+                self.obtainedData = true
+                
                 self.onOutput?(.content(.init(sections: [accountSection, depositSection])))
             }
             .store(in: &cancellables)
