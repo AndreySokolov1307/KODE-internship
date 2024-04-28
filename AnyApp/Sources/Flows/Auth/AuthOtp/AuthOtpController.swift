@@ -49,6 +49,8 @@ final class AuthOtpController: TemplateViewController<AuthOtpView>, NavigationBa
                 }
             case .zeroAttemptsLeft:
                 self?.showLogoutAllert()
+            case .error(let message):
+                self?.showErrorSnack(with: message)
             }
         }
     }

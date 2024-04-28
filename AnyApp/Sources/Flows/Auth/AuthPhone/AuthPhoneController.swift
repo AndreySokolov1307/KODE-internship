@@ -44,6 +44,9 @@ final class AuthPhoneController: TemplateViewController<AuthPhoneView>, Navigati
                 self?.rootView.state = .error
             case .sendRequest:
                 self?.rootView.state = .loading
+            case .error(let message):
+                self?.rootView.state = .input
+                self?.showErrorSnack(with: message)
             }
         }
     }

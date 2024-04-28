@@ -15,6 +15,7 @@ final class AuthOtpViewModel {
         case userLoggedIn
         case wrongOtp(String)
         case zeroAttemptsLeft
+        case error(String)
     }
     
     private var otpAttemptsLeft = 5
@@ -67,11 +68,17 @@ final class AuthOtpViewModel {
     
     private func otpRepeat() {
         authRequestManager.authLogin(phone: configModel.phone)
-            .sink { _ in
-                // handle error
+            .sink { [weak self] completion in
+                switch completion {
+                case .failure(let error):
+                    let message = ErrorHandler.getMessage(for: error.appError)
+                    self?.onOutput?(.error(message))
+                case .finished:
+                    break
+                }
             } receiveValue: { [weak self] response in
                 guard let self else { return }
-                print(response.otpCode)
+                
                 self.configModel = AuthOtpConfigModel(
                     otpId: response.otpId,
                     phone: self.configModel.phone,
@@ -86,8 +93,14 @@ final class AuthOtpViewModel {
                                        phone: configModel.phone,
                                        otpCode: configModel.otpCode)
             .sink(
-                receiveCompletion: { _ in
-                    // handle error
+                receiveCompletion: { [weak self] completion in
+                    switch completion {
+                    case .failure(let error):
+                        let message = ErrorHandler.getMessage(for: error.appError)
+                        self?.onOutput?(.error(message))
+                    case .finished:
+                        break
+                    }
                 }, receiveValue: { [weak self] response in
                     self?.appSession.handle(.updateTokens(
                         accessToken: response.guestToken,
@@ -97,4 +110,6 @@ final class AuthOtpViewModel {
                 }
             ).store(in: &cancellables)
     }
+    
+   
 }

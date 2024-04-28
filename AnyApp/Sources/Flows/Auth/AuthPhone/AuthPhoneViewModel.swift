@@ -8,6 +8,7 @@ final class AuthPhoneViewModel {
         case otp(AuthOtpConfigModel)
         case invalidNumber
         case sendRequest
+        case error(String)
     }
 
     enum Input {
@@ -40,8 +41,14 @@ final class AuthPhoneViewModel {
         
         authRequestManager.authLogin(phone: phone)
             .sink(
-                receiveCompletion: { completion in
-                    
+                receiveCompletion: {[weak self] completion in
+                    switch completion {
+                    case .failure(let error):
+                        let message = ErrorHandler.getMessage(for: error.appError)
+                        self?.onOutput?(.error(message))
+                    case .finished:
+                        break
+                    }
                 },
                 receiveValue: { [weak self] response in
                     let configModel = AuthOtpConfigModel(

@@ -67,8 +67,4 @@ final class AuthPhoneView: BackgroundPrimary {
             logInButton.startLoading()
         }
     }
-    
-//    func handleInput(_ input: PhoneInputView.Input) {
-//        phoneInputView.updateUIWithInput(input)
-//    }
 }
