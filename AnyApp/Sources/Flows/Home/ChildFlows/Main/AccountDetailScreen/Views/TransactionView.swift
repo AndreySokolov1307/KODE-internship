@@ -17,13 +17,13 @@ final class TransactionView: BackgroundPrimary {
     
     private var props: Props?
 
-    // MARK: - Public methods
+    // MARK: - Public Methods
 
     override public func setup() {
         super.setup()
     }
 
-    // MARK: - Private methods
+    // MARK: - Private Methods
 
     private func body(with props: Props) -> UIView {
         HStack(alignment: .top, distribution: .fill, spacing: 16) {

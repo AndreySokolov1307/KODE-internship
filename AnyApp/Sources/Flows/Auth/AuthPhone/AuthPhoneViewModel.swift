@@ -14,16 +14,24 @@ final class AuthPhoneViewModel {
     enum Input {
         case phoneEntered(String)
     }
+    
+    // MARK: - Public Properties
 
     var onOutput: ((Output) -> Void)?
+    
+    // MARK: - Private Properties
 
     private let authRequestManager: AuthRequestManagerAbstract
 
     private var cancellables = Set<AnyCancellable>()
+    
+    // MARK: - AuthPhoneViewModel
 
     init(authRequestManager: AuthRequestManagerAbstract) {
         self.authRequestManager = authRequestManager
     }
+    
+    // MARK: - Public Methods
 
     func handle(_ input: Input) {
         switch input {
@@ -35,6 +43,8 @@ final class AuthPhoneViewModel {
             }
         }
     }
+    
+    // MARK: - Private Methods
 
     private func login(phone: String) {
         onOutput?(.sendRequest)

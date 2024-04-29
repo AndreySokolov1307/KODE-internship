@@ -1,10 +1,3 @@
-//
-//  MainFlowCoordinator.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 12.04.2024.
-//
-
 import Core
 import Services
 import Swinject
@@ -12,6 +5,8 @@ import AppIndependent
 import SwinjectAutoregistration
 
 final class MainFlowCoordinator: Coordinator {
+    
+    // MARK: - Public Properties
     
     var finishFlow: DefaultFinishHandler?
 
@@ -33,6 +28,8 @@ final class MainFlowCoordinator: Coordinator {
     required init(router: RouterAbstract) {
         fatalError("init(router:) has not been implemented")
     }
+    
+    // MARK: - Public Methods
     
     func mainController() -> UIViewController? {
         let controller = resolver ~> MainController.self

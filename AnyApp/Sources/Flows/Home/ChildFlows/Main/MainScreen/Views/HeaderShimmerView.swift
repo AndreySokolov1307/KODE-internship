@@ -1,10 +1,3 @@
-//
-//  HeaderShimmerView.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 15.04.2024.
-//
-
 import Foundation
 
 import UIKit
@@ -13,20 +6,20 @@ import AppIndependent
 
 final class HeaderShimmerView: BackgroundPrimary {
     
-    // MARK: - Private properties
+    // MARK: - Private Properties
     
     private let headerView = Shimmer()
         .size(width: 72, height: 14)
         .skeletonCornerRadius(8)
 
-    // MARK: - Public methods
+    // MARK: - Public Methods
 
     override public func setup() {
         super.setup()
         body().embed(in: self)
     }
 
-    // MARK: - Private methods
+    // MARK: - Private Methods
 
     private func body() -> UIView {
         HStack(alignment: .center) {

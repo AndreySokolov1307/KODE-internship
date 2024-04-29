@@ -16,9 +16,13 @@ final class OtpInputView: View {
         case error
     }
     
+    // MARK: - Public Properties
+    
     @Published public var state: State = .input
     public var didEnterLastDigit: StringHandler?
     public var onClearAll: VoidHandler?
+    
+    // MARK: - Private Properties
     
     private var isConfigured = false
     private let size: Size
@@ -38,6 +42,8 @@ final class OtpInputView: View {
     
     private var cancellables = Set<AnyCancellable>()
     
+    // MARK: - OtpInputView
+    
     init(size: Size = Size.big) {
         self.size = size
         super.init()
@@ -46,6 +52,8 @@ final class OtpInputView: View {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Public Methods
     
     override func setup() {
         super.setup()
@@ -57,15 +65,6 @@ final class OtpInputView: View {
             self?.textField.shouldBecomeFirstResponder()
         }
         bind()
-    }
-    
-    private func bind() {
-        $state
-            .removeDuplicates()
-            .sink { [weak self] state in
-                self?.updateUIwithState(state)
-            }
-            .store(in: &cancellables)
     }
     
     public func updateUIwithState(_ state: State) {
@@ -87,6 +86,17 @@ final class OtpInputView: View {
         }
     }
     
+    // MARK: - Private Methods
+    
+    private func bind() {
+        $state
+            .removeDuplicates()
+            .sink { [weak self] state in
+                self?.updateUIwithState(state)
+            }
+            .store(in: &cancellables)
+    }
+        
     private func body() -> UIView {
          hStack
     }

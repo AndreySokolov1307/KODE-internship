@@ -9,6 +9,8 @@ final class AuthFlowCoordinator: Coordinator {
     enum Event {
         case userLoggedIn
     }
+    
+    // MARK: - Public Properties
 
     var onEvent: ((Event) -> Void)?
 
@@ -25,6 +27,8 @@ final class AuthFlowCoordinator: Coordinator {
     override func start() {
         showPhoneAuth()
     }
+    
+    // MARK: - Private Methods
 
     private func showPhoneAuth() {
         let controller = resolver ~> AuthPhoneController.self

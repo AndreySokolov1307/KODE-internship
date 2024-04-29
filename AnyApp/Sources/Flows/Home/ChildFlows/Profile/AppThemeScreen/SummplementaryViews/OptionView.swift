@@ -1,29 +1,18 @@
-//
-//  OptionView.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 19.04.2024.
-//
-
 import UI
 import UIKit
 
 final class OptionView: BackgroundPrimary {
     
+    // MARK: - Public Properties
+    
     let titleLabel = Label(foregroundStyle: .textPrimary, fontStyle: .body2)
     let selectionImageView = ImageView(image: Asset.Images.radioOff.image, foregroundStyle: .textSecondary)
+    
+    // MARK: - Public Methods
     
     override func setup() {
         super.setup()
         body().embed(in: self)
-    }
-    
-    private func body() -> UIView {
-        HStack(alignment: .center, distribution: .fill) {
-            titleLabel
-            FlexibleSpacer()
-            selectionImageView
-        }.height(56)
     }
     
     public func toSelectedState() {
@@ -38,6 +27,16 @@ final class OptionView: BackgroundPrimary {
     
     public func configure(with option: String) {
         titleLabel.text(option)
+    }
+    
+    // MARK: - Private Methods
+    
+    private func body() -> UIView {
+        HStack(alignment: .center, distribution: .fill) {
+            titleLabel
+            FlexibleSpacer()
+            selectionImageView
+        }.height(56)
     }
 }
 

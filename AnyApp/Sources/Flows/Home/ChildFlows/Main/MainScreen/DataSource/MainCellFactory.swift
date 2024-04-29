@@ -1,10 +1,3 @@
-//
-//  MainCellFactory.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 12.04.2024.
-//
-
 import UIKit
 import UI
 
@@ -14,7 +7,7 @@ final class MainCellFactory {
 
     private let tableView: BaseTableView
 
-    // MARK: - Initializers
+    // MARK: - MainCellFactory
 
     init(tableView: BaseTableView) {
         self.tableView = tableView

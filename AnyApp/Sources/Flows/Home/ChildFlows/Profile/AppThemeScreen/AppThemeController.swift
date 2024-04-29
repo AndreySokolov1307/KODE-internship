@@ -1,9 +1,3 @@
-//
-//  AppThemeController.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 19.04.2024.
-//
 import UI
 import UIKit
 import Combine
@@ -11,21 +5,29 @@ import Combine
 final class AppThemeController: TemplateViewController<AppThemeView> {
 
     typealias ViewModel = AppThemeViewModel
-
+    
+    // MARK: - Private Properties
+    
     private var viewModel: ViewModel!
     
     private var cancellable = Set<AnyCancellable>()
+    
+    // MARK: - AppThemeController
 
     convenience init(viewModel: ViewModel) {
         self.init()
         self.viewModel = viewModel
     }
+    
+    // MARK: - Public Methods
 
     override func setup() {
         super.setup()
         setupBindings()
         configureNavigationItem()
     }
+    
+    // MARK: - Private Methods
     
     private func configureNavigationItem() {
         navigationItem.title = Profile.Theme.title

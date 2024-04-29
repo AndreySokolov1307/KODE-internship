@@ -1,14 +1,7 @@
-//
-//  ProfileDataSource.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 13.04.2024.
-//
-
 import UIKit
 import UI
 
-final class ProfileDateSource {
+final class ProfileDataSource {
     
     typealias Section = ProfileViewProps.Section
     typealias Item = ProfileViewProps.Item
@@ -20,7 +13,7 @@ final class ProfileDateSource {
     private let tableView: BaseTableView
     private let cellFactory: ProfileCellFactory
     
-    // MARK: - Init
+    // MARK: - ProfileDataSource
     
     init(tableView: BaseTableView) {
         self.tableView = tableView

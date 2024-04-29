@@ -5,6 +5,8 @@ import Services
 
 final class CardInfoView: View {
     
+    // MARK: - Private Properties
+    
     private let cardNameLabel = Label(fontStyle: .body2)
         .textColor(Asset.Colors.alwaysWhite.color)
     private let cardTypeLabel = Label(fontStyle: .caption2)
@@ -23,9 +25,13 @@ final class CardInfoView: View {
     
     private var props: Props?
     
+    // MARK: - Public Methods
+    
     override func setup() {
         super.setup()
     }
+    
+    // MARK: - Private Methods
     
     private func body(with props: Props) -> UIView {
         HStack {
@@ -61,6 +67,8 @@ final class CardInfoView: View {
         .layoutMargins(.init(top: 20, left: 16, bottom: 24, right: 16))
     }
 }
+
+// MARK: - Configurable
 
 extension CardInfoView: ConfigurableView {
 

@@ -1,10 +1,3 @@
-//
-//  MainDataSource.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 12.04.2024.
-//
-
 import UIKit
 import UI
 
@@ -20,7 +13,7 @@ final class MainDataSource {
     private let tableView: BaseTableView
     private let cellFactory: MainCellFactory
 
-    // MARK: - Init
+    // MARK: - MainDataSource
 
     init(tableView: BaseTableView) {
         self.tableView = tableView

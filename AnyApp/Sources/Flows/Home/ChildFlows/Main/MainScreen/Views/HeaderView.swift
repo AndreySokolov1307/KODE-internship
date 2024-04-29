@@ -1,10 +1,3 @@
-//
-//  TemplateHeaderView.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 12.04.2024.
-//
-
 import UIKit
 import UI
 import AppIndependent
@@ -17,14 +10,14 @@ final class HeaderView: BackgroundPrimary {
 
     private var props: Props?
 
-    // MARK: - Public methods
+    // MARK: - Public Methods
 
     override public func setup() {
         super.setup()
         body().embed(in: self)
     }
 
-    // MARK: - Private methods
+    // MARK: - Private Methods
 
     private func body() -> UIView {
         VStack {

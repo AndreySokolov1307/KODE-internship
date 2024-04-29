@@ -11,14 +11,22 @@ final class ProfileController: TemplateViewController<ProfileView> {
         case about
     }
 
+    // MARK: - Public Properties
+    
     var onEvent: ((Event) -> Void)?
+    
+    // MARK: - Private Properties
 
     private var viewModel: ViewModel!
+    
+    // MARK: - ProfileController
 
     convenience init(viewModel: ViewModel) {
         self.init()
         self.viewModel = viewModel
     }
+    
+    // MARK: - Public Methods
 
     override func setup() {
         super.setup()
@@ -26,6 +34,8 @@ final class ProfileController: TemplateViewController<ProfileView> {
         setupNavBar()
         viewModel.handle(.loadData)
     }
+    
+    // MARK: - Private Methods
     
     private func setupNavBar() {
         navigationController?.navigationBar.prefersLargeTitles = false

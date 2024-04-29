@@ -1,11 +1,3 @@
-//
-//  CardDetailCellFactory.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 21.04.2024.
-//
-
-
 import UIKit
 import UI
 
@@ -15,7 +7,7 @@ final class CardDetailCellFactory {
 
     private let tableView: BaseTableView
 
-    // MARK: - Initializers
+    // MARK: - CardDetailCellFactory
 
     init(tableView: BaseTableView) {
         self.tableView = tableView

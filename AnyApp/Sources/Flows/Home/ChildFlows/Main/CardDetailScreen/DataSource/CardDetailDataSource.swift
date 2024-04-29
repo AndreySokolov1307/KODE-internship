@@ -13,7 +13,7 @@ final class CardDetailDataSource {
     private let tableView: BaseTableView
     private let cellFactory: CardDetailCellFactory
 
-    // MARK: - Init
+    // MARK: - CardDetailDataSource
 
     init(tableView: BaseTableView) {
         self.tableView = tableView

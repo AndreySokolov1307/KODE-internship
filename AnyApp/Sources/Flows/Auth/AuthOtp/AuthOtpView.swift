@@ -10,14 +10,17 @@ final class AuthOtpView: BackgroundPrimary {
         case error(String)
         case loading
     }
+    
+    // MARK: - Public Properties
 
     @Published var state: State = .input
     
     var onOtpFilled: StringHandler?
-    
     var onOtpRepeat: VoidHandler?
     
     let otpInputView = OtpInputView()
+    
+    // MARK: - Private Properties
     
     private let label = Label(text: Entrance.otpLabel, foregroundStyle: .textPrimary, fontStyle: .body2)
         .multiline()
@@ -25,12 +28,16 @@ final class AuthOtpView: BackgroundPrimary {
     
     private var cancellables = Set<AnyCancellable>()
 
+    // MARK: - Public Methods
+    
     override func setup() {
         super.setup()
         body().embed(in: self)
         bind()
         configureActions()
     }
+    
+    // MARK: - Private Methods
     
     private func configureActions() {
         otpInputView.didEnterLastDigit = { [weak self] otp in

@@ -3,14 +3,20 @@ import UIKit
 import AppIndependent
 
 final class ProfileView: BackgroundPrimary {
+    
+    // MARK: - Public Properties
 
     var onLogout: VoidHandler?
     var onRefresh: VoidHandler?
     
+    // MARK: - Private Properties
+    
     private let tableView = BaseTableView()
     private let refreshControl = UIRefreshControl()
-    private lazy var dataSource = ProfileDateSource(tableView: tableView)
+    private lazy var dataSource = ProfileDataSource(tableView: tableView)
 
+    // MARK: - Public Methods
+    
     override func setup() {
         super.setup()
         body().embed(in: self)
@@ -21,6 +27,8 @@ final class ProfileView: BackgroundPrimary {
     public func endRefreshing() {
         refreshControl.endRefreshing()
     }
+    
+    // MARK: - Private Methods
 
     private func body() -> UIView {
             tableView

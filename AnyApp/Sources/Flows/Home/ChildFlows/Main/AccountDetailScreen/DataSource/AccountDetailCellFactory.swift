@@ -1,10 +1,3 @@
-//
-//  AccountDetailCellFactory.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 17.04.2024.
-//
-
 import UIKit
 import UI
 
@@ -14,7 +7,7 @@ final class AccountDetailCellFactory {
 
     private let tableView: BaseTableView
 
-    // MARK: - Initializers
+    // MARK: - AccountDetailCellFactory
 
     init(tableView: BaseTableView) {
         self.tableView = tableView

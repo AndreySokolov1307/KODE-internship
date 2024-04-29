@@ -23,6 +23,8 @@ struct MainViewProps {
         case card(AccountCardView.Props)
         case deposit(DepostiView.Props)
     }
+    
+    // MARK: - Public Properties
 
     let sections: [Section]
 }

@@ -1,10 +1,3 @@
-//
-//  AccountDetailDataSource.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 17.04.2024.
-//
-
 import UIKit
 import UI
 
@@ -14,14 +7,13 @@ final class AccountDetailDataSource {
     typealias Item = AccountDetailViewProps.Item
     typealias DiffableDataSource = UITableViewDiffableDataSource<Section, Item>
 
-    // MARK: - Private properties
+    // MARK: - Private Properties
 
     public var dataSource: DiffableDataSource?
     private let tableView: BaseTableView
     private let cellFactory: AccountDetailCellFactory
- //   private var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
 
-    // MARK: - Init
+    // MARK: - AccountDetailDataSource
 
     init(tableView: BaseTableView) {
         self.tableView = tableView
@@ -41,16 +33,7 @@ final class AccountDetailDataSource {
         dataSource?.apply(snap, animatingDifferences: false)
     }
     
-//    public func updateLastSection(with section: Section) {
-//        guard let dataSource = dataSource,
-//              let last = snapshot.sectionIdentifiers.last else {fatalError("no data source") }
-//        var snapshot = dataSource.snapshot()
-//        snapshot.deleteItems(snapshot.itemIdentifiers(inSection: last))
-//        snapshot.appendItems(section.items)
-//        dataSource.apply(snapshot, animatingDifferences: false)
-//    }
-    
-    // MARK: - Private methods
+    // MARK: - Private Methods
 
     private func setup() {
         tableView.contentInsets(.init(top: 16, left: 0, bottom: 92, right: 0))

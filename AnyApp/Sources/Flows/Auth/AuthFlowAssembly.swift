@@ -6,8 +6,12 @@ import AppIndependent
 import SwinjectAutoregistration
 
 final class AuthFlowAssembly: Assembly, Identifiable {
+    
+    // MARK: - Public Properties
 
     var id: String { String(describing: type(of: self)) }
+    
+    // MARK: - Public Methods
 
     func assemble(container: Container) {
         container.autoregister(AuthFlowCoordinator.self, argument: RouterAbstract.self, initializer: AuthFlowCoordinator.init)

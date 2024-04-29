@@ -1,15 +1,10 @@
-//
-//  AppThemeView.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 19.04.2024.
-//
-
 import UI
 import UIKit
 import AppIndependent
 
 final class AppThemeView: BackgroundPrimary {
+    
+    // MARK: - Public Properties
    
     let autoThemeView = OptionView()
     let darkThemeView = OptionView()
@@ -19,12 +14,28 @@ final class AppThemeView: BackgroundPrimary {
     
     lazy var options = [autoThemeView, darkThemeView, lightThemeView]
  
+    // MARK: - Public Methods
+    
     override func setup() {
         super.setup()
         body().embed(in: self)
         configureOptions()
- }
+    }
+    
+    public func selectOption(with theme: ThemeRaw) {
+        options.forEach { $0.toNormalState() }
+        switch theme {
+        case .light:
+            lightThemeView.toSelectedState()
+        case .dark:
+            darkThemeView.toSelectedState()
+        case .auto:
+            autoThemeView.toSelectedState()
+        }
+    }
 
+    // MARK: - Private Methods
+    
     private func body() -> UIView {
         ScrollView {
             VStack {
@@ -43,18 +54,6 @@ final class AppThemeView: BackgroundPrimary {
                 self?.selectOption(with: theme)
                 self?.onThemeChanged?(theme)
             }
-        }
-    }
-    
-    public func selectOption(with theme: ThemeRaw) {
-        options.forEach { $0.toNormalState() }
-        switch theme {
-        case .light:
-            lightThemeView.toSelectedState()
-        case .dark:
-            darkThemeView.toSelectedState()
-        case .auto:
-            autoThemeView.toSelectedState()
         }
     }
 }

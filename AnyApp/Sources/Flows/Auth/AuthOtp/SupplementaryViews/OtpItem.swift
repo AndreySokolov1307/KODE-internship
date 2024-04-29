@@ -1,19 +1,14 @@
-//
-//  OTPLabel.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 10.04.2024.
-//
-
 import UI
 import UIKit
 
 final class OtpItem: View {
+    
     enum Size {
         case regular
     }
     
-    private let size = Size.regular
+    // MARK: - Public Properties
+    
     var label = Label(foregroundStyle: .textPrimary, fontStyle: .subtitle)
         .textAlignment(.center)
     
@@ -23,6 +18,12 @@ final class OtpItem: View {
         .backgroundColor(Palette.Content.accentPrimary)
         .isHidden(true)
     
+    // MARK: - Private Properties
+    
+    private let size = Size.regular
+    
+    // MARK: - Public Methods
+    
     override func setup() {
         super.setup()
         body().embed(in: self)
@@ -30,6 +31,16 @@ final class OtpItem: View {
             .cornerRadius(12)
             .masksToBounds(true)
     }
+    
+    func hideLineView() {
+        lineView.isHidden = true
+    }
+    
+    func showLineView() {
+        lineView.isHidden = false
+    }
+    
+    // MARK: - Private Methods
     
     private func body() -> UIView {
         label.embed(subview: lineViewBody())
@@ -43,14 +54,6 @@ final class OtpItem: View {
             Spacer(.px8)
         }
         .layoutMargins(.make(hInsets: 8))
-    }
-    
-    func hideLineView() {
-        lineView.isHidden = true
-    }
-    
-    func showLineView() {
-        lineView.isHidden = false
     }
     
     override var intrinsicContentSize: CGSize {

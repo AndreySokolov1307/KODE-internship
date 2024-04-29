@@ -11,7 +11,14 @@ final class AuthPhoneView: BackgroundPrimary {
         case loading
     }
 
+    // MARK: - Public Properties
+    
     @Published var state: State = .input
+    
+    var onAuth: StringHandler?
+    
+    // MARK: - Private Properties
+    
     private let  phoneInputView = PhoneInputView()
     private let logoImageView = ImageView(image: Asset.Images.logoSmall.image, foregroundStyle: .contentAccentTertiary)
     private lazy var logInButton = ButtonPrimary(title: Entrance.enter)
@@ -20,16 +27,18 @@ final class AuthPhoneView: BackgroundPrimary {
             self?.onAuth?(number)
         }
     
-    var onAuth: StringHandler?
-    
     private var cancellables = Set<AnyCancellable>()
        
+    // MARK: - Public Methods
+    
     override func setup() {
         super.setup()
         body().embed(in: self)
         setupActionButton()
         setupBinding()
     }
+    
+    // MARK: - Private Methods
     
     private func setupActionButton() {
         actionButton = logInButton

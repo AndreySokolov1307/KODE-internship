@@ -1,15 +1,9 @@
-//
-//  PhoneTextField.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 09.04.2024.
-//
-
 import UI
 import UIKit
 import AppIndependent
 
 final class PhoneInputView: View {
+    
     enum Size {
         case medium
         case large
@@ -20,6 +14,8 @@ final class PhoneInputView: View {
         case error
     }
 
+    // MARK: - Public Properties
+    
     var number = Common.empty
     var size: Size
     var textField = TextField(placeholder: Entrance.loginPlaceholder)
@@ -28,7 +24,12 @@ final class PhoneInputView: View {
         .keyboardType(.numberPad)
         .contentType(.oneTimeCode)
         .addTarger(target: self, action: #selector(didChange(_:)), for: .editingChanged)
+    
+    // MARK: - Private Properties
+    
     private lazy var imageView = ImageView(image: Asset.Images.phone.image, foregroundStyle: .contentAccentPrimary)
+    
+    // MARK: - PhoneInputView
     
     init(size: Size = .large) {
         self.size = size
@@ -39,12 +40,31 @@ final class PhoneInputView: View {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public Methods
+    
     override func setup() {
         super.setup()
         body().embed(in: self)
             .backgroundColor(Palette.Content.primary)
             .cornerRadius(size.radius)
     }
+    
+    // MARK: - Public Methods
+    
+    func updateUIWithState(_ state: State) {
+        switch state {
+        case .input:
+            imageView.foregroundStyle(.contentAccentPrimary)
+            textField.textColor(Palette.Text.primary)
+                .shouldBecomeFirstResponder()
+        case .error:
+            imageView.foregroundStyle(.indicatorContentError)
+            textField.textColor(Palette.Indicator.contentError)
+        }
+    }
+    
+    // MARK: - Private Methods
+    
     private func body() -> UIView {
         HStack(spacing: 16) {
             imageView
@@ -68,18 +88,6 @@ final class PhoneInputView: View {
     
     override var intrinsicContentSize: CGSize {
         return CGSize(width: UIView.layoutFittingExpandedSize.width, height: size.height)
-    }
-    
-    func updateUIWithState(_ state: State) {
-        switch state {
-        case .input:
-            imageView.foregroundStyle(.contentAccentPrimary)
-            textField.textColor(Palette.Text.primary)
-                .shouldBecomeFirstResponder()
-        case .error:
-            imageView.foregroundStyle(.indicatorContentError)
-            textField.textColor(Palette.Indicator.contentError)
-        }
     }
 }
 

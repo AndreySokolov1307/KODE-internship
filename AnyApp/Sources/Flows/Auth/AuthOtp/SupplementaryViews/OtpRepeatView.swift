@@ -4,14 +4,19 @@ import AppIndependent
 import Combine
 
 final class OtpRepeatView: View {
+    
     enum State: Equatable {
         case error(String)
         case timer
     }
     
+    // MARK: - Public Properties
+    
     @Published var state: State = .timer
     var onRepeatViewTap: VoidHandler?
     var timer: Timer?
+    
+    // MARK: - Private Properties
     
     private let label = Label(foregroundStyle: .textSecondary, fontStyle: .caption1)
     private let repeatView = ImageView(image: Asset.Images.repeat.image, foregroundStyle: .contentAccentPrimary)
@@ -19,6 +24,8 @@ final class OtpRepeatView: View {
     private lazy var timeleft = defaultTime
     
     private var cancellables = Set<AnyCancellable>()
+    
+    // MARK: - OtpRepeatView
     
     init(defaultTime: Int = 4) {
         if defaultTime <= 0 {
@@ -33,12 +40,16 @@ final class OtpRepeatView: View {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public Methods
+    
     override func setup() {
         super.setup()
         body().embed(in: self)
         startOtpTimer()
         bind()
     }
+    
+    // MARK: - Private Methods
     
     private func bind() {
         $state
@@ -67,8 +78,8 @@ final class OtpRepeatView: View {
             label
                 .text(message)
                 .foregroundStyle(.indicatorContentError)
+        }
     }
-}
 
     private func body() -> UIView {
         HStack(alignment: .fill, distribution: .fill, spacing: 16) {
@@ -95,7 +106,6 @@ final class OtpRepeatView: View {
             timeleft -= 1
         } else {
             timer?.invalidate()
-            print(timer, timer?.isValid)
             self.state = .timer
             self.timeleft = defaultTime
         }

@@ -19,8 +19,13 @@ final class AuthOtpViewModel {
         case loading
     }
     
-    private var otpAttemptsLeft = 5
+    // MARK: - Public Properties
+    
     var onOutput: ((Output) -> Void)?
+    
+    // MARK: - Private Properties
+    
+    private var otpAttemptsLeft = 5
 
     private var configModel: ConfigModel
     private let authRequestManager: AuthRequestManagerAbstract
@@ -34,6 +39,8 @@ final class AuthOtpViewModel {
 
     private var cancellables = Set<AnyCancellable>()
 
+    // MARK: - AuthOtpViewModel
+    
     init(
         configModel: AuthOtpConfigModel,
         authRequestManager: AuthRequestManagerAbstract,
@@ -43,6 +50,8 @@ final class AuthOtpViewModel {
         self.authRequestManager = authRequestManager
         self.appSession = appSession
     }
+    
+    // MARK: - Public Methods
     
     func handle(_ input: Input) {
         switch input {
@@ -62,6 +71,8 @@ final class AuthOtpViewModel {
             appSession.handle(.logout(.init(needFlush: true, alert: .snack(message: "Вы разлогинились"))))
         }
     }
+    
+    // MARK: - Private Methods
     
     private func isOtpValid(_ otp: String) -> Bool {
         return otp == configModel.otpCode

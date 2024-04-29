@@ -4,16 +4,21 @@ import AppIndependent
 import Combine
 
 final class MainView: BackgroundPrimary {
+    
+    // MARK: - Public Properties
 
     var onNewProduct: VoidHandler?
+    var onRefresh: VoidHandler?
+    
+    // MARK: - Private Properties
     
     private let tableView = BaseTableView()
     private let refreshControl = UIRefreshControl()
     private let addButton = ButtonPrimary(title: Main.openNewAccount)
     private lazy var dataSource = MainDataSource(tableView: tableView)
-    
-    public var onRefresh: VoidHandler?
 
+    // MARK: - Public Methods
+    
     override func setup() {
         super.setup()
         body().embed(in: self)
@@ -24,6 +29,8 @@ final class MainView: BackgroundPrimary {
     public func endRefreshing() {
         refreshControl.endRefreshing()
     }
+    
+    // MARK: - Private Methods
 
     private func body() -> UIView {
         tableView
@@ -48,6 +55,8 @@ final class MainView: BackgroundPrimary {
         }
     }
 }
+
+// MARK: - Configurable
 
 extension MainView: ConfigurableView {
     typealias Model = MainViewProps

@@ -1,10 +1,3 @@
-//
-//  PaymentView.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 20.04.2024.
-//
-
 import Foundation
 
 import UIKit
@@ -21,13 +14,13 @@ final class PaymentView: BackgroundPrimary {
     private let titleLabel = Label(foregroundStyle: .textPrimary, fontStyle: .body2)
     private var props: Props?
 
-    // MARK: - Public methods
+    // MARK: - Public Methods
 
     override public func setup() {
         super.setup()
     }
 
-    // MARK: - Private methods
+    // MARK: - Private Methods
 
     private func body(with props: Props) -> UIView {
         HStack(alignment: .center, distribution: .fill, spacing: 16) {
@@ -69,6 +62,5 @@ extension PaymentView: ConfigurableView {
         self.props = model
         subviews.forEach { $0.removeFromSuperview() }
         body(with: model).embed(in: self)
-           // .layoutMargins(.make(hInsets: 16))
     }
 }

@@ -65,7 +65,7 @@ final class AccountDetailViewModel {
     
     var onOutput: ((Output) -> Void)?
     
-    // MARK: - Init
+    // MARK: - AcctouneDetailViewModel
     
     init(configModel: ConfigModel,
          coreRequestManager: CoreRequestManagerAbstract) {

@@ -21,18 +21,26 @@ final class MainViewModel {
         case refreshData
     }
     
+    // MARK: - Public Properties
+    
+    var onOutput: ((Output) -> Void)?
+    
+    // MARK: - Private Properties
+    
     private let coreRequestManager: CoreRequestManagerAbstract
     
     private var obtainedData = false
     
     private var cancellables = Set<AnyCancellable>()
     
+    // MARK: - MainViewModel
+    
     init(coreRequestManager: CoreRequestManagerAbstract) {
         self.coreRequestManager = coreRequestManager
     }
-    
-    var onOutput: ((Output) -> Void)?
 
+    // MARK: - Public Methods
+    
     func handle(_ input: Input) {
         switch input {
         case .loadData:
@@ -42,6 +50,8 @@ final class MainViewModel {
             loadData()
         }
     }
+    
+    // MARK: - Private Methods
         
     private func loadData() {
         coreRequestManager.coreAccountList()

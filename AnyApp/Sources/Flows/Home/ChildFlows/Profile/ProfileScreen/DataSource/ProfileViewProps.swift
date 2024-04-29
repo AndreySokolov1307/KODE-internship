@@ -1,13 +1,7 @@
-//
-//  ProfileViewProps.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 13.04.2024.
-//
-//
 import Foundation
 
 struct ProfileViewProps {
+    
     enum Section: Hashable {
         case profile(Item)
         case settings([Item])
@@ -28,6 +22,8 @@ struct ProfileViewProps {
         case profile(ProfileDetailView.Props)
         case info(InfoView.Props)
     }
+    
+    // MARK: - Public Properties
     
     let sections: [Section]
 }

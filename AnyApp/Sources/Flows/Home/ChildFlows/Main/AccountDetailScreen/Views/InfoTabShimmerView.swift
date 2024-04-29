@@ -16,7 +16,6 @@ final class InfoTabShimmerView: BackgroundPrimary {
         .size(width: 56, height: 56)
         .skeletonCornerRadius(28)
    
-
     // MARK: - Public methods
 
     override public func setup() {

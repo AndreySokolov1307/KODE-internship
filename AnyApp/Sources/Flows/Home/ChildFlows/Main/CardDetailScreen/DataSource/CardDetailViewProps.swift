@@ -1,10 +1,3 @@
-//
-//  CardDetailViewProps.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 21.04.2024.
-//
-
 import Foundation
 
 struct CardDetailViewProps {
@@ -36,6 +29,8 @@ struct CardDetailViewProps {
         case action(InfoView.Props)
         case payment(PaymentView.Props)
     }
+    
+    // MARK: - Public Properties
 
     let sections: [Section]
 }

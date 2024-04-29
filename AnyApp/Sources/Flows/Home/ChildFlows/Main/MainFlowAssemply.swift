@@ -1,10 +1,3 @@
-//
-//  MainFlowAssemply.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 12.04.2024.
-//
-
 import UI
 import Core
 import Swinject
@@ -13,8 +6,12 @@ import AppIndependent
 import SwinjectAutoregistration
 
 final class MainFlowAssembly: Assembly, Identifiable {
+    
+    // MARK: - Public Properties
 
     var id: String { String(describing: type(of: self)) }
+    
+    // MARK: - Public Methods
 
     func assemble(container: Container) {
         container.register(NavigationController.self, name: RouterName.main) { _ in

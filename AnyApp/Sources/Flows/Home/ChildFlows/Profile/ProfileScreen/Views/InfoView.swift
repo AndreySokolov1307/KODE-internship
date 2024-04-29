@@ -1,10 +1,3 @@
-//
-//  InfoView.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 14.04.2024.
-//
-
 import UIKit
 import UI
 import AppIndependent

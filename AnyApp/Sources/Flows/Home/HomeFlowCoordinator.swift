@@ -6,14 +6,20 @@ import AppIndependent
 import SwinjectAutoregistration
 
 final class HomeFlowCoordinator: Coordinator {
+    
+    // MARK: - HomeFlowCoordinator
 
     required init(router: RouterAbstract) {
         super.init(router: router)
     }
+    
+    // MARK: - Public Methods
 
     override func start() {
         showTabController()
     }
+    
+    // MARK: - Private Methods
 
     private func showTabController() {
         guard topController(ofType: TabController.self) == nil else { return }

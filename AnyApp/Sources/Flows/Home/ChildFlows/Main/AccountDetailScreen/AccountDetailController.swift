@@ -5,12 +5,18 @@ final class AccountDetailController: TemplateViewController<AccountDetailView> {
     
     typealias ViewModel = AccountDetailViewModel
     
+    // MARK: - Private Properties
+    
     private var viewModel: ViewModel!
+    
+    // MARK: - AccountDetailController
     
     convenience init(viewModel: ViewModel) {
         self.init()
         self.viewModel = viewModel
     }
+    
+    // MARK: - Public Methods
     
     override func setup() {
         super.setup()
@@ -18,6 +24,8 @@ final class AccountDetailController: TemplateViewController<AccountDetailView> {
         configureNavigationItem()
         viewModel.handle(.loadData)
     }
+    
+    // MARK: - Private Methods
     
     private func configureNavigationItem() {
         navigationItem.title = Main.accounts

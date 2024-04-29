@@ -3,13 +3,19 @@ import UIKit
 import AppIndependent
 
 final class CardDetailView: BackgroundPrimary {
+    
+    // MARK: - Public Properties
+    
+    public var onRefresh: VoidHandler?
+    
+    // MARK: - Private Properties
 
     private let tableView = BaseTableView()
     private let refreshControl = UIRefreshControl()
     private lazy var dataSource = CardDetailDataSource(tableView: tableView)
-    
-    public var onRefresh: VoidHandler?
 
+    // MARK: - Public Methods
+    
     override func setup() {
         super.setup()
         body().embed(in: self)
@@ -20,6 +26,8 @@ final class CardDetailView: BackgroundPrimary {
     public func endRefreshing() {
         refreshControl.endRefreshing()
     }
+    
+    // MARK: - Private Methods
 
     private func body() -> UIView {
         tableView
@@ -33,6 +41,8 @@ final class CardDetailView: BackgroundPrimary {
         onRefresh?()
     }
 }
+
+// MARK: - Configurable
 
 extension CardDetailView: ConfigurableView {
     typealias Model = CardDetailViewProps

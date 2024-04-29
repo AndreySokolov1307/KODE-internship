@@ -1,17 +1,14 @@
-//
-//  CircleView.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 18.04.2024.
-//
-
 import UI
 import UIKit
 final class CircleView: View {
     
+    // MARK: - Private Properties
+    
     private let imageView = ImageView()
         .size(sideLength: 24)
     private let sideLenght: CGFloat
+    
+    // MARK: - Public Methods
     
     override func setup() {
         super.setup()
@@ -19,6 +16,8 @@ final class CircleView: View {
         size(sideLength: sideLenght)
         cornerRadius(sideLenght / 2)
     }
+    
+    // MARK: - CirleView
     
     init(sideLenght: CGFloat) {
         self.sideLenght = sideLenght
@@ -28,6 +27,8 @@ final class CircleView: View {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Private Methods
     
     private func setupImageView() {
         addSubview(imageView)

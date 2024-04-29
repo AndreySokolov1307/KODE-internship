@@ -2,6 +2,9 @@ import UIKit
 import UI
 
 final class NavigationController: BaseNavigationController, Themeable {
+    
+    // MARK: - Public Methods
+    
     func updateAppearance() {
         navigationBar.tintColor(Palette.Button.buttonSecondary)
     }

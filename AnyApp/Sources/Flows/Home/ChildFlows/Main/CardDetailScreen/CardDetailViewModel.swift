@@ -18,6 +18,10 @@ final class CardDetailViewModel {
         case refreshData
     }
     
+    // MARK: - Public Properties
+    
+    var onOutput: ((Output) -> Void)?
+    
     // MARK: - Private Properties
     
     private let configModel: ConfigModel
@@ -54,11 +58,7 @@ final class CardDetailViewModel {
                        image: Asset.Images.internet.image))
     ])
     
-    // MARK: - Public Properties
-    
-    var onOutput: ((Output) -> Void)?
-    
-    // MARK: - Init
+    // MARK: - CardDetailViewModel
     
     init(configModel: ConfigModel,
          coreRequestManager: CoreRequestManagerAbstract) {

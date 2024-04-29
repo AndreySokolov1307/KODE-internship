@@ -5,12 +5,18 @@ final class CardDetailController: TemplateViewController<CardDetailView> {
     
     typealias ViewModel = CardDetailViewModel
     
+    // MARK: - Private Properties
+    
     private var viewModel: ViewModel!
+    
+    // MARK: - CardDetailViewController
     
     convenience init(viewModel: ViewModel) {
         self.init()
         self.viewModel = viewModel
     }
+    
+    // MARK: - Public Methods
     
     override func setup() {
         super.setup()
@@ -18,6 +24,8 @@ final class CardDetailController: TemplateViewController<CardDetailView> {
         configureNavigationItem()
         viewModel.handle(.loadData)
     }
+    
+    // MARK: - Private Methods
     
     private func configureNavigationItem() {
         navigationItem.title = Main.CardDetail.title

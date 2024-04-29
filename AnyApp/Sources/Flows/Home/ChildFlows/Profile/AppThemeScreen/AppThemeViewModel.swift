@@ -1,10 +1,3 @@
-//
-//  AppThemeViewController.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 19.04.2024.
-//
-
 import Services
 import Combine
 import UI
@@ -15,7 +8,11 @@ final class AppThemeViewModel {
         case themeChoosen(ThemeRaw)
     }
     
+    // MARK: - Public Properties
+    
     var currentTheme = PassthroughSubject<ThemeRaw, Never>()
+    
+    // MARK: - Public Methods
     
     func handle(_ input: Input) {
         switch input {

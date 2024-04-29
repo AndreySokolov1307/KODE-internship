@@ -21,7 +21,11 @@ final class ProfileViewModel {
         case refreshData
     }
     
+    // MARK: - Public Properties
+    
     var onOutput: ((Output) -> Void)?
+    
+    // MARK: - Private Properties
 
     private let appSession: AppSession
     
@@ -30,6 +34,8 @@ final class ProfileViewModel {
     private let coreRequestManager: CoreRequestManagerAbstract
 
     private var cancellables = Set<AnyCancellable>()
+    
+    // MARK: - ProfileViewModel
 
     init(
         appSession: AppSession,
@@ -39,6 +45,8 @@ final class ProfileViewModel {
         self.coreRequestManager = coreRequestManager
     }
 
+    // MARK: - Public Methods
+    
     func handle(_ input: Input) {
         switch input {
         case .logout:
@@ -50,6 +58,8 @@ final class ProfileViewModel {
             loadData()
         }
     }
+    
+    // MARK: - Private Methods
     
     private func createSettingsSection() -> Props.Section {
         let aboutItem: Props.Item = .info(

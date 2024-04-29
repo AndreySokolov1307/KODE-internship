@@ -1,10 +1,3 @@
-//
-//  AccountDetailViewProps.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 17.04.2024.
-//
-
 import Foundation
 
 struct AccountDetailViewProps {
@@ -37,5 +30,7 @@ struct AccountDetailViewProps {
         case payment(PaymentView.Props)
     }
 
+    // MARK: - Public Properties
+    
     let sections: [Section]
 }

@@ -9,15 +9,23 @@ final class MainController: TemplateViewController<MainView> {
         case accountDetail(AccountDetailConfigModel)
         case cardDetail(CardDetailConfigModel)
     }
+    
+    // MARK: - Public Properties
 
     var onEvent: ((Event) -> Void)?
+    
+    // MARK: - Private Properties
 
     private var viewModel: ViewModel!
+    
+    // MARK: - MainController
 
     convenience init(viewModel: ViewModel) {
         self.init()
         self.viewModel = viewModel
     }
+    
+    // MARK: - Public Methods
     
     override func setup() {
         super.setup()
@@ -25,6 +33,8 @@ final class MainController: TemplateViewController<MainView> {
         configureNavigationItem()
         viewModel.handle(.loadData)
     }
+    
+    // MARK: - Private Methods
 
     private func configureNavigationItem() {
         navigationItem.title = Main.main

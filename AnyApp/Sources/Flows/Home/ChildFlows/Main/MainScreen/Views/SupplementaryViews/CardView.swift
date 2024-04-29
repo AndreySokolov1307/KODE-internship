@@ -1,23 +1,23 @@
-//
-//  CardView.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 12.04.2024.
-//
-
 import UI
 import UIKit
+
 final class CardView: View {
+    
+    // MARK: - Private Properties
     
     private let cardLabel = Label()
         .font(UIFont.systemFont(ofSize: 10, weight: .regular))
     private let paymentSystemImageView = ImageView()
     private let imageView = ImageView(image: Asset.Images.bankCard.image)
     
+    // MARK: - Public Methods
+    
     override func setup() {
         super.setup()
         body().embed(in: self)
     }
+    
+    // MARK: - Private Methods
     
     private func body() -> UIView {
         imageView.embed(subview: foregroundBody())

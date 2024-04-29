@@ -9,10 +9,16 @@ final class AuthPhoneController: TemplateViewController<AuthPhoneView>, Navigati
     enum Event {
         case otp(AuthOtpConfigModel)
     }
+    
+    // MARK: - Public Properties
 
     var onEvent: ((Event) -> Void)?
+    
+    // MARK: - Private Properties
 
     private var viewModel: ViewModel!
+    
+    // MARK: - AuthPhoneController
 
     convenience init(viewModel: ViewModel) {
         self.init()
@@ -28,6 +34,8 @@ final class AuthPhoneController: TemplateViewController<AuthPhoneView>, Navigati
         super.viewDidAppear(animated)
         rootView.state = .input
     }
+    
+    // MARK: - Private Methods
 
     private func setupBindings() {
         rootView.onAuth = { [weak self] number in

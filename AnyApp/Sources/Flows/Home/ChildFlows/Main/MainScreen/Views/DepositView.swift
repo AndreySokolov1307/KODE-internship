@@ -1,10 +1,3 @@
-//
-//  DepositView.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 12.04.2024.
-//
-
 import UIKit
 import UI
 import AppIndependent

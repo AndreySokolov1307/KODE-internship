@@ -10,9 +10,15 @@ final class AuthOtpController: TemplateViewController<AuthOtpView>, NavigationBa
         case userLoggedIn
     }
 
+    // MARK: - Public Properties
+    
     var onEvent: ((Event) -> Void)?
+    
+    // MARK: - Private Properties
 
     private var viewModel: ViewModel!
+    
+    // MARK: - AuthOtpController
 
     convenience init(viewModel: ViewModel) {
         self.init()
@@ -28,6 +34,8 @@ final class AuthOtpController: TemplateViewController<AuthOtpView>, NavigationBa
         super.setup()
         setupBindings()
     }
+    
+    // MARK: - Private Methods
 
     private func setupBindings() {
         rootView.onOtpFilled = { [weak self] otp in

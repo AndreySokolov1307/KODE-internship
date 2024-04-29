@@ -6,6 +6,8 @@ import SwinjectAutoregistration
 import UI
 
 final class ProfileFlowCoordinator: Coordinator {
+    
+    // MARK: - Public Properties
 
     var finishFlow: DefaultFinishHandler?
     
@@ -27,6 +29,8 @@ final class ProfileFlowCoordinator: Coordinator {
         fatalError("init(router:) has not been implemented")
     }
     
+    // MARK: - Public Methods
+    
     func profileController() -> UIViewController? {
         let controller = resolver ~> ProfileController.self
         innerRouter.setRootModule(controller)
@@ -44,6 +48,8 @@ final class ProfileFlowCoordinator: Coordinator {
         
         return innerRouter.rootController
     }
+    
+    // MARK: - Private Methods
     
     private func showAppThemeController() {
         let controller = resolver ~> AppThemeController.self

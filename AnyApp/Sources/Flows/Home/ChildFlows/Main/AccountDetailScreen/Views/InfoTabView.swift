@@ -1,10 +1,3 @@
-//
-//  InfoTabView.swift
-//  AnyApp
-//
-//  Created by Андрей Соколов on 17.04.2024.
-//
-
 import UIKit
 import UI
 import AppIndependent
@@ -20,13 +13,13 @@ final class InfoTabView: BackgroundPrimary {
 
     private var props: Props?
 
-    // MARK: - Public methods
+    // MARK: - Public Methods
 
     override public func setup() {
         super.setup()
     }
 
-    // MARK: - Private methods
+    // MARK: - Private Methods
 
     private func body(with props: Props) -> UIView {
     
