@@ -4,6 +4,17 @@
 "main" = "Главная";
 "openNewAccount" = "Открыть новый счет или продукт";
 
+// MARK: - Account
+
+"account.blocked" = "Заблокирована";
+"account.digital" = "Цифровая";
+"account.physical" = "Физическая";
+
+// MARK: - Deposit
+
+"deposit.interestRate" = "Ставка";
+"deposit.before" = "до";
+
 // MARK: - Account Detail
 
 "accountDetail.jkh" = "ЖКХ";
@@ -13,6 +24,8 @@
 "accountDetail.renameAccount" = "Переименовать счет";
 "accountDetail.requisites" = "Реквезиты счета";
 "accountDetail.closeAccount" = "Закрыть счет";
+"accountDetail.numberMask" = "**** **** **** XXXX";
+"accountDetail.name" = "Счет расчетный";
 
 // MARk: - Card Detail
 
@@ -25,9 +38,16 @@
 "cardDetail.info" = "Информация о карте";
 "cardDetail.issue" = "Выпустить карту";
 "cardDetail.block" = "Заблокировать карту";
+"cardDetail.numberMask" = "**** XXXX";
 
 //MARK: - Mock
 
 "mock.transaction1" = "Оплата ООО ЯнтарьЭнерго";
 "mock.transaction2" = "Зачисление зарплаты";
 "mock.transaction3" = "Перевод Александру Олеговичу С test test test test";
+"mock.id" = "1234";
+"mock.cardName" = "Дополнительная";
+"mock.cardNumber" = "8800555353545678";
+"mock.depositName1" = "Накопительный";
+"mock.depositName2" = "EUR вклад";
+

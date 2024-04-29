@@ -20,8 +20,14 @@ public enum Profile {
   public static let profile = Profile.tr("Profile", "profile", fallback: "Профиль")
   /// Служба поддержки
   public static let support = Profile.tr("Profile", "support", fallback: "Служба поддержки")
+  /// tel://88000000000
+  public static let supportPhoneNumber = Profile.tr("Profile", "supportPhoneNumber", fallback: "tel://88000000000")
   /// Тема приложения
   public static let theme = Profile.tr("Profile", "theme", fallback: "Тема приложения")
+  public enum AboutApp {
+    /// Версия 0.0.1 beta
+    public static let version = Profile.tr("Profile", "aboutApp.version", fallback: "Версия 0.0.1 beta")
+  }
   public enum Quit {
     /// Вы точно хотите выйти?
     public static let message = Profile.tr("Profile", "quit.message", fallback: "Вы точно хотите выйти?")

@@ -38,7 +38,7 @@ final class DepostiView: BackgroundPrimary {
                         .text(props.name)
                     FlexibleSpacer()
                     interestRateLabel
-                        .text("Ставка" + Common.space + String(props.interestRate) + "%")
+                        .text(Main.Deposit.interestRate + Common.space + String(props.interestRate) + "%")
                 }
                 HStack(alignment: .fill, distribution: .fill) {
                     moneyLabel
@@ -46,7 +46,7 @@ final class DepostiView: BackgroundPrimary {
                         .foregroundStyle(props.foregroundStyle)
                     FlexibleSpacer()
                     dueDateLabel
-                        .text("до" + Common.space + props.dateString)
+                        .text(Main.Deposit.before + Common.space + props.dateString)
                 }
             }
         }

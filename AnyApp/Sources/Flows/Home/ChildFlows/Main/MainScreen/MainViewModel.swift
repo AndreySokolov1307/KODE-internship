@@ -166,11 +166,11 @@ final class MainViewModel {
 
 extension MainViewModel {
     static let mockCards: [MainViewProps.Item] = [
-        .card(.init(id: "1234",
-                    name: "Дополнительная карта",
+        .card(.init(id: Main.Mock.id,
+                    name: Main.Mock.cardName,
                     cardType: .digital,
                     status: .deactivated,
-                    cardNumber: "88005553535",
+                    cardNumber: Main.Mock.cardNumber,
                     paymentSystem: .masterCard,
                     onTap: {
                         SnackCenter.shared.showInDevelopmentSnack()
@@ -179,7 +179,7 @@ extension MainViewModel {
     
     static let mockDeposits: [MainViewProps.Item] = [
     .deposit(.init(id: 555,
-                   name: "Накопительный",
+                   name: Main.Mock.depositName1,
                    status: .active,
                    currency: .usd,
                    balance: 3719,
@@ -189,7 +189,7 @@ extension MainViewModel {
                        SnackCenter.shared.showInDevelopmentSnack()
                    })),
     .deposit(.init(id: 777,
-                   name: "EUR вклад",
+                   name: Main.Mock.depositName2,
                    status: .active,
                    currency: .eur,
                    balance: 1567,

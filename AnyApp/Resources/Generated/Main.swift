@@ -20,6 +20,14 @@ public enum Main {
   public static let main = Main.tr("Main", "main", fallback: "Главная")
   /// Открыть новый счет или продукт
   public static let openNewAccount = Main.tr("Main", "openNewAccount", fallback: "Открыть новый счет или продукт")
+  public enum Account {
+    /// Заблокирована
+    public static let blocked = Main.tr("Main", "account.blocked", fallback: "Заблокирована")
+    /// Цифровая
+    public static let digital = Main.tr("Main", "account.digital", fallback: "Цифровая")
+    /// Физическая
+    public static let physical = Main.tr("Main", "account.physical", fallback: "Физическая")
+  }
   public enum AccountDetail {
     /// Мобильная связь
     public static let cellular = Main.tr("Main", "accountDetail.cellular", fallback: "Мобильная связь")
@@ -31,6 +39,10 @@ public enum Main {
     public static let jkh = Main.tr("Main", "accountDetail.jkh", fallback: "ЖКХ")
     /// Привязанные карты
     public static let linkedCards = Main.tr("Main", "accountDetail.linkedCards", fallback: "Привязанные карты")
+    /// Счет расчетный
+    public static let name = Main.tr("Main", "accountDetail.name", fallback: "Счет расчетный")
+    /// **** **** **** XXXX
+    public static let numberMask = Main.tr("Main", "accountDetail.numberMask", fallback: "**** **** **** XXXX")
     /// Переименовать счет
     public static let renameAccount = Main.tr("Main", "accountDetail.renameAccount", fallback: "Переименовать счет")
     /// Реквезиты счета
@@ -49,6 +61,8 @@ public enum Main {
     public static let issue = Main.tr("Main", "cardDetail.issue", fallback: "Выпустить карту")
     /// ЖКХ
     public static let jkh = Main.tr("Main", "cardDetail.jkh", fallback: "ЖКХ")
+    /// **** XXXX
+    public static let numberMask = Main.tr("Main", "cardDetail.numberMask", fallback: "**** XXXX")
     /// Переименовать карту
     public static let rename = Main.tr("Main", "cardDetail.rename", fallback: "Переименовать карту")
     /// Реквезиты счета
@@ -56,7 +70,23 @@ public enum Main {
     /// Карты
     public static let title = Main.tr("Main", "cardDetail.title", fallback: "Карты")
   }
+  public enum Deposit {
+    /// до
+    public static let before = Main.tr("Main", "deposit.before", fallback: "до")
+    /// Ставка
+    public static let interestRate = Main.tr("Main", "deposit.interestRate", fallback: "Ставка")
+  }
   public enum Mock {
+    /// Дополнительная
+    public static let cardName = Main.tr("Main", "mock.cardName", fallback: "Дополнительная")
+    /// 8800555353545678
+    public static let cardNumber = Main.tr("Main", "mock.cardNumber", fallback: "8800555353545678")
+    /// Накопительный
+    public static let depositName1 = Main.tr("Main", "mock.depositName1", fallback: "Накопительный")
+    /// EUR вклад
+    public static let depositName2 = Main.tr("Main", "mock.depositName2", fallback: "EUR вклад")
+    /// 1234
+    public static let id = Main.tr("Main", "mock.id", fallback: "1234")
     /// Оплата ООО ЯнтарьЭнерго
     public static let transaction1 = Main.tr("Main", "mock.transaction1", fallback: "Оплата ООО ЯнтарьЭнерго")
     /// Зачисление зарплаты

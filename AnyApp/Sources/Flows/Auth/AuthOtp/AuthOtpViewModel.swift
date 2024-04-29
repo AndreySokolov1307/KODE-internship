@@ -34,7 +34,8 @@ final class AuthOtpViewModel {
     private var otpAttemptsLeftMessage: String {
         let attemptString = Plurals.attemptsLeft(otpAttemptsLeft)
         let leftString = Plurals.leftFem(otpAttemptsLeft)
-        return ("Неверный код. \(leftString) \(otpAttemptsLeft) " + attemptString)
+        let wrongOtp = Entrance.wrongOtp
+        return ("\(wrongOtp) \(leftString) \(otpAttemptsLeft) " + attemptString)
     }
 
     private var cancellables = Set<AnyCancellable>()

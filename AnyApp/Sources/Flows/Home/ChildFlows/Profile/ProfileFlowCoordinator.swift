@@ -39,8 +39,6 @@ final class ProfileFlowCoordinator: Coordinator {
             switch event {
             case .appTheme:
                 self?.showAppThemeController()
-            case .callSupport:
-                self?.callSupport()
             case .about:
                 self?.showAboutAppController()
             }
@@ -61,12 +59,5 @@ final class ProfileFlowCoordinator: Coordinator {
         let controller = resolver ~> AboutAppController.self
         controller.hidesBottomBarWhenPushed = true
         innerRouter.push(controller)
-    }
-    
-    // TODO: - move to view model
-    private func callSupport() {
-        guard let url = URL(string: "tel://88000000000"),
-              UIApplication.shared.canOpenURL(url) else { return }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 }

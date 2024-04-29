@@ -1,6 +1,7 @@
 import Services
 import Combine
 import UI
+import UIKit
 // swiftlint:disable: all
 final class ProfileViewModel {
     typealias Props = ProfileViewProps
@@ -9,7 +10,6 @@ final class ProfileViewModel {
         case content(Props)
         case about
         case theme
-        case support
         case logOut
         case error(ErrorView.Props)
         case errorMessage(String)
@@ -50,7 +50,7 @@ final class ProfileViewModel {
     func handle(_ input: Input) {
         switch input {
         case .logout:
-            appSession.handle(.logout(.init(needFlush: true, alert: .snack(message: "Вы разлогинились"))))
+            appSession.handle(.logout(.init(needFlush: true, alert: .snack(message: Common.logOut))))
         case .loadData:
             sendShimmerSections()
             loadData()
@@ -82,7 +82,7 @@ final class ProfileViewModel {
                 title: Profile.support,
                 image: Asset.Images.phoneCall.image,
                 onTap: { [weak self] in
-                    self?.onOutput?(.support)
+                    self?.callSupport()
                 }))
         let logOutItem: Props.Item = .info(
             .init(
@@ -149,6 +149,12 @@ final class ProfileViewModel {
     
     private func sendError(with props: ErrorView.Props) {
         onOutput?(.error(props))
+    }
+    
+    private func callSupport() {
+        guard let url = URL(string: Profile.supportPhoneNumber),
+              UIApplication.shared.canOpenURL(url) else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
 }

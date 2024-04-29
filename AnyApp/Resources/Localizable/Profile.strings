@@ -4,6 +4,7 @@
 "logOut" = "Выход";
 "profile" = "Профиль";
 "phonePattern" = "+X (XXX) *** - ** - XX";
+"supportPhoneNumber" = "tel://88000000000";
 
 //MARK: - AppTheme
 
@@ -12,6 +13,11 @@
 "theme.light" = "Светлая";
 "theme.dark" = "Темная";
 
+// MARK: - AboutApp
+
+"aboutApp.version" = "Версия 0.0.1 beta";
+
 //MARK: - Quit
 
 "quit.message" = "Вы точно хотите выйти?";
+

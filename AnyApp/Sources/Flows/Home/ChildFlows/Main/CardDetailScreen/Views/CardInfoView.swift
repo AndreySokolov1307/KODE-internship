@@ -134,7 +134,7 @@ extension CardInfoView.Props {
         
         return String.format(
             number,
-            with: "**** XXXX",
+            with: Main.CardDetail.numberMask,
             replacingChar: "X",
             passingChar: "*")
     }

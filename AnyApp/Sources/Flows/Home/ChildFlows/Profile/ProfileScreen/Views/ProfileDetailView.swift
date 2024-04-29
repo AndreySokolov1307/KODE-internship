@@ -54,7 +54,7 @@ extension ProfileDetailView: ConfigurableView {
         var formattedPhone: String {
             String.format(
                 phoneNumber,
-                with: "+X (XXX) *** - ** - XX",
+                with: Profile.phonePattern,
                 replacingChar: "X",
                 passingChar: "*")
         }

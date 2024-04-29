@@ -7,7 +7,7 @@ final class AboutAppView: BackgroundPrimary {
     // MARK: - Private Properties
 
     private let logo = ImageView(image: Asset.Images.logoBig.image, foregroundStyle: .contentAccentTertiary)
-    private let versionLabel = Label(text: "Версия 0.0.1 beta", foregroundStyle: .contentAccentSecondary, fontStyle: .caption2)
+    private let versionLabel = Label(text: Profile.AboutApp.version, foregroundStyle: .contentAccentSecondary, fontStyle: .caption2)
     
     // MARK: - Public Methods
     

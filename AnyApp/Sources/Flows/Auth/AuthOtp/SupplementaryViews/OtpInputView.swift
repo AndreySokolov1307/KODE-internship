@@ -72,11 +72,11 @@ final class OtpInputView: View {
         case .input:
             digitItems.forEach { item in
                 item.label.textColor(.label)
-                item.label.text("")
+                item.label.text(Common.empty)
             }
             lineView.lineColor = Palette.Content.tertiary
             textField.shouldBecomeFirstResponder()
-            textField.text = ""
+            textField.text = Common.empty
             digitItems.first?.lineView.isHidden = false
         case .error:
             digitItems.forEach { labelView in
@@ -137,7 +137,7 @@ final class OtpInputView: View {
             digitItems.forEach { item in
                 item.label.text?.removeAll()
             }
-            sender.text = ""
+            sender.text = Common.empty
             onClearAll?()
             state = .input
         } else {

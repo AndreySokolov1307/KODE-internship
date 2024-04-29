@@ -7,7 +7,6 @@ final class ProfileController: TemplateViewController<ProfileView> {
     
     enum Event {
         case appTheme
-        case callSupport
         case about
     }
 
@@ -55,8 +54,6 @@ final class ProfileController: TemplateViewController<ProfileView> {
                 self?.onEvent?(.about)
             case .theme:
                 self?.onEvent?(.appTheme)
-            case .support:
-                self?.onEvent?(.callSupport)
             case .logOut:
                 self?.showLogoutAllert()
             case .error(let props):

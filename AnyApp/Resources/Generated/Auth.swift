@@ -24,8 +24,8 @@ public enum Entrance {
   public static let replacementCharacter = Entrance.tr("Auth", "replacementCharacter", fallback: "#")
   /// Выслать код повторно
   public static let sendOTPAgain = Entrance.tr("Auth", "sendOTPAgain", fallback: "Выслать код повторно")
-  /// wrongOtp
-  public static let wrongOtp = Entrance.tr("Auth", "wrongOtp", fallback: "wrongOtp")
+  /// Неверный код.
+  public static let wrongOtp = Entrance.tr("Auth", "wrongOtp", fallback: "Неверный код.")
   public enum Error {
     /// Данная сессия авторизации будет сброшена
     public static let worngInputMessage = Entrance.tr("Auth", "error.worngInputMessage", fallback: "Данная сессия авторизации будет сброшена")

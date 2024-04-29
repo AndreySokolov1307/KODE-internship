@@ -54,12 +54,12 @@ extension AccountInfoView: ConfigurableView {
         let currency: Currency
         let balance: Int
         let accountNumber: String
-        let accountName = "Счет расчетный"
+        let accountName = Main.AccountDetail.name
         
         var formattedPhone: String {
             String.format(
                 accountNumber,
-                with: "**** **** **** XXXX",
+                with: Main.AccountDetail.numberMask,
                 replacingChar: "X",
                 passingChar: "*")
         }

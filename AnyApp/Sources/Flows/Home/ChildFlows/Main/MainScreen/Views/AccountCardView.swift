@@ -97,13 +97,13 @@ extension AccountCardView.Props {
     
     var typeText: String {
         if status == .deactivated {
-            return "Заблокирована"
+            return Main.Account.blocked
         } else {
             switch cardType {
             case .digital:
-                return "Цифровая"
+                return Main.Account.digital
             case .physical:
-                return "Физическая"
+                return Main.Account.physical
             }
         }
     }

@@ -80,7 +80,7 @@ final class PhoneInputView: View {
                                                  replacementCharacter: Character(Entrance.replacementCharacter))
         guard let newText = sender.text else { return }
         if newText.isEmpty {
-            number = ""
+            number = Common.empty
         } else {
             number = "+" + newText.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
         }
