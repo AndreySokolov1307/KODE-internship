@@ -58,7 +58,7 @@ open class ViewController: BaseController, Themeable {
             view.embed(subview: loadingView, useSafeAreaGuide: false)
             loadingView.starLoading()
         case .error(let props):
-            view.embed(subview: errorView)
+            view.embed(subview: errorView, useSafeAreaGuide: false)
             errorView.configure(with: props)
         }
     }

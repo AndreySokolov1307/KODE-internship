@@ -32,20 +32,11 @@ public final class ErrorView: BackgroundPrimary {
             retryButton
                 .title(props.buttonTitle)
                 .onTap { [weak self] in
-                    self?.startLoading()
                     self?.props?.onTap?()
                 }
         }
         .linkGroupedSpacers()
         .layoutMargins(.make(vInsets: 32, hInsets: 16))
-    }
-    
-    public func startLoading() {
-        retryButton.startLoading()
-    }
-    
-    public func stopLoading() {
-        retryButton.stopLoading()
     }
 }
 
@@ -75,6 +66,6 @@ extension ErrorView: ConfigurableView {
     public func configure(with model: Props) {
         self.props = model
         subviews.forEach { $0.removeFromSuperview() }
-        body(with: model).embed(in: self)
+        body(with: model).embed(in: self, useSafeAreaGuide: false)
     }
 }

@@ -54,7 +54,7 @@ final class MainController: TemplateViewController<MainView> {
         }
 
         rootView.onNewProduct = { 
-            SnackCenter.shared.showSnack(withProps: .init(message: "!New Product"))
+            SnackCenter.shared.showInDevelopmentSnack()
         }
     }
 }

@@ -181,19 +181,22 @@ final class CardDetailViewModel {
 
 extension CardDetailViewModel {
     public static let mockTransactionSection: Props.Section = .list([
-        // TODO: - format data and add props to header
-        .header(.init(title: "Июнь 2021")),
-        .transaction(.init(type: .payment,
-                           transaction: -1500,
-                           info: Main.Mock.transaction1,
-                           date: Date() )),
-        .transaction(.init(type: .payment,
-                           transaction: 15000,
-                           info: Main.Mock.transaction2,
-                           date: Date())),
-        .transaction(.init(type: .transfer,
-                           transaction: -6000,
-                           info: Main.Mock.transaction3,
-                           date: Date()))
+        .header(.init(
+            title: Date().monthYearLongString)),
+        .transaction(.init(
+            type: .payment,
+            transaction: -1500,
+            info: Main.Mock.transaction1,
+            date: Date() )),
+        .transaction(.init(
+            type: .payment,
+            transaction: 15000,
+            info: Main.Mock.transaction2,
+            date: Date())),
+        .transaction(.init(
+            type: .transfer,
+            transaction: -6000,
+            info: Main.Mock.transaction3,
+            date: Date()))
     ])
 }

@@ -8,6 +8,7 @@ public enum DateFormat: CaseIterable {
     case defaultServer
     case dayTime
     case monthYearShort
+    case monthYearLong
 
     public var dateFormat: String {
         switch self {
@@ -29,6 +30,8 @@ public enum DateFormat: CaseIterable {
             return "dd MMMM, HH:mm"
         case .monthYearShort:
             return "MM/yy"
+        case .monthYearLong:
+            return "LLLL yyyy"
         }
     }
 

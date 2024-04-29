@@ -111,6 +111,7 @@ final class MainViewModel {
                           }))
                 accountItems.append(item)
             }
+        
             accountItems += MainViewModel.mockCards
         }
         
@@ -128,7 +129,10 @@ final class MainViewModel {
                       currency: deposit.currency,
                       balance: deposit.balance,
                       interestRate: 7.45,
-                      closingDate: Date()))
+                      closingDate: Date(),
+                      onTap: {
+                          SnackCenter.shared.showInDevelopmentSnack()
+                      }))
             depositItems.append(item)
         }
         depositItems += MainViewModel.mockDeposits
@@ -151,29 +155,38 @@ final class MainViewModel {
 }
 
 extension MainViewModel {
-    static var mockCards: [MainViewProps.Item] = [
+    static let mockCards: [MainViewProps.Item] = [
         .card(.init(id: "1234",
                     name: "Дополнительная карта",
                     cardType: .digital,
                     status: .deactivated,
                     cardNumber: "88005553535",
-                    paymentSystem: .masterCard))
-    ]
+                    paymentSystem: .masterCard,
+                    onTap: {
+                        SnackCenter.shared.showInDevelopmentSnack()
+                    }))
+        ]
     
-    static var mockDeposits: [MainViewProps.Item] = [
+    static let mockDeposits: [MainViewProps.Item] = [
     .deposit(.init(id: 555,
                    name: "Накопительный",
                    status: .active,
                    currency: .usd,
                    balance: 3719,
                    interestRate: 8.75,
-                   closingDate: Date())),
+                   closingDate: Date(),
+                   onTap: {
+                       SnackCenter.shared.showInDevelopmentSnack()
+                   })),
     .deposit(.init(id: 777,
                    name: "EUR вклад",
                    status: .active,
                    currency: .eur,
                    balance: 1567,
                    interestRate: 5.76,
-                   closingDate: Date()))
+                   closingDate: Date(),
+                   onTap: {
+                       SnackCenter.shared.showInDevelopmentSnack()
+                   }))
    ]
 }

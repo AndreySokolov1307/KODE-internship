@@ -62,3 +62,9 @@ public final class SnackCenter {
         }
     }
 }
+
+extension SnackCenter {
+    public func showInDevelopmentSnack() {
+        showSnack(withProps: .init(message: "В разработке", style: .basic))
+    }
+}

@@ -186,8 +186,7 @@ final class AccountDetailViewModel {
 extension AccountDetailViewModel {
     static let mockTransactionSection = Props.Section.list([
         .header(.init(
-            // TODO: - get current month and create props for header with formatted date
-            title: "Июнь 2021")),
+            title: Date().monthYearLongString)),
         .transaction(.init(
             type: .payment,
             transaction: -1500,

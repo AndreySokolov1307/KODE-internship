@@ -142,6 +142,7 @@
 		32CDAD142BDBCDE80001B091 /* CardDetailConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CDAD132BDBCDE80001B091 /* CardDetailConfigModel.swift */; };
 		32CDAD162BDBF9D10001B091 /* CardInfoShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CDAD152BDBF9D10001B091 /* CardInfoShimmerView.swift */; };
 		32E0D78C2BD4618A0013C556 /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E0D78B2BD4618A0013C556 /* PaymentView.swift */; };
+		32F21F132BDFDA6B008C0957 /* Date+MonthYearLong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F21F122BDFDA6B008C0957 /* Date+MonthYearLong.swift */; };
 		32FA06552BD28A9D00819AF8 /* AppThemeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA06542BD28A9D00819AF8 /* AppThemeController.swift */; };
 		32FA06572BD28AA800819AF8 /* AppThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA06562BD28AA800819AF8 /* AppThemeView.swift */; };
 		32FA06592BD28AB600819AF8 /* AppThemeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA06582BD28AB600819AF8 /* AppThemeViewModel.swift */; };
@@ -566,6 +567,7 @@
 		32CDAD132BDBCDE80001B091 /* CardDetailConfigModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailConfigModel.swift; sourceTree = "<group>"; };
 		32CDAD152BDBF9D10001B091 /* CardInfoShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoShimmerView.swift; sourceTree = "<group>"; };
 		32E0D78B2BD4618A0013C556 /* PaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
+		32F21F122BDFDA6B008C0957 /* Date+MonthYearLong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+MonthYearLong.swift"; sourceTree = "<group>"; };
 		32FA06542BD28A9D00819AF8 /* AppThemeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppThemeController.swift; sourceTree = "<group>"; };
 		32FA06562BD28AA800819AF8 /* AppThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppThemeView.swift; sourceTree = "<group>"; };
 		32FA06582BD28AB600819AF8 /* AppThemeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppThemeViewModel.swift; sourceTree = "<group>"; };
@@ -1859,6 +1861,7 @@
 			isa = PBXGroup;
 			children = (
 				46139FB4B2C49B259C0C5797 /* DateFormat.swift */,
+				32F21F122BDFDA6B008C0957 /* Date+MonthYearLong.swift */,
 			);
 			path = Date;
 			sourceTree = "<group>";
@@ -2926,6 +2929,7 @@
 				938BCAE642091FE8FC1E6427 /* RequestContext.swift in Sources */,
 				10E588052BC0492800D05347 /* Deeplink.swift in Sources */,
 				38AC2BAB008389143DD19A8B /* ServerError.swift in Sources */,
+				32F21F132BDFDA6B008C0957 /* Date+MonthYearLong.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

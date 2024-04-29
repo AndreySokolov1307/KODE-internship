@@ -64,6 +64,9 @@ private enum DateFormatterFactory {
     static let monthYearShortDateFormatter = DateFormatter().also {
         $0.format = .monthYearShort
     }
+    static let monthYearLongDateFormatter = DateFormatter().also {
+        $0.format = .monthYearLong
+    }
 
     static func formatter(forFormat format: DateFormat) -> DateFormatter {
         switch format {
@@ -85,6 +88,8 @@ private enum DateFormatterFactory {
             return dayTimeDateFormatter
         case .monthYearShort:
             return monthYearShortDateFormatter
+        case .monthYearLong:
+            return monthYearLongDateFormatter
         }
     }
 }
